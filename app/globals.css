@@ -1,16 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090909;
-  --foreground: #f7f5ef;
+  --background: #ffffff;
+  --foreground: #4f2c1d;
+
+  --um-brown: #4f2c1d;
+  --um-brown-dark: #2a1710;
 
   --um-gold: #f2a900;
-  --um-brown: #4f2c1d;
-  --um-blue: #385e9d;
-  --um-sky: #00a3e0;
 
-  --warm-white: #f5f2ea;
-  --muted: #a3a3a3;
+  --um-blue: #005ea8;
+  --um-blue-dark: #003e6b;
+
+  --cream: #f7f3ec;
+  --cream-soft: #fbf8f4;
+
+  --muted: #6f6a65;
+  --border: #e6dfd7;
 }
 
 html {
@@ -26,13 +32,14 @@ body {
 
 ::selection {
   background: var(--um-gold);
-  color: #000;
+  color: var(--um-brown-dark);
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
+
 @keyframes fadeSlide {
   from {
     opacity: 0;

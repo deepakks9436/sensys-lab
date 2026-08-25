@@ -44,7 +44,6 @@ export default function Navbar() {
     };
 
     handleScroll();
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -62,33 +61,34 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-50 border-b transition-all duration-300 ${
           scrolled
-            ? "border-white/10 bg-[#090909]/90 backdrop-blur-xl"
-            : "border-transparent bg-[#090909]"
+            ? "border-[#e6dfd7] bg-white/95 backdrop-blur-xl"
+            : "border-[#eee7df] bg-white"
         }`}
       >
-        {/* UM GOLD ACCENT */}
         <div className="h-[3px] w-full bg-[#F2A900]" />
 
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5 md:px-16">
-          {/* LOGO */}
-          <Link href="/" className="group flex items-center gap-4">
+          <Link
+            href="/"
+            className="group flex items-center gap-4"
+            onClick={() => setMobileOpen(false)}
+          >
             <div className="relative flex h-10 w-10 items-center justify-center">
-              <div className="absolute h-10 w-10 rounded-full border border-[#F2A900]/40 transition group-hover:border-[#F2A900]" />
+              <div className="absolute h-10 w-10 rounded-full border border-[#F2A900]/60 transition group-hover:border-[#F2A900]" />
               <div className="h-2.5 w-2.5 rounded-full bg-[#F2A900]" />
             </div>
 
             <div>
-              <p className="text-lg font-semibold leading-none tracking-tight text-white">
+              <p className="text-lg font-semibold leading-none tracking-tight text-[#4F2C1D]">
                 SenSys
               </p>
 
-              <p className="mt-1 text-[9px] uppercase tracking-[0.24em] text-neutral-500">
+              <p className="mt-1 text-[9px] uppercase tracking-[0.24em] text-[#6f6a65]">
                 University of Manitoba
               </p>
             </div>
           </Link>
 
-          {/* DESKTOP NAV */}
           <nav className="hidden items-center gap-1 lg:flex">
             {navigation.map((item) => {
               const active =
@@ -107,8 +107,8 @@ export default function Navbar() {
                       href={item.href}
                       className={`group relative flex items-center gap-2 px-4 py-3 text-sm transition ${
                         active
-                          ? "text-white"
-                          : "text-neutral-400 hover:text-white"
+                          ? "text-[#4F2C1D]"
+                          : "text-[#6f6a65] hover:text-[#003E6B]"
                       }`}
                     >
                       Research
@@ -130,7 +130,7 @@ export default function Navbar() {
                       </svg>
 
                       <span
-                        className={`absolute bottom-1 left-4 right-4 h-px origin-left bg-[#F2A900] transition-transform ${
+                        className={`absolute bottom-1 left-4 right-4 h-px origin-left bg-[#005EA8] transition-transform ${
                           active
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100"
@@ -138,7 +138,6 @@ export default function Navbar() {
                       />
                     </Link>
 
-                    {/* RESEARCH MEGA DROPDOWN */}
                     <div
                       className={`absolute left-1/2 top-full w-[580px] -translate-x-1/2 pt-4 transition-all duration-200 ${
                         researchOpen
@@ -146,10 +145,10 @@ export default function Navbar() {
                           : "invisible -translate-y-2 opacity-0"
                       }`}
                     >
-                      <div className="overflow-hidden border border-white/10 bg-[#111111] shadow-2xl">
+                      <div className="overflow-hidden border border-[#e6dfd7] bg-white shadow-2xl">
                         <div className="grid grid-cols-[0.7fr_1.3fr]">
-                          <div className="bg-[#F2A900] p-8 text-black">
-                            <p className="text-xs font-medium uppercase tracking-[0.28em] text-black/60">
+                          <div className="bg-[#F2A900] p-8 text-[#2A1710]">
+                            <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#4F2C1D]/70">
                               Research
                             </p>
 
@@ -159,7 +158,7 @@ export default function Navbar() {
 
                             <Link
                               href="/research"
-                              className="mt-8 inline-block border-b border-black pb-1 text-xs font-medium"
+                              className="mt-8 inline-block border-b border-[#2A1710] pb-1 text-xs font-medium"
                             >
                               Explore all research →
                             </Link>
@@ -170,19 +169,19 @@ export default function Navbar() {
                               <Link
                                 key={link.title}
                                 href={link.href}
-                                className="group flex items-center justify-between border-b border-white/10 px-2 py-4 last:border-none"
+                                className="group flex items-center justify-between border-b border-[#eee7df] px-2 py-4 last:border-none"
                               >
                                 <div className="flex items-center gap-4">
-                                  <span className="text-[10px] tracking-[0.2em] text-[#F2A900]">
+                                  <span className="text-[10px] tracking-[0.2em] text-[#005EA8]">
                                     0{index + 1}
                                   </span>
 
-                                  <span className="text-sm text-neutral-300 transition group-hover:text-white">
+                                  <span className="text-sm text-[#5f5a55] transition group-hover:text-[#4F2C1D]">
                                     {link.title}
                                   </span>
                                 </div>
 
-                                <span className="translate-x-0 text-neutral-600 transition group-hover:translate-x-1 group-hover:text-[#F2A900]">
+                                <span className="translate-x-0 text-[#9a928b] transition group-hover:translate-x-1 group-hover:text-[#005EA8]">
                                   →
                                 </span>
                               </Link>
@@ -201,14 +200,14 @@ export default function Navbar() {
                   href={item.href}
                   className={`group relative px-4 py-3 text-sm transition ${
                     active
-                      ? "text-white"
-                      : "text-neutral-400 hover:text-white"
+                      ? "text-[#4F2C1D]"
+                      : "text-[#6f6a65] hover:text-[#003E6B]"
                   }`}
                 >
                   {item.name}
 
                   <span
-                    className={`absolute bottom-1 left-4 right-4 h-px origin-left bg-[#F2A900] transition-transform ${
+                    className={`absolute bottom-1 left-4 right-4 h-px origin-left bg-[#005EA8] transition-transform ${
                       active
                         ? "scale-x-100"
                         : "scale-x-0 group-hover:scale-x-100"
@@ -218,39 +217,37 @@ export default function Navbar() {
               );
             })}
 
-            {/* JOIN CTA */}
             <Link
               href="/join"
               className={`ml-4 rounded-full px-6 py-3 text-sm font-medium transition ${
                 pathname === "/join"
-                  ? "bg-white text-black"
-                  : "bg-[#F2A900] text-black hover:bg-white"
+                  ? "bg-[#4F2C1D] text-white"
+                  : "bg-[#F2A900] text-[#2A1710] hover:bg-[#005EA8] hover:text-white"
               }`}
             >
               Join SenSys
             </Link>
           </nav>
 
-          {/* MOBILE BUTTON */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-11 w-11 items-center justify-center border border-white/15 lg:hidden"
+            className="flex h-11 w-11 items-center justify-center border border-[#d9d2ca] lg:hidden"
             aria-label="Toggle navigation menu"
           >
             <div className="space-y-1.5">
               <span
-                className={`block h-px w-5 bg-white transition ${
+                className={`block h-px w-5 bg-[#4F2C1D] transition ${
                   mobileOpen ? "translate-y-[7px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`block h-px w-5 bg-white transition ${
+                className={`block h-px w-5 bg-[#4F2C1D] transition ${
                   mobileOpen ? "opacity-0" : ""
                 }`}
               />
               <span
-                className={`block h-px w-5 bg-white transition ${
+                className={`block h-px w-5 bg-[#4F2C1D] transition ${
                   mobileOpen ? "-translate-y-[7px] -rotate-45" : ""
                 }`}
               />
@@ -259,16 +256,15 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* MOBILE NAVIGATION */}
       <div
-        className={`fixed inset-x-0 bottom-0 top-[84px] z-40 overflow-y-auto bg-[#090909] transition-all duration-300 lg:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-[84px] z-40 overflow-y-auto bg-white transition-all duration-300 lg:hidden ${
           mobileOpen
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-4 opacity-0"
         }`}
       >
         <div className="px-8 py-10">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#F2A900]">
+          <p className="text-xs uppercase tracking-[0.3em] text-[#005EA8]">
             Explore SenSys
           </p>
 
@@ -277,19 +273,19 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="group flex items-center justify-between border-t border-white/10 py-6"
+                className="group flex items-center justify-between border-t border-[#eee7df] py-6"
               >
                 <div className="flex items-center gap-5">
                   <span className="text-xs text-[#F2A900]">
                     0{index + 1}
                   </span>
 
-                  <span className="text-3xl font-semibold tracking-tight">
+                  <span className="text-3xl font-semibold tracking-tight text-[#4F2C1D]">
                     {item.name}
                   </span>
                 </div>
 
-                <span className="text-2xl text-neutral-600 transition group-hover:text-[#F2A900]">
+                <span className="text-2xl text-[#aaa19a] transition group-hover:text-[#005EA8]">
                   →
                 </span>
               </Link>
@@ -297,7 +293,7 @@ export default function Navbar() {
 
             <Link
               href="/join"
-              className="mt-8 flex items-center justify-between bg-[#F2A900] p-6 text-black"
+              className="mt-8 flex items-center justify-between bg-[#F2A900] p-6 text-[#2A1710]"
             >
               <span className="text-2xl font-semibold">
                 Join SenSys
@@ -306,16 +302,6 @@ export default function Navbar() {
               <span className="text-2xl">→</span>
             </Link>
           </nav>
-
-          <div className="mt-14 border-t border-white/10 pt-8">
-            <p className="text-sm text-neutral-500">
-              University of Manitoba
-            </p>
-
-            <p className="mt-1 text-sm text-neutral-600">
-              Winnipeg, Canada
-            </p>
-          </div>
         </div>
       </div>
     </>

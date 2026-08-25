@@ -124,13 +124,13 @@ export default function FeaturedResearch() {
           <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
             
             {/* VISUAL SIDE */}
-            <div className="relative min-h-[540px] overflow-hidden bg-[#090909]">
+            <div className="relative min-h-[540px] overflow-hidden bg-[#4F2C1D]">
               
               {/* BACKGROUND */}
               <div
                 className="absolute inset-0 transition-colors duration-500"
                 style={{
-                  background: `radial-gradient(circle at 30% 30%, ${story.accentSoft}, transparent 32%), radial-gradient(circle at 75% 70%, rgba(255,255,255,0.08), transparent 32%), #090909`,
+                  background: `radial-gradient(circle at 30% 30%, ${story.accentSoft}, transparent 32%), radial-gradient(circle at 75% 70%, rgba(255,255,255,0.08), transparent 32%), #4F2C1D`,
                 }}
               />
 
@@ -284,7 +284,7 @@ export default function FeaturedResearch() {
                   onClick={() => setActive(index)}
                   className={`border-b border-neutral-300 px-5 py-5 text-left transition md:border-b-0 md:border-r ${
                     active === index
-                      ? "bg-[#090909] text-white"
+                      ? "bg-[#4F2C1D] text-white"
                       : "bg-white text-neutral-500 hover:bg-neutral-100"
                   }`}
                 >
