@@ -25,20 +25,22 @@ export default function DynamicHero() {
 
   return (
     <section className="relative overflow-hidden bg-white px-8 pb-20 pt-20 text-[#4F2C1D] md:px-16 md:pb-28 md:pt-28">
-      
-      <div className="pointer-events-none absolute right-[-180px] top-[-100px] h-[520px] w-[520px] rounded-full bg-[#005EA8]/5 blur-[120px]" />
+      {/* SOFT BACKGROUND ELEMENTS */}
+      <div className="pointer-events-none absolute right-[-180px] top-[-120px] h-[520px] w-[520px] rounded-full bg-[#005EA8]/5 blur-[120px]" />
 
-      <div className="pointer-events-none absolute bottom-[-220px] left-[20%] h-[420px] w-[420px] rounded-full bg-[#F2A900]/8 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-[-220px] left-[18%] h-[420px] w-[420px] rounded-full bg-[#F2A900]/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl">
+        {/* EYEBROW */}
         <div className="flex items-center gap-4">
           <div className="h-px w-10 bg-[#F2A900]" />
 
-          <p className="text-xs font-medium uppercase tracking-[0.35em] text-[#4F2C1D]">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#4F2C1D]">
             Intelligent Sensing Systems
           </p>
         </div>
 
+        {/* MAIN TITLE */}
         <h1 className="mt-10 max-w-6xl text-6xl font-semibold leading-[0.9] tracking-[-0.055em] text-[#4F2C1D] md:text-8xl lg:text-[108px]">
           Sensing the world.
           <br />
@@ -47,6 +49,7 @@ export default function DynamicHero() {
           comes next.
         </h1>
 
+        {/* ROTATING APPLICATION */}
         <div className="mt-12 flex flex-col gap-3 border-l-2 border-[#F2A900] pl-6 md:flex-row md:items-center md:gap-4">
           <span className="text-sm uppercase tracking-[0.22em] text-[#7a726a]">
             Engineering intelligent sensing for
@@ -62,6 +65,7 @@ export default function DynamicHero() {
           </div>
         </div>
 
+        {/* INTRO */}
         <div className="mt-14 grid gap-10 border-t border-[#e6dfd7] pt-10 md:grid-cols-[1.15fr_0.85fr]">
           <p className="max-w-3xl text-xl leading-9 text-[#4F2C1D] md:text-2xl">
             We develop intelligent sensing systems by integrating microsystems,
@@ -71,7 +75,7 @@ export default function DynamicHero() {
           </p>
 
           <div>
-            <p className="max-w-xl text-base leading-8 text-[#6f6a65]">
+            <p className="max-w-xl text-base leading-8 text-[#706963]">
               From fundamental sensing principles to deployable technologies,
               SenSys connects physical systems with intelligent
               decision-making.
@@ -95,7 +99,8 @@ export default function DynamicHero() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-[#e6dfd7] pt-6 text-xs uppercase tracking-[0.25em] text-[#8b827a] md:flex-row md:items-center md:justify-between">
+        {/* LOCATION */}
+        <div className="mt-20 flex flex-col gap-4 border-t border-[#e6dfd7] pt-6 text-xs uppercase tracking-[0.25em] text-[#8a8179] md:flex-row md:items-center md:justify-between">
           <p>University of Manitoba</p>
           <p>Winnipeg · Canada</p>
         </div>

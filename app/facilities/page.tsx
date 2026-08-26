@@ -1,241 +1,164 @@
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const capabilities = [
   {
     number: "01",
     title: "Microfabrication & Advanced Manufacturing",
-    text: "Capabilities being developed around microfluidic prototyping, laser processing, direct-write fabrication, additive manufacturing, printed electronics, and functional device fabrication.",
+    description:
+      "Emerging capabilities for rapid prototyping, microsystems fabrication, microfluidics, direct-write printing, laser processing, and advanced manufacturing.",
   },
   {
     number: "02",
     title: "Electrochemical & Bioanalytical Characterization",
-    text: "Instrumentation for electrochemical sensing, impedance analysis, multichannel measurements, biochemical characterization, and validation of portable diagnostic platforms.",
+    description:
+      "Electrochemical instrumentation and analytical workflows supporting biosensing, materials characterization, energy devices, and point-of-care technologies.",
   },
   {
     number: "03",
     title: "Optical & Imaging Systems",
-    text: "Optical sensing, fluorescence and luminescence analysis, hyperspectral imaging, high-speed visualization, and multimodal analytical measurements.",
+    description:
+      "Optical sensing, fluorescence, imaging, spectroscopy, and advanced characterization systems supporting multimodal device development.",
   },
   {
     number: "04",
     title: "Flexible & Wearable Device Engineering",
-    text: "Development and characterization of textile electronics, flexible sensors, printed conductors, wearable interfaces, and mechanically compliant sensing platforms.",
+    description:
+      "Fabrication and testing capabilities for textile electronics, flexible devices, wearable sensors, and mechanically compliant systems.",
   },
   {
     number: "05",
     title: "Microfluidics & Point-of-Care Systems",
-    text: "Lab-on-chip architectures, droplet and capillary systems, portable diagnostics, fluid handling, thermal integration, and sample-to-answer sensing platforms.",
+    description:
+      "Platforms for fluid handling, pumping, thermal control, microreactors, lab-on-chip systems, and integrated portable diagnostics.",
   },
   {
     number: "06",
     title: "Environmental & Application Validation",
-    text: "Controlled testing and validation of sensing technologies for food, water, soil, agriculture, healthcare, and other field-deployable applications.",
+    description:
+      "Infrastructure supporting testing in water, soil, food, agriculture, environmental, and other real-world application settings.",
   },
 ];
 
 export default function FacilitiesPage() {
   return (
-    <main className="min-h-screen bg-[#070707] text-white">
+    <main className="min-h-screen bg-white text-[#4F2C1D]">
       <Navbar />
 
       {/* HERO */}
-      <section className="px-8 py-24 md:px-16 md:py-32">
+      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-medium uppercase tracking-[0.35em] text-[#ffb71b]">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#005EA8]">
             Facilities
           </p>
 
-          <h1 className="mt-6 max-w-6xl text-6xl font-semibold leading-[0.95] tracking-[-0.04em] md:text-8xl">
-            Infrastructure for
+          <h1 className="mt-6 max-w-6xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
+            Infrastructure for translating
             <br />
-            translating ideas into systems.
+            ideas into systems.
           </h1>
 
-          <div className="mt-12 grid gap-10 md:grid-cols-[1fr_0.8fr]">
-            <p className="max-w-3xl text-xl leading-9 text-neutral-300">
-              SenSys is establishing an integrated research environment at the
-              University of Manitoba for sensing, microfluidics, advanced
-              manufacturing, characterization, electronics, and translational
-              technology development.
-            </p>
-
-            <p className="max-w-xl text-base leading-8 text-neutral-500">
-              Infrastructure is being developed to support the complete pathway
-              from materials and microdevices to intelligent, field-deployable
-              sensing systems.
-            </p>
-          </div>
+          <p className="mt-10 max-w-3xl text-xl leading-9 text-[#706963]">
+            SenSys is establishing an integrated research environment at the
+            University of Manitoba supporting sensing, microsystems,
+            microfluidics, advanced fabrication, characterization, and
+            translational device development.
+          </p>
         </div>
       </section>
 
-      {/* STATUS NOTICE */}
-      <section className="border-y border-neutral-800 bg-[#0b0b0b] px-8 py-10 md:px-16">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#ffb71b]">
-              Infrastructure Development
-            </p>
+      {/* STATUS */}
+      <section className="bg-[#F7F3EC] px-8 py-16 md:px-16">
+        <div className="mx-auto max-w-7xl border-l-4 border-[#F2A900] bg-white p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#005EA8]">
+            Infrastructure Development
+          </p>
 
-            <p className="mt-3 max-w-4xl text-base leading-7 text-neutral-400">
-              SenSys is currently establishing its next-generation research
-              infrastructure at the University of Manitoba. Detailed equipment
-              information will be added as systems are commissioned and become
-              operational.
-            </p>
-          </div>
+          <p className="mt-4 max-w-4xl text-lg leading-8 text-[#706963]">
+            SenSys is currently establishing its next-generation research
+            infrastructure at the University of Manitoba. Detailed equipment
+            information will be added as systems are commissioned and become
+            operational.
+          </p>
         </div>
       </section>
 
       {/* CAPABILITIES */}
-      <section className="bg-[#f3f1eb] px-8 py-24 text-black md:px-16 md:py-32">
+      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#005EA8]">
+            Emerging Capabilities
+          </p>
 
-          <div className="grid gap-10 md:grid-cols-[0.75fr_1.25fr]">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.35em] text-neutral-500">
-                Emerging Capabilities
-              </p>
-            </div>
-
-            <div>
-              <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-6xl">
-                An integrated platform for fabrication, sensing, and validation.
-              </h2>
-
-              <p className="mt-7 max-w-3xl text-lg leading-8 text-neutral-600">
-                The laboratory infrastructure is being organized around
-                complementary capability areas rather than isolated instruments,
-                enabling researchers to move efficiently from concept to
-                prototype and application testing.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-20 grid gap-px overflow-hidden border border-neutral-300 bg-neutral-300 md:grid-cols-2">
+          <div className="mt-14 divide-y divide-[#ddd5cc] border-y border-[#ddd5cc]">
             {capabilities.map((item) => (
-              <div
+              <article
                 key={item.number}
-                className="bg-[#f3f1eb] p-8 transition hover:bg-white md:p-12"
+                className="grid gap-8 py-10 md:grid-cols-[0.2fr_0.8fr_1fr]"
               >
-                <span className="text-xs tracking-[0.3em] text-[#b57a00]">
+                <span className="text-sm font-semibold text-[#F2A900]">
                   {item.number}
                 </span>
 
-                <h3 className="mt-14 text-3xl font-semibold tracking-tight">
+                <h2 className="text-2xl font-semibold tracking-tight">
                   {item.title}
-                </h3>
+                </h2>
 
-                <p className="mt-5 max-w-xl text-base leading-7 text-neutral-600">
-                  {item.text}
+                <p className="text-sm leading-7 text-[#706963]">
+                  {item.description}
                 </p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* INSTITUTIONAL ENVIRONMENT */}
-      <section className="bg-[#0b0b0b] px-8 py-24 md:px-16 md:py-32">
+      {/* UNIVERSITY ENVIRONMENT */}
+      <section className="bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 md:grid-cols-[0.75fr_1.25fr]">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.35em] text-[#ffb71b]">
-                University Environment
-              </p>
-            </div>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#005EA8]">
+            University Environment
+          </p>
 
-            <div>
-              <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-6xl">
-                Embedded within the University of Manitoba research ecosystem.
-              </h2>
+          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+            Embedded within a large research and infrastructure ecosystem.
+          </h2>
 
-              <p className="mt-8 max-w-3xl text-lg leading-8 text-neutral-400">
-                SenSys will operate within the broader University of Manitoba
-                research environment, enabling access to institutional
-                infrastructure, interdisciplinary collaboration, and shared
-                research resources across the university.
-              </p>
-
-              <a
-                href="https://umanitoba.ca/facilities/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-block border-b border-neutral-500 pb-1 text-sm font-medium text-white transition hover:border-[#ffb71b] hover:text-[#ffb71b]"
-              >
-                Explore University of Manitoba facilities →
-              </a>
-            </div>
-          </div>
-
-          {/* UM SCALE */}
-          <div className="mt-16 grid border-y border-neutral-800 md:grid-cols-3">
-            <div className="py-10 md:border-r md:border-neutral-800">
-              <p className="text-5xl font-semibold tracking-tight">100+</p>
-              <p className="mt-3 text-sm text-neutral-500">
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            <div className="border-t border-[#d8d0c7] pt-6">
+              <p className="text-4xl font-semibold text-[#F2A900]">100+</p>
+              <p className="mt-2 text-sm text-[#706963]">
                 University buildings
               </p>
             </div>
 
-            <div className="py-10 md:border-r md:border-neutral-800 md:pl-10">
-              <p className="text-5xl font-semibold tracking-tight">6.41M</p>
-              <p className="mt-3 text-sm text-neutral-500">
+            <div className="border-t border-[#d8d0c7] pt-6">
+              <p className="text-4xl font-semibold text-[#F2A900]">6.41M</p>
+              <p className="mt-2 text-sm text-[#706963]">
                 Square feet of facilities
               </p>
             </div>
 
-            <div className="py-10 md:pl-10">
-              <p className="text-5xl font-semibold tracking-tight">676</p>
-              <p className="mt-3 text-sm text-neutral-500">
+            <div className="border-t border-[#d8d0c7] pt-6">
+              <p className="text-4xl font-semibold text-[#F2A900]">676</p>
+              <p className="mt-2 text-sm text-[#706963]">
                 Acres of university land
               </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* COLLABORATION */}
-      <section className="bg-[#ffb71b] px-8 py-20 text-black md:px-16 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.35em] text-black/60">
-                Collaboration
-              </p>
-            </div>
-
-            <div>
-              <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-6xl">
-                Built to support interdisciplinary research.
-              </h2>
-
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-black/70">
-                The SenSys infrastructure strategy is designed to support
-                collaborative research spanning engineering, healthcare,
-                agriculture, environmental science, materials, and data-driven
-                sensing technologies.
-              </p>
-
-              <a
-                href="/join"
-                className="mt-8 inline-block border-b border-black pb-1 text-sm font-medium"
-              >
-                Work with SenSys →
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="bg-[#070707] px-8 py-12 md:px-16">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-neutral-800 pt-8 text-xs text-neutral-600 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 SenSys Lab. University of Manitoba.</p>
-
-          <a href="/" className="transition hover:text-white">
-            Back to home →
+          <a
+            href="https://umanitoba.ca/facilities/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-block text-sm font-medium text-[#005EA8]"
+          >
+            Explore University of Manitoba facilities →
           </a>
         </div>
-      </footer>
+      </section>
+
+      <Footer />
     </main>
   );
 }
