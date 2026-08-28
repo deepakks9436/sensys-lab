@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
-const researchLinks = [
+const researchThrusts = [
   {
     title: "Intelligent Microsystems",
     href: "/research#intelligent-microsystems",
@@ -23,12 +23,38 @@ const researchLinks = [
   },
 ];
 
-const navigation = [
-  { name: "Research", href: "/research" },
-  { name: "People", href: "/people" },
-  { name: "Publications", href: "/publications" },
-  { name: "Facilities", href: "/facilities" },
-  { name: "News", href: "/news" },
+const researchFoundations = [
+  {
+    title: "Graphene Technologies",
+    href: "/research/graphene",
+  },
+  {
+    title: "Pesticide Detection",
+    href: "/research/pesticide-detection",
+  },
+  {
+    title: "Water Quality Technologies",
+    href: "/research/water-quality",
+  },
+  {
+    title: "Pathogen & AMR Diagnostics",
+    href: "/research/amr",
+  },
+];
+
+const outputs = [
+  {
+    title: "Publications",
+    href: "/publications",
+  },
+  {
+    title: "Patents",
+    href: "/patents",
+  },
+  {
+    title: "Books",
+    href: "/books",
+  },
 ];
 
 export default function Navbar() {
@@ -36,277 +62,316 @@ export default function Navbar() {
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [researchOpen, setResearchOpen] = useState(false);
+  const [outputsOpen, setOutputsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
     setMobileOpen(false);
     setResearchOpen(false);
+    setOutputsOpen(false);
   }, [pathname]);
 
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
-    <>
-      <header
-        className={`sticky top-0 z-50 border-b transition-all duration-300 ${
-          scrolled
-            ? "border-[#e6dfd7] bg-white/95 shadow-sm backdrop-blur-xl"
-            : "border-[#eee7df] bg-white"
-        }`}
-      >
-        {/* UM GOLD TOP LINE */}
-        <div className="h-[3px] w-full bg-[#F2A900]" />
+    <header
+      className={`sticky top-0 z-50 border-t-2 border-[#F2A900] transition ${
+        scrolled
+          ? "border-b border-[#E5E0D8] bg-white/95 shadow-sm backdrop-blur-xl"
+          : "border-b border-[#E5E0D8] bg-white"
+      }`}
+    >
+      <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 md:px-8">
+        {/* BRAND */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#F2A900]">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#F2A900]" />
+          </div>
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5 md:px-16">
-          {/* BRAND */}
-          <Link
-            href="/"
-            onClick={() => setMobileOpen(false)}
-            className="group flex items-center gap-4"
+          <div className="leading-none">
+            <p className="text-[17px] font-semibold tracking-tight text-[#4F2C1D]">
+              SenSys
+            </p>
+
+            <p className="mt-1 text-[9px] uppercase tracking-[0.28em] text-[#837A72]">
+              University of Manitoba
+            </p>
+          </div>
+        </Link>
+
+        {/* DESKTOP NAV */}
+        <div className="hidden items-center gap-8 lg:flex">
+          {/* RESEARCH */}
+          <div
+            className="relative"
+            onMouseEnter={() => setResearchOpen(true)}
+            onMouseLeave={() => setResearchOpen(false)}
           >
-            <div className="relative flex h-10 w-10 items-center justify-center">
-              <span className="absolute h-10 w-10 rounded-full border border-[#F2A900]/70 transition group-hover:border-[#F2A900]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#F2A900]" />
-            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setResearchOpen((current) => !current);
+                setOutputsOpen(false);
+              }}
+              className={`flex items-center gap-2 border-b pb-1 text-sm transition ${
+                pathname.startsWith("/research")
+                  ? "border-[#385E9D] text-[#4F2C1D]"
+                  : "border-transparent text-[#4F2C1D] hover:border-[#385E9D]"
+              }`}
+            >
+              Research
+              <span className="text-[10px] text-[#385E9D]">⌄</span>
+            </button>
 
-            <div>
-              <p className="text-lg font-semibold leading-none tracking-tight text-[#4F2C1D]">
-                SenSys
-              </p>
+            {researchOpen && (
+              <div className="absolute left-1/2 top-full w-[660px] -translate-x-1/2 pt-5">
+                <div className="grid grid-cols-2 border border-[#DDD5CC] bg-white shadow-xl">
+                  {/* THRUSTS */}
+                  <div className="p-7">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#385E9D]">
+                      SenSys Research
+                    </p>
 
-              <p className="mt-1 text-[9px] uppercase tracking-[0.24em] text-[#766e67]">
-                University of Manitoba
-              </p>
-            </div>
-          </Link>
+                    <div className="mt-5 space-y-1">
+                      {researchThrusts.map((item, index) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="group flex items-start gap-4 border-b border-[#EFE9E2] py-4 last:border-b-0"
+                        >
+                          <span className="pt-[2px] text-[10px] font-semibold text-[#F2A900]">
+                            0{index + 1}
+                          </span>
 
-          {/* DESKTOP NAV */}
-          <nav className="hidden items-center gap-1 lg:flex">
-            {navigation.map((item) => {
-              const active = isActive(item.href);
+                          <div>
+                            <p className="text-sm font-semibold text-[#4F2C1D] transition group-hover:text-[#385E9D]">
+                              {item.title}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
 
-              if (item.name === "Research") {
-                return (
-                  <div
-                    key={item.name}
-                    className="relative"
-                    onMouseEnter={() => setResearchOpen(true)}
-                    onMouseLeave={() => setResearchOpen(false)}
-                  >
                     <Link
-                      href={item.href}
-                      className={`group relative flex items-center gap-2 px-4 py-3 text-sm transition ${
-                        active
-                          ? "text-[#4F2C1D]"
-                          : "text-[#6f6963] hover:text-[#003E6B]"
-                      }`}
+                      href="/research"
+                      className="mt-5 inline-block text-xs font-semibold text-[#385E9D]"
                     >
-                      Research
-
-                      <svg
-                        width="11"
-                        height="11"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className={`transition duration-200 ${
-                          researchOpen ? "rotate-180" : ""
-                        }`}
-                      >
-                        <path
-                          d="M6 9L12 15L18 9"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                        />
-                      </svg>
-
-                      <span
-                        className={`absolute bottom-1 left-4 right-4 h-px origin-left bg-[#005EA8] transition-transform ${
-                          active
-                            ? "scale-x-100"
-                            : "scale-x-0 group-hover:scale-x-100"
-                        }`}
-                      />
+                      View all research →
                     </Link>
+                  </div>
 
-                    {/* RESEARCH DROPDOWN */}
-                    <div
-                      className={`absolute left-1/2 top-full w-[590px] -translate-x-1/2 pt-4 transition-all duration-200 ${
-                        researchOpen
-                          ? "visible translate-y-0 opacity-100"
-                          : "invisible -translate-y-2 opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden border border-[#e6dfd7] bg-white shadow-2xl">
-                        <div className="grid grid-cols-[0.72fr_1.28fr]">
-                          <div className="bg-[#F2A900] p-8 text-[#2A1710]">
-                            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4F2C1D]/70">
-                              Research
-                            </p>
+                  {/* FOUNDATIONS */}
+                  <div className="border-l border-[#DDD5CC] bg-[#F7F3EC] p-7">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#385E9D]">
+                      Research Foundations
+                    </p>
 
-                            <p className="mt-12 text-2xl font-semibold leading-tight">
-                              From sensing principles to intelligent systems.
-                            </p>
+                    <p className="mt-3 text-xs leading-6 text-[#837A72]">
+                      Selected technology programmes demonstrating the research
+                      foundations informing SenSys.
+                    </p>
 
-                            <Link
-                              href="/research"
-                              className="mt-8 inline-block border-b border-[#2A1710] pb-1 text-xs font-medium"
-                            >
-                              Explore all research →
-                            </Link>
-                          </div>
-
-                          <div className="p-6">
-                            {researchLinks.map((link, index) => (
-                              <Link
-                                key={link.title}
-                                href={link.href}
-                                className="group flex items-center justify-between border-b border-[#eee7df] px-2 py-4 last:border-none"
-                              >
-                                <div className="flex items-center gap-4">
-                                  <span className="text-[10px] tracking-[0.2em] text-[#005EA8]">
-                                    0{index + 1}
-                                  </span>
-
-                                  <span className="text-sm text-[#625c56] transition group-hover:text-[#4F2C1D]">
-                                    {link.title}
-                                  </span>
-                                </div>
-
-                                <span className="text-[#9c948d] transition group-hover:translate-x-1 group-hover:text-[#005EA8]">
-                                  →
-                                </span>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+                    <div className="mt-5 space-y-2">
+                      {researchFoundations.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="flex items-center justify-between border border-[#DDD5CC] bg-white px-4 py-3 text-sm text-[#4F2C1D] transition hover:border-[#385E9D] hover:text-[#385E9D]"
+                        >
+                          <span>{item.title}</span>
+                          <span>→</span>
+                        </Link>
+                      ))}
                     </div>
                   </div>
-                );
-              }
+                </div>
+              </div>
+            )}
+          </div>
 
-              return (
+          {/* PEOPLE */}
+          <Link
+            href="/people"
+            className={`border-b pb-1 text-sm transition ${
+              isActive("/people")
+                ? "border-[#385E9D]"
+                : "border-transparent hover:border-[#385E9D]"
+            }`}
+          >
+            People
+          </Link>
+
+          {/* OUTPUTS */}
+          <div
+            className="relative"
+            onMouseEnter={() => setOutputsOpen(true)}
+            onMouseLeave={() => setOutputsOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => {
+                setOutputsOpen((current) => !current);
+                setResearchOpen(false);
+              }}
+              className={`flex items-center gap-2 border-b pb-1 text-sm transition ${
+                pathname.startsWith("/publications") ||
+                pathname.startsWith("/patents") ||
+                pathname.startsWith("/books")
+                  ? "border-[#385E9D]"
+                  : "border-transparent hover:border-[#385E9D]"
+              }`}
+            >
+              Outputs
+              <span className="text-[10px] text-[#385E9D]">⌄</span>
+            </button>
+
+            {outputsOpen && (
+              <div className="absolute left-1/2 top-full w-56 -translate-x-1/2 pt-5">
+                <div className="border border-[#DDD5CC] bg-white p-2 shadow-xl">
+                  {outputs.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="flex items-center justify-between px-4 py-3 text-sm text-[#4F2C1D] transition hover:bg-[#F7F3EC] hover:text-[#385E9D]"
+                    >
+                      {item.title}
+                      <span>→</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* FACILITIES */}
+          <Link
+            href="/facilities"
+            className={`border-b pb-1 text-sm transition ${
+              isActive("/facilities")
+                ? "border-[#385E9D]"
+                : "border-transparent hover:border-[#385E9D]"
+            }`}
+          >
+            Facilities
+          </Link>
+
+          {/* NEWS */}
+          <Link
+            href="/news"
+            className={`border-b pb-1 text-sm transition ${
+              isActive("/news")
+                ? "border-[#385E9D]"
+                : "border-transparent hover:border-[#385E9D]"
+            }`}
+          >
+            News
+          </Link>
+
+          {/* JOIN */}
+          <Link
+            href="/join"
+            className="rounded-full bg-[#F2A900] px-6 py-3 text-sm font-semibold text-[#2A1710] transition hover:bg-[#385E9D] hover:text-white"
+          >
+            Join SenSys
+          </Link>
+        </div>
+
+        {/* MOBILE BUTTON */}
+        <button
+          type="button"
+          onClick={() => setMobileOpen((current) => !current)}
+          className="flex h-10 w-10 items-center justify-center border border-[#DDD5CC] text-[#4F2C1D] lg:hidden"
+          aria-label="Toggle navigation"
+        >
+          <span className="text-xl">
+            {mobileOpen ? "×" : "☰"}
+          </span>
+        </button>
+      </nav>
+
+      {/* MOBILE MENU */}
+      {mobileOpen && (
+        <div className="border-t border-[#DDD5CC] bg-white px-6 py-6 lg:hidden">
+          <div className="mx-auto max-w-7xl space-y-2">
+            <Link
+              href="/research"
+              className="block border-b border-[#EAE4DD] py-3 text-sm font-semibold"
+            >
+              Research
+            </Link>
+
+            <div className="grid gap-2 py-2 sm:grid-cols-2">
+              {researchFoundations.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.title}
                   href={item.href}
-                  className={`group relative px-4 py-3 text-sm transition ${
-                    active
-                      ? "text-[#4F2C1D]"
-                      : "text-[#6f6963] hover:text-[#003E6B]"
-                  }`}
+                  className="border border-[#DDD5CC] bg-[#F7F3EC] px-4 py-3 text-xs"
                 >
-                  {item.name}
-
-                  <span
-                    className={`absolute bottom-1 left-4 right-4 h-px origin-left bg-[#005EA8] transition-transform ${
-                      active
-                        ? "scale-x-100"
-                        : "scale-x-0 group-hover:scale-x-100"
-                    }`}
-                  />
+                  {item.title}
                 </Link>
-              );
-            })}
+              ))}
+            </div>
+
+            <Link
+              href="/people"
+              className="block border-b border-[#EAE4DD] py-3 text-sm"
+            >
+              People
+            </Link>
+
+            <div className="border-b border-[#EAE4DD] py-3">
+              <p className="text-sm font-semibold">Outputs</p>
+
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {outputs.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="border border-[#DDD5CC] px-3 py-2 text-center text-xs"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              href="/facilities"
+              className="block border-b border-[#EAE4DD] py-3 text-sm"
+            >
+              Facilities
+            </Link>
+
+            <Link
+              href="/news"
+              className="block border-b border-[#EAE4DD] py-3 text-sm"
+            >
+              News
+            </Link>
 
             <Link
               href="/join"
-              className={`ml-4 rounded-full px-6 py-3 text-sm font-semibold transition ${
-                pathname === "/join"
-                  ? "bg-[#4F2C1D] text-white"
-                  : "bg-[#F2A900] text-[#2A1710] hover:bg-[#005EA8] hover:text-white"
-              }`}
+              className="mt-5 block rounded-full bg-[#F2A900] px-6 py-3.5 text-center text-sm font-semibold text-[#2A1710]"
             >
               Join SenSys
             </Link>
-          </nav>
-
-          {/* MOBILE BUTTON */}
-          <button
-            type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-11 w-11 items-center justify-center border border-[#ded6ce] lg:hidden"
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileOpen}
-          >
-            <div className="space-y-1.5">
-              <span
-                className={`block h-px w-5 bg-[#4F2C1D] transition ${
-                  mobileOpen ? "translate-y-[7px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`block h-px w-5 bg-[#4F2C1D] transition ${
-                  mobileOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block h-px w-5 bg-[#4F2C1D] transition ${
-                  mobileOpen ? "-translate-y-[7px] -rotate-45" : ""
-                }`}
-              />
-            </div>
-          </button>
+          </div>
         </div>
-      </header>
-
-      {/* MOBILE MENU */}
-      <div
-        className={`fixed inset-x-0 bottom-0 top-[84px] z-40 overflow-y-auto bg-white transition-all duration-300 lg:hidden ${
-          mobileOpen
-            ? "visible translate-y-0 opacity-100"
-            : "invisible -translate-y-4 opacity-0"
-        }`}
-      >
-        <div className="px-8 py-10">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#005EA8]">
-            Explore SenSys
-          </p>
-
-          <nav className="mt-8">
-            {navigation.map((item, index) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="group flex items-center justify-between border-t border-[#eee7df] py-6"
-              >
-                <div className="flex items-center gap-5">
-                  <span className="text-xs text-[#F2A900]">
-                    0{index + 1}
-                  </span>
-
-                  <span className="text-3xl font-semibold tracking-tight text-[#4F2C1D]">
-                    {item.name}
-                  </span>
-                </div>
-
-                <span className="text-2xl text-[#aaa19a] transition group-hover:text-[#005EA8]">
-                  →
-                </span>
-              </Link>
-            ))}
-
-            <Link
-              href="/join"
-              onClick={() => setMobileOpen(false)}
-              className="mt-8 flex items-center justify-between bg-[#F2A900] p-6 text-[#2A1710]"
-            >
-              <span className="text-2xl font-semibold">Join SenSys</span>
-              <span className="text-2xl">→</span>
-            </Link>
-          </nav>
-        </div>
-      </div>
-    </>
+      )}
+    </header>
   );
 }

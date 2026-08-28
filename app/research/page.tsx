@@ -3,66 +3,220 @@ import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-const researchAreas = [
+const sensysAreas = [
   {
     number: "01",
     id: "intelligent-microsystems",
     title: "Intelligent Microsystems",
+    tagline: "Microdevices · Microfluidics · Integrated sensing",
     description:
-      "Microscale technologies integrating sensing, microfluidics, advanced fabrication, electronics, and intelligent instrumentation into compact systems.",
+      "Engineering miniaturized platforms that combine microfluidics, sensing interfaces, functional materials, electronics, embedded intelligence, and advanced fabrication into complete sensing systems.",
     topics: [
       "Microfluidics",
       "Lab-on-Chip",
       "MEMS",
-      "Portable Instrumentation",
+      "Sensor Functionalization",
       "Advanced Fabrication",
-      "Integrated Sensors",
+      "Portable Instrumentation",
+      "Embedded Systems",
+      "Intelligent Devices",
     ],
   },
   {
     number: "02",
     id: "biointegrated-systems",
     title: "Biointegrated Systems",
+    tagline: "Wearables · Implantables · Flexible technologies",
     description:
-      "Flexible, wearable, textile, and implantable technologies engineered to interface with biological systems for sensing, monitoring, and energy applications.",
+      "Developing sensing, monitoring, and energy technologies that interface naturally with the human body through flexible, textile, wearable, implantable, and biocompatible systems.",
     topics: [
       "Wearable Sensors",
+      "Implantable Devices",
       "Textile Electronics",
+      "Flexible Electronics",
       "Biomedical Signals",
-      "Flexible Devices",
-      "Implantables",
       "Bioenergy",
+      "Biocompatible Materials",
+      "Continuous Monitoring",
     ],
   },
   {
     number: "03",
     id: "intelligent-diagnostics",
     title: "Intelligent Diagnostics",
+    tagline: "Point-of-care · Biosensors · Connected diagnostics",
     description:
-      "Portable diagnostic technologies combining electrochemical and optical sensing, microfluidics, embedded electronics, connectivity, and intelligent data analysis.",
+      "Creating integrated diagnostic platforms that combine electrochemical and optical sensing, microfluidics, embedded instrumentation, wireless connectivity, and intelligent data analysis.",
     topics: [
       "Point-of-Care Diagnostics",
       "Electrochemical Biosensors",
-      "Optical Sensing",
-      "Portable Potentiostats",
-      "Rapid AMR Diagnostics",
+      "Optical Detection",
+      "Rapid Pathogen Detection",
+      "Antimicrobial Resistance",
+      "Portable Instrumentation",
       "AI-Enabled Analysis",
+      "Connected Diagnostics",
     ],
   },
   {
     number: "04",
     id: "agri-environment",
     title: "Agri & Environmental Intelligence",
+    tagline: "Food · Water · Soil · Field sensing",
     description:
-      "Field-deployable sensing technologies for food safety, pesticide detection, water quality, soil analysis, agriculture, and environmental monitoring.",
+      "Building field-ready sensing systems for food safety, pesticide monitoring, soil analysis, water quality, precision agriculture, and environmental decision-making.",
     topics: [
       "Pesticide Detection",
       "Water Quality",
+      "Soil-on-Chip",
       "Soil Nutrients",
       "Food Safety",
       "Precision Agriculture",
       "Environmental Monitoring",
+      "4D-Printed Architectures",
     ],
+  },
+];
+
+const foundations = [
+  {
+    number: "01",
+    title: "Graphene & Functional Carbon",
+    description:
+      "Laser-induced graphene, reduced graphene oxide, doped graphene, nanocarbon hybrids, flexible electrodes, bioresistors, microfluidic integration, and energy devices.",
+    tags: [
+      "Laser-Induced Graphene",
+      "rGO",
+      "Nanocarbon",
+      "Flexible Devices",
+    ],
+    href: "/research/graphene",
+  },
+  {
+    number: "02",
+    title: "Pesticide Detection",
+    description:
+      "Portable colourimetric, fluorescence, chemiluminescence, electrochemical, wearable, and microfluidic technologies for rapid pesticide-residue screening.",
+    tags: [
+      "Food Safety",
+      "Optical Sensing",
+      "Electrochemistry",
+      "Wearables",
+    ],
+    href: "/research/pesticide-detection",
+  },
+  {
+    number: "03",
+    title: "Water Quality Technologies",
+    description:
+      "Multi-analyte sensing platforms combining ion-selective interfaces, heavy-metal detection, flexible sensors, IoT connectivity, and machine-learning-assisted environmental interpretation.",
+    tags: [
+      "Water Quality",
+      "Heavy Metals",
+      "Ion Sensors",
+      "IoT",
+    ],
+    href: "/research/water-quality",
+  },
+  {
+    number: "04",
+    title: "Pathogen & AMR Diagnostics",
+    description:
+      "Microfluidic culture, electrochemical bacterial detection, rapid antimicrobial susceptibility testing, thermal management, portable instrumentation, and connected point-of-care systems.",
+    tags: [
+      "Pathogen Detection",
+      "AMR",
+      "AST",
+      "Point-of-Care",
+    ],
+    href: "/research/amr",
+  },
+  {
+    number: "05",
+    title: "Electrochemical & Biochemical Sensing",
+    description:
+      "Electrochemical interfaces, biosensors, functionalized electrodes, potentiometric systems, enzymatic sensing, and portable analytical platforms.",
+    tags: [
+      "Electrochemistry",
+      "Biosensors",
+      "Functional Electrodes",
+      "Point-of-Care",
+    ],
+    href: "#intelligent-diagnostics",
+  },
+  {
+    number: "06",
+    title: "Optical Detection",
+    description:
+      "Portable optical platforms based on fluorescence, colourimetry, chemiluminescence, electrochemiluminescence, optoelectronics, and multimodal detection.",
+    tags: [
+      "Fluorescence",
+      "Colourimetry",
+      "Chemiluminescence",
+      "ECL",
+    ],
+    href: "/research/pesticide-detection",
+  },
+  {
+    number: "07",
+    title: "Microfluidics & Lab-on-Chip",
+    description:
+      "Microscale fluid handling, assay integration, bacterial culture, micromixers, droplet systems, thermal management, and sample-to-answer architectures.",
+    tags: [
+      "Microfluidics",
+      "Lab-on-Chip",
+      "Sample Handling",
+      "Integrated Assays",
+    ],
+    href: "#intelligent-microsystems",
+  },
+  {
+    number: "08",
+    title: "AI-Enabled Sensing",
+    description:
+      "Machine learning, chemometrics, deep learning, signal processing, classification, compensation, and intelligent interpretation integrated with sensing hardware.",
+    tags: [
+      "Machine Learning",
+      "Chemometrics",
+      "Signal Processing",
+      "Data Analytics",
+    ],
+    href: "#intelligent-diagnostics",
+  },
+];
+
+const programmes = [
+  {
+    number: "01",
+    title: "Graphene Technologies",
+    category: "Advanced Materials",
+    description:
+      "A materials-to-device research programme involving laser-induced graphene, reduced graphene oxide, functional composites, biosensors, flexible electronics, microfluidics, and energy technologies.",
+    href: "/research/graphene",
+  },
+  {
+    number: "02",
+    title: "Pesticide Detection",
+    category: "Food Safety",
+    description:
+      "A multi-generation sensing programme spanning microfluidic colourimetry, dual-mode optical sensing, wearable electrochemical detection, and chemiluminescence.",
+    href: "/research/pesticide-detection",
+  },
+  {
+    number: "03",
+    title: "Water Quality Technologies",
+    category: "Environmental Intelligence",
+    description:
+      "Portable systems for heavy-metal analysis, ion-selective sensing, fluoride and ammonia detection, water-quality indices, IoT connectivity, and machine-learning-assisted interpretation.",
+    href: "/research/water-quality",
+  },
+  {
+    number: "04",
+    title: "Pathogen & AMR Diagnostics",
+    category: "Intelligent Diagnostics",
+    description:
+      "Integrated microfluidic and electrochemical platforms for bacterial culture, pathogen detection, antibiotic susceptibility testing, and portable point-of-care AMR assessment.",
+    href: "/research/amr",
   },
 ];
 
@@ -72,9 +226,11 @@ export default function ResearchPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
+      <section className="relative overflow-hidden bg-white px-8 py-24 md:px-16 md:py-32">
+        <div className="pointer-events-none absolute -right-40 top-0 h-[500px] w-[500px] rounded-full bg-[#385E9D]/5 blur-[110px]" />
+
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#005EA8]">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
             Research
           </p>
 
@@ -84,65 +240,85 @@ export default function ResearchPage() {
             to intelligent systems.
           </h1>
 
-          <p className="mt-10 max-w-3xl text-xl leading-9 text-[#706963]">
-            SenSys develops integrated sensing technologies by combining
-            microsystems, microfluidics, advanced materials, electronics, and
-            artificial intelligence across healthcare, agriculture, food
-            safety, and environmental monitoring.
-          </p>
+          <div className="mt-12 grid gap-10 border-t border-[#E6DFD7] pt-10 md:grid-cols-[1.1fr_0.9fr]">
+            <p className="max-w-3xl text-xl leading-9">
+              SenSys develops intelligent sensing technologies by integrating
+              microsystems, microfluidics, advanced materials, electronics,
+              data analytics, and artificial intelligence.
+            </p>
+
+            <p className="max-w-2xl text-base leading-8 text-[#706963]">
+              Our research spans healthcare, diagnostics, biointegrated
+              systems, food safety, agriculture, and environmental monitoring.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* RESEARCH AREAS */}
+      {/* FOUR RESEARCH DIRECTIONS */}
       <section className="bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]">
+          <div className="grid gap-12 md:grid-cols-[0.68fr_1.32fr]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#005EA8]">
-                Research Areas
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
+                SenSys Research
               </p>
             </div>
 
             <div>
-              <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                Four interconnected directions.
+              <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                Four research directions.
+                <br />
+                One connected ecosystem.
               </h2>
+
+              <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
+                SenSys connects sensing, materials, devices, microfluidics,
+                instrumentation, and analytics into integrated pathways from
+                fundamental engineering to deployable systems.
+              </p>
             </div>
           </div>
 
-          <div className="mt-20 divide-y divide-[#ddd5cc] border-y border-[#ddd5cc]">
-            {researchAreas.map((area) => (
+          <div className="mt-20 divide-y divide-[#DDD5CC] border-y border-[#DDD5CC]">
+            {sensysAreas.map((area) => (
               <section
                 key={area.id}
                 id={area.id}
-                className="grid gap-8 py-12 lg:grid-cols-[0.2fr_0.8fr_1fr]"
+                className="scroll-mt-28 py-12 md:py-16"
               >
-                <div>
-                  <span className="text-sm font-semibold tracking-[0.25em] text-[#F2A900]">
-                    {area.number}
-                  </span>
-                </div>
+                <div className="grid gap-8 lg:grid-cols-[0.14fr_0.46fr_1fr]">
+                  <div>
+                    <span className="text-sm font-semibold tracking-[0.25em] text-[#F2A900]">
+                      {area.number}
+                    </span>
+                  </div>
 
-                <div>
-                  <h3 className="text-3xl font-semibold tracking-tight md:text-4xl">
-                    {area.title}
-                  </h3>
-                </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#385E9D]">
+                      {area.tagline}
+                    </p>
 
-                <div>
-                  <p className="max-w-2xl text-base leading-8 text-[#706963]">
-                    {area.description}
-                  </p>
+                    <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+                      {area.title}
+                    </h3>
+                  </div>
 
-                  <div className="mt-7 flex flex-wrap gap-2">
-                    {area.topics.map((topic) => (
-                      <span
-                        key={topic}
-                        className="rounded-full border border-[#d8d0c7] bg-white px-4 py-2 text-xs text-[#645d57]"
-                      >
-                        {topic}
-                      </span>
-                    ))}
+                  <div>
+                    <p className="max-w-2xl text-base leading-8 text-[#706963]">
+                      {area.description}
+                    </p>
+
+                    <div className="mt-7 flex flex-wrap gap-2">
+                      {area.topics.map((topic) => (
+                        <span
+                          key={topic}
+                          className="rounded-full border border-[#D8D0C7] bg-white px-4 py-2 text-xs text-[#645D57]"
+                        >
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </section>
@@ -151,69 +327,243 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      {/* RESEARCH FOUNDATIONS */}
+      {/* FOUNDATIONS */}
       <section className="bg-white px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#005EA8]">
-            Research Foundations
-          </p>
+          <div className="grid gap-12 md:grid-cols-[0.68fr_1.32fr]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
+                Research Foundations
+              </p>
+            </div>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-            Established technologies informing the next generation of SenSys
-            research.
-          </h2>
+            <div>
+              <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                Established expertise informing the SenSys programme.
+              </h2>
 
-          <div className="mt-16 grid gap-px overflow-hidden border border-[#ddd5cc] bg-[#ddd5cc] md:grid-cols-2">
-            {[
-              {
-                title: "PestiSafe",
-                text: "Portable pesticide sensing through optical, electrochemical, microfluidic, wearable, and intelligent analytical technologies.",
-              },
-              {
-                title: "Laser-Induced Graphene Platforms",
-                text: "Functional carbon architectures spanning electrochemical sensing, flexible electronics, microfluidics, energy, and advanced materials.",
-              },
-              {
-                title: "Portable Electrochemical Instrumentation",
-                text: "Compact potentiostats, embedded electronics, wireless interfaces, and connected point-of-care systems.",
-              },
-              {
-                title: "Water Quality Technologies",
-                text: "Multiparameter sensing, ion-selective platforms, heavy-metal detection, IoT connectivity, and intelligent environmental analysis.",
-              },
-            ].map((item) => (
-              <article key={item.title} className="bg-[#FBF8F4] p-10">
-                <h3 className="text-2xl font-semibold">{item.title}</h3>
+              <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
+                SenSys builds on a substantial prior body of research led by
+                Prof. Sanket Goel and collaborators across sensing,
+                microfluidics, advanced materials, instrumentation, food
+                safety, environmental monitoring, and point-of-care
+                diagnostics.
+              </p>
+            </div>
+          </div>
 
-                <p className="mt-4 text-sm leading-7 text-[#706963]">
-                  {item.text}
+          <div className="mt-16 grid gap-px overflow-hidden border border-[#DDD5CC] bg-[#DDD5CC] md:grid-cols-2">
+            {foundations.map((item) => (
+              <Link
+                key={item.number}
+                href={item.href}
+                className="group bg-[#FBF8F4] p-8 transition hover:bg-white md:p-10"
+              >
+                <div className="flex items-start justify-between gap-8">
+                  <span className="text-xs font-semibold tracking-[0.25em] text-[#F2A900]">
+                    {item.number}
+                  </span>
+
+                  <span className="text-xl text-[#A59B92] transition group-hover:translate-x-1 group-hover:text-[#385E9D]">
+                    →
+                  </span>
+                </div>
+
+                <h3 className="mt-10 text-2xl font-semibold tracking-tight md:text-3xl">
+                  {item.title}
+                </h3>
+
+                <p className="mt-5 max-w-xl text-sm leading-7 text-[#706963]">
+                  {item.description}
                 </p>
 
-                <Link
-                  href="/"
-                  className="mt-8 inline-block text-sm font-medium text-[#005EA8]"
-                >
-                  Featured on homepage →
-                </Link>
-              </article>
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-[#D8D0C7] bg-white px-3 py-1.5 text-[11px] text-[#645D57]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 border-l-2 border-[#F2A900] pl-5">
+            <p className="max-w-4xl text-xs leading-6 text-[#837A72]">
+              These research foundations reflect expertise and technologies
+              developed by Prof. Sanket Goel and collaborators prior to the
+              establishment of SenSys at the University of Manitoba.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PROGRAMMES */}
+      <section className="bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 md:grid-cols-[0.68fr_1.32fr]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
+                Demonstrated Programmes
+              </p>
+            </div>
+
+            <div>
+              <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                Four technology programmes demonstrating the research approach.
+              </h2>
+
+              <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
+                These programmes illustrate how SenSys research foundations
+                connect materials, sensing, microfluidics, instrumentation,
+                analytics, validation, and translation.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2">
+            {programmes.map((item) => (
+              <Link
+                key={item.number}
+                href={item.href}
+                className="group flex min-h-[360px] flex-col justify-between border border-[#DDD5CC] bg-white p-8 transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold tracking-[0.25em] text-[#F2A900]">
+                      {item.number}
+                    </span>
+
+                    <span className="text-xs uppercase tracking-[0.2em] text-[#385E9D]">
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-14 text-3xl font-semibold leading-tight tracking-tight">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-5 text-sm leading-7 text-[#706963]">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="mt-10 flex items-center justify-between border-t border-[#E7E0D8] pt-5">
+                  <span className="text-sm font-medium transition group-hover:text-[#385E9D]">
+                    Explore programme
+                  </span>
+
+                  <span className="transition group-hover:translate-x-1 group-hover:text-[#385E9D]">
+                    →
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-[#F2A900] px-8 py-20 text-[#2A1710] md:px-16">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <h2 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Interested in working across disciplines?
+      {/* RESEARCH APPROACH */}
+      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
+            Research Approach
+          </p>
+
+          <h2 className="mt-5 max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+            Connect the complete technology pathway.
           </h2>
 
-          <Link
-            href="/join"
-            className="w-fit rounded-full bg-[#4F2C1D] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#005EA8]"
-          >
-            Join SenSys →
-          </Link>
+          <div className="mt-14 grid gap-3 md:grid-cols-3 lg:grid-cols-6">
+            {[
+              {
+                number: "01",
+                title: "Materials",
+                text: "Functional materials, interfaces, substrates, and surface chemistry.",
+              },
+              {
+                number: "02",
+                title: "Sensing",
+                text: "Electrochemical, optical, biochemical, and physical transduction.",
+              },
+              {
+                number: "03",
+                title: "Microfluidics",
+                text: "Sample handling, reaction control, culture, mixing, and assay integration.",
+              },
+              {
+                number: "04",
+                title: "Instrumentation",
+                text: "Embedded electronics, signal conditioning, portable readout, and thermal control.",
+              },
+              {
+                number: "05",
+                title: "Intelligence",
+                text: "Signal processing, AI, machine learning, and connected analysis.",
+              },
+              {
+                number: "06",
+                title: "Translation",
+                text: "Validation, deployment, scaling, and real-world implementation.",
+              },
+            ].map((step, index) => (
+              <div
+                key={step.number}
+                className="relative border border-[#DDD5CC] bg-[#FBF8F4] p-6"
+              >
+                <span className="text-xs font-semibold text-[#F2A900]">
+                  {step.number}
+                </span>
+
+                <h3 className="mt-8 text-lg font-semibold">{step.title}</h3>
+
+                <p className="mt-3 text-xs leading-6 text-[#706963]">
+                  {step.text}
+                </p>
+
+                {index < 5 && (
+                  <span className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-xl text-[#385E9D] lg:block">
+                    →
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FUTURE */}
+      <section className="bg-[#4F2C1D] px-8 py-24 text-white md:px-16 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
+                What Comes Next
+              </p>
+
+              <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.04em] md:text-7xl">
+                Build sensing systems that move from the lab to the world.
+              </h2>
+            </div>
+
+            <div>
+              <p className="max-w-xl text-lg leading-8 text-white/70">
+                SenSys will extend these foundations toward increasingly
+                integrated, intelligent, autonomous, wearable, implantable,
+                and field-ready sensing technologies.
+              </p>
+
+              <Link
+                href="/join"
+                className="mt-8 inline-flex rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-white"
+              >
+                Join SenSys →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

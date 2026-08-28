@@ -3,187 +3,302 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const researchAreas = [
+const stories = [
   {
     number: "01",
-    title: "Intelligent Microsystems",
-    short: "Microdevices · Microfluidics · Integrated sensing",
+    title: "Pesticide Detection",
+    subtitle: "Portable sensing from residue screening to field decision",
     description:
-      "Engineering microscale platforms that integrate sensing, fluidics, electronics, and intelligent instrumentation into compact and deployable systems.",
+      "A multi-generation technology programme led through Prof. Sanket Goel's prior research, spanning microfluidic colourimetry, dual-mode optical sensing, wearable electrochemical detection, chemiluminescence, embedded electronics, and intelligent data analysis.",
     tags: [
+      "Food Safety",
       "Microfluidics",
-      "Lab-on-Chip",
-      "MEMS",
-      "Integrated Sensors",
-      "Portable Systems",
-    ],
-    href: "/research#intelligent-microsystems",
-  },
-  {
-    number: "02",
-    title: "Biointegrated Systems",
-    short: "Wearables · Implantables · Flexible electronics",
-    description:
-      "Developing sensing and energy technologies that interface naturally with the human body through flexible, textile, wearable, and implantable platforms.",
-    tags: [
-      "Wearable Sensors",
-      "Textile Electronics",
-      "Bioenergy",
-      "Flexible Devices",
-      "Implantables",
-    ],
-    href: "/research#biointegrated-systems",
-  },
-  {
-    number: "03",
-    title: "Intelligent Diagnostics",
-    short: "Point-of-care · Biosensors · Connected diagnostics",
-    description:
-      "Creating portable diagnostic systems that combine electrochemical and optical sensing, microfluidics, signal processing, and intelligent decision-making.",
-    tags: [
-      "Point-of-Care",
-      "Biosensors",
       "Optical Sensing",
       "Electrochemistry",
-      "AI Diagnostics",
+      "Wearables",
     ],
-    href: "/research#intelligent-diagnostics",
+    category: "Food Safety · Field Diagnostics",
+    href: "/research/pesticide-detection",
+
+    images: [
+      {
+        src: "/research/pesticide-detection/pestisafe-2.jpg",
+        alt: "PestiSafe dual-mode portable pesticide detection platform",
+        label: "Dual-Mode Optical Platform",
+      },
+      {
+        src: "/research/pesticide-detection/pestisafe-1.png",
+        alt: "PestiSafe microfluidic pesticide detection platform",
+        label: "Microfluidic Colourimetry",
+      },
+      {
+        src: "/research/pesticide-detection/pestisafe-3.png",
+        alt: "PestiSafe lab-on-glove pesticide sensing platform",
+        label: "Lab-on-Glove",
+      },
+    ],
   },
+
+  {
+    number: "02",
+    title: "Graphene Technologies",
+    subtitle: "From engineered carbon materials to integrated devices",
+    description:
+      "An extensive body of prior research led by Prof. Sanket Goel has explored laser-induced graphene, reduced graphene oxide, doped graphene, nanocarbon hybrids, flexible electronics, biosensors, microfluidics, and energy technologies.",
+    tags: [
+      "Laser-Induced Graphene",
+      "Flexible Electronics",
+      "Biosensors",
+      "Microfluidics",
+      "Energy Systems",
+    ],
+    category: "Advanced Materials · Integrated Devices",
+    href: "/research/graphene",
+
+    images: [
+      {
+        src: "/research/graphene/graphene-portfolio.jpg",
+        alt: "Graphene technology research portfolio",
+        label: "Graphene Device Portfolio",
+      },
+      {
+        src: "/research/graphene/myoglobin-bioresistor.jpg",
+        alt: "Graphene BioResistor for myoglobin detection",
+        label: "Graphene BioResistor",
+      },
+      {
+        src: "/research/graphene/ctni-microfluidic-sensor.jpg",
+        alt: "Microfluidic graphene cardiac biomarker sensor",
+        label: "Microfluidic Biosensor",
+      },
+    ],
+  },
+
+  {
+    number: "03",
+    title: "Water Quality Technologies",
+    subtitle: "Connected sensing for decentralized environmental analysis",
+    description:
+      "Prior research has integrated functional electrodes, ion-selective sensing, heavy-metal detection, embedded electronics, IoT connectivity, temperature compensation, and machine learning into portable water-quality platforms.",
+    tags: [
+      "Heavy Metals",
+      "Ion-Selective Sensors",
+      "IoT",
+      "Machine Learning",
+      "Environmental Monitoring",
+    ],
+    category: "Environment · Connected Sensing",
+    href: "/research/water-quality",
+
+    images: [
+      {
+        src: "/research/water-quality/ion-selective-array.png",
+        alt: "Portable ion-selective water-quality sensing platform",
+        label: "Ion-Selective Array",
+      },
+      {
+        src: "/research/water-quality/heavy-metal-sensing.jpg",
+        alt: "Multiplexed heavy-metal sensing platform",
+        label: "Heavy-Metal Sensing",
+      },
+      {
+        src: "/research/water-quality/ai-water-quality-index.gif",
+        alt: "AI-enabled Water Quality Index monitoring platform",
+        label: "AI-Enabled Water Quality",
+      },
+    ],
+  },
+
   {
     number: "04",
-    title: "Agri & Environmental Intelligence",
-    short: "Food · Water · Soil · Environmental monitoring",
+    title: "Pathogen & AMR Diagnostics",
+    subtitle: "Rapid bacteria detection and antimicrobial susceptibility testing",
     description:
-      "Building field-deployable technologies for monitoring food safety, pesticides, soil nutrients, water quality, and environmental conditions.",
+      "A research programme combining microfluidic culture, electrochemical sensing, localized thermal management, antibiotic susceptibility testing, portable instrumentation, and connected interfaces for rapid point-of-care antimicrobial-resistance assessment.",
     tags: [
-      "Pesticide Detection",
-      "Water Quality",
-      "Soil Sensing",
-      "Food Safety",
-      "Precision Agriculture",
+      "Pathogen Detection",
+      "AMR",
+      "AST",
+      "Microfluidics",
+      "Point-of-Care",
     ],
-    href: "/research#agri-environment",
+    category: "Healthcare · Intelligent Diagnostics",
+    href: "/research/amr",
+
+    images: [
+      {
+        src: "/research/AMR/Bacteria-on-chip.png",
+        alt: "Portable Bacteria-on-Chip antimicrobial resistance platform",
+        label: "Bacteria-on-Chip",
+      },
+      {
+        src: "/research/AMR/Electromicrofluidic-Device.png",
+        alt: "Electromicrofluidic antibiotic susceptibility testing device",
+        label: "Rapid AST",
+      },
+      {
+        src: "/research/AMR/Microfluidic-electrochemical-device.jpg",
+        alt: "Microfluidic electrochemical bacterial detection device",
+        label: "Bacterial Detection",
+      },
+    ],
   },
 ];
 
-export default function ResearchExplorer() {
+export default function FeaturedResearch() {
   const [active, setActive] = useState(0);
 
-  const selected = researchAreas[active];
+  const story = stories[active];
+
+  const previous = () =>
+    setActive((current) =>
+      current === 0 ? stories.length - 1 : current - 1
+    );
+
+  const next = () =>
+    setActive((current) =>
+      current === stories.length - 1 ? 0 : current + 1
+    );
 
   return (
-    <section className="bg-[#F7F3EC] px-8 py-24 text-[#4F2C1D] md:px-16 md:py-32">
+    <section className="bg-white px-8 py-24 text-[#4F2C1D] md:px-16 md:py-32">
       <div className="mx-auto max-w-7xl">
+
         {/* HEADER */}
-        <div className="grid gap-10 md:grid-cols-[0.7fr_1.3fr]">
+        <div className="grid gap-10 md:grid-cols-[0.68fr_1.32fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#005EA8]">
-              Explore Our Research
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
+              Research Foundations
             </p>
           </div>
 
           <div>
-            <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#4F2C1D] md:text-6xl">
-              From sensing principles
-              <br />
-              to intelligent systems.
+            <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+              A research legacy informing what SenSys builds next.
             </h2>
 
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#706963]">
-              SenSys connects device engineering, materials, sensing,
-              electronics, and data intelligence across four interconnected
-              research directions.
+            <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
+              SenSys builds on an extensive body of interdisciplinary research
+              led by Prof. Sanket Goel and collaborators across sensing,
+              microfluidics, advanced materials, intelligent instrumentation,
+              environmental monitoring, and translational diagnostics.
+            </p>
+
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-[#837A72]">
+              The representative technologies below were developed through
+              Prof. Goel&apos;s prior research programmes and provide
+              scientific, engineering, and translational foundations for
+              research now being advanced at SenSys.
             </p>
           </div>
         </div>
 
-        {/* INTERACTIVE EXPLORER */}
-        <div className="mt-20 grid overflow-hidden border border-[#ddd5cc] bg-white lg:grid-cols-[0.8fr_1.2fr]">
-          {/* LEFT */}
-          <div className="bg-white">
-            {researchAreas.map((area, index) => (
-              <button
-                key={area.title}
-                type="button"
-                onMouseEnter={() => setActive(index)}
-                onFocus={() => setActive(index)}
-                onClick={() => setActive(index)}
-                className={`group flex w-full items-center gap-6 border-b border-[#e8e1d9] px-7 py-8 text-left transition last:border-b-0 md:px-10 ${
-                  active === index
-                    ? "bg-[#4F2C1D] text-white"
-                    : "bg-white hover:bg-[#FBF8F4]"
-                }`}
-              >
-                <span
-                  className={`text-xs font-semibold tracking-[0.25em] ${
-                    active === index ? "text-[#F2A900]" : "text-[#005EA8]"
-                  }`}
-                >
-                  {area.number}
+        {/* MAIN FEATURE PANEL */}
+        <div className="mt-16 overflow-hidden border border-[#DED6CE] bg-white">
+          <div className="grid lg:grid-cols-[1.02fr_0.98fr]">
+
+            {/* LEFT — DEVICE COLLAGE */}
+            <div className="relative min-h-[620px] overflow-hidden bg-[#F7F3EC] p-6 md:p-8">
+
+              {/* subtle background */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(242,169,0,0.14),transparent_30%),radial-gradient(circle_at_80%_80%,rgba(56,94,157,0.10),transparent_32%)]" />
+
+              {/* number */}
+              <div className="relative z-10 flex items-center gap-3">
+                <span className="text-sm font-semibold text-[#385E9D]">
+                  {story.number}
                 </span>
 
-                <div className="min-w-0 flex-1">
-                  <h3
-                    className={`text-xl font-semibold tracking-tight md:text-2xl ${
-                      active === index
-                        ? "text-white"
-                        : "text-[#4F2C1D]"
-                    }`}
-                  >
-                    {area.title}
-                  </h3>
+                <span className="text-sm text-[#928980]">
+                  / 04
+                </span>
+              </div>
 
-                  <p
-                    className={`mt-2 hidden text-sm md:block ${
-                      active === index
-                        ? "text-white/60"
-                        : "text-[#857c74]"
-                    }`}
-                  >
-                    {area.short}
-                  </p>
+              {/* IMAGES */}
+              <div className="relative z-10 mt-8 grid h-[475px] grid-cols-[1.38fr_0.82fr] gap-4">
+
+                {/* LARGE MAIN IMAGE */}
+                <div className="relative overflow-hidden border border-[#DED6CE] bg-white">
+                  <img
+                    key={`${story.number}-main`}
+                    src={story.images[0].src}
+                    alt={story.images[0].alt}
+                    className="h-full w-full object-contain p-4 transition duration-500"
+                  />
+
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2A1710]/85 to-transparent px-5 pb-4 pt-12">
+                    <p className="text-xs font-medium text-white">
+                      {story.images[0].label}
+                    </p>
+                  </div>
                 </div>
 
-                <span
-                  className={`text-xl transition ${
-                    active === index
-                      ? "translate-x-1 text-[#F2A900]"
-                      : "text-[#aaa19a] group-hover:text-[#005EA8]"
-                  }`}
-                >
-                  →
-                </span>
-              </button>
-            ))}
-          </div>
+                {/* TWO SMALL IMAGES */}
+                <div className="grid grid-rows-2 gap-4">
+                  <div className="relative overflow-hidden border border-[#DED6CE] bg-white">
+                    <img
+                      key={`${story.number}-second`}
+                      src={story.images[1].src}
+                      alt={story.images[1].alt}
+                      className="h-full w-full object-contain p-3 transition duration-500"
+                    />
 
-          {/* RIGHT */}
-          <div className="relative min-h-[520px] overflow-hidden bg-white p-8 md:p-12 lg:p-16">
-            <div className="pointer-events-none absolute -right-24 -top-24 h-[320px] w-[320px] rounded-full bg-[#005EA8]/5" />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2A1710]/80 to-transparent px-4 pb-3 pt-8">
+                      <p className="text-[10px] font-medium leading-4 text-white">
+                        {story.images[1].label}
+                      </p>
+                    </div>
+                  </div>
 
-            <div className="relative flex h-full flex-col justify-between">
+                  <div className="relative overflow-hidden border border-[#DED6CE] bg-white">
+                    <img
+                      key={`${story.number}-third`}
+                      src={story.images[2].src}
+                      alt={story.images[2].alt}
+                      className="h-full w-full object-contain p-3 transition duration-500"
+                    />
+
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2A1710]/80 to-transparent px-4 pb-3 pt-8">
+                      <p className="text-[10px] font-medium leading-4 text-white">
+                        {story.images[2].label}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CATEGORY */}
+              <div className="relative z-10 mt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#385E9D]">
+                  {story.category}
+                </p>
+              </div>
+            </div>
+
+            {/* RIGHT — CONTENT */}
+            <div className="flex min-h-[620px] flex-col justify-between p-8 md:p-12 lg:p-14">
               <div>
-                <div className="flex items-center gap-4">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#F2A900]" />
-
-                  <p className="text-xs uppercase tracking-[0.3em] text-[#005EA8]">
-                    Research Area {selected.number}
-                  </p>
-                </div>
-
-                <h3 className="mt-10 max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#4F2C1D] md:text-5xl">
-                  {selected.title}
-                </h3>
-
-                <p className="mt-7 max-w-2xl text-lg leading-8 text-[#706963]">
-                  {selected.description}
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#385E9D]">
+                  Selected Research Foundation {story.number}
                 </p>
 
-                <div className="mt-10 flex flex-wrap gap-2">
-                  {selected.tags.map((tag) => (
+                <h3 className="mt-6 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
+                  {story.title}
+                </h3>
+
+                <p className="mt-5 max-w-xl text-lg font-medium leading-8">
+                  {story.subtitle}
+                </p>
+
+                <p className="mt-7 max-w-xl text-base leading-8 text-[#706963]">
+                  {story.description}
+                </p>
+
+                <div className="mt-9 flex flex-wrap gap-2">
+                  {story.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-[#dcd4cc] px-4 py-2 text-xs text-[#645d57]"
+                      className="rounded-full border border-[#DDD5CC] px-4 py-2 text-xs text-[#645D57]"
                     >
                       {tag}
                     </span>
@@ -191,17 +306,82 @@ export default function ResearchExplorer() {
                 </div>
               </div>
 
-              <div className="mt-14">
+              <div className="mt-12">
                 <Link
-                  href={selected.href}
-                  className="inline-flex items-center gap-3 border-b border-[#4F2C1D] pb-1 text-sm font-medium transition hover:border-[#005EA8] hover:text-[#005EA8]"
+                  href={story.href}
+                  className="inline-flex items-center gap-3 border-b border-[#4F2C1D] pb-1 text-sm font-medium transition hover:border-[#385E9D] hover:text-[#385E9D]"
                 >
-                  Explore {selected.title}
+                  Explore this research foundation
                   <span>→</span>
                 </Link>
               </div>
             </div>
           </div>
+
+          {/* SELECTORS */}
+          <div className="flex flex-col border-t border-[#DED6CE] md:flex-row md:items-center md:justify-between">
+
+            <div className="grid flex-1 grid-cols-2 md:grid-cols-4">
+              {stories.map((item, index) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  onClick={() => setActive(index)}
+                  className={`border-b border-[#DED6CE] px-5 py-5 text-left transition md:border-b-0 md:border-r ${
+                    active === index
+                      ? "bg-[#4F2C1D] text-white"
+                      : "bg-white text-[#706963] hover:bg-[#FBF8F4]"
+                  }`}
+                >
+                  <span
+                    className={`text-[10px] tracking-[0.25em] ${
+                      active === index
+                        ? "text-[#F2A900]"
+                        : "text-[#385E9D]"
+                    }`}
+                  >
+                    {item.number}
+                  </span>
+
+                  <p className="mt-2 text-xs font-medium leading-5">
+                    {item.title}
+                  </p>
+                </button>
+              ))}
+            </div>
+
+            {/* NAV ARROWS */}
+            <div className="flex">
+              <button
+                type="button"
+                onClick={previous}
+                aria-label="Previous research foundation"
+                className="flex h-16 w-16 items-center justify-center border-l border-[#DED6CE] text-xl transition hover:bg-[#F2A900]"
+              >
+                ←
+              </button>
+
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Next research foundation"
+                className="flex h-16 w-16 items-center justify-center border-l border-[#DED6CE] text-xl transition hover:bg-[#F2A900]"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* PROVENANCE */}
+        <div className="mt-7 border-l-2 border-[#F2A900] pl-5">
+          <p className="max-w-4xl text-xs leading-6 text-[#837A72]">
+            Research foundations presented in this section reflect work led by
+            Prof. Sanket Goel and collaborators prior to the establishment of
+            SenSys at the University of Manitoba. They are presented to
+            illustrate the scientific expertise and translational experience
+            underpinning the SenSys research programme.
+          </p>
         </div>
       </div>
     </section>
