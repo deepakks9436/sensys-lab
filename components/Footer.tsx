@@ -1,159 +1,197 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#385E9D] px-8 py-16 text-white md:px-16">
+    <footer className="bg-[var(--section-blue)] px-8 py-16 text-white md:px-16">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.25fr_0.72fr_0.72fr_0.9fr]">
+          {/* ================================================= */}
           {/* BRAND */}
-          <div>
-            <div className="flex items-center gap-3">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#F2A900]">
-                <span className="absolute h-5 w-5 rounded-full border border-white/30" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#F2A900]" />
-              </div>
+          {/* ================================================= */}
 
+          <div>
+            <div className="flex flex-wrap items-center gap-5">
               <div>
-                <p className="text-lg font-semibold text-white">
+                <p className="text-2xl font-semibold tracking-tight">
                   SenSys Lab
                 </p>
 
-                <p className="mt-1 text-[9px] uppercase tracking-[0.28em] text-white/65">
-                  University of Manitoba
+                <p className="mt-2 text-xs uppercase tracking-[0.24em] text-white/55">
+                  Intelligent Sensory Systems
                 </p>
               </div>
+
+              <div className="hidden h-11 w-px bg-white/20 sm:block" />
+
+              {/* UNIVERSITY LOGO */}
+
+              <a
+                href="https://umanitoba.ca/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-white px-4 py-3"
+                aria-label="University of Manitoba"
+              >
+                <Image
+                  src="/brand/umanitoba.svg"
+                  alt="University of Manitoba"
+                  width={170}
+                  height={44}
+                  className="h-[36px] w-auto object-contain"
+                  unoptimized
+                />
+              </a>
             </div>
 
-            <p className="mt-6 max-w-md text-sm leading-7 text-white/75">
-              Intelligent sensing systems integrating microsystems,
-              microfluidics, advanced materials, biointegrated technologies,
-              portable instrumentation, and data intelligence for healthcare,
-              agriculture, food safety, and environmental applications.
+            <p className="mt-7 max-w-md text-sm leading-7 text-white/70">
+              Developing intelligent cyber-physical sensory systems across
+              microsystems, diagnostics, biointegrated technologies,
+              environmental intelligence, and translational engineering.
             </p>
 
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.25em] text-[#F2A900]">
-              Intelligent Sensing Systems
-            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <span className="rounded-full border border-white/20 px-4 py-2 text-xs text-white/75">
+                Reimagining
+              </span>
+
+              <span className="rounded-full border border-white/20 px-4 py-2 text-xs text-white/75">
+                One Health
+              </span>
+
+              <span className="rounded-full border border-white/20 px-4 py-2 text-xs text-white/75">
+                Technology Translation
+              </span>
+            </div>
           </div>
 
+          {/* ================================================= */}
           {/* EXPLORE */}
+          {/* ================================================= */}
+
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#F2A900]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-gold)]">
               Explore
             </p>
 
-            <div className="mt-5 space-y-3 text-sm">
+            <div className="mt-5 space-y-3 text-sm text-white/75">
               <Link
                 href="/research"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Research
               </Link>
 
               <Link
                 href="/people"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 People
               </Link>
 
               <Link
                 href="/facilities"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Facilities
               </Link>
 
               <Link
                 href="/news"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 News & Impact
               </Link>
 
               <Link
                 href="/join"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
-                Join SenSys
+                Join SenSys Lab
               </Link>
             </div>
           </div>
 
+          {/* ================================================= */}
           {/* OUTPUTS */}
+          {/* ================================================= */}
+
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#F2A900]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-gold)]">
               Outputs
             </p>
 
-            <div className="mt-5 space-y-3 text-sm">
+            <div className="mt-5 space-y-3 text-sm text-white/75">
               <Link
                 href="/publications"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Publications
               </Link>
 
               <Link
                 href="/patents"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Patents
               </Link>
 
               <Link
                 href="/books"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Books
               </Link>
             </div>
 
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-[#F2A900]">
+            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-gold)]">
               Foundations
             </p>
 
-            <div className="mt-5 space-y-3 text-sm">
+            <div className="mt-5 space-y-3 text-sm text-white/75">
               <Link
                 href="/research/graphene"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Graphene
               </Link>
 
               <Link
                 href="/research/pesticide-detection"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Pesticide Detection
               </Link>
 
               <Link
                 href="/research/water-quality"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Water Quality
               </Link>
 
               <Link
                 href="/research/amr"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Pathogen & AMR
               </Link>
             </div>
           </div>
 
+          {/* ================================================= */}
           {/* CONNECT */}
+          {/* ================================================= */}
+
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#F2A900]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-gold)]">
               Connect
             </p>
 
-            <div className="mt-5 space-y-3 text-sm">
+            <div className="mt-5 space-y-3 text-sm text-white/75">
               <a
                 href="mailto:sanketgoel@gmail.com"
-                className="block break-all text-white/85 transition hover:text-white"
+                className="block break-all transition hover:text-white"
               >
                 sanketgoel@gmail.com
               </a>
@@ -162,7 +200,7 @@ export default function Footer() {
                 href="https://scholar.google.com/citations?hl=en&user=xgH6FBkAAAAJ&view_op=list_works&sortby=pubdate"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 Google Scholar ↗
               </a>
@@ -171,18 +209,18 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/sanketgoel/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white/85 transition hover:translate-x-1 hover:text-white"
+                className="block transition hover:text-white"
               >
                 LinkedIn ↗
               </a>
             </div>
 
-            <div className="mt-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#F2A900]">
-                Location
+            <div className="mt-8 border-t border-white/15 pt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+                Based at
               </p>
 
-              <p className="mt-4 text-sm leading-7 text-white/75">
+              <p className="mt-3 text-sm leading-7 text-white/75">
                 University of Manitoba
                 <br />
                 Winnipeg, Manitoba
@@ -193,12 +231,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* BLUE / GOLD ACCENT */}
-        <div className="mt-14 h-[2px] w-full bg-gradient-to-r from-[#F2A900] via-[#00A3E0] to-transparent" />
-
+        {/* ================================================= */}
         {/* BOTTOM */}
-        <div className="mt-6 flex flex-col gap-4 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 SenSys Lab. University of Manitoba.</p>
+        {/* ================================================= */}
+
+        <div className="mt-14 flex flex-col gap-5 border-t border-white/15 pt-7 text-xs text-white/50 md:flex-row md:items-center md:justify-between">
+          <p>
+            © 2026 SenSys Lab · University of Manitoba
+          </p>
 
           <div className="flex flex-wrap gap-5">
             <a
@@ -207,7 +247,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="transition hover:text-white"
             >
-              Eddie Goldenberg Research Chairs of Canada ↗
+              Canada Global Impact+ Research Chairs ↗
             </a>
 
             <a

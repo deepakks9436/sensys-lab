@@ -12,7 +12,7 @@ import { publications } from "../data/publications";
 import { featuredNews } from "../data/news";
 
 /* ============================================================
-   SENSYS RESEARCH THRUSTS
+   RESEARCH THRUSTS
 ============================================================ */
 
 const researchThrusts = [
@@ -79,7 +79,7 @@ const researchThrusts = [
 ];
 
 /* ============================================================
-   DEVICE / PLATFORM MOSAIC
+   DEVICE MOSAIC
 ============================================================ */
 
 const deviceMosaic = [
@@ -150,7 +150,7 @@ const selectedPublications = [
 ];
 
 /* ============================================================
-   PEOPLE
+   CURRENT PEOPLE
 ============================================================ */
 
 const people = [
@@ -188,9 +188,7 @@ export default function Home() {
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
 
-      {/* ===================================================== */}
       {/* HERO */}
-      {/* ===================================================== */}
 
       <DynamicHero />
 
@@ -204,7 +202,7 @@ export default function Home() {
             <div className="grid gap-12 md:grid-cols-[0.62fr_1.38fr]">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
-                  SenSys Research
+                  SenSys Lab Research
                 </p>
               </div>
 
@@ -234,13 +232,14 @@ export default function Home() {
 
           <div className="mt-16 grid gap-6 lg:grid-cols-2">
             {researchThrusts.map((area, index) => (
-              <Reveal key={area.number} delay={index * 90}>
+              <Reveal
+                key={area.number}
+                delay={index * 90}
+              >
                 <Link
                   href={area.href}
                   className="group flex h-full flex-col overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-medium)]"
                 >
-                  {/* IMAGE */}
-
                   <div className="relative aspect-[16/10] overflow-hidden bg-white">
                     <Image
                       src={area.image}
@@ -256,8 +255,6 @@ export default function Home() {
                       Research Thrust {area.number}
                     </span>
                   </div>
-
-                  {/* CONTENT */}
 
                   <div className="flex flex-1 flex-col p-7 md:p-8">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--um-blue)]">
@@ -331,8 +328,6 @@ export default function Home() {
           </Reveal>
 
           <div className="mt-14 grid gap-3 lg:grid-cols-12 lg:grid-rows-2">
-            {/* LARGE FEATURE */}
-
             <Reveal
               className="lg:col-span-7 lg:row-span-2"
               delay={80}
@@ -363,15 +358,9 @@ export default function Home() {
                   <p className="mt-4 max-w-xl text-sm leading-7 text-white/75">
                     {deviceMosaic[0].description}
                   </p>
-
-                  <p className="mt-4 text-xs font-semibold text-white">
-                    Explore platform →
-                  </p>
                 </div>
               </Link>
             </Reveal>
-
-            {/* PESTISAFE */}
 
             <Reveal
               className="lg:col-span-5"
@@ -404,11 +393,12 @@ export default function Home() {
               </Link>
             </Reveal>
 
-            {/* SMALL PLATFORMS */}
-
             <div className="grid gap-3 sm:grid-cols-3 lg:col-span-5">
               {deviceMosaic.slice(2).map((item, index) => (
-                <Reveal key={item.title} delay={220 + index * 70}>
+                <Reveal
+                  key={item.title}
+                  delay={220 + index * 70}
+                >
                   <Link
                     href={item.href}
                     className="group relative block min-h-[225px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)]"
@@ -437,23 +427,10 @@ export default function Home() {
               ))}
             </div>
           </div>
-
-          <Reveal delay={320}>
-            <div className="mt-10 flex justify-center">
-              <Link
-                href="/research"
-                className="rounded-full border border-[var(--um-blue)] px-7 py-3.5 text-sm font-semibold text-[var(--um-blue)] transition hover:bg-[var(--um-blue)] hover:text-white"
-              >
-                Explore all research →
-              </Link>
-            </div>
-          </Reveal>
         </div>
       </section>
 
-      {/* ===================================================== */}
       {/* RESEARCH FOUNDATIONS */}
-      {/* ===================================================== */}
 
       <FeaturedResearch />
 
@@ -462,11 +439,7 @@ export default function Home() {
       {/* ===================================================== */}
 
       <section className="relative overflow-hidden bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-28">
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#00A3E0]/20 blur-[120px]" />
-
-        <div className="pointer-events-none absolute -bottom-44 left-[-100px] h-[380px] w-[380px] rounded-full bg-[#F2A900]/10 blur-[120px]" />
-
-        <div className="relative mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl">
           <Reveal>
             <div className="grid gap-12 md:grid-cols-[0.68fr_1.32fr]">
               <div>
@@ -479,95 +452,56 @@ export default function Home() {
                 <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
                   Experience translating research into technologies.
                 </h2>
-
-                <p className="mt-7 max-w-3xl text-base leading-8 text-white/75">
-                  A broad interdisciplinary portfolio spanning microsystems,
-                  microfluidics, advanced materials, sensing, diagnostics,
-                  intelligent instrumentation, and technology translation.
-                </p>
               </div>
             </div>
           </Reveal>
 
           <div className="mt-16 grid overflow-hidden border border-white/15 md:grid-cols-2 lg:grid-cols-4">
-            <Reveal delay={0}>
-              <div className="h-full border-b border-white/15 p-8 md:border-r lg:border-b-0">
-                <AnimatedCounter
-                  value={publicationCount}
-                  className="text-5xl font-semibold tracking-tight text-[#F2A900] md:text-6xl"
-                />
+            <div className="p-8">
+              <AnimatedCounter
+                value={publicationCount}
+                className="text-5xl font-semibold text-[#F2A900]"
+              />
 
-                <p className="mt-3 text-sm leading-6 text-white/75">
-                  Publication Records
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={100}>
-              <div className="h-full border-b border-white/15 p-8 lg:border-b-0 lg:border-r">
-                <AnimatedCounter
-                  value={98}
-                  className="text-5xl font-semibold tracking-tight text-[#F2A900] md:text-6xl"
-                />
-
-                <p className="mt-3 text-sm leading-6 text-white/75">
-                  Patents
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={200}>
-              <div className="h-full border-b border-white/15 p-8 md:border-r lg:border-b-0">
-                <AnimatedCounter
-                  value={44}
-                  className="text-5xl font-semibold tracking-tight text-[#F2A900] md:text-6xl"
-                />
-
-                <p className="mt-3 text-sm leading-6 text-white/75">
-                  Sponsored Research Grants
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={300}>
-              <div className="h-full p-8">
-                <AnimatedCounter
-                  value={5}
-                  minimumDigits={2}
-                  className="text-5xl font-semibold tracking-tight text-[#F2A900] md:text-6xl"
-                />
-
-                <p className="mt-3 text-sm leading-6 text-white/75">
-                  Technologies Transferred / Licensed
-                </p>
-              </div>
-            </Reveal>
-          </div>
-
-          <Reveal delay={250}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/publications"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#385E9D] transition hover:bg-[#F2A900] hover:text-[#2A1710]"
-              >
-                Publications →
-              </Link>
-
-              <Link
-                href="/patents"
-                className="rounded-full border border-white/35 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-[#385E9D]"
-              >
-                Patents →
-              </Link>
-
-              <Link
-                href="/books"
-                className="rounded-full border border-white/35 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-[#385E9D]"
-              >
-                Books →
-              </Link>
+              <p className="mt-3 text-sm text-white/75">
+                Publication Records
+              </p>
             </div>
-          </Reveal>
+
+            <div className="border-white/15 p-8 lg:border-l">
+              <AnimatedCounter
+                value={98}
+                className="text-5xl font-semibold text-[#F2A900]"
+              />
+
+              <p className="mt-3 text-sm text-white/75">
+                Patents
+              </p>
+            </div>
+
+            <div className="border-white/15 p-8 lg:border-l">
+              <AnimatedCounter
+                value={44}
+                className="text-5xl font-semibold text-[#F2A900]"
+              />
+
+              <p className="mt-3 text-sm text-white/75">
+                Sponsored Research Grants
+              </p>
+            </div>
+
+            <div className="border-white/15 p-8 lg:border-l">
+              <AnimatedCounter
+                value={5}
+                minimumDigits={2}
+                className="text-5xl font-semibold text-[#F2A900]"
+              />
+
+              <p className="mt-3 text-sm text-white/75">
+                Technologies Transferred / Licensed
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -579,57 +513,36 @@ export default function Home() {
         <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32">
           <div className="mx-auto max-w-7xl">
             <Reveal>
-              <div className="grid gap-10 md:grid-cols-[0.62fr_1.38fr]">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
-                    Latest from SenSys
-                  </p>
-                </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                Latest from SenSys Lab
+              </p>
 
-                <div>
-                  <h2 className="max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-                    Research, recognition,
-                    <br />
-                    and new beginnings.
-                  </h2>
-                </div>
-              </div>
+              <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                Research, recognition,
+                <br />
+                and new beginnings.
+              </h2>
             </Reveal>
 
             <Reveal delay={120}>
               <div className="mt-14 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[1.05fr_0.95fr]">
                 {featuredNews.image && (
-                  <div className="group relative min-h-[430px] overflow-hidden bg-[var(--surface-muted)]">
+                  <div className="relative min-h-[430px]">
                     <Image
                       src={featuredNews.image}
                       alt={featuredNews.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-                      sizes="(max-width: 1024px) 100vw, 55vw"
+                      className="object-cover"
                     />
-
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#385E9D]/25 via-transparent to-transparent" />
-
-                    <div className="absolute bottom-0 left-0 h-[5px] w-full bg-gradient-to-r from-[#385E9D] via-[#00A3E0] to-[#F2A900]" />
                   </div>
                 )}
 
                 <div className="flex flex-col justify-center p-8 md:p-12">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--um-blue)]">
-                      {featuredNews.category}
-                    </p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--um-blue)]">
+                    {featuredNews.category} · {featuredNews.date}
+                  </p>
 
-                    <span className="text-xs text-[var(--foreground-muted)]">
-                      ·
-                    </span>
-
-                    <p className="text-xs text-[var(--foreground-muted)]">
-                      {featuredNews.date}
-                    </p>
-                  </div>
-
-                  <h3 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] md:text-4xl">
+                  <h3 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">
                     {featuredNews.title}
                   </h3>
 
@@ -637,26 +550,12 @@ export default function Home() {
                     {featuredNews.summary}
                   </p>
 
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      href={featuredNews.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex w-fit items-center gap-3 rounded-full bg-[var(--um-blue)] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
-                    >
-                      Read story
-                      <span className="transition-transform group-hover:translate-x-1">
-                        →
-                      </span>
-                    </a>
-
-                    <Link
-                      href="/news"
-                      className="inline-flex w-fit items-center rounded-full border border-[var(--border-strong)] px-6 py-3.5 text-sm font-semibold transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
-                    >
-                      All News & Impact →
-                    </Link>
-                  </div>
+                  <Link
+                    href="/news"
+                    className="mt-8 text-sm font-semibold text-[var(--um-blue)]"
+                  >
+                    All News & Impact →
+                  </Link>
                 </div>
               </div>
             </Reveal>
@@ -671,50 +570,29 @@ export default function Home() {
       <section className="bg-[var(--background)] px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
-                  Selected Publications
-                </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Selected Publications
+            </p>
 
-                <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                  Research you can see.
-                </h2>
-
-                <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
-                  Selected publications illustrating sensing, microfluidics,
-                  environmental monitoring, portable instrumentation, and
-                  biointegrated technologies.
-                </p>
-              </div>
-
-              <Link
-                href="/publications"
-                className="w-fit rounded-full border border-[var(--um-blue)] px-6 py-3 text-sm font-semibold text-[var(--um-blue)] transition hover:bg-[var(--um-blue)] hover:text-white"
-              >
-                View all publications →
-              </Link>
-            </div>
+            <h2 className="mt-5 max-w-4xl text-4xl font-semibold md:text-6xl">
+              Research you can see.
+            </h2>
           </Reveal>
 
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {selectedPublications.map((paper, index) => (
-              <Reveal key={paper.title} delay={index * 120}>
-                <article className="group h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[var(--surface-soft)]">
+              <Reveal
+                key={paper.title}
+                delay={index * 100}
+              >
+                <article className="h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)]">
+                  <div className="relative aspect-[4/3] bg-[var(--surface-soft)]">
                     <Image
                       src={paper.image}
                       alt={paper.category}
                       fill
-                      className="object-contain p-5 transition-transform duration-700 group-hover:scale-[1.05]"
-                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-contain p-5"
                     />
-
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#17263D]/90 via-[#17263D]/25 to-transparent px-5 pb-4 pt-14">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#F2A900]">
-                        {paper.category}
-                      </p>
-                    </div>
                   </div>
 
                   <div className="p-6">
@@ -730,7 +608,7 @@ export default function Home() {
                       href={paper.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-6 inline-flex text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
+                      className="mt-6 inline-flex text-sm font-semibold text-[var(--um-blue)]"
                     >
                       Read publication →
                     </a>
@@ -743,107 +621,10 @@ export default function Home() {
       </section>
 
       {/* ===================================================== */}
-      {/* PRINCIPAL INVESTIGATOR */}
-      {/* ===================================================== */}
-
-      <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
-              Principal Investigator
-            </p>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <div className="mt-12 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[0.9fr_1.1fr]">
-              <Link
-                href="/people/sanket-goel"
-                className="group relative min-h-[600px] overflow-hidden bg-[var(--surface-muted)]"
-              >
-                <Image
-                  src="/people/sanket-goel.webp"
-                  alt="Prof. Sanket Goel"
-                  fill
-                  className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-
-                <div className="absolute bottom-0 left-0 h-2 w-full bg-gradient-to-r from-[#385E9D] via-[#00A3E0] to-[#F2A900]" />
-              </Link>
-
-              <div className="flex flex-col justify-between p-8 md:p-12">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
-                    Eddie Goldenberg Research Chair of Canada
-                  </p>
-
-                  <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
-                    Prof. Sanket Goel
-                  </h2>
-
-                  <p className="mt-3 text-sm font-medium">
-                    Founder & Principal Investigator, SenSys Lab
-                  </p>
-
-                  <p className="mt-1 text-sm text-[var(--foreground-soft)]">
-                    University of Manitoba
-                  </p>
-
-                  <p className="mt-8 max-w-2xl text-base leading-8 text-[var(--foreground-soft)]">
-                    Prof. Sanket Goel leads an interdisciplinary programme
-                    spanning microsystems, microfluidics, biosensors, wearable
-                    and implantable technologies, advanced materials,
-                    intelligent instrumentation, environmental sensing, and
-                    translational engineering.
-                  </p>
-                </div>
-
-                <div className="mt-10 flex flex-wrap gap-6 text-sm">
-                  <Link
-                    href="/people/sanket-goel"
-                    className="font-medium text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
-                  >
-                    Full Profile →
-                  </Link>
-
-                  <a
-                    href="https://scholar.google.com/citations?hl=en&user=xgH6FBkAAAAJ&view_op=list_works&sortby=pubdate"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
-                  >
-                    Google Scholar →
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/sanketgoel/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
-                  >
-                    LinkedIn →
-                  </a>
-
-                  <a
-                    href="https://www.canada.ca/en/impact-plus-chairs.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
-                  >
-                    Research Chair Programme →
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ===================================================== */}
       {/* PEOPLE */}
       {/* ===================================================== */}
 
-      <section className="bg-[var(--background)] px-8 py-24 md:px-16 md:py-32">
+      <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -853,40 +634,42 @@ export default function Home() {
                 </p>
 
                 <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                  Researchers building the future of sensing.
+                  Researchers building the
+                  <br />
+                  future of sensing.
                 </h2>
               </div>
 
               <Link
                 href="/people"
-                className="w-fit text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
+                className="text-sm font-semibold text-[var(--um-blue)]"
               >
-                Meet the team →
+                Meet Team SenSys →
               </Link>
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
             {people.map((person, index) => (
-              <Reveal key={person.name} delay={index * 120}>
+              <Reveal
+                key={person.name}
+                delay={index * 100}
+              >
                 <Link
                   href={person.href}
-                  className="group block h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]"
+                  className="group block h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[var(--surface-soft)]">
+                  <div className="relative aspect-[4/3] bg-[var(--surface-muted)]">
                     <Image
                       src={person.image}
                       alt={person.name}
                       fill
-                      className="object-contain p-4 transition-transform duration-700 group-hover:scale-[1.04]"
-                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-contain p-4 transition duration-700 group-hover:scale-[1.03]"
                     />
-
-                    <div className="absolute inset-x-0 bottom-0 h-[3px] bg-[var(--um-blue)] transition-all duration-300 group-hover:h-[6px]" />
                   </div>
 
                   <div className="p-6">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--um-blue)]">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--um-blue)]">
                       {person.eyebrow}
                     </p>
 
@@ -897,63 +680,91 @@ export default function Home() {
                     <p className="mt-2 text-sm text-[var(--foreground-soft)]">
                       {person.role}
                     </p>
-
-                    <p className="mt-5 text-xs font-semibold text-[var(--um-blue)]">
-                      View profile →
-                    </p>
                   </div>
                 </Link>
               </Reveal>
             ))}
           </div>
+
+          {/* INCOMING COHORT */}
+
+          <Reveal delay={160}>
+            <Link
+              href="/people#incoming"
+              className="group mt-8 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)] md:grid-cols-[0.38fr_0.62fr]"
+            >
+              <div className="bg-[var(--um-gold)] p-8 text-[#2A1710] md:p-10">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]">
+                  January 2027
+                </p>
+
+                <p className="mt-5 text-6xl font-semibold tracking-[-0.06em]">
+                  12
+                </p>
+
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em]">
+                  Incoming Graduate Researchers
+                </p>
+
+                <p className="mt-6 text-sm">
+                  5 PhD · 7 MSc
+                </p>
+              </div>
+
+              <div className="flex flex-col justify-center p-8 md:p-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
+                  Growing SenSys Lab
+                </p>
+
+                <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight tracking-[-0.03em] md:text-4xl">
+                  A new graduate cohort joins in January 2027.
+                </h3>
+
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--foreground-soft)]">
+                  Incoming MSc and PhD researchers will expand the lab across
+                  microsystems, diagnostics, biointegrated technologies,
+                  environmental intelligence, and translational engineering.
+                </p>
+
+                <p className="mt-7 text-sm font-semibold text-[var(--um-blue)]">
+                  Meet the incoming cohort →
+                </p>
+              </div>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
-      {/* ===================================================== */}
       {/* JOIN */}
-      {/* ===================================================== */}
 
-      <section className="relative overflow-hidden bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-28">
-        <div className="pointer-events-none absolute right-[-80px] top-[-100px] h-[360px] w-[360px] rounded-full bg-[#00A3E0]/25 blur-[100px]" />
-
-        <div className="pointer-events-none absolute bottom-[-200px] left-[20%] h-[400px] w-[400px] rounded-full bg-[#F2A900]/10 blur-[120px]" />
-
-        <div className="relative mx-auto max-w-7xl">
+      <section className="bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-28">
+        <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
-                  Join SenSys
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-gold)]">
+                  Join SenSys Lab
                 </p>
 
-                <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] md:text-7xl">
-                  Build the future of sensing with us.
+                <h2 className="mt-5 max-w-5xl text-5xl font-semibold md:text-7xl">
+                  Build what comes next.
                 </h2>
               </div>
 
               <div>
-                <p className="max-w-xl text-lg leading-8 text-white/80">
-                  We welcome expressions of interest from undergraduate
-                  researchers, M.Sc. and Ph.D. students, postdoctoral
-                  researchers, and professionals interested in research
-                  operations and technology development.
+                <p className="text-lg leading-8 text-white/80">
+                  We welcome expressions of interest from undergraduate,
+                  graduate, postdoctoral, and technical researchers interested
+                  in building intelligent sensing technologies with real-world
+                  impact.
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link
-                    href="/join"
-                    className="rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-white"
-                  >
-                    View opportunities →
-                  </Link>
-
-                  <a
-                    href="mailto:sanketgoel@gmail.com?subject=Interest%20in%20Joining%20SenSys%20Lab"
-                    className="rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-[#385E9D]"
-                  >
-                    Email Prof. Sanket Goel →
-                  </a>
-                </div>
+                <Link
+                  href="/join"
+                  className="mt-8 inline-flex rounded-full bg-[var(--um-gold)] px-7 py-3.5 text-sm font-semibold text-[#2A1710]"
+                >
+                  View opportunities →
+                </Link>
               </div>
             </div>
           </Reveal>
