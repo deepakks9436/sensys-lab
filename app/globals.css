@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   SENSYS / UNIVERSITY OF MANITOBA COLOUR SYSTEM
+   SENSYS LAB / UNIVERSITY OF MANITOBA COLOUR SYSTEM
 ============================================================ */
 
 :root {
@@ -27,9 +27,8 @@
   --um-sky: #00a3e0;
 
   /*
-    Used for large full-width blue sections.
-    Keeping this separate from --um-blue lets buttons
-    and links remain brighter.
+    Used for major full-width scientific /
+    institutional blue sections.
   */
   --section-blue: #385e9d;
 
@@ -44,47 +43,50 @@
 
 /* ============================================================
    DARK THEME
-   Navy / blue-led rather than brown-led
+
+   Brown + Navy Hybrid
+
+   Espresso Brown = main canvas
+   Warm Brown      = cards / surfaces
+   Manitoba Navy   = scientific / institutional sections
+   Manitoba Blue   = interactive accents
+   Wheat Gold      = highlights
 ============================================================ */
 
 html[data-theme="dark"] {
-  /* BASE SURFACES */
-  --background: #0d1624;
-  --surface: #141f31;
-  --surface-soft: #1a2940;
-  --surface-muted: #22334d;
+  /* WARM ESPRESSO BASE */
+  --background: #211510;
+  --surface: #2a1b16;
+  --surface-soft: #34231d;
+  --surface-muted: #3d2b24;
 
-  /* TEXT */
-  --foreground: #f8fafc;
-  --foreground-soft: #d4deea;
-  --foreground-muted: #9eacbd;
+  /* WARM LIGHT TYPOGRAPHY */
+  --foreground: #fffaf5;
+  --foreground-soft: #e4d8d0;
+  --foreground-muted: #b9aaa0;
 
-  /*
-    Brown remains part of the UM identity,
-    but it is now an accent rather than the dark-mode foundation.
-  */
-  --um-brown: #d8b5a3;
-  --um-brown-dark: #f3ded2;
+  /* UM BROWN */
+  --um-brown: #d4ad99;
+  --um-brown-dark: #f0d7ca;
 
-  /* UM ACCENTS */
+  /* UM GOLD */
   --um-gold: #f2a900;
 
-  --um-blue: #7ca2d8;
-  --um-blue-dark: #5f83ba;
-  --um-sky: #38bdf8;
+  /* UM BLUE */
+  --um-blue: #88a9d6;
+  --um-blue-dark: #6689bb;
+  --um-sky: #43b9e8;
 
-  /*
-    Large blue sections should be deeper than buttons/links.
-  */
-  --section-blue: #263f67;
+  /* DEEP NAVY SCIENTIFIC SECTIONS */
+  --section-blue: #203650;
 
   /* BORDERS */
-  --border: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.2);
+  --border: rgba(255, 242, 233, 0.1);
+  --border-strong: rgba(255, 242, 233, 0.2);
 
   /* SHADOWS */
-  --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.28);
-  --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.38);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 24px 65px rgba(0, 0, 0, 0.42);
 }
 
 /* ============================================================
@@ -94,6 +96,10 @@ html[data-theme="dark"] {
 html {
   scroll-behavior: smooth;
   background: var(--background);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {
@@ -215,7 +221,9 @@ a {
   color: var(--um-sky);
 }
 
-/* PRIMARY BLUE BUTTON */
+/* ============================================================
+   PRIMARY BLUE BUTTON
+============================================================ */
 
 .um-blue-button {
   background: var(--um-blue);
@@ -229,7 +237,9 @@ a {
   border-color: var(--um-blue-dark);
 }
 
-/* BLUE OUTLINE */
+/* ============================================================
+   BLUE OUTLINE
+============================================================ */
 
 .um-blue-outline {
   border: 1px solid var(--um-blue);
@@ -243,7 +253,9 @@ a {
   color: #ffffff;
 }
 
-/* LARGE BLUE SECTIONS */
+/* ============================================================
+   LARGE BLUE SECTIONS
+============================================================ */
 
 .um-blue-section {
   background: var(--section-blue);
@@ -329,9 +341,7 @@ a {
 ============================================================ */
 
 /*
-  A number of older pages still use bg-white directly.
-
-  In dark mode these should normally become the dark surface.
+  Older pages sometimes still use bg-white directly.
 */
 
 html[data-theme="dark"] .bg-white {
@@ -357,12 +367,7 @@ html[data-theme="dark"] .bg-\[\#EEE8E1\] {
 }
 
 /* ============================================================
-   IMPORTANT:
-   WHITE CTA BUTTONS MUST REMAIN WHITE IN DARK MODE
-
-   This fixes:
-   Research Track Record → Publications
-   and similar white-on-blue CTA buttons.
+   WHITE CTA BUTTONS MUST REMAIN WHITE
 ============================================================ */
 
 html[data-theme="dark"] a.bg-white,
@@ -371,7 +376,7 @@ html[data-theme="dark"] button.bg-white {
 }
 
 /*
-  Common blue text used inside those white buttons.
+  Common Manitoba-blue text inside white buttons.
 */
 
 html[data-theme="dark"] a.bg-white.text-\[\#385E9D\],
@@ -380,8 +385,7 @@ html[data-theme="dark"] button.bg-white.text-\[\#385E9D\] {
 }
 
 /*
-  Make sure a white CTA remains readable even where
-  a parent dark-mode rule tries to inherit white text.
+  Ensure white CTA hover remains readable.
 */
 
 html[data-theme="dark"] a.bg-white:hover,
@@ -430,18 +434,20 @@ html[data-theme="dark"] .border-\[\#DED6CE\] {
 ============================================================ */
 
 /*
-  Preserve dark readable blue blocks.
-
-  This matters for older sections that still use
-  bg-[#385E9D] directly instead of CSS variables.
+  Preserve deep navy for full-width scientific sections.
 */
 
 html[data-theme="dark"] .bg-\[\#385E9D\] {
   background-color: var(--section-blue) !important;
 }
 
+html[data-theme="dark"] .bg-\[\#263F67\],
+html[data-theme="dark"] .bg-\[\#263f67\] {
+  background-color: var(--section-blue) !important;
+}
+
 /*
-  Sky blue remains vivid because it is generally an accent.
+  Sky blue stays vivid.
 */
 
 html[data-theme="dark"] .bg-\[\#00A3E0\] {
@@ -453,17 +459,12 @@ html[data-theme="dark"] .bg-\[\#00A3E0\] {
    GOLD SECTIONS
 ============================================================ */
 
-/*
-  Gold stays gold in both themes.
-*/
-
 html[data-theme="dark"] .bg-\[\#F2A900\] {
   background-color: #f2a900 !important;
 }
 
 /*
-  Gold sections require dark typography,
-  not the global white dark-mode typography.
+  Gold surfaces need dark typography.
 */
 
 html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#2A1710\],
@@ -476,16 +477,51 @@ html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#4F2C1D\] {
    IMAGE / CARD POLISH
 ============================================================ */
 
-/*
-  Adds subtle depth to cards and images against navy surfaces.
-*/
-
 html[data-theme="dark"] .sensys-card:hover {
   border-color: var(--um-blue);
 
   box-shadow:
-    0 16px 50px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(124, 162, 216, 0.08);
+    0 18px 52px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(136, 169, 214, 0.08);
+}
+
+/* ============================================================
+   NAVBAR / FLOATING SURFACE
+============================================================ */
+
+.dark-nav-surface {
+  background: var(--surface);
+}
+
+html[data-theme="dark"] .dark-nav-surface {
+  background: rgba(42, 27, 22, 0.97);
+}
+
+/* ============================================================
+   UNIVERSITY OF MANITOBA LOGO PANEL
+============================================================ */
+
+/*
+  Keep the official university logo unchanged on a white field.
+  This works in both light and dark themes.
+*/
+
+.um-logo-panel {
+  background: #ffffff;
+
+  border: 1px solid rgba(79, 44, 29, 0.12);
+
+  box-shadow:
+    0 4px 16px rgba(79, 44, 29, 0.05);
+}
+
+html[data-theme="dark"] .um-logo-panel {
+  background: #ffffff;
+
+  border-color: rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* ============================================================
@@ -497,7 +533,7 @@ html {
 }
 
 html[data-theme="dark"] {
-  scrollbar-color: var(--um-blue) #0d1624;
+  scrollbar-color: var(--um-blue) #211510;
 }
 
 /* ============================================================

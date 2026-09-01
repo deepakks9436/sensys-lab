@@ -1,11 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import ThemeToggle from "./ThemeToggle";
 import SiteSearch from "./SiteSearch";
+
+/* ============================================================
+   RESEARCH THRUSTS
+============================================================ */
 
 const researchThrusts = [
   {
@@ -26,6 +31,10 @@ const researchThrusts = [
   },
 ];
 
+/* ============================================================
+   RESEARCH FOUNDATIONS
+============================================================ */
+
 const researchFoundations = [
   {
     title: "Graphene Technologies",
@@ -45,6 +54,10 @@ const researchFoundations = [
   },
 ];
 
+/* ============================================================
+   OUTPUTS
+============================================================ */
+
 const outputs = [
   {
     title: "Publications",
@@ -60,18 +73,33 @@ const outputs = [
   },
 ];
 
+/* ============================================================
+   NAVBAR
+============================================================ */
+
 export default function Navbar() {
   const pathname = usePathname();
 
   const [mobileOpen, setMobileOpen] = useState(false);
+
   const [mobileResearchOpen, setMobileResearchOpen] =
     useState(false);
+
   const [mobileOutputsOpen, setMobileOutputsOpen] =
     useState(false);
 
-  const [researchOpen, setResearchOpen] = useState(false);
-  const [outputsOpen, setOutputsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [researchOpen, setResearchOpen] =
+    useState(false);
+
+  const [outputsOpen, setOutputsOpen] =
+    useState(false);
+
+  const [scrolled, setScrolled] =
+    useState(false);
+
+  /* ========================================================
+     SCROLL STATE
+  ======================================================== */
 
   useEffect(() => {
     const onScroll = () => {
@@ -88,6 +116,10 @@ export default function Navbar() {
       window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* ========================================================
+     CLOSE MENUS ON ROUTE CHANGE
+  ======================================================== */
+
   useEffect(() => {
     setMobileOpen(false);
     setMobileResearchOpen(false);
@@ -96,23 +128,39 @@ export default function Navbar() {
     setOutputsOpen(false);
   }, [pathname]);
 
+  /* ========================================================
+     MOBILE BODY LOCK
+  ======================================================== */
+
   useEffect(() => {
     if (!mobileOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
+    const previousOverflow =
+      document.body.style.overflow;
 
     document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow =
+        previousOverflow;
     };
   }, [mobileOpen]);
 
+  /* ========================================================
+     ACTIVE NAV
+  ======================================================== */
+
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
+    if (href === "/") {
+      return pathname === "/";
+    }
 
     return pathname.startsWith(href);
   };
+
+  /* ========================================================
+     SEARCH
+  ======================================================== */
 
   const openSearch = () => {
     setResearchOpen(false);
@@ -129,52 +177,83 @@ export default function Navbar() {
       <SiteSearch />
 
       <header
-        className={`sticky top-0 z-50 border-t-[3px] border-[var(--um-gold)] transition-all duration-300 ${
+        className={`dark-nav-surface sticky top-0 z-50 border-t-[3px] border-[var(--um-gold)] transition-all duration-300 ${
           scrolled
             ? "border-b border-[var(--border)] bg-[var(--surface)]/95 shadow-sm backdrop-blur-xl"
             : "border-b border-[var(--border)] bg-[var(--surface)]"
         }`}
       >
         <nav
-          className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 md:px-8"
+          className="mx-auto flex h-[82px] max-w-7xl items-center justify-between px-5 md:px-8"
           aria-label="Main navigation"
         >
           {/* ================================================= */}
           {/* BRAND */}
           {/* ================================================= */}
 
-          <Link
-            href="/"
-            className="group flex items-center gap-3"
-            aria-label="SenSys Lab home"
-          >
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[var(--um-blue)] transition group-hover:border-[var(--um-gold)]">
-              <span className="absolute h-5 w-5 rounded-full border border-[var(--um-blue)]/35" />
+          <div className="flex min-w-0 items-center gap-3">
+            {/* SENSYS LAB */}
 
-              <span className="h-2.5 w-2.5 rounded-full bg-[var(--um-gold)]" />
-            </div>
+            <Link
+              href="/"
+              className="group flex shrink-0 items-center gap-3"
+              aria-label="SenSys Lab home"
+            >
+              <div className="relative hidden h-10 w-10 items-center justify-center rounded-full border border-[var(--um-blue)] transition group-hover:border-[var(--um-gold)] sm:flex">
+                <span className="absolute h-5 w-5 rounded-full border border-[var(--um-blue)]/35" />
 
-            <div className="leading-none">
-              <p className="text-[17px] font-semibold tracking-tight text-[var(--foreground)]">
-                SenSys
-              </p>
+                <span className="h-2.5 w-2.5 rounded-full bg-[var(--um-gold)]" />
+              </div>
 
-              <p className="mt-1 text-[9px] uppercase tracking-[0.28em] text-[var(--foreground-muted)]">
-                University of Manitoba
-              </p>
-            </div>
-          </Link>
+              <div className="leading-none">
+                <p className="whitespace-nowrap text-[17px] font-semibold tracking-tight text-[var(--foreground)]">
+                  SenSys Lab
+                </p>
+              </div>
+            </Link>
+
+            {/* DIVIDER */}
+
+            <div className="hidden h-8 w-px bg-[var(--border-strong)] md:block" />
+
+            {/* UNIVERSITY OF MANITOBA */}
+
+            <a
+              href="https://umanitoba.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="um-logo-panel hidden items-center rounded-md px-3 py-2 transition hover:shadow-md md:flex"
+              aria-label="University of Manitoba"
+            >
+              <Image
+                src="/brand/umanitoba.svg"
+                alt="University of Manitoba"
+                width={154}
+                height={38}
+                className="h-[30px] w-auto object-contain"
+                priority
+                unoptimized
+              />
+            </a>
+          </div>
 
           {/* ================================================= */}
           {/* DESKTOP NAV */}
           {/* ================================================= */}
 
-          <div className="hidden items-center gap-6 lg:flex">
+          <div className="hidden items-center gap-5 lg:flex xl:gap-6">
+            {/* ================================================= */}
             {/* RESEARCH */}
+            {/* ================================================= */}
+
             <div
               className="relative"
-              onMouseEnter={() => setResearchOpen(true)}
-              onMouseLeave={() => setResearchOpen(false)}
+              onMouseEnter={() =>
+                setResearchOpen(true)
+              }
+              onMouseLeave={() =>
+                setResearchOpen(false)
+              }
             >
               <button
                 type="button"
@@ -205,7 +284,9 @@ export default function Navbar() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className={`transition-transform ${
-                    researchOpen ? "rotate-180" : ""
+                    researchOpen
+                      ? "rotate-180"
+                      : ""
                   }`}
                   aria-hidden="true"
                 >
@@ -217,9 +298,10 @@ export default function Navbar() {
                 <div className="absolute left-1/2 top-full w-[660px] -translate-x-1/2 pt-5">
                   <div className="grid grid-cols-2 overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-2xl">
                     {/* THRUSTS */}
+
                     <div className="p-7">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--um-blue)]">
-                        SenSys Research
+                        SenSys Lab Research
                       </p>
 
                       <div className="mt-5 space-y-1">
@@ -252,6 +334,7 @@ export default function Navbar() {
                     </div>
 
                     {/* FOUNDATIONS */}
+
                     <div className="border-l border-[var(--border)] bg-[var(--surface-soft)] p-7">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--um-blue)]">
                         Research Foundations
@@ -260,7 +343,7 @@ export default function Navbar() {
                       <p className="mt-3 text-xs leading-6 text-[var(--foreground-muted)]">
                         Explore established technology
                         programmes across sensing,
-                        microfluidics, diagnostics and
+                        microfluidics, diagnostics, and
                         advanced materials.
                       </p>
 
@@ -272,7 +355,9 @@ export default function Navbar() {
                               href={item.href}
                               className="group flex items-center justify-between border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--foreground)] transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
                             >
-                              <span>{item.title}</span>
+                              <span>
+                                {item.title}
+                              </span>
 
                               <span className="transition-transform group-hover:translate-x-1">
                                 →
@@ -287,7 +372,10 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* ================================================= */}
             {/* PEOPLE */}
+            {/* ================================================= */}
+
             <Link
               href="/people"
               className={`border-b pb-1 text-sm font-medium transition ${
@@ -299,11 +387,18 @@ export default function Navbar() {
               People
             </Link>
 
+            {/* ================================================= */}
             {/* OUTPUTS */}
+            {/* ================================================= */}
+
             <div
               className="relative"
-              onMouseEnter={() => setOutputsOpen(true)}
-              onMouseLeave={() => setOutputsOpen(false)}
+              onMouseEnter={() =>
+                setOutputsOpen(true)
+              }
+              onMouseLeave={() =>
+                setOutputsOpen(false)
+              }
             >
               <button
                 type="button"
@@ -320,8 +415,12 @@ export default function Navbar() {
                   pathname.startsWith(
                     "/publications"
                   ) ||
-                  pathname.startsWith("/patents") ||
-                  pathname.startsWith("/books")
+                  pathname.startsWith(
+                    "/patents"
+                  ) ||
+                  pathname.startsWith(
+                    "/books"
+                  )
                     ? "border-[var(--um-blue)] text-[var(--um-blue)]"
                     : "border-transparent text-[var(--foreground)] hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
                 }`}
@@ -338,7 +437,9 @@ export default function Navbar() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className={`transition-transform ${
-                    outputsOpen ? "rotate-180" : ""
+                    outputsOpen
+                      ? "rotate-180"
+                      : ""
                   }`}
                   aria-hidden="true"
                 >
@@ -367,7 +468,10 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* ================================================= */}
             {/* FACILITIES */}
+            {/* ================================================= */}
+
             <Link
               href="/facilities"
               className={`border-b pb-1 text-sm font-medium transition ${
@@ -379,7 +483,10 @@ export default function Navbar() {
               Facilities
             </Link>
 
+            {/* ================================================= */}
             {/* NEWS */}
+            {/* ================================================= */}
+
             <Link
               href="/news"
               className={`border-b pb-1 text-sm font-medium transition ${
@@ -398,7 +505,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={openSearch}
-              aria-label="Search SenSys"
+              aria-label="Search SenSys Lab"
               className="group flex h-10 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--foreground-muted)] transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
             >
               <svg
@@ -412,7 +519,12 @@ export default function Navbar() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <circle cx="11" cy="11" r="8" />
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="8"
+                />
+
                 <path d="m21 21-4.3-4.3" />
               </svg>
 
@@ -425,15 +537,21 @@ export default function Navbar() {
               </span>
             </button>
 
+            {/* ================================================= */}
             {/* JOIN */}
+            {/* ================================================= */}
+
             <Link
               href="/join"
               className="rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
             >
-              Join SenSys
+              Join
             </Link>
 
+            {/* ================================================= */}
             {/* THEME */}
+            {/* ================================================= */}
+
             <ThemeToggle />
           </div>
 
@@ -443,11 +561,12 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2 lg:hidden">
             {/* SEARCH */}
+
             <button
               type="button"
               onClick={openSearch}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
-              aria-label="Search SenSys"
+              aria-label="Search SenSys Lab"
             >
               <svg
                 width="18"
@@ -460,7 +579,12 @@ export default function Navbar() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <circle cx="11" cy="11" r="8" />
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="8"
+                />
+
                 <path d="m21 21-4.3-4.3" />
               </svg>
             </button>
@@ -523,9 +647,45 @@ export default function Navbar() {
         {/* ================================================= */}
 
         {mobileOpen && (
-          <div className="fixed inset-x-0 bottom-0 top-[79px] z-40 overflow-y-auto border-t border-[var(--border)] bg-[var(--surface)] px-6 py-6 lg:hidden">
+          <div className="fixed inset-x-0 bottom-0 top-[85px] z-40 overflow-y-auto border-t border-[var(--border)] bg-[var(--surface)] px-6 py-6 lg:hidden">
             <div className="mx-auto max-w-7xl">
+              {/* ================================================= */}
+              {/* UNIVERSITY BRAND */}
+              {/* ================================================= */}
+
+              <div className="mb-6 flex items-center justify-between gap-4 border-b border-[var(--border)] pb-6">
+                <div>
+                  <p className="text-lg font-semibold">
+                    SenSys Lab
+                  </p>
+
+                  <p className="mt-1 text-[9px] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+                    University of Manitoba
+                  </p>
+                </div>
+
+                <a
+                  href="https://umanitoba.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="um-logo-panel flex items-center rounded-md px-2.5 py-2"
+                  aria-label="University of Manitoba"
+                >
+                  <Image
+                    src="/brand/umanitoba.svg"
+                    alt="University of Manitoba"
+                    width={132}
+                    height={34}
+                    className="h-[27px] w-auto object-contain"
+                    unoptimized
+                  />
+                </a>
+              </div>
+
+              {/* ================================================= */}
               {/* SEARCH */}
+              {/* ================================================= */}
+
               <button
                 type="button"
                 onClick={openSearch}
@@ -552,10 +712,13 @@ export default function Navbar() {
                   <path d="m21 21-4.3-4.3" />
                 </svg>
 
-                Search SenSys
+                Search SenSys Lab
               </button>
 
+              {/* ================================================= */}
               {/* RESEARCH */}
+              {/* ================================================= */}
+
               <button
                 type="button"
                 onClick={() =>
@@ -590,7 +753,7 @@ export default function Navbar() {
               {mobileResearchOpen && (
                 <div className="border-b border-[var(--border)] py-5">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
-                    SenSys Research
+                    SenSys Lab Research
                   </p>
 
                   <div className="mt-3 space-y-1">
@@ -638,7 +801,10 @@ export default function Navbar() {
                 </div>
               )}
 
+              {/* ================================================= */}
               {/* PEOPLE */}
+              {/* ================================================= */}
+
               <Link
                 href="/people"
                 className="block border-b border-[var(--border)] py-4 text-sm font-medium text-[var(--foreground)]"
@@ -646,7 +812,10 @@ export default function Navbar() {
                 People
               </Link>
 
+              {/* ================================================= */}
               {/* OUTPUTS */}
+              {/* ================================================= */}
+
               <button
                 type="button"
                 onClick={() =>
@@ -692,7 +861,10 @@ export default function Navbar() {
                 </div>
               )}
 
+              {/* ================================================= */}
               {/* FACILITIES */}
+              {/* ================================================= */}
+
               <Link
                 href="/facilities"
                 className="block border-b border-[var(--border)] py-4 text-sm font-medium text-[var(--foreground)]"
@@ -700,7 +872,10 @@ export default function Navbar() {
                 Facilities
               </Link>
 
+              {/* ================================================= */}
               {/* NEWS */}
+              {/* ================================================= */}
+
               <Link
                 href="/news"
                 className="block border-b border-[var(--border)] py-4 text-sm font-medium text-[var(--foreground)]"
@@ -708,17 +883,19 @@ export default function Navbar() {
                 News & Impact
               </Link>
 
+              {/* ================================================= */}
               {/* JOIN */}
+              {/* ================================================= */}
+
               <Link
                 href="/join"
                 className="mt-6 block rounded-full bg-[var(--um-blue)] px-6 py-4 text-center text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
               >
-                Join SenSys
+                Join SenSys Lab
               </Link>
 
               <p className="mt-8 text-center text-[10px] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
-                University of Manitoba · Winnipeg,
-                Canada
+                SenSys Lab · University of Manitoba · Winnipeg, Canada
               </p>
             </div>
           </div>
