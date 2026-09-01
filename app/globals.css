@@ -1,53 +1,520 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #4f2c1d;
+/* ============================================================
+   SENSYS / UNIVERSITY OF MANITOBA COLOUR SYSTEM
+============================================================ */
 
+:root {
+  /* BASE */
+  --background: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f7f3ec;
+  --surface-muted: #fbf8f4;
+
+  /* TEXT */
+  --foreground: #4f2c1d;
+  --foreground-soft: #706963;
+  --foreground-muted: #837a72;
+
+  /* UNIVERSITY OF MANITOBA */
   --um-brown: #4f2c1d;
   --um-brown-dark: #2a1710;
 
   --um-gold: #f2a900;
 
-  --um-blue: #005ea8;
-  --um-blue-dark: #003e6b;
+  --um-blue: #385e9d;
+  --um-blue-dark: #27456f;
+  --um-sky: #00a3e0;
 
-  --cream: #f7f3ec;
-  --cream-soft: #fbf8f4;
+  /*
+    Used for large full-width blue sections.
+    Keeping this separate from --um-blue lets buttons
+    and links remain brighter.
+  */
+  --section-blue: #385e9d;
 
-  --muted: #706963;
+  /* BORDERS */
   --border: #e6dfd7;
+  --border-strong: #cfc5bc;
+
+  /* SHADOWS */
+  --shadow-soft: 0 12px 35px rgba(79, 44, 29, 0.08);
+  --shadow-medium: 0 18px 50px rgba(56, 94, 157, 0.12);
 }
+
+/* ============================================================
+   DARK THEME
+   Navy / blue-led rather than brown-led
+============================================================ */
+
+html[data-theme="dark"] {
+  /* BASE SURFACES */
+  --background: #0d1624;
+  --surface: #141f31;
+  --surface-soft: #1a2940;
+  --surface-muted: #22334d;
+
+  /* TEXT */
+  --foreground: #f8fafc;
+  --foreground-soft: #d4deea;
+  --foreground-muted: #9eacbd;
+
+  /*
+    Brown remains part of the UM identity,
+    but it is now an accent rather than the dark-mode foundation.
+  */
+  --um-brown: #d8b5a3;
+  --um-brown-dark: #f3ded2;
+
+  /* UM ACCENTS */
+  --um-gold: #f2a900;
+
+  --um-blue: #7ca2d8;
+  --um-blue-dark: #5f83ba;
+  --um-sky: #38bdf8;
+
+  /*
+    Large blue sections should be deeper than buttons/links.
+  */
+  --section-blue: #263f67;
+
+  /* BORDERS */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  /* SHADOWS */
+  --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.28);
+  --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.38);
+}
+
+/* ============================================================
+   DOCUMENT
+============================================================ */
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
   margin: 0;
+
   background: var(--background);
   color: var(--foreground);
+
   font-family: Arial, Helvetica, sans-serif;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   TEXT SELECTION
+============================================================ */
 
 ::selection {
   background: var(--um-gold);
-  color: var(--um-brown-dark);
+  color: #2a1710;
 }
+
+/* ============================================================
+   LINKS / BUTTONS
+============================================================ */
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--um-sky);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   GLOBAL COLOUR TRANSITIONS
+============================================================ */
+
+section,
+article,
+nav,
+footer,
+header,
+div,
+button,
+a {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* ============================================================
+   THEME HELPERS
+============================================================ */
+
+.theme-bg {
+  background: var(--background);
+}
+
+.theme-surface {
+  background: var(--surface);
+}
+
+.theme-soft {
+  background: var(--surface-soft);
+}
+
+.theme-muted {
+  background: var(--surface-muted);
+}
+
+.theme-text {
+  color: var(--foreground);
+}
+
+.theme-text-soft {
+  color: var(--foreground-soft);
+}
+
+.theme-text-muted {
+  color: var(--foreground-muted);
+}
+
+.theme-border {
+  border-color: var(--border);
+}
+
+/* ============================================================
+   UM COLOUR HELPERS
+============================================================ */
+
+.um-blue-link {
+  color: var(--um-blue);
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.um-blue-link:hover {
+  color: var(--um-sky);
+}
+
+/* PRIMARY BLUE BUTTON */
+
+.um-blue-button {
+  background: var(--um-blue);
+  color: #ffffff;
+
+  border: 1px solid var(--um-blue);
+}
+
+.um-blue-button:hover {
+  background: var(--um-blue-dark);
+  border-color: var(--um-blue-dark);
+}
+
+/* BLUE OUTLINE */
+
+.um-blue-outline {
+  border: 1px solid var(--um-blue);
+  color: var(--um-blue);
+
+  background: transparent;
+}
+
+.um-blue-outline:hover {
+  background: var(--um-blue);
+  color: #ffffff;
+}
+
+/* LARGE BLUE SECTIONS */
+
+.um-blue-section {
+  background: var(--section-blue);
+  color: #ffffff;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.sensys-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sensys-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--um-blue);
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+
 @keyframes fadeSlide {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px);
   }
 
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-slide {
+  animation: fadeSlide 0.65s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out both;
+}
+
+/* ============================================================
+   DARK MODE
+   LEGACY HARDCODED BACKGROUND OVERRIDES
+============================================================ */
+
+/*
+  A number of older pages still use bg-white directly.
+
+  In dark mode these should normally become the dark surface.
+*/
+
+html[data-theme="dark"] .bg-white {
+  background-color: var(--surface) !important;
+}
+
+/* OLD CREAM / BEIGE SECTIONS */
+
+html[data-theme="dark"] .bg-\[\#F7F3EC\] {
+  background-color: var(--surface-soft) !important;
+}
+
+html[data-theme="dark"] .bg-\[\#FBF8F4\] {
+  background-color: var(--surface-muted) !important;
+}
+
+html[data-theme="dark"] .bg-\[\#F1ECE5\] {
+  background-color: var(--surface-muted) !important;
+}
+
+html[data-theme="dark"] .bg-\[\#EEE8E1\] {
+  background-color: var(--surface-muted) !important;
+}
+
+/* ============================================================
+   IMPORTANT:
+   WHITE CTA BUTTONS MUST REMAIN WHITE IN DARK MODE
+
+   This fixes:
+   Research Track Record → Publications
+   and similar white-on-blue CTA buttons.
+============================================================ */
+
+html[data-theme="dark"] a.bg-white,
+html[data-theme="dark"] button.bg-white {
+  background-color: #ffffff !important;
+}
+
+/*
+  Common blue text used inside those white buttons.
+*/
+
+html[data-theme="dark"] a.bg-white.text-\[\#385E9D\],
+html[data-theme="dark"] button.bg-white.text-\[\#385E9D\] {
+  color: #385e9d !important;
+}
+
+/*
+  Make sure a white CTA remains readable even where
+  a parent dark-mode rule tries to inherit white text.
+*/
+
+html[data-theme="dark"] a.bg-white:hover,
+html[data-theme="dark"] button.bg-white:hover {
+  color: #2a1710;
+}
+
+/* ============================================================
+   DARK MODE
+   LEGACY HARDCODED TEXT OVERRIDES
+============================================================ */
+
+html[data-theme="dark"] .text-\[\#4F2C1D\],
+html[data-theme="dark"] .text-\[\#2A1710\] {
+  color: var(--foreground) !important;
+}
+
+html[data-theme="dark"] .text-\[\#706963\],
+html[data-theme="dark"] .text-\[\#837A72\],
+html[data-theme="dark"] .text-\[\#645D57\],
+html[data-theme="dark"] .text-\[\#5F5953\],
+html[data-theme="dark"] .text-\[\#8A8179\],
+html[data-theme="dark"] .text-\[\#928980\] {
+  color: var(--foreground-soft) !important;
+}
+
+/* ============================================================
+   DARK MODE
+   LEGACY BORDER OVERRIDES
+============================================================ */
+
+html[data-theme="dark"] .border-\[\#DDD5CC\],
+html[data-theme="dark"] .border-\[\#DCD4CC\],
+html[data-theme="dark"] .border-\[\#D8D0C7\],
+html[data-theme="dark"] .border-\[\#CFC5BC\],
+html[data-theme="dark"] .border-\[\#D6CEC5\],
+html[data-theme="dark"] .border-\[\#E3DBD2\],
+html[data-theme="dark"] .border-\[\#E6DFD7\],
+html[data-theme="dark"] .border-\[\#DED6CE\] {
+  border-color: var(--border) !important;
+}
+
+/* ============================================================
+   DARK MODE
+   HARDCODED BLUE ELEMENTS
+============================================================ */
+
+/*
+  Preserve dark readable blue blocks.
+
+  This matters for older sections that still use
+  bg-[#385E9D] directly instead of CSS variables.
+*/
+
+html[data-theme="dark"] .bg-\[\#385E9D\] {
+  background-color: var(--section-blue) !important;
+}
+
+/*
+  Sky blue remains vivid because it is generally an accent.
+*/
+
+html[data-theme="dark"] .bg-\[\#00A3E0\] {
+  background-color: var(--um-sky) !important;
+}
+
+/* ============================================================
+   DARK MODE
+   GOLD SECTIONS
+============================================================ */
+
+/*
+  Gold stays gold in both themes.
+*/
+
+html[data-theme="dark"] .bg-\[\#F2A900\] {
+  background-color: #f2a900 !important;
+}
+
+/*
+  Gold sections require dark typography,
+  not the global white dark-mode typography.
+*/
+
+html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#2A1710\],
+html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#4F2C1D\] {
+  color: #2a1710 !important;
+}
+
+/* ============================================================
+   DARK MODE
+   IMAGE / CARD POLISH
+============================================================ */
+
+/*
+  Adds subtle depth to cards and images against navy surfaces.
+*/
+
+html[data-theme="dark"] .sensys-card:hover {
+  border-color: var(--um-blue);
+
+  box-shadow:
+    0 16px 50px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(124, 162, 216, 0.08);
+}
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+html {
+  scrollbar-color: var(--um-blue) var(--surface-soft);
+}
+
+html[data-theme="dark"] {
+  scrollbar-color: var(--um-blue) #0d1624;
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,7 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import Reveal from "../../../components/Reveal";
+
+/* ============================================================
+   PLATFORM EVOLUTION
+============================================================ */
 
 const programmes = [
   {
@@ -20,8 +26,8 @@ const programmes = [
       "Demonstrated in a real food matrix using mango juice.",
     ],
     metrics: [
-      "LoD: 0.35 CFU/mL",
-      "LoQ: 1.05 CFU/mL",
+      "LoD · 0.35 CFU/mL",
+      "LoQ · 1.05 CFU/mL",
       "36 h real-time monitoring",
     ],
     publication:
@@ -43,7 +49,7 @@ const programmes = [
       "Validated using tap water and synthetic urine samples.",
     ],
     metrics: [
-      "AST within 6 h",
+      "AST · within 6 h",
       "4 antibiotics screened",
       "Water + synthetic urine",
     ],
@@ -53,7 +59,7 @@ const programmes = [
     number: "03",
     year: "2023",
     title: "Reproducible Lab-on-Chip Protocol",
-    subtitle: "Fabrication · LIG Heating · Bacterial Fuel Cell",
+    subtitle: "Fabrication · LIG Heating · Bacterial Culture",
     image: "/research/AMR/protocol-lab-on-chip-platform.jpg",
     description:
       "A detailed experimental protocol established the complete fabrication and operating workflow for simultaneous bacterial culture and electrochemical detection on a lab-on-chip platform.",
@@ -66,7 +72,7 @@ const programmes = [
     ],
     metrics: [
       "Integrated fabrication protocol",
-      "LIG heating at ~37 °C",
+      "LIG heating · ~37 °C",
       "Portable electrochemistry",
     ],
     publication: "https://doi.org/10.1016/j.xpro.2023.102327",
@@ -78,7 +84,7 @@ const programmes = [
     subtitle: "Multiplexed · Portable · Smartphone-Integrated",
     image: "/research/AMR/Bacteria-on-chip.png",
     description:
-      "A fully portable bacteria-on-chip platform combines pathogen-selective electrochemical sensing, on-chip incubation, multiplexed AST, embedded potentiostat electronics, and a smartphone-enabled user interface.",
+      "A fully portable bacteria-on-chip platform combining pathogen-selective electrochemical sensing, on-chip incubation, multiplexed AST, embedded potentiostat electronics, and a smartphone-enabled user interface.",
     features: [
       "Four three-electrode systems integrated on a single ITO-based sensing chip.",
       "Gold nanoparticle-enhanced immunosensor functionalized with anti-E. coli monoclonal antibodies.",
@@ -87,13 +93,17 @@ const programmes = [
       "BLE-enabled graphical user interface for control and real-time electrochemical visualization.",
     ],
     metrics: [
-      "E. coli detection: 30 min",
-      "AST: 5 h",
+      "E. coli detection · 30 min",
+      "AST · 5 h",
       "4 antibiotics simultaneously",
     ],
     publication: "https://doi.org/10.1039/D6SD00063K",
   },
 ];
+
+/* ============================================================
+   WORKFLOW
+============================================================ */
 
 const workflow = [
   {
@@ -127,6 +137,80 @@ const workflow = [
     text: "Portable electronics and connected interfaces translate measurements into actionable results.",
   },
 ];
+
+/* ============================================================
+   CAPABILITIES
+============================================================ */
+
+const capabilities = [
+  {
+    number: "01",
+    title: "Microfluidic Culture",
+    text: "Miniaturized reservoirs and chambers for controlled bacterial growth and sample handling.",
+  },
+  {
+    number: "02",
+    title: "Electrochemical Detection",
+    text: "CV, DPV, EIS, chronoamperometry, and electrochemical monitoring of bacterial activity.",
+  },
+  {
+    number: "03",
+    title: "Rapid AST",
+    text: "Phenotypic assessment of bacterial response to multiple antibiotics in parallel.",
+  },
+  {
+    number: "04",
+    title: "Thermal Management",
+    text: "LIG and printed microheaters for localized bacterial incubation and closed-loop temperature control.",
+  },
+  {
+    number: "05",
+    title: "Biorecognition",
+    text: "Nanomaterial-enhanced antibody-functionalized interfaces for pathogen-selective detection.",
+  },
+  {
+    number: "06",
+    title: "Portable Instrumentation",
+    text: "Embedded multichannel potentiostat electronics integrated into compact diagnostic hardware.",
+  },
+  {
+    number: "07",
+    title: "Connected Diagnostics",
+    text: "Bluetooth, smartphone applications, GUI interfaces, and real-time electrochemical visualization.",
+  },
+  {
+    number: "08",
+    title: "Point-of-Care Translation",
+    text: "Integrated sensing, culture, AST, electronics, packaging, and user interfaces within portable systems.",
+  },
+];
+
+/* ============================================================
+   APPLICATIONS
+============================================================ */
+
+const applications = [
+  {
+    title: "Clinical Diagnostics",
+    text: "Rapid bacterial identification and phenotypic susceptibility testing closer to the patient.",
+  },
+  {
+    title: "Urinary Tract Infection",
+    text: "Portable workflows for pathogen detection and antimicrobial susceptibility analysis in urine-related samples.",
+  },
+  {
+    title: "Food Safety",
+    text: "Detection and monitoring of bacterial contamination in food and beverage matrices.",
+  },
+  {
+    title: "Environmental Monitoring",
+    text: "Decentralized bacterial assessment in water and other environmental samples.",
+  },
+];
+
+/* ============================================================
+   SELECTED PUBLICATIONS
+============================================================ */
 
 const publications = [
   {
@@ -185,609 +269,900 @@ const publications = [
   },
 ];
 
-const capabilities = [
+/* ============================================================
+   EXPLORE NEXT
+============================================================ */
+
+const exploreNext = [
   {
-    title: "Microfluidic Culture",
-    text: "Miniaturized reservoirs and chambers for controlled bacterial growth and sample handling.",
+    title: "Pesticide Detection",
+    description:
+      "Portable optical, electrochemical, wearable, and microfluidic systems for residue screening.",
+    image: "/research/pesticide-detection/pestisafe-2.jpg",
+    href: "/research/pesticide-detection",
   },
   {
-    title: "Electrochemical Detection",
-    text: "CV, DPV, EIS, chronoamperometry, and electrochemical monitoring of bacterial activity.",
+    title: "Water Quality",
+    description:
+      "Connected electrochemical and ion-selective technologies for environmental water analysis.",
+    image: "/research/water-quality/ion-selective-array.png",
+    href: "/research/water-quality",
   },
   {
-    title: "Rapid AST",
-    text: "Phenotypic assessment of bacterial response to multiple antibiotics in parallel.",
-  },
-  {
-    title: "Thermal Management",
-    text: "LIG and printed microheaters for localized bacterial incubation and closed-loop temperature control.",
-  },
-  {
-    title: "Biorecognition",
-    text: "Nanomaterial-enhanced antibody-functionalized interfaces for pathogen-selective detection.",
-  },
-  {
-    title: "Portable Instrumentation",
-    text: "Embedded multichannel potentiostat electronics integrated into compact diagnostic hardware.",
-  },
-  {
-    title: "Connected Diagnostics",
-    text: "Bluetooth, smartphone applications, GUI interfaces, and real-time electrochemical visualization.",
-  },
-  {
-    title: "Point-of-Care Translation",
-    text: "Integrated sensing, culture, AST, electronics, packaging, and user interfaces within portable systems.",
+    title: "Graphene Technologies",
+    description:
+      "Laser-induced graphene, flexible electronics, biosensing, and energy microsystems.",
+    image: "/research/graphene/graphene-hero.jpg",
+    href: "/research/graphene",
   },
 ];
 
+/* ============================================================
+   PAGE
+============================================================ */
+
 export default function AMRPage() {
   return (
-    <main className="min-h-screen bg-white text-[#4F2C1D]">
+    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
 
+      {/* ===================================================== */}
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#4F2C1D] px-8 py-24 text-white md:px-16 md:py-32">
-        <div className="absolute inset-0">
-          <img
-            src="/research/AMR/Antimicrobial-resistance-detection.jpg"
-            alt=""
-            className="h-full w-full object-cover opacity-18"
-          />
+      {/* ===================================================== */}
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2A1710] via-[#4F2C1D]/95 to-[#4F2C1D]/60" />
-        </div>
+      <section className="relative overflow-hidden bg-[#17263D] px-8 py-24 text-white md:px-16 md:py-32">
+        <Image
+          src="/research/AMR/Antimicrobial-resistance-detection.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-25"
+          sizes="100vw"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-[#101C2E] via-[#17263D]/95 to-[#385E9D]/45" />
+
+        <div className="absolute -right-40 -top-32 h-[520px] w-[520px] rounded-full bg-[#00A3E0]/15 blur-[130px]" />
 
         <div className="relative mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
-            Research Foundation · Intelligent Diagnostics
-          </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
+              Research Foundation · Intelligent Diagnostics
+            </p>
 
-          <h1 className="mt-6 max-w-6xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
-            Pathogen & AMR
-            <br />
-            Diagnostics.
-          </h1>
+            <h1 className="mt-6 max-w-6xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
+              Pathogen & AMR
+              <br />
+              Diagnostics.
+            </h1>
 
-          <p className="mt-10 max-w-3xl text-xl leading-9 text-white/80">
-            Microfluidic, electrochemical, and connected diagnostic systems for
-            rapid bacterial detection, antimicrobial susceptibility testing,
-            and point-of-care antimicrobial-resistance assessment.
-          </p>
+            <p className="mt-10 max-w-3xl text-lg leading-9 text-white/80 md:text-xl">
+              Microfluidic, electrochemical, and connected diagnostic systems
+              for rapid bacterial detection, antimicrobial susceptibility
+              testing, and point-of-care antimicrobial-resistance assessment.
+            </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            {[
-              "Pathogen Detection",
-              "Antimicrobial Resistance",
-              "AST",
-              "Microfluidics",
-              "Electrochemistry",
-              "Point-of-Care",
-              "Connected Diagnostics",
-            ].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs text-white/85"
+            <div className="mt-9 flex flex-wrap gap-2">
+              {[
+                "Pathogen Detection",
+                "AMR",
+                "AST",
+                "Microfluidics",
+                "Electrochemistry",
+                "On-Chip Incubation",
+                "Point-of-Care",
+                "Connected Diagnostics",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs text-white/85 backdrop-blur-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#platforms"
+                className="rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-white"
               >
-                {tag}
-              </span>
+                Explore platforms →
+              </a>
+
+              <a
+                href="#bacteria-on-chip"
+                className="rounded-full border border-white/35 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-[#385E9D]"
+              >
+                Bacteria-on-Chip →
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* STICKY NAVIGATION */}
+      {/* ===================================================== */}
+
+      <nav className="sticky top-[72px] z-30 border-b border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur-xl">
+        <div className="mx-auto max-w-7xl overflow-x-auto px-8 md:px-16">
+          <div className="flex min-w-max items-center gap-8 py-4">
+            {[
+              ["Overview", "#overview"],
+              ["Platforms", "#platforms"],
+              ["Bacteria-on-Chip", "#bacteria-on-chip"],
+              ["Workflow", "#workflow"],
+              ["Capabilities", "#capabilities"],
+              ["Applications", "#applications"],
+              ["Publications", "#publications"],
+              ["Explore Next", "#explore-next"],
+            ].map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                className="text-xs font-semibold text-[var(--foreground-muted)] transition hover:text-[var(--um-blue)]"
+              >
+                {label}
+              </a>
             ))}
           </div>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#evolution"
-              className="rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710]"
-            >
-              Explore technology evolution →
-            </a>
-
-            <a
-              href="#bacteria-on-chip"
-              className="rounded-full border border-white/35 px-7 py-3.5 text-sm font-semibold text-white"
-            >
-              Bacteria-on-Chip
-            </a>
-          </div>
         </div>
-      </section>
+      </nav>
 
-      {/* PROVENANCE */}
-      <section className="bg-[#FFF9EC] px-8 py-7 md:px-16">
-        <div className="mx-auto max-w-7xl border-l-2 border-[#F2A900] pl-5">
-          <p className="max-w-5xl text-sm leading-7 text-[#706963]">
-            The technologies presented here reflect prior research led by Prof.
-            Sanket Goel and collaborators and are showcased as part of the
-            scientific and translational foundation informing future SenSys
-            research at the University of Manitoba.
-          </p>
-        </div>
-      </section>
+      {/* ===================================================== */}
+      {/* OVERVIEW */}
+      {/* ===================================================== */}
 
-      {/* WHY AMR */}
-      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="border border-[#DDD5CC] bg-[#F7F3EC] p-5">
-            <img
-              src="/research/AMR/Antimicrobial-resistance-detection.jpg"
-              alt="Antimicrobial resistance diagnostic landscape"
-              className="aspect-[4/3] w-full object-contain"
-            />
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-              Diagnostic Challenge
-            </p>
-
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-              Faster diagnostics can support better antibiotic decisions.
-            </h2>
-
-            <p className="mt-7 text-base leading-8 text-[#706963]">
-              Conventional phenotypic antimicrobial susceptibility testing is
-              reliable but often requires bacterial culture and extended
-              turnaround times. Molecular methods can be faster, but frequently
-              depend on specialized infrastructure and trained personnel.
-            </p>
-
-            <p className="mt-5 text-base leading-8 text-[#706963]">
-              Microfluidic point-of-care systems offer a route toward bringing
-              bacterial culture, sensing, antimicrobial exposure, and
-              interpretation into a single compact diagnostic workflow.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              <div className="border border-[#DDD5CC] bg-[#FBF8F4] p-5">
-                <p className="text-3xl font-semibold text-[#F2A900]">
-                  24–48 h
-                </p>
-                <p className="mt-2 text-xs leading-6 text-[#706963]">
-                  Typical timeframe discussed for conventional phenotypic
-                  approaches
+      <section
+        id="overview"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Diagnostic Challenge
                 </p>
               </div>
 
-              <div className="border border-[#DDD5CC] bg-[#FBF8F4] p-5">
-                <p className="text-3xl font-semibold text-[#385E9D]">
-                  4–6 h
-                </p>
-                <p className="mt-2 text-xs leading-6 text-[#706963]">
-                  Emerging microfluidic AST timeframe highlighted in the
-                  research review
-                </p>
-              </div>
+              <div>
+                <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                  Faster diagnostics can support better antimicrobial
+                  decisions.
+                </h2>
 
-              <div className="border border-[#DDD5CC] bg-[#FBF8F4] p-5">
-                <p className="text-3xl font-semibold text-[#4F2C1D]">
-                  POC
+                <p className="mt-8 max-w-3xl text-lg leading-9 text-[var(--foreground-soft)]">
+                  Conventional phenotypic antimicrobial susceptibility testing
+                  is reliable but generally depends on bacterial culture and
+                  extended turnaround times. Molecular methods can be faster
+                  but may require specialized infrastructure and trained
+                  personnel.
                 </p>
-                <p className="mt-2 text-xs leading-6 text-[#706963]">
-                  Direction toward portable decentralized testing
+
+                <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--foreground-muted)]">
+                  Microfluidic systems offer a route toward integrating
+                  bacterial detection, controlled culture, antimicrobial
+                  exposure, electrochemical monitoring, and interpretation into
+                  compact sample-to-answer workflows.
                 </p>
               </div>
             </div>
+          </Reveal>
+
+          <div className="mt-16 grid gap-px overflow-hidden border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
+            {[
+              ["30 min", "Pathogen Detection"],
+              ["5 h", "Integrated AST"],
+              ["04", "Parallel Antibiotics"],
+              ["POC", "Portable Architecture"],
+            ].map(([value, label], index) => (
+              <Reveal key={label} delay={index * 70}>
+                <div className="h-full bg-[var(--surface)] p-7">
+                  <p className="text-3xl font-semibold text-[var(--um-gold)]">
+                    {value}
+                  </p>
+
+                  <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
+                    {label}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
+
+          <Reveal delay={220}>
+            <div className="mt-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div className="relative aspect-[4/3] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)]">
+                <Image
+                  src="/research/AMR/Antimicrobial-resistance-detection.jpg"
+                  alt="Antimicrobial resistance diagnostic landscape"
+                  fill
+                  className="object-contain p-6"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
+                  System Goal
+                </p>
+
+                <h3 className="mt-4 text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+                  Bring culture, sensing, AST, and interpretation into one
+                  device.
+                </h3>
+
+                <p className="mt-6 text-base leading-8 text-[var(--foreground-soft)]">
+                  The technology evolution progressively combines more of the
+                  diagnostic chain within the same engineered architecture,
+                  reducing dependence on separate laboratory instruments and
+                  workflows.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* EVOLUTION */}
+      {/* ===================================================== */}
+      {/* PLATFORM EVOLUTION */}
+      {/* ===================================================== */}
+
       <section
-        id="evolution"
-        className="scroll-mt-28 bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32"
+        id="platforms"
+        className="scroll-mt-40 bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Technology Evolution
-          </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Technology Evolution
+            </p>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            From bacterial growth monitoring to multiplexed point-of-care AST.
-          </h2>
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              From bacterial growth monitoring to multiplexed point-of-care
+              AST.
+            </h2>
 
-          <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
-            The research programme progressed through successive levels of
-            integration: bacterial culture and detection, rapid antibiotic
-            susceptibility testing, standardized lab-on-chip fabrication, and
-            ultimately a portable multiplexed diagnostic platform.
-          </p>
+            <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+              The programme progresses through bacterial culture and detection,
+              rapid antibiotic susceptibility testing, standardized
+              lab-on-chip engineering, and ultimately a portable multiplexed
+              diagnostic system.
+            </p>
+          </Reveal>
+
+          {/* EVOLUTION STRIP */}
+
+          <div className="mt-14 grid gap-3 lg:grid-cols-4">
+            {[
+              ["01", "Detection", "Real-time bacterial monitoring"],
+              ["02", "Rapid AST", "Antibiotic response on-chip"],
+              ["03", "Protocol", "Reproducible system engineering"],
+              ["04", "Bacteria-on-Chip", "Integrated point-of-care platform"],
+            ].map(([number, title, text], index) => (
+              <Reveal key={number} delay={index * 70}>
+                <div className="relative h-full border border-[var(--border)] bg-[var(--surface)] p-6">
+                  <span className="text-xs font-semibold text-[var(--um-gold)]">
+                    {number}
+                  </span>
+
+                  <h3 className="mt-4 text-lg font-semibold">
+                    {title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-6 text-[var(--foreground-soft)]">
+                    {text}
+                  </p>
+
+                  {index < 3 && (
+                    <span className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-xl text-[var(--um-blue)] lg:block">
+                      →
+                    </span>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* FULL PLATFORM CARDS */}
 
           <div className="mt-16 space-y-8">
             {programmes.map((programme, index) => (
-              <article
-                key={programme.number}
-                id={programme.number === "04" ? "bacteria-on-chip" : undefined}
-                className="scroll-mt-32 grid overflow-hidden border border-[#DDD5CC] bg-white lg:grid-cols-2"
-              >
-                <div
-                  className={`relative min-h-[460px] bg-[#F8F6F2] ${
-                    index % 2 === 1 ? "lg:order-2" : ""
-                  }`}
+              <Reveal key={programme.number} delay={index * 70}>
+                <article
+                  className="grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-soft)] lg:grid-cols-2"
                 >
-                  <img
-                    src={programme.image}
-                    alt={programme.title}
-                    className="absolute inset-0 h-full w-full object-contain p-5"
-                  />
-
-                  <div className="absolute left-5 top-5 rounded-full bg-[#4F2C1D] px-4 py-2 text-xs font-semibold text-white">
-                    {programme.year}
-                  </div>
-                </div>
-
-                <div
-                  className={`flex flex-col justify-center p-8 md:p-10 lg:p-12 ${
-                    index % 2 === 1 ? "lg:order-1" : ""
-                  }`}
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#385E9D]">
-                    Platform {programme.number}
-                  </p>
-
-                  <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
-                    {programme.title}
-                  </h3>
-
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#F2A900]">
-                    {programme.subtitle}
-                  </p>
-
-                  <p className="mt-6 text-base leading-8 text-[#706963]">
-                    {programme.description}
-                  </p>
-
-                  <ul className="mt-7 space-y-3">
-                    {programme.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex gap-3 text-sm leading-7 text-[#5F5953]"
-                      >
-                        <span className="mt-[10px] h-2 w-2 flex-none rounded-full bg-[#385E9D]" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-7 flex flex-wrap gap-2">
-                    {programme.metrics.map((metric) => (
-                      <span
-                        key={metric}
-                        className="rounded-full border border-[#D8D0C7] bg-[#FBF8F4] px-4 py-2 text-xs font-medium"
-                      >
-                        {metric}
-                      </span>
-                    ))}
-                  </div>
-
-                  <a
-                    href={programme.publication}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-8 w-fit rounded-full bg-[#385E9D] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#4F2C1D]"
-                  >
-                    Read publication →
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BACTERIA ON CHIP HIGHLIGHT */}
-      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-                Latest Platform
-              </p>
-
-              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                Bacteria-on-Chip integrates the complete diagnostic chain.
-              </h2>
-
-              <p className="mt-7 text-base leading-8 text-[#706963]">
-                The portable platform integrates pathogen-selective
-                immunosensing, multiplexed electrochemistry, microfluidic
-                reservoirs, thermal incubation, multichannel potentiostat
-                electronics, a swappable sensor architecture, and a connected
-                graphical user interface.
-              </p>
-
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {[
-                  ["30 min", "Pathogen detection"],
-                  ["5 h", "Antibiotic susceptibility testing"],
-                  ["4", "Antibiotics tested simultaneously"],
-                  ["BLE", "Smartphone / GUI connectivity"],
-                ].map(([value, label]) => (
                   <div
-                    key={label}
-                    className="border border-[#DDD5CC] bg-[#FBF8F4] p-6"
+                    className={`relative min-h-[460px] overflow-hidden bg-[var(--surface-muted)] ${
+                      index % 2 === 1 ? "lg:order-2" : ""
+                    }`}
                   >
-                    <p className="text-3xl font-semibold text-[#385E9D]">
-                      {value}
-                    </p>
+                    <Image
+                      src={programme.image}
+                      alt={programme.title}
+                      fill
+                      className="object-contain p-6 transition duration-700 hover:scale-[1.025]"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
 
-                    <p className="mt-2 text-sm text-[#706963]">
-                      {label}
-                    </p>
+                    <div className="absolute left-5 top-5 rounded-full bg-[var(--section-blue)] px-4 py-2 text-xs font-semibold text-white">
+                      {programme.year}
+                    </div>
+
+                    <span className="absolute right-5 top-5 text-6xl font-semibold text-[var(--um-blue)]/12">
+                      {programme.number}
+                    </span>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="border border-[#DDD5CC] bg-[#F7F3EC] p-5">
-              <img
-                src="/research/AMR/Bacteria-on-chip.png"
-                alt="Portable Bacteria-on-Chip point-of-care diagnostic platform"
-                className="aspect-[4/3] w-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+                  <div
+                    className={`flex flex-col justify-center p-8 md:p-10 lg:p-12 ${
+                      index % 2 === 1 ? "lg:order-1" : ""
+                    }`}
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
+                      Platform {programme.number}
+                    </p>
 
-      {/* WORKFLOW */}
-      <section className="bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Diagnostic Workflow
-          </p>
+                    <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+                      {programme.title}
+                    </h3>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Sample to susceptibility result.
-          </h2>
+                    <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--um-gold)]">
+                      {programme.subtitle}
+                    </p>
 
-          <div className="mt-14 grid gap-3 md:grid-cols-3 lg:grid-cols-6">
-            {workflow.map((step, index) => (
-              <div
-                key={step.number}
-                className="relative border border-[#DDD5CC] bg-white p-6"
-              >
-                <span className="text-xs font-semibold text-[#F2A900]">
-                  {step.number}
-                </span>
+                    <p className="mt-6 text-base leading-8 text-[var(--foreground-soft)]">
+                      {programme.description}
+                    </p>
 
-                <h3 className="mt-8 text-lg font-semibold">
-                  {step.title}
-                </h3>
+                    <ul className="mt-7 space-y-3">
+                      {programme.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex gap-3 text-sm leading-7 text-[var(--foreground-soft)]"
+                        >
+                          <span className="mt-[10px] h-2 w-2 flex-none rounded-full bg-[var(--um-blue)]" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                <p className="mt-3 text-xs leading-6 text-[#706963]">
-                  {step.text}
-                </p>
+                    <div className="mt-7 flex flex-wrap gap-2">
+                      {programme.metrics.map((metric) => (
+                        <span
+                          key={metric}
+                          className="rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-2 text-xs font-medium"
+                        >
+                          {metric}
+                        </span>
+                      ))}
+                    </div>
 
-                {index < workflow.length - 1 && (
-                  <span className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-xl text-[#385E9D] lg:block">
-                    →
-                  </span>
-                )}
-              </div>
+                    <a
+                      href={programme.publication}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-8 w-fit rounded-full bg-[var(--um-blue)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
+                    >
+                      Read publication →
+                    </a>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PROTOCOL IMAGE */}
-      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="border border-[#DDD5CC] bg-[#F7F3EC] p-5">
-            <img
-              src="/research/AMR/protocol-lab-on-chip-platform.jpg"
-              alt="Lab-on-chip bacterial detection protocol"
-              className="w-full object-contain"
-            />
-          </div>
+      {/* ===================================================== */}
+      {/* BACTERIA-ON-CHIP */}
+      {/* ===================================================== */}
 
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-              Platform Engineering
-            </p>
-
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-              Diagnostics built as integrated engineered systems.
-            </h2>
-
-            <p className="mt-7 text-base leading-8 text-[#706963]">
-              The underlying platform engineering combines electrode
-              fabrication, nanomaterial modification, laser-induced graphene
-              heating, microfluidic fabrication, bacterial culture, and
-              electrochemical measurement.
-            </p>
-
-            <p className="mt-5 text-base leading-8 text-[#706963]">
-              This modular approach allows individual components to evolve
-              while preserving a common lab-on-chip architecture for pathogen
-              detection and antimicrobial susceptibility testing.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CAPABILITIES */}
-      <section className="bg-[#4F2C1D] px-8 py-24 text-white md:px-16 md:py-32">
+      <section
+        id="bacteria-on-chip"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
+      >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
-            Research Capabilities
-          </p>
-
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            An end-to-end AMR diagnostic technology stack.
-          </h2>
-
-          <div className="mt-14 grid border border-white/15 md:grid-cols-2 lg:grid-cols-4">
-            {capabilities.map((item) => (
-              <div
-                key={item.title}
-                className="border-b border-white/15 p-7 md:border-r"
-              >
-                <h3 className="font-semibold text-[#F2A900]">
-                  {item.title}
-                </h3>
-
-                <p className="mt-3 text-sm leading-7 text-white/65">
-                  {item.text}
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Integrated Platform
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* VIDEO */}
-      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-                Research Demonstration
-              </p>
+                <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                  Bacteria-on-Chip integrates the diagnostic chain.
+                </h2>
 
-              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                See the platform in operation.
-              </h2>
+                <p className="mt-7 text-base leading-8 text-[var(--foreground-soft)]">
+                  The portable system integrates pathogen-selective
+                  immunosensing, multiplexed electrochemistry, microfluidic
+                  reservoirs, thermal incubation, multichannel potentiostat
+                  electronics, a swappable sensing cartridge, and a connected
+                  graphical user interface.
+                </p>
 
-              <p className="mt-7 text-base leading-8 text-[#706963]">
-                The demonstration highlights the integration of microfluidics,
-                bacterial culture, electrochemical detection, thermal
-                management, and portable instrumentation.
-              </p>
+                <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                  {[
+                    ["30 min", "Pathogen detection"],
+                    ["5 h", "Antibiotic susceptibility testing"],
+                    ["4", "Antibiotics tested simultaneously"],
+                    ["BLE", "Connected user interface"],
+                  ].map(([value, label]) => (
+                    <div
+                      key={label}
+                      className="border border-[var(--border)] bg-[var(--surface)] p-6"
+                    >
+                      <p className="text-3xl font-semibold text-[var(--um-blue)]">
+                        {value}
+                      </p>
 
-              <a
-                href="https://www.youtube.com/watch?v=lIjwN9cSS4s"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex rounded-full bg-[#385E9D] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#4F2C1D]"
-              >
-                Watch on YouTube →
-              </a>
-            </div>
-
-            <div className="aspect-video overflow-hidden border border-[#DDD5CC] bg-black">
-              <iframe
-                src="https://www.youtube.com/embed/lIjwN9cSS4s"
-                title="AMR and bacteria-on-chip research demonstration"
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PUBLICATIONS */}
-      <section className="bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-                Selected Publications
-              </p>
-
-              <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-                Research underpinning the AMR diagnostic programme.
-              </h2>
-            </div>
-
-            <Link
-              href="/publications"
-              className="w-fit text-sm font-semibold text-[#385E9D]"
-            >
-              View all publications →
-            </Link>
-          </div>
-
-          <div className="mt-14 divide-y divide-[#DDD5CC] border-y border-[#DDD5CC]">
-            {publications.map((paper) => (
-              <article
-                key={paper.number}
-                className="grid gap-7 py-9 md:grid-cols-[0.12fr_1fr_auto] md:items-center"
-              >
-                <div>
-                  <span className="text-sm font-semibold text-[#F2A900]">
-                    {paper.number}
-                  </span>
-                </div>
-
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#385E9D]">
-                    {paper.journal} · {paper.year}
-                  </p>
-
-                  <h3 className="mt-3 max-w-4xl text-xl font-semibold leading-8">
-                    {paper.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-6 text-[#706963]">
-                    {paper.authors}
-                  </p>
-
-                  <p className="mt-1 text-xs text-[#8A8179]">
-                    DOI: {paper.doi}
-                  </p>
+                      <p className="mt-2 text-sm text-[var(--foreground-soft)]">
+                        {label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
 
                 <a
-                  href={paper.href}
+                  href="https://doi.org/10.1039/D6SD00063K"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-fit rounded-full border border-[#385E9D] px-5 py-2.5 text-xs font-semibold text-[#385E9D] transition hover:bg-[#385E9D] hover:text-white"
+                  className="mt-8 inline-flex rounded-full bg-[var(--um-blue)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
                 >
-                  View paper →
+                  Read Bacteria-on-Chip paper →
                 </a>
-              </article>
+              </div>
+
+              <div className="relative min-h-[560px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)]">
+                <Image
+                  src="/research/AMR/Bacteria-on-chip.png"
+                  alt="Portable Bacteria-on-Chip point-of-care diagnostic platform"
+                  fill
+                  className="object-contain p-6"
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* WORKFLOW */}
+      {/* ===================================================== */}
+
+      <section
+        id="workflow"
+        className="scroll-mt-40 bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Diagnostic Workflow
+            </p>
+
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Sample to susceptibility result.
+            </h2>
+
+            <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+              The workflow connects bacterial detection with controlled
+              incubation, antibiotic exposure, electrochemical monitoring, and
+              portable interpretation.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-3 md:grid-cols-3 lg:grid-cols-6">
+            {workflow.map((step, index) => (
+              <Reveal key={step.number} delay={index * 60}>
+                <div className="relative h-full border border-[var(--border)] bg-[var(--surface)] p-6">
+                  <span className="text-xs font-semibold text-[var(--um-gold)]">
+                    {step.number}
+                  </span>
+
+                  <h3 className="mt-8 text-lg font-semibold">
+                    {step.title}
+                  </h3>
+
+                  <p className="mt-3 text-xs leading-6 text-[var(--foreground-soft)]">
+                    {step.text}
+                  </p>
+
+                  {index < workflow.length - 1 && (
+                    <span className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-xl text-[var(--um-blue)] lg:block">
+                      →
+                    </span>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={300}>
+            <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div className="relative min-h-[500px] overflow-hidden border border-[var(--border)] bg-[var(--surface)]">
+                <Image
+                  src="/research/AMR/protocol-lab-on-chip-platform.jpg"
+                  alt="Lab-on-chip bacterial detection protocol"
+                  fill
+                  className="object-contain p-6"
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                />
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
+                  Platform Engineering
+                </p>
+
+                <h3 className="mt-5 text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
+                  Diagnostics built as integrated engineered systems.
+                </h3>
+
+                <p className="mt-7 text-base leading-8 text-[var(--foreground-soft)]">
+                  The underlying platform combines electrode fabrication,
+                  nanomaterial modification, laser-induced graphene heating,
+                  microfluidic fabrication, bacterial culture, and
+                  electrochemical measurement.
+                </p>
+
+                <p className="mt-5 text-base leading-8 text-[var(--foreground-muted)]">
+                  This modular architecture allows individual components to
+                  evolve while preserving a common lab-on-chip framework for
+                  pathogen detection and antimicrobial susceptibility testing.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* CAPABILITIES */}
+      {/* ===================================================== */}
+
+      <section
+        id="capabilities"
+        className="scroll-mt-40 bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.65fr_1.35fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-gold)]">
+                  Research Capabilities
+                </p>
+              </div>
+
+              <div>
+                <h2 className="max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  An end-to-end AMR diagnostic technology stack.
+                </h2>
+
+                <p className="mt-7 max-w-3xl text-base leading-8 text-white/75">
+                  Individual technologies are designed to work together as part
+                  of an integrated diagnostic system rather than as isolated
+                  sensing components.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="mt-16 grid gap-px overflow-hidden bg-white/15 md:grid-cols-2 lg:grid-cols-4">
+            {capabilities.map((item, index) => (
+              <Reveal key={item.title} delay={index * 50}>
+                <div className="h-full bg-[var(--section-blue)] p-7">
+                  <p className="text-xs font-semibold text-[var(--um-gold)]">
+                    {item.number}
+                  </p>
+
+                  <h3 className="mt-5 text-lg font-semibold">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-7 text-white/70">
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FUTURE AT SENSYS */}
-      <section className="bg-[#F2A900] px-8 py-24 text-[#2A1710] md:px-16 md:py-28">
+      {/* ===================================================== */}
+      {/* APPLICATIONS */}
+      {/* ===================================================== */}
+
+      <section
+        id="applications"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-28"
+      >
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#4F2C1D]/70">
-                Intelligent Diagnostics at SenSys
-              </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Applications
+            </p>
 
-              <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.04em] md:text-7xl">
-                Toward rapid sample-to-answer AMR diagnostics.
-              </h2>
-            </div>
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Rapid bacterial diagnostics across multiple settings.
+            </h2>
+          </Reveal>
 
-            <div>
-              <p className="text-lg leading-8 text-[#4F2C1D]/85">
-                At SenSys, this foundation will support next-generation
-                pathogen and antimicrobial-resistance platforms integrating
-                microfluidic sample handling, multiplexed biosensing,
-                controlled incubation, rapid AST, portable instrumentation,
-                connected interfaces, and intelligent data interpretation.
-              </p>
+          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {applications.map((application, index) => (
+              <Reveal key={application.title} delay={index * 80}>
+                <div className="h-full border border-[var(--border)] bg-[var(--surface)] p-7 transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]">
+                  <p className="text-xs font-semibold text-[var(--um-gold)]">
+                    0{index + 1}
+                  </p>
 
-              <p className="mt-5 text-base leading-7 text-[#4F2C1D]/80">
-                The longer-term goal is to move from individual sensing
-                functions toward integrated point-of-care systems capable of
-                supporting timely and evidence-based antimicrobial decisions.
-              </p>
+                  <h3 className="mt-5 text-xl font-semibold">
+                    {application.title}
+                  </h3>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/research"
-                  className="rounded-full bg-[#4F2C1D] px-7 py-3.5 text-sm font-semibold text-white"
+                  <p className="mt-4 text-sm leading-7 text-[var(--foreground-soft)]">
+                    {application.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* VIDEO */}
+      {/* ===================================================== */}
+
+      <section className="bg-[#17263D] px-8 py-24 text-white md:px-16 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
+                  Research Demonstration
+                </p>
+
+                <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                  See the platform in operation.
+                </h2>
+
+                <p className="mt-7 text-base leading-8 text-white/70">
+                  The demonstration highlights the integration of microfluidics,
+                  bacterial culture, electrochemical detection, thermal
+                  management, and portable instrumentation.
+                </p>
+
+                <a
+                  href="https://www.youtube.com/watch?v=lIjwN9cSS4s"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 inline-flex rounded-full bg-[#F2A900] px-6 py-3 text-sm font-semibold text-[#2A1710] transition hover:bg-white"
                 >
-                  SenSys Research →
-                </Link>
+                  Watch on YouTube →
+                </a>
+              </div>
 
-                <Link
-                  href="/join"
-                  className="rounded-full border border-[#4F2C1D] px-7 py-3.5 text-sm font-semibold"
-                >
-                  Join SenSys →
-                </Link>
+              <div className="aspect-video overflow-hidden border border-white/15 bg-black">
+                <iframe
+                  src="https://www.youtube.com/embed/lIjwN9cSS4s"
+                  title="AMR and bacteria-on-chip research demonstration"
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
               </div>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* SELECTED PUBLICATIONS */}
+      {/* ===================================================== */}
+
+      <section
+        id="publications"
+        className="scroll-mt-40 bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Selected Publications
+                </p>
+
+                <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  Research underpinning the AMR diagnostic programme.
+                </h2>
+              </div>
+
+              <Link
+                href="/publications"
+                className="w-fit rounded-full border border-[var(--um-blue)] px-6 py-3 text-sm font-semibold text-[var(--um-blue)] transition hover:bg-[var(--um-blue)] hover:text-white"
+              >
+                View all publications →
+              </Link>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 divide-y divide-[var(--border)] border-y border-[var(--border)]">
+            {publications.map((paper, index) => (
+              <Reveal key={paper.number} delay={index * 60}>
+                <article className="grid gap-7 py-9 md:grid-cols-[70px_1fr_auto] md:items-center">
+                  <span className="text-sm font-semibold text-[var(--um-gold)]">
+                    {paper.number}
+                  </span>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-[var(--um-blue)]">
+                      {paper.journal} · {paper.year}
+                    </p>
+
+                    <h3 className="mt-3 max-w-4xl text-xl font-semibold leading-8">
+                      {paper.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-6 text-[var(--foreground-soft)]">
+                      {paper.authors}
+                    </p>
+
+                    <p className="mt-1 text-xs text-[var(--foreground-muted)]">
+                      DOI · {paper.doi}
+                    </p>
+                  </div>
+
+                  <a
+                    href={paper.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-fit rounded-full border border-[var(--border-strong)] px-5 py-2.5 text-xs font-semibold text-[var(--um-blue)] transition hover:border-[var(--um-blue)] hover:bg-[var(--um-blue)] hover:text-white"
+                  >
+                    View paper →
+                  </a>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={300}>
+            <div className="mt-10 flex justify-center">
+              <Link
+                href="/publications"
+                className="rounded-full bg-[var(--um-blue)] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
+              >
+                View all publications →
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* FUTURE DIRECTION */}
+      {/* ===================================================== */}
+
+      <section className="bg-[var(--um-gold)] px-8 py-24 text-[#2A1710] md:px-16 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#4F2C1D]/70">
+                  Intelligent Diagnostics at SenSys
+                </p>
+
+                <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.04em] md:text-7xl">
+                  Toward rapid sample-to-answer AMR diagnostics.
+                </h2>
+              </div>
+
+              <div>
+                <p className="text-lg leading-8 text-[#4F2C1D]/85">
+                  This technology foundation supports next-generation pathogen
+                  and antimicrobial-resistance platforms integrating
+                  microfluidic sample handling, multiplexed biosensing,
+                  controlled incubation, rapid AST, portable instrumentation,
+                  connected interfaces, and intelligent data interpretation.
+                </p>
+
+                <p className="mt-5 text-base leading-7 text-[#4F2C1D]/80">
+                  The longer-term direction is to move from individual sensing
+                  functions toward integrated point-of-care systems capable of
+                  supporting timely and evidence-based antimicrobial decisions.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/research"
+                    className="rounded-full bg-[#2A1710] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#385E9D]"
+                  >
+                    SenSys Research →
+                  </Link>
+
+                  <Link
+                    href="/join"
+                    className="rounded-full border border-[#2A1710] px-7 py-3.5 text-sm font-semibold transition hover:bg-[#2A1710] hover:text-white"
+                  >
+                    Join SenSys →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* EXPLORE NEXT */}
+      {/* ===================================================== */}
+
+      <section
+        id="explore-next"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Explore Next
+                </p>
+
+                <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  Connected research foundations.
+                </h2>
+              </div>
+
+              <Link
+                href="/research"
+                className="text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
+              >
+                All research →
+              </Link>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {exploreNext.map((item, index) => (
+              <Reveal key={item.title} delay={index * 90}>
+                <Link
+                  href={item.href}
+                  className="group block h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-medium)]"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[var(--surface-soft)]">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-contain p-5 transition duration-700 group-hover:scale-[1.04]"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                    />
+
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#17263D]/35 to-transparent" />
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-2xl font-semibold">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-7 text-[var(--foreground-soft)]">
+                      {item.description}
+                    </p>
+
+                    <p className="mt-6 text-xs font-semibold text-[var(--um-blue)]">
+                      Explore research →
+                    </p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

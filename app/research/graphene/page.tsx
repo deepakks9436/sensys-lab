@@ -1,12 +1,35 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import Reveal from "../../../components/Reveal";
+
+/* ============================================================
+   PUBLICATION SEARCH HELPER
+============================================================ */
 
 const scholar = (title: string) =>
   `https://scholar.google.com/scholar?q=${encodeURIComponent(`"${title}"`)}`;
 
-const materials = [
+/* ============================================================
+   SHARED CARD TYPE
+============================================================ */
+
+type ResearchItem = {
+  image: string;
+  tag: string;
+  title: string;
+  description: string;
+  meta: string;
+  paper: string;
+};
+
+/* ============================================================
+   MATERIALS & FABRICATION
+============================================================ */
+
+const materials: ResearchItem[] = [
   {
     image: "/research/graphene/papertronic-lig.gif",
     tag: "Paper Graphenisation",
@@ -71,7 +94,11 @@ const materials = [
   },
 ];
 
-const flagship = [
+/* ============================================================
+   FLAGSHIP TECHNOLOGIES
+============================================================ */
+
+const flagship: ResearchItem[] = [
   {
     image: "/research/graphene/myoglobin-bioresistor.jpg",
     tag: "Cardiac Diagnostics",
@@ -95,7 +122,7 @@ const flagship = [
     tag: "Neurochemical Sensing",
     title: "MXene–LIG Dopamine Detection",
     description:
-      "An integrated microfluidic device combines MXene-enhanced LIG electrodes with electrochemical dopamine analysis.",
+      "An integrated microfluidic device combines MXene-enhanced laser-induced graphene electrodes with electrochemical dopamine analysis.",
     meta: "Integrated microfluidic biosensor",
     paper: scholar(
       "Integrated Microfluidic Device With MXene Enhanced Laser-Induced Graphene Bioelectrode for Sensitive and Selective Electroanalytical Detection of Dopamine"
@@ -112,7 +139,11 @@ const flagship = [
   },
 ];
 
-const healthcare = [
+/* ============================================================
+   HEALTHCARE
+============================================================ */
+
+const healthcare: ResearchItem[] = [
   {
     image: "/research/graphene/urea-biosensor.jpg",
     tag: "Renal Health",
@@ -155,7 +186,11 @@ const healthcare = [
   },
 ];
 
-const environment = [
+/* ============================================================
+   ENVIRONMENTAL
+============================================================ */
+
+const environment: ResearchItem[] = [
   {
     image: "/research/graphene/fluoride-sensor.jpg",
     tag: "Water Quality",
@@ -189,7 +224,11 @@ const environment = [
   },
 ];
 
-const energy = [
+/* ============================================================
+   ENERGY
+============================================================ */
+
+const energy: ResearchItem[] = [
   {
     image: "/research/graphene/glucose-biofuel-cell.gif",
     tag: "Bioenergy",
@@ -212,7 +251,11 @@ const energy = [
   },
 ];
 
-const microfluidics = [
+/* ============================================================
+   MICROFLUIDICS
+============================================================ */
+
+const microfluidics: ResearchItem[] = [
   {
     image: "/research/graphene/mxene-lig-dopamine.jpg",
     tag: "Neurochemical Microfluidics",
@@ -257,78 +300,154 @@ const microfluidics = [
   },
 ];
 
+/* ============================================================
+   CAPABILITIES
+============================================================ */
+
 const capabilities = [
   {
+    number: "01",
     title: "Laser Fabrication",
     text: "CO₂ and blue-diode laser graphenisation, engraving, direct writing, and patterning.",
   },
   {
+    number: "02",
     title: "Flexible Substrates",
     text: "Polyimide, paper, cloth, glass, polymer films, and laminated supports.",
   },
   {
+    number: "03",
     title: "Surface Functionalization",
     text: "Enzymes, antibodies, polymers, metals, MXenes, metal oxides, and nanocarbon hybrids.",
   },
   {
+    number: "04",
     title: "Electrochemical Testing",
     text: "CV, DPV, EIS, chronoamperometry, potentiometry, GCD, and related electroanalytical methods.",
   },
   {
+    number: "05",
     title: "Microfluidic Integration",
     text: "PDMS channels, transfer layers, pumps, reservoirs, fluid handling, and local thermal control.",
   },
   {
+    number: "06",
     title: "Portable Electronics",
     text: "Compact potentiostats, embedded electronics, signal conditioning, smartphones, and connected acquisition.",
   },
   {
+    number: "07",
     title: "Material Characterization",
     text: "SEM, Raman, XPS, XRD, EDX, morphology, and electrical characterization.",
   },
   {
+    number: "08",
     title: "Application Validation",
     text: "Healthcare, water, environmental, wearable, microfluidic, and energy-device evaluation.",
   },
 ];
 
-function ResearchCard({
-  item,
-}: {
-  item: {
-    image: string;
-    tag: string;
-    title: string;
-    description: string;
-    meta: string;
-    paper: string;
-  };
-}) {
+/* ============================================================
+   RESEARCH CATEGORIES
+============================================================ */
+
+const categoryExplorer = [
+  {
+    number: "01",
+    title: "Materials & Fabrication",
+    description:
+      "Laser graphenisation, transfer processes, doping, green reduction, and hybrid interfaces.",
+    href: "#materials",
+  },
+  {
+    number: "02",
+    title: "Healthcare",
+    description:
+      "Point-of-care, wearable, cardiac, renal, respiratory, and metabolic sensing.",
+    href: "#healthcare",
+  },
+  {
+    number: "03",
+    title: "Environment",
+    description:
+      "Ion, nutrient, contaminant, and water-quality sensing interfaces.",
+    href: "#environment",
+  },
+  {
+    number: "04",
+    title: "Energy",
+    description:
+      "Graphene biofuel cells, flexible supercapacitors, and energy-enabled sensing.",
+    href: "#energy",
+  },
+  {
+    number: "05",
+    title: "Microfluidics",
+    description:
+      "Integrated electrodes, heaters, fluid handling, and portable analytical devices.",
+    href: "#microfluidics",
+  },
+];
+
+/* ============================================================
+   EXPLORE NEXT
+============================================================ */
+
+const exploreNext = [
+  {
+    title: "Pesticide Detection",
+    description:
+      "Portable optical, electrochemical, wearable, and microfluidic systems for residue screening.",
+    image: "/research/pesticide-detection/pestisafe-2.jpg",
+    href: "/research/pesticide-detection",
+  },
+  {
+    title: "Water Quality",
+    description:
+      "Connected electrochemical and ion-selective technologies for environmental analysis.",
+    image: "/research/water-quality/ion-selective-array.png",
+    href: "/research/water-quality",
+  },
+  {
+    title: "Pathogen & AMR",
+    description:
+      "Integrated microfluidic and electrochemical systems for bacterial detection and rapid AST.",
+    image: "/research/AMR/Bacteria-on-chip.png",
+    href: "/research/amr",
+  },
+];
+
+/* ============================================================
+   RESEARCH CARD
+============================================================ */
+
+function ResearchCard({ item }: { item: ResearchItem }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden border border-[#DDD5CC] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#F7F3EC]">
-        <img
+    <article className="group flex h-full flex-col overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-medium)]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-[var(--surface-soft)]">
+        <Image
           src={item.image}
           alt={item.title}
-          loading="lazy"
-          className="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-[1.025]"
+          fill
+          className="object-contain p-5 transition duration-700 group-hover:scale-[1.04]"
+          sizes="(max-width: 1024px) 100vw, 33vw"
         />
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#385E9D]">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
           {item.tag}
         </p>
 
-        <h3 className="mt-3 text-xl font-semibold leading-tight text-[#4F2C1D]">
+        <h3 className="mt-3 text-xl font-semibold leading-tight">
           {item.title}
         </h3>
 
-        <p className="mt-4 flex-1 text-sm leading-7 text-[#706963]">
+        <p className="mt-4 flex-1 text-sm leading-7 text-[var(--foreground-soft)]">
           {item.description}
         </p>
 
-        <p className="mt-5 border-t border-[#E8E1D9] pt-4 text-xs text-[#8A8179]">
+        <p className="mt-5 border-t border-[var(--border)] pt-4 text-xs text-[var(--foreground-muted)]">
           {item.meta}
         </p>
 
@@ -336,7 +455,7 @@ function ResearchCard({
           href={item.paper}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 text-sm font-semibold text-[#385E9D] transition hover:text-[#4F2C1D]"
+          className="mt-4 text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
         >
           View publication →
         </a>
@@ -345,558 +464,714 @@ function ResearchCard({
   );
 }
 
+/* ============================================================
+   PAGE
+============================================================ */
+
 export default function GraphenePage() {
   return (
-    <main className="min-h-screen bg-white text-[#4F2C1D]">
+    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
 
+      {/* ===================================================== */}
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#4F2C1D] px-8 py-24 text-white md:px-16 md:py-32">
-        <div className="absolute inset-0">
-          <img
-            src="/research/graphene/graphene-hero.jpg"
-            alt=""
-            className="h-full w-full object-cover opacity-28"
-          />
+      {/* ===================================================== */}
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2A1710] via-[#4F2C1D]/95 to-[#4F2C1D]/55" />
-        </div>
+      <section className="relative overflow-hidden bg-[#17263D] px-8 py-24 text-white md:px-16 md:py-32">
+        <Image
+          src="/research/graphene/graphene-hero.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-30"
+          sizes="100vw"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-[#101C2E] via-[#17263D]/95 to-[#385E9D]/45" />
+
+        <div className="absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-[#00A3E0]/15 blur-[130px]" />
 
         <div className="relative mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
-            Research Foundation · Advanced Materials
-          </p>
-
-          <h1 className="mt-6 max-w-6xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
-            Graphene
-            <br />
-            Technologies.
-          </h1>
-
-          <p className="mt-10 max-w-3xl text-xl leading-9 text-white/80">
-            Engineering graphene from material synthesis and laser processing
-            to flexible electronics, biosensors, microfluidics, environmental
-            monitoring, energy harvesting, and storage.
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            {[
-              "Laser-Induced Graphene",
-              "Reduced Graphene Oxide",
-              "Flexible Electronics",
-              "Biosensors",
-              "Microfluidics",
-              "Energy",
-            ].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs text-white/85"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#story"
-              className="rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710]"
-            >
-              Explore research →
-            </a>
-
-            <a
-              href="#flagship"
-              className="rounded-full border border-white/35 px-7 py-3.5 text-sm font-semibold text-white"
-            >
-              Flagship technologies
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* PROVENANCE */}
-      <section className="bg-[#FFF9EC] px-8 py-7 md:px-16">
-        <div className="mx-auto max-w-7xl border-l-2 border-[#F2A900] pl-5">
-          <p className="max-w-5xl text-sm leading-7 text-[#706963]">
-            The work presented on this page reflects prior research led by
-            Prof. Sanket Goel and collaborators and is showcased as part of the
-            scientific and technological foundation informing future SenSys
-            research at the University of Manitoba.
-          </p>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="bg-white px-8 py-12 md:px-16">
-        <div className="mx-auto grid max-w-7xl border border-[#DDD5CC] md:grid-cols-4">
-          {[
-            ["30+", "Graphene-related research works"],
-            ["15+", "Graphene-enabled device concepts"],
-            ["8", "Application domains"],
-            ["6+", "Material & hybrid platforms"],
-          ].map(([value, label], index) => (
-            <div
-              key={label}
-              className={`p-7 text-center ${
-                index < 3
-                  ? "border-b border-[#DDD5CC] md:border-b-0 md:border-r"
-                  : ""
-              }`}
-            >
-              <p className="text-4xl font-semibold text-[#F2A900]">
-                {value}
-              </p>
-
-              <p className="mt-2 text-xs leading-5 text-[#706963]">
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PAGE NAV */}
-      <section className="sticky top-[72px] z-30 border-y border-[#E2DBD3] bg-white/95 px-4 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto py-3 text-xs font-medium">
-          {[
-            ["Story", "#story"],
-            ["Evolution", "#evolution"],
-            ["Materials", "#materials"],
-            ["Flagship", "#flagship"],
-            ["Healthcare", "#healthcare"],
-            ["Environment", "#environment"],
-            ["Energy", "#energy"],
-            ["Microfluidics", "#microfluidics"],
-            ["Capabilities", "#capabilities"],
-            ["Publications", "#publications"],
-          ].map(([label, href]) => (
-            <a
-              key={href}
-              href={href}
-              className="flex-none rounded-full px-4 py-2 text-[#4F2C1D] transition hover:bg-[#385E9D] hover:text-white"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* STORY */}
-      <section
-        id="story"
-        className="scroll-mt-36 bg-white px-8 py-24 md:px-16 md:py-32"
-      >
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="relative min-h-[500px] overflow-hidden border border-[#DDD5CC] bg-[#F7F3EC]">
-            <img
-              src="/research/graphene/graphene-portfolio.jpg"
-              alt="Graphene research portfolio"
-              className="absolute inset-0 h-full w-full object-contain p-6"
-            />
-
-            <div className="absolute bottom-5 left-5 right-5 bg-[#4F2C1D]/90 p-4 text-sm font-medium text-white">
-              Material engineering → Device fabrication → Application
-              validation
-            </div>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-              Research Story
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
+              Research Foundation · Advanced Materials
             </p>
 
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-              Beyond graphene as an electrode.
-            </h2>
+            <h1 className="mt-6 max-w-6xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
+              Graphene
+              <br />
+              Technologies.
+            </h1>
 
-            <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
-              The research programme treats graphene not simply as a material,
-              but as a scalable fabrication and integration platform. Material
-              composition, substrate, laser parameters, surface chemistry, and
-              device architecture are engineered according to the intended
-              sensing, microfluidic, wearable, or energy function.
+            <p className="mt-10 max-w-3xl text-lg leading-9 text-white/80 md:text-xl">
+              Engineering graphene from material synthesis and laser processing
+              to flexible electronics, biosensors, microfluidics,
+              environmental monitoring, energy harvesting, and storage.
             </p>
 
-            <div className="mt-9 space-y-6">
+            <div className="mt-9 flex flex-wrap gap-2">
               {[
-                [
-                  "01",
-                  "Engineer the material",
-                  "Laser-induced graphene, reduced graphene oxide, doped graphene, nanocarbon hybrids, and functional composites.",
-                ],
-                [
-                  "02",
-                  "Build the device",
-                  "Sensors, bioresistors, flexible electrodes, microfluidic platforms, heaters, fuel cells, and supercapacitors.",
-                ],
-                [
-                  "03",
-                  "Integrate the system",
-                  "Fluid handling, electronics, portable readout, smartphone interfaces, and intelligent data interpretation.",
-                ],
-                [
-                  "04",
-                  "Validate the application",
-                  "Healthcare, water, environmental monitoring, wearables, microfluidics, and energy technologies.",
-                ],
-              ].map(([number, title, text]) => (
-                <div key={number} className="grid grid-cols-[48px_1fr] gap-5">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#385E9D] text-xs font-semibold text-white">
-                    {number}
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">{title}</h3>
-
-                    <p className="mt-1 text-sm leading-7 text-[#706963]">
-                      {text}
-                    </p>
-                  </div>
-                </div>
+                "Laser-Induced Graphene",
+                "Reduced Graphene Oxide",
+                "Flexible Electronics",
+                "Biosensors",
+                "Microfluidics",
+                "Energy",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs text-white/85 backdrop-blur-sm"
+                >
+                  {tag}
+                </span>
               ))}
             </div>
-          </div>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#overview"
+                className="rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-white"
+              >
+                Explore research →
+              </a>
+
+              <a
+                href="#flagship"
+                className="rounded-full border border-white/35 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-[#385E9D]"
+              >
+                Flagship technologies →
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* EVOLUTION */}
+      {/* ===================================================== */}
+      {/* STICKY NAV */}
+      {/* ===================================================== */}
+
+      <nav className="sticky top-[72px] z-30 border-b border-[var(--border)] bg-[var(--surface)]/95 backdrop-blur-xl">
+        <div className="mx-auto max-w-7xl overflow-x-auto px-8 md:px-16">
+          <div className="flex min-w-max items-center gap-8 py-4">
+            {[
+              ["Overview", "#overview"],
+              ["Materials", "#materials"],
+              ["Flagship", "#flagship"],
+              ["Healthcare", "#healthcare"],
+              ["Environment", "#environment"],
+              ["Energy", "#energy"],
+              ["Microfluidics", "#microfluidics"],
+              ["Capabilities", "#capabilities"],
+              ["Publications", "#publications"],
+              ["Explore Next", "#explore-next"],
+            ].map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                className="text-xs font-semibold text-[var(--foreground-muted)] transition hover:text-[var(--um-blue)]"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      {/* ===================================================== */}
+      {/* OVERVIEW */}
+      {/* ===================================================== */}
+
       <section
-        id="evolution"
-        className="scroll-mt-36 bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32"
+        id="overview"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Research Evolution
-          </p>
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Research Overview
+                </p>
+              </div>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            From graphenised substrates to integrated systems.
-          </h2>
+              <div>
+                <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                  Beyond graphene as an electrode.
+                </h2>
 
-          <div className="mt-14 grid gap-3 md:grid-cols-3 lg:grid-cols-6">
-            {[
-              [
-                "01",
-                "Paper & polymer graphenisation",
-                "Direct formation of conductive carbon on carbon-rich substrates.",
-              ],
-              [
-                "02",
-                "Laser-induced graphene",
-                "Mask-free writing of electrodes and conductive structures.",
-              ],
-              [
-                "03",
-                "Flexible electronics",
-                "Devices on paper, cloth, polymers, glass, and flexible layers.",
-              ],
-              [
-                "04",
-                "Microfluidic integration",
-                "Channels, pumps, heaters, electrodes, and portable readers.",
-              ],
-              [
-                "05",
-                "Diagnostics",
-                "Cardiac, renal, respiratory, and metabolic sensing platforms.",
-              ],
-              [
-                "06",
-                "Energy systems",
-                "Biofuel cells, supercapacitors, and flexible storage.",
-              ],
-            ].map(([number, title, text], index) => (
-              <div
-                key={number}
-                className="relative border border-[#DDD5CC] bg-white p-6"
-              >
-                <span className="text-xs font-semibold text-[#F2A900]">
-                  Stage {number}
-                </span>
-
-                <h3 className="mt-8 text-base font-semibold leading-6">
-                  {title}
-                </h3>
-
-                <p className="mt-3 text-xs leading-6 text-[#706963]">
-                  {text}
+                <p className="mt-8 max-w-3xl text-lg leading-9 text-[var(--foreground-soft)]">
+                  The graphene portfolio treats the material as a fabrication
+                  and integration platform rather than simply a conductive
+                  electrode.
                 </p>
 
-                {index < 5 && (
-                  <span className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-xl text-[#385E9D] lg:block">
-                    →
-                  </span>
-                )}
+                <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--foreground-muted)]">
+                  Material composition, substrate, laser parameters, surface
+                  chemistry, transfer methods, and device architecture are
+                  engineered according to the intended sensing, microfluidic,
+                  wearable, energy, or environmental function.
+                </p>
               </div>
+            </div>
+          </Reveal>
+
+          {/* PORTFOLIO METRICS */}
+
+          <div className="mt-16 grid gap-px overflow-hidden border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
+            {[
+              ["30+", "Graphene-Related Research Works"],
+              ["15+", "Device Concepts"],
+              ["8", "Application Domains"],
+              ["6+", "Material & Hybrid Platforms"],
+            ].map(([value, label], index) => (
+              <Reveal key={label} delay={index * 70}>
+                <div className="h-full bg-[var(--surface)] p-7">
+                  <p className="text-3xl font-semibold text-[var(--um-gold)]">
+                    {value}
+                  </p>
+
+                  <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
+                    {label}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* MATERIAL → SYSTEM STORY */}
+
+          <Reveal delay={220}>
+            <div className="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div className="relative min-h-[520px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)]">
+                <Image
+                  src="/research/graphene/graphene-portfolio.jpg"
+                  alt="Graphene research portfolio"
+                  fill
+                  className="object-contain p-6"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+
+                <div className="absolute inset-x-5 bottom-5 bg-[#17263D]/90 p-4 text-sm font-medium text-white backdrop-blur-sm">
+                  Material engineering → Device fabrication → System
+                  integration → Application
+                </div>
+              </div>
+
+              <div className="space-y-7">
+                {[
+                  [
+                    "01",
+                    "Engineer the material",
+                    "Laser-induced graphene, reduced graphene oxide, doped graphene, nanocarbon hybrids, and functional composites.",
+                  ],
+                  [
+                    "02",
+                    "Build the device",
+                    "Sensors, bioresistors, flexible electrodes, microfluidic platforms, heaters, fuel cells, and supercapacitors.",
+                  ],
+                  [
+                    "03",
+                    "Integrate the system",
+                    "Fluid handling, electronics, portable readout, smartphone interfaces, and intelligent data interpretation.",
+                  ],
+                  [
+                    "04",
+                    "Validate the application",
+                    "Healthcare, water, environmental monitoring, wearables, microfluidics, and energy technologies.",
+                  ],
+                ].map(([number, title, text]) => (
+                  <div
+                    key={number}
+                    className="grid grid-cols-[50px_1fr] gap-5"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--um-blue)] text-xs font-semibold text-white">
+                      {number}
+                    </div>
+
+                    <div>
+                      <h3 className="font-semibold">
+                        {title}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-7 text-[var(--foreground-soft)]">
+                        {text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* CATEGORY EXPLORER */}
+      {/* ===================================================== */}
+
+      <section className="bg-[var(--surface-soft)] px-8 py-20 md:px-16">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Explore the Portfolio
+            </p>
+
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
+              One material platform across multiple technology domains.
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {categoryExplorer.map((category, index) => (
+              <Reveal key={category.title} delay={index * 60}>
+                <a
+                  href={category.href}
+                  className="group block h-full border border-[var(--border)] bg-[var(--surface)] p-6 transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]"
+                >
+                  <p className="text-xs font-semibold text-[var(--um-gold)]">
+                    {category.number}
+                  </p>
+
+                  <h3 className="mt-5 text-lg font-semibold">
+                    {category.title}
+                  </h3>
+
+                  <p className="mt-4 text-xs leading-6 text-[var(--foreground-soft)]">
+                    {category.description}
+                  </p>
+
+                  <p className="mt-6 text-xs font-semibold text-[var(--um-blue)]">
+                    Explore →
+                  </p>
+                </a>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* MATERIALS */}
+      {/* ===================================================== */}
+
       <section
         id="materials"
-        className="scroll-mt-36 bg-white px-8 py-24 md:px-16 md:py-32"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Materials & Fabrication
-          </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Materials & Fabrication
+            </p>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Graphene engineered for specific device functions.
-          </h2>
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Graphene engineered for specific device functions.
+            </h2>
+
+            <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+              Laser processing, substrate engineering, doping, transfer,
+              reduction, and hybridization enable graphene structures with
+              different electrical, mechanical, chemical, and catalytic
+              properties.
+            </p>
+          </Reveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {materials.map((item) => (
-              <ResearchCard key={item.title} item={item} />
+            {materials.map((item, index) => (
+              <Reveal key={item.title} delay={index * 60}>
+                <ResearchCard item={item} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* FLAGSHIP */}
+      {/* ===================================================== */}
+
       <section
         id="flagship"
-        className="scroll-mt-36 bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32"
+        className="scroll-mt-40 bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Flagship Technologies
-          </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Flagship Technologies
+            </p>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Representative transitions from material to technology.
-          </h2>
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Representative transitions from material to technology.
+            </h2>
+          </Reveal>
 
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            {flagship.map((item) => (
-              <ResearchCard key={item.title} item={item} />
+            {flagship.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70}>
+                <ResearchCard item={item} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* HEALTHCARE */}
+      {/* ===================================================== */}
+
       <section
         id="healthcare"
-        className="scroll-mt-36 bg-white px-8 py-24 md:px-16 md:py-32"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Healthcare
-          </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Healthcare
+            </p>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Graphene-enabled point-of-care and wearable diagnostics.
-          </h2>
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Graphene-enabled point-of-care and wearable diagnostics.
+            </h2>
+          </Reveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {healthcare.map((item) => (
-              <ResearchCard key={item.title} item={item} />
+            {healthcare.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70}>
+                <ResearchCard item={item} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* ENVIRONMENT */}
+      {/* ===================================================== */}
+
       <section
         id="environment"
-        className="scroll-mt-36 bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32"
+        className="scroll-mt-40 bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Environmental & Chemical Monitoring
-          </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Environmental & Chemical Monitoring
+            </p>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Functional interfaces for ions, nutrients, and contaminants.
-          </h2>
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Functional interfaces for ions, nutrients, and contaminants.
+            </h2>
+          </Reveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {environment.map((item) => (
-              <ResearchCard key={item.title} item={item} />
+            {environment.map((item, index) => (
+              <Reveal key={item.title} delay={index * 80}>
+                <ResearchCard item={item} />
+              </Reveal>
             ))}
           </div>
 
-          <div className="mt-10">
-            <Link
-              href="/research/water-quality"
-              className="text-sm font-semibold text-[#385E9D]"
-            >
-              Explore Water Quality Technologies →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ENERGY */}
-      <section
-        id="energy"
-        className="scroll-mt-36 bg-white px-8 py-24 md:px-16 md:py-32"
-      >
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Energy Technologies
-          </p>
-
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Graphene for harvesting, storage, and self-powered systems.
-          </h2>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {energy.map((item) => (
-              <ResearchCard key={item.title} item={item} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* MICROFLUIDICS */}
-      <section
-        id="microfluidics"
-        className="scroll-mt-36 bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32"
-      >
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Microfluidics & Integration
-          </p>
-
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            Conductive structures integrated with microscale fluid handling.
-          </h2>
-
-          <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
-            Graphene electrodes and heaters can become functional components
-            of the microfluidic architecture rather than external accessories,
-            enabling sensing, thermal control, pumping integration, and
-            portable analytical systems.
-          </p>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {microfluidics.map((item) => (
-              <ResearchCard key={item.title} item={item} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CAPABILITIES */}
-      <section
-        id="capabilities"
-        className="scroll-mt-36 bg-[#4F2C1D] px-8 py-24 text-white md:px-16 md:py-32"
-      >
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
-            Research Capabilities
-          </p>
-
-          <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-            One materials platform. Multiple engineering competencies.
-          </h2>
-
-          <div className="mt-14 grid border border-white/15 md:grid-cols-2 lg:grid-cols-4">
-            {capabilities.map((item) => (
-              <div
-                key={item.title}
-                className="border-b border-white/15 p-7 md:border-r"
-              >
-                <h3 className="font-semibold text-[#F2A900]">
-                  {item.title}
-                </h3>
-
-                <p className="mt-3 text-sm leading-7 text-white/65">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PUBLICATIONS */}
-      <section
-        id="publications"
-        className="scroll-mt-36 bg-white px-8 py-24 md:px-16 md:py-32"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div className="border border-[#DDD5CC] bg-[#F7F3EC] p-5">
-              <img
-                src="/research/graphene/graphene-portfolio.jpg"
-                alt="Graphene research portfolio"
-                className="aspect-[4/3] w-full object-contain"
-              />
-            </div>
-
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-                Publications
-              </p>
-
-              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-                A broad graphene research portfolio.
-              </h2>
-
-              <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
-                The prior research portfolio extends across material
-                fabrication, flexible electronics, electrochemical and
-                resistive biosensors, microfluidic systems, healthcare,
-                environmental monitoring, energy harvesting, and energy
-                storage.
-              </p>
-
+          <Reveal delay={250}>
+            <div className="mt-10">
               <Link
-                href="/publications"
-                className="mt-8 inline-flex rounded-full bg-[#385E9D] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#4F2C1D]"
+                href="/research/water-quality"
+                className="text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
               >
-                Explore publications →
+                Explore Water Quality Technologies →
               </Link>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* ENERGY */}
+      {/* ===================================================== */}
+
+      <section
+        id="energy"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Energy Technologies
+            </p>
+
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Graphene for harvesting, storage, and self-powered systems.
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {energy.map((item, index) => (
+              <Reveal key={item.title} delay={index * 80}>
+                <ResearchCard item={item} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FUTURE AT SENSYS */}
-      <section className="bg-[#F2A900] px-8 py-24 text-[#2A1710] md:px-16 md:py-28">
+      {/* ===================================================== */}
+      {/* MICROFLUIDICS */}
+      {/* ===================================================== */}
+
+      <section
+        id="microfluidics"
+        className="scroll-mt-40 bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32"
+      >
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#4F2C1D]/70">
-                Graphene at SenSys
-              </p>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              Microfluidics & Integration
+            </p>
 
-              <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.04em] md:text-7xl">
-                From functional carbon to intelligent integrated systems.
-              </h2>
+            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              Conductive structures integrated with microscale fluid handling.
+            </h2>
+
+            <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+              Graphene electrodes and heaters can become functional elements
+              within the microfluidic architecture itself, enabling sensing,
+              thermal control, pumping integration, and portable analytical
+              systems.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {microfluidics.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70}>
+                <ResearchCard item={item} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* CAPABILITIES */}
+      {/* ===================================================== */}
+
+      <section
+        id="capabilities"
+        className="scroll-mt-40 bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.65fr_1.35fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-gold)]">
+                  Research Capabilities
+                </p>
+              </div>
+
+              <div>
+                <h2 className="max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  One materials platform.
+                  <br />
+                  Multiple engineering competencies.
+                </h2>
+
+                <p className="mt-7 max-w-3xl text-base leading-8 text-white/75">
+                  The graphene portfolio spans the complete pipeline from
+                  fabrication and characterization to device integration,
+                  portable instrumentation, and application-level validation.
+                </p>
+              </div>
             </div>
+          </Reveal>
 
-            <div>
-              <p className="text-lg leading-8 text-[#4F2C1D]/85">
-                At SenSys, this materials-to-device foundation will support new
-                work in integrated microsystems, flexible and wearable devices,
-                lab-on-chip technologies, environmental sensing, intelligent
-                diagnostics, and next-generation energy-enabled sensing
-                systems.
-              </p>
+          <div className="mt-16 grid gap-px overflow-hidden bg-white/15 md:grid-cols-2 lg:grid-cols-4">
+            {capabilities.map((item, index) => (
+              <Reveal key={item.title} delay={index * 50}>
+                <div className="h-full bg-[var(--section-blue)] p-7">
+                  <p className="text-xs font-semibold text-[var(--um-gold)]">
+                    {item.number}
+                  </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+                  <h3 className="mt-5 text-lg font-semibold">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-7 text-white/70">
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* PUBLICATIONS */}
+      {/* ===================================================== */}
+
+      <section
+        id="publications"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div className="relative aspect-[4/3] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)]">
+                <Image
+                  src="/research/graphene/graphene-portfolio.jpg"
+                  alt="Graphene research portfolio"
+                  fill
+                  className="object-contain p-6"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Publications
+                </p>
+
+                <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  A broad graphene research portfolio.
+                </h2>
+
+                <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+                  The publication portfolio extends across material
+                  fabrication, flexible electronics, electrochemical and
+                  resistive biosensors, microfluidic systems, healthcare,
+                  environmental monitoring, energy harvesting, and energy
+                  storage.
+                </p>
+
+                <p className="mt-5 max-w-3xl text-sm leading-7 text-[var(--foreground-muted)]">
+                  Individual technology cards above link directly to their
+                  associated publications. The complete publication archive
+                  provides the broader research record.
+                </p>
+
                 <Link
-                  href="/research"
-                  className="rounded-full bg-[#4F2C1D] px-7 py-3.5 text-sm font-semibold text-white"
+                  href="/publications"
+                  className="mt-8 inline-flex rounded-full bg-[var(--um-blue)] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
                 >
-                  SenSys Research →
-                </Link>
-
-                <Link
-                  href="/join"
-                  className="rounded-full border border-[#4F2C1D] px-7 py-3.5 text-sm font-semibold"
-                >
-                  Join SenSys →
+                  View all publications →
                 </Link>
               </div>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* FUTURE DIRECTION */}
+      {/* ===================================================== */}
+
+      <section className="bg-[var(--um-gold)] px-8 py-24 text-[#2A1710] md:px-16 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#4F2C1D]/70">
+                  Graphene at SenSys
+                </p>
+
+                <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.04em] md:text-7xl">
+                  From functional carbon to intelligent integrated systems.
+                </h2>
+              </div>
+
+              <div>
+                <p className="text-lg leading-8 text-[#4F2C1D]/85">
+                  This materials-to-device foundation supports future work in
+                  integrated microsystems, flexible and wearable devices,
+                  lab-on-chip technologies, environmental sensing, intelligent
+                  diagnostics, and energy-enabled sensing systems.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/research"
+                    className="rounded-full bg-[#2A1710] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#385E9D]"
+                  >
+                    SenSys Research →
+                  </Link>
+
+                  <Link
+                    href="/join"
+                    className="rounded-full border border-[#2A1710] px-7 py-3.5 text-sm font-semibold transition hover:bg-[#2A1710] hover:text-white"
+                  >
+                    Join SenSys →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* EXPLORE NEXT */}
+      {/* ===================================================== */}
+
+      <section
+        id="explore-next"
+        className="scroll-mt-40 bg-[var(--background)] px-8 py-24 md:px-16 md:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Explore Next
+                </p>
+
+                <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  Connected research foundations.
+                </h2>
+              </div>
+
+              <Link
+                href="/research"
+                className="text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
+              >
+                All research →
+              </Link>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {exploreNext.map((item, index) => (
+              <Reveal key={item.title} delay={index * 90}>
+                <Link
+                  href={item.href}
+                  className="group block h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-medium)]"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[var(--surface-soft)]">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-contain p-5 transition duration-700 group-hover:scale-[1.04]"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                    />
+
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#17263D]/35 to-transparent" />
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-2xl font-semibold">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-7 text-[var(--foreground-soft)]">
+                      {item.description}
+                    </p>
+
+                    <p className="mt-6 text-xs font-semibold text-[var(--um-blue)]">
+                      Explore research →
+                    </p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

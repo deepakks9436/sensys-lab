@@ -3,393 +3,702 @@ import Link from "next/link";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import Reveal from "../../components/Reveal";
+import AnimatedCounter from "../../components/AnimatedCounter";
+
+/* ============================================================
+   TEAM
+============================================================ */
+
+const team = [
+  {
+    name: "Prof. Sanket Goel",
+    role: "Founder & Principal Investigator",
+    secondary: "Eddie Goldenberg Research Chair of Canada",
+    image: "/people/sanket-goel.webp",
+    href: "/people/sanket-goel",
+    description:
+      "Leading interdisciplinary research across intelligent sensing, microsystems, microfluidics, advanced materials, diagnostics, biointegrated devices, environmental monitoring, and technology translation.",
+    tags: [
+      "Microsystems",
+      "Microfluidics",
+      "Biosensors",
+      "Advanced Materials",
+      "Intelligent Instrumentation",
+    ],
+  },
+  {
+    name: "K. S. Deepak",
+    role: "Postdoctoral Researcher",
+    secondary: "SenSys Lab · University of Manitoba",
+    image: "/people/ks-deepak.jpg",
+    href: "/people/ks-deepak",
+    description:
+      "Developing miniaturized sensing platforms spanning microfluidics, portable optical and electrochemical systems, wearable devices, food safety, environmental monitoring, and translational sensing technologies.",
+    tags: [
+      "Microfluidics",
+      "Pesticide Detection",
+      "Wearable Sensors",
+      "Optical Sensing",
+      "Electrochemical Sensing",
+    ],
+  },
+  {
+    name: "Parvathy Nair",
+    role: "Postdoctoral Researcher",
+    secondary: "SenSys Lab · University of Manitoba",
+    image: "/people/parvathy-nair.jpg",
+    href: "/people/parvathy-nair",
+    description:
+      "Working on electrochemical biosensors, multiplexed biomarker detection, integrated microfluidics, portable instrumentation, flexible electrodes, and point-of-care analytical systems.",
+    tags: [
+      "Electrochemical Biosensors",
+      "Microfluidics",
+      "Biomarker Detection",
+      "Portable Instrumentation",
+      "Flexible Sensors",
+    ],
+  },
+];
+
+/* ============================================================
+   HOW WE WORK
+============================================================ */
+
+const waysOfWorking = [
+  {
+    number: "01",
+    title: "Across disciplines",
+    text: "Materials, microfluidics, sensing, electronics, embedded systems, data science, and applications are treated as parts of one engineering problem.",
+  },
+  {
+    number: "02",
+    title: "Across scales",
+    text: "Research can move from functional interfaces and microscale devices to complete portable or connected sensing systems.",
+  },
+  {
+    number: "03",
+    title: "Across applications",
+    text: "Healthcare, food safety, environmental monitoring, agriculture, and diagnostics provide real-world contexts for technology development.",
+  },
+  {
+    number: "04",
+    title: "Toward translation",
+    text: "Projects are designed with validation, usability, scalability, deployment, and technology translation in mind.",
+  },
+];
+
+/* ============================================================
+   RESEARCH ROLES
+============================================================ */
+
+const researchRoles = [
+  {
+    title: "Undergraduate Researchers",
+    stage: "Explore",
+    text: "Hands-on exposure to fabrication, testing, prototyping, electronics, and experimental research.",
+  },
+  {
+    title: "M.Sc. Researchers",
+    stage: "Develop",
+    text: "Focused technology development across sensing, microfluidics, materials, instrumentation, and applications.",
+  },
+  {
+    title: "Ph.D. Researchers",
+    stage: "Lead",
+    text: "Deep interdisciplinary research connecting fundamental engineering with integrated systems and validation.",
+  },
+  {
+    title: "Postdoctoral Fellows",
+    stage: "Integrate",
+    text: "System-level research, mentoring, project leadership, translation, and development of new research directions.",
+  },
+  {
+    title: "Technical & Project Team",
+    stage: "Enable",
+    text: "Laboratory operations, prototyping, equipment integration, procurement, project coordination, and research support.",
+  },
+];
+
+/* ============================================================
+   PAGE
+============================================================ */
 
 export default function PeoplePage() {
   return (
-    <main className="min-h-screen bg-white text-[#4F2C1D]">
+    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
 
+      {/* ====================================================== */}
       {/* HERO */}
-      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            People
-          </p>
+      {/* ====================================================== */}
 
-          <h1 className="mt-6 max-w-5xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
-            People behind
-            <br />
-            SenSys.
-          </h1>
+      <section className="relative overflow-hidden bg-[var(--background)] px-8 py-24 md:px-16 md:py-32">
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-[var(--um-blue)]/8 blur-[120px]" />
 
-          <p className="mt-10 max-w-3xl text-xl leading-9 text-[#706963]">
-            An interdisciplinary research team developing intelligent sensing
-            systems across microsystems, microfluidics, advanced materials,
-            wearable technologies, diagnostics, environmental monitoring, and
-            connected instrumentation.
-          </p>
+        <div className="pointer-events-none absolute left-[22%] top-20 h-64 w-64 rounded-full bg-[var(--um-sky)]/5 blur-[100px]" />
+
+        <div className="relative mx-auto max-w-7xl">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              People
+            </p>
+
+            <h1 className="mt-6 max-w-5xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
+              People behind
+              <br />
+              SenSys.
+            </h1>
+
+            <div className="mt-12 grid gap-10 border-t border-[var(--border)] pt-10 md:grid-cols-[1.05fr_0.95fr]">
+              <p className="max-w-3xl text-xl leading-9">
+                A growing interdisciplinary team engineering sensing systems
+                from materials and microscale devices to intelligent,
+                deployable technologies.
+              </p>
+
+              <p className="max-w-2xl text-base leading-8 text-[var(--foreground-soft)]">
+                SenSys brings together researchers working across
+                microfluidics, biosensing, electronics, advanced materials,
+                diagnostics, environmental sensing, data analytics, and
+                technology translation.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
+      {/* ====================================================== */}
       {/* PRINCIPAL INVESTIGATOR */}
-      <section className="bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-32">
+      {/* ====================================================== */}
+
+      <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-            Principal Investigator
-          </p>
-
-          <div className="mt-12 grid overflow-hidden border border-[#DDD5CC] bg-white lg:grid-cols-[0.9fr_1.1fr]">
-            {/* IMAGE */}
-            <div className="relative min-h-[640px] bg-[#F1ECE5]">
-              <Image
-                src="/people/sanket-goel.webp"
-                alt="Prof. Sanket Goel"
-                fill
-                className="object-contain object-center"
-                priority
-                sizes="(max-width: 1024px) 100vw, 45vw"
-              />
-            </div>
-
-            {/* CONTENT */}
-            <div className="flex flex-col justify-between p-8 md:p-12">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#385E9D]">
-                  Eddie Goldenberg Research Chair of Canada
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Principal Investigator
                 </p>
 
-                <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
-                  Prof. Sanket Goel
+                <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  Research leadership.
                 </h2>
+              </div>
 
-                <p className="mt-3 text-sm font-semibold text-[#4F2C1D]">
-                  Founder & Principal Investigator, SenSys Lab
-                </p>
+              <Link
+                href="/people/sanket-goel"
+                className="text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
+              >
+                Full profile →
+              </Link>
+            </div>
+          </Reveal>
 
-                <p className="mt-1 text-sm text-[#706963]">
-                  University of Manitoba
-                </p>
+          <Reveal delay={100}>
+            <Link
+              href="/people/sanket-goel"
+              className="group mt-12 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-medium)] lg:grid-cols-[0.88fr_1.12fr]"
+            >
+              {/* IMAGE */}
 
-                <p className="mt-8 max-w-2xl text-base leading-8 text-[#706963]">
-                  Prof. Sanket Goel leads an interdisciplinary research
-                  programme spanning microsystems, microfluidics, biosensors,
-                  electrochemical and optical sensing, wearable and implantable
-                  technologies, advanced materials, intelligent
-                  instrumentation, environmental sensing, and translational
-                  engineering.
-                </p>
+              <div className="relative min-h-[520px] overflow-hidden bg-[var(--surface-muted)] lg:min-h-[650px]">
+                <Image
+                  src="/people/sanket-goel.webp"
+                  alt="Prof. Sanket Goel"
+                  fill
+                  priority
+                  className="object-contain object-center transition duration-700 group-hover:scale-[1.02]"
+                  sizes="(max-width: 1024px) 100vw, 44vw"
+                />
 
-                <p className="mt-5 max-w-2xl text-sm leading-7 text-[#837A72]">
-                  His broader research and innovation track record provides the
-                  scientific, technological, and translational foundation
-                  informing SenSys and its next-generation work in healthcare,
-                  agriculture, food safety, environmental monitoring, and
-                  intelligent cyber-physical sensing systems.
-                </p>
+                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#17263D]/30 to-transparent" />
 
-                {/* TRACK RECORD */}
-                <div className="mt-10 grid grid-cols-2 gap-6 border-y border-[#E3DBD2] py-8 md:grid-cols-4">
-                  <div>
-                    <p className="text-3xl font-semibold text-[#F2A900]">
-                      319
-                    </p>
+                <div className="absolute bottom-0 left-0 h-[6px] w-full bg-gradient-to-r from-[#385E9D] via-[#00A3E0] to-[#F2A900]" />
+              </div>
 
-                    <p className="mt-2 text-xs leading-5 text-[#706963]">
-                      Publication Records
-                    </p>
-                  </div>
+              {/* CONTENT */}
 
-                  <div>
-                    <p className="text-3xl font-semibold text-[#F2A900]">
-                      98
-                    </p>
-
-                    <p className="mt-2 text-xs leading-5 text-[#706963]">
-                      Patents
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-3xl font-semibold text-[#F2A900]">
-                      44
-                    </p>
-
-                    <p className="mt-2 text-xs leading-5 text-[#706963]">
-                      Sponsored Research Grants
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-3xl font-semibold text-[#F2A900]">
-                      144
-                    </p>
-
-                    <p className="mt-2 text-xs leading-5 text-[#706963]">
-                      Invited Talks
-                    </p>
-                  </div>
-                </div>
-
-                {/* RESEARCH THEMES */}
-                <div className="mt-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#385E9D]">
-                    Research Interests
+              <div className="flex flex-col justify-between p-8 md:p-12">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
+                    Eddie Goldenberg Research Chair of Canada
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <h3 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
+                    Prof. Sanket Goel
+                  </h3>
+
+                  <p className="mt-3 font-semibold">
+                    Founder & Principal Investigator, SenSys Lab
+                  </p>
+
+                  <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+                    University of Manitoba
+                  </p>
+
+                  <p className="mt-8 max-w-2xl text-base leading-8 text-[var(--foreground-soft)]">
+                    Prof. Goel&apos;s research spans microfluidics, MEMS,
+                    electrochemical and optical sensing, laser-induced graphene,
+                    wearable and flexible devices, biofuel cells, point-of-care
+                    diagnostics, environmental sensing, and intelligent
+                    cyber-physical systems.
+                  </p>
+
+                  {/* METRICS */}
+
+                  <div className="mt-9 grid grid-cols-2 gap-px overflow-hidden border-y border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
+                    <div className="bg-[var(--surface)] px-1 py-7">
+                      <AnimatedCounter
+                        value={319}
+                        className="text-3xl font-semibold text-[var(--um-gold)]"
+                      />
+
+                      <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+                        Publication Records
+                      </p>
+                    </div>
+
+                    <div className="bg-[var(--surface)] px-5 py-7">
+                      <AnimatedCounter
+                        value={98}
+                        className="text-3xl font-semibold text-[var(--um-gold)]"
+                      />
+
+                      <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+                        Patents
+                      </p>
+                    </div>
+
+                    <div className="bg-[var(--surface)] px-5 py-7">
+                      <AnimatedCounter
+                        value={44}
+                        className="text-3xl font-semibold text-[var(--um-gold)]"
+                      />
+
+                      <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+                        Sponsored Grants
+                      </p>
+                    </div>
+
+                    <div className="bg-[var(--surface)] px-5 py-7">
+                      <AnimatedCounter
+                        value={144}
+                        className="text-3xl font-semibold text-[var(--um-gold)]"
+                      />
+
+                      <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+                        Invited Talks
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap gap-2">
                     {[
                       "Microsystems",
                       "Microfluidics",
                       "Biosensors",
-                      "Electrochemical Sensing",
-                      "Optical Sensing",
-                      "Wearable Devices",
-                      "Advanced Materials",
+                      "Laser-Induced Graphene",
                       "Point-of-Care Diagnostics",
+                      "Wearable Systems",
                       "Environmental Sensing",
-                      "Intelligent Instrumentation",
                     ].map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[#D8D0C7] bg-[#FBF8F4] px-3.5 py-2 text-xs text-[#645D57]"
+                        className="rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-3.5 py-2 text-xs text-[var(--foreground-soft)]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
+
+                <div className="mt-10 inline-flex items-center gap-3 text-sm font-semibold text-[var(--um-blue)]">
+                  Explore full profile
+
+                  <span className="transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ====================================================== */}
+      {/* CURRENT TEAM */}
+      {/* ====================================================== */}
+
+      <section className="bg-[var(--background)] px-8 py-24 md:px-16 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Current Team
+                </p>
               </div>
 
-              {/* LINKS */}
-              <div className="mt-10 flex flex-wrap gap-6 text-sm">
-                <a
-                  href="https://scholar.google.com/citations?hl=en&user=xgH6FBkAAAAJ&view_op=list_works&sortby=pubdate"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#385E9D] transition hover:text-[#4F2C1D]"
-                >
-                  Google Scholar →
-                </a>
+              <div>
+                <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                  Researchers connecting devices,
+                  <br />
+                  systems, and applications.
+                </h2>
 
-                <a
-                  href="https://www.linkedin.com/in/sanketgoel/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#385E9D] transition hover:text-[#4F2C1D]"
-                >
-                  LinkedIn →
-                </a>
-
-                <Link
-                  href="/publications"
-                  className="text-[#385E9D] transition hover:text-[#4F2C1D]"
-                >
-                  Publications →
-                </Link>
-
-                <Link
-                  href="/patents"
-                  className="text-[#385E9D] transition hover:text-[#4F2C1D]"
-                >
-                  Patents →
-                </Link>
-
-                <a
-                  href="https://www.canada.ca/en/impact-plus-chairs.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#385E9D] transition hover:text-[#4F2C1D]"
-                >
-                  Research Chair Programme →
-                </a>
+                <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+                  The current postdoctoral team works across sensing chemistry,
+                  microfluidic integration, portable instrumentation,
+                  electrochemical and optical systems, wearable technologies,
+                  and application-driven validation.
+                </p>
               </div>
             </div>
+          </Reveal>
+
+          <div className="mt-16 space-y-8">
+            {team.slice(1).map((person, index) => (
+              <Reveal
+                key={person.name}
+                delay={index * 100}
+              >
+                <Link
+                  href={person.href}
+                  className="group grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-medium)] lg:grid-cols-[0.82fr_1.18fr]"
+                >
+                  {/* IMAGE */}
+
+                  <div
+                    className={`relative min-h-[440px] overflow-hidden bg-[var(--surface-soft)] ${
+                      index % 2 === 1 ? "lg:order-2" : ""
+                    }`}
+                  >
+                    <Image
+                      src={person.image}
+                      alt={person.name}
+                      fill
+                      className="object-contain object-center p-5 transition duration-700 group-hover:scale-[1.03]"
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                    />
+
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#17263D]/25 to-transparent" />
+
+                    <div className="absolute left-5 top-5 rounded-full bg-[var(--um-blue)] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-white">
+                      Postdoctoral Researcher
+                    </div>
+                  </div>
+
+                  {/* CONTENT */}
+
+                  <div
+                    className={`flex flex-col justify-center p-8 md:p-10 lg:p-12 ${
+                      index % 2 === 1 ? "lg:order-1" : ""
+                    }`}
+                  >
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
+                      {person.secondary}
+                    </p>
+
+                    <h3 className="mt-4 text-4xl font-semibold tracking-[-0.035em]">
+                      {person.name}
+                    </h3>
+
+                    <p className="mt-3 text-sm font-semibold text-[var(--foreground)]">
+                      {person.role}
+                    </p>
+
+                    <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--foreground-soft)]">
+                      {person.description}
+                    </p>
+
+                    <div className="mt-7 flex flex-wrap gap-2">
+                      {person.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-3.5 py-2 text-xs text-[var(--foreground-soft)]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-9 flex items-center gap-2 text-sm font-semibold text-[var(--um-blue)]">
+                      View full profile
+
+                      <span className="transition-transform group-hover:translate-x-1">
+                        →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* POSTDOCTORAL RESEARCHERS */}
-      <section className="bg-white px-8 py-24 md:px-16 md:py-32">
+      {/* ====================================================== */}
+      {/* HOW WE WORK */}
+      {/* ====================================================== */}
+
+      <section className="bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-                Postdoctoral Researchers
-              </p>
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-gold)]">
+                  How We Work
+                </p>
+              </div>
+
+              <div>
+                <h2 className="max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  Research happens between disciplines.
+                </h2>
+
+                <p className="mt-7 max-w-3xl text-base leading-8 text-white/75">
+                  SenSys is organized around integrated research problems
+                  rather than isolated technologies. Projects often connect
+                  multiple scientific and engineering competencies within the
+                  same system.
+                </p>
+              </div>
             </div>
+          </Reveal>
 
-            <div>
-              <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                Integrating devices, systems, and applications.
-              </h2>
+          <div className="mt-16 grid gap-px overflow-hidden bg-white/15 md:grid-cols-2 lg:grid-cols-4">
+            {waysOfWorking.map((item, index) => (
+              <Reveal
+                key={item.number}
+                delay={index * 80}
+              >
+                <div className="h-full bg-[var(--section-blue)] p-7">
+                  <p className="text-xs font-semibold text-[var(--um-gold)]">
+                    {item.number}
+                  </p>
 
-              <p className="mt-7 max-w-3xl text-base leading-8 text-[#706963]">
-                Postdoctoral researchers at SenSys work across sensing,
-                microfluidics, wearable technologies, intelligent
-                instrumentation, data-enabled systems, and translational
-                applications.
-              </p>
-            </div>
-          </div>
+                  <h3 className="mt-6 text-xl font-semibold">
+                    {item.title}
+                  </h3>
 
-          <div className="mt-16 grid gap-8 lg:grid-cols-2">
-            {/* DEEPAK */}
-            <article className="overflow-hidden border border-[#DDD5CC] bg-[#FBF8F4]">
-              <div className="relative aspect-[4/3] overflow-hidden bg-white p-5">
-                <Image
-                  src="/people/ks-deepak.jpg"
-                  alt="K. S. Deepak"
-                  fill
-                  className="object-contain object-center transition duration-500 hover:scale-[1.02]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-
-              <div className="p-7">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#385E9D]">
-                  Postdoctoral Researcher
-                </p>
-
-                <h3 className="mt-3 text-3xl font-semibold">
-                  K. S. Deepak
-                </h3>
-
-                <p className="mt-5 max-w-xl text-sm leading-7 text-[#706963]">
-                  Research across miniaturized sensing platforms, microfluidic
-                  systems, portable diagnostics, wearable devices, and
-                  multimodal analytical technologies.
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {[
-                    "Microfluidics",
-                    "Biosensors",
-                    "Pesticide Detection",
-                    "Wearable Sensors",
-                    "Optical Sensing",
-                    "Electrochemical Sensing",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-[#D8D0C7] bg-white px-3 py-2 text-xs text-[#645D57]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  <p className="mt-4 text-sm leading-7 text-white/70">
+                    {item.text}
+                  </p>
                 </div>
-              </div>
-            </article>
-
-            {/* PARVATHY */}
-            <article className="overflow-hidden border border-[#DDD5CC] bg-[#FBF8F4]">
-              <div className="relative aspect-[4/3] overflow-hidden bg-white p-5">
-                <Image
-                  src="/people/parvathy-nair.jpg"
-                  alt="Parvathy Nair"
-                  fill
-                  className="object-contain object-center transition duration-500 hover:scale-[1.02]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-
-              <div className="p-7">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#385E9D]">
-                  Postdoctoral Researcher
-                </p>
-
-                <h3 className="mt-3 text-3xl font-semibold">
-                  Parvathy Nair
-                </h3>
-
-                <p className="mt-5 max-w-xl text-sm leading-7 text-[#706963]">
-                  Research focused on electrochemical sensing, multiplexed
-                  biomarker detection, integrated microfluidics, portable
-                  instrumentation, and point-of-care analytical systems.
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {[
-                    "Electrochemical Sensing",
-                    "Microfluidics",
-                    "Point-of-Care Diagnostics",
-                    "Biomarker Detection",
-                    "Portable Instrumentation",
-                    "Flexible Sensors",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-[#D8D0C7] bg-white px-3 py-2 text-xs text-[#645D57]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* GROWING TEAM */}
-      <section className="bg-[#F7F3EC] px-8 py-24 md:px-16 md:py-28">
+      {/* ====================================================== */}
+      {/* RESEARCH ROLES */}
+      {/* ====================================================== */}
+
+      <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#385E9D]">
-                Growing Team
-              </p>
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Research Roles
+                </p>
+              </div>
 
-              <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                Building an interdisciplinary research community.
-              </h2>
+              <div>
+                <h2 className="max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                  Different stages.
+                  <br />
+                  Shared research mission.
+                </h2>
+
+                <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+                  The team is designed to grow across multiple research and
+                  technical roles, with increasing responsibility in
+                  experimentation, system development, leadership, mentoring,
+                  and translation.
+                </p>
+              </div>
             </div>
+          </Reveal>
 
-            <div className="lg:pt-16">
-              <p className="max-w-2xl text-lg leading-8 text-[#706963]">
-                SenSys is expanding across undergraduate research, M.Sc. and
-                Ph.D. training, postdoctoral research, technical support, and
-                project management to support its major research thrusts.
-              </p>
+          <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {researchRoles.map((item, index) => (
+              <Reveal
+                key={item.title}
+                delay={index * 70}
+              >
+                <div className="group h-full border border-[var(--border)] bg-[var(--surface)] p-6 transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-xs font-semibold text-[var(--um-gold)]">
+                      0{index + 1}
+                    </span>
 
+                    <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--um-blue)]">
+                      {item.stage}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-8 text-xl font-semibold leading-7">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-xs leading-6 text-[var(--foreground-soft)]">
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={350}>
+            <div className="mt-10 flex justify-center">
               <Link
                 href="/join"
-                className="mt-8 inline-block rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-[#385E9D] hover:text-white"
+                className="rounded-full border border-[var(--um-blue)] px-7 py-3.5 text-sm font-semibold text-[var(--um-blue)] transition hover:bg-[var(--um-blue)] hover:text-white"
               >
-                Explore opportunities →
+                Explore research opportunities →
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* JOIN CTA */}
-      <section className="bg-[#4F2C1D] px-8 py-20 text-white md:px-16">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
-              Work With Us
-            </p>
+      {/* ====================================================== */}
+      {/* GROWING TEAM */}
+      {/* ====================================================== */}
 
-            <h2 className="mt-5 max-w-4xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-              Join the next generation of sensing research.
-            </h2>
-          </div>
+      <section className="bg-[var(--background)] px-8 py-24 md:px-16 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                  Growing SenSys
+                </p>
 
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/join"
-              className="rounded-full bg-[#F2A900] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-white"
-            >
-              Join SenSys →
-            </Link>
+                <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+                  Building a research community around integrated sensing.
+                </h2>
 
-            <a
-              href="mailto:sanketgoel@gmail.com?subject=Interest%20in%20Joining%20SenSys%20Lab"
-              className="rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-[#4F2C1D]"
-            >
-              Contact Prof. Sanket Goel →
-            </a>
-          </div>
+                <p className="mt-7 max-w-2xl text-base leading-8 text-[var(--foreground-soft)]">
+                  As the laboratory grows, SenSys will bring together graduate
+                  researchers, postdoctoral fellows, undergraduate researchers,
+                  technical specialists, and project-management personnel
+                  across its major research thrusts.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/join"
+                    className="rounded-full bg-[var(--um-gold)] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-[var(--um-blue)] hover:text-white"
+                  >
+                    Explore opportunities →
+                  </Link>
+
+                  <Link
+                    href="/research"
+                    className="rounded-full border border-[var(--border-strong)] px-7 py-3.5 text-sm font-semibold transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
+                  >
+                    Explore research →
+                  </Link>
+                </div>
+              </div>
+
+              {/* TEAM COMPOSITION VISUAL */}
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  {
+                    title: "Graduate Research",
+                    text: "M.Sc. and Ph.D. researchers developing new sensing technologies.",
+                  },
+                  {
+                    title: "Postdoctoral Research",
+                    text: "System integration, research leadership, mentoring, and translation.",
+                  },
+                  {
+                    title: "Undergraduate Research",
+                    text: "Hands-on exposure to prototyping, fabrication, testing, and experimentation.",
+                  },
+                  {
+                    title: "Research Operations",
+                    text: "Technical support, laboratory operations, coordination, and project management.",
+                  },
+                ].map((item, index) => (
+                  <Reveal
+                    key={item.title}
+                    delay={index * 70}
+                  >
+                    <div className="h-full border border-[var(--border)] bg-[var(--surface)] p-6">
+                      <span className="text-xs font-semibold text-[var(--um-gold)]">
+                        0{index + 1}
+                      </span>
+
+                      <h3 className="mt-6 text-lg font-semibold">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-3 text-xs leading-6 text-[var(--foreground-soft)]">
+                        {item.text}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ====================================================== */}
+      {/* FINAL CTA */}
+      {/* ====================================================== */}
+
+      <section className="relative overflow-hidden bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-28">
+        <div className="pointer-events-none absolute -right-24 -top-32 h-[380px] w-[380px] rounded-full bg-[#00A3E0]/20 blur-[110px]" />
+
+        <div className="pointer-events-none absolute bottom-[-180px] left-[15%] h-[380px] w-[380px] rounded-full bg-[#F2A900]/10 blur-[110px]" />
+
+        <div className="relative mx-auto max-w-7xl">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-gold)]">
+                  Work With Us
+                </p>
+
+                <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.97] tracking-[-0.04em] md:text-7xl">
+                  Build the next generation of sensing systems.
+                </h2>
+              </div>
+
+              <div>
+                <p className="max-w-xl text-lg leading-8 text-white/75">
+                  SenSys welcomes expressions of interest from researchers and
+                  professionals who want to work across disciplinary
+                  boundaries and build technologies with real-world impact.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/join"
+                    className="rounded-full bg-[var(--um-gold)] px-7 py-3.5 text-sm font-semibold text-[#2A1710] transition hover:bg-white"
+                  >
+                    Join SenSys →
+                  </Link>
+
+                  <a
+                    href="mailto:sanketgoel@gmail.com?subject=Interest%20in%20Joining%20SenSys%20Lab"
+                    className="rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-[#385E9D]"
+                  >
+                    Contact Prof. Goel →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

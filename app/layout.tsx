@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import BackToTop from "../components/BackToTop";
+import ScrollProgress from "../components/ScrollProgress";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -72,6 +76,26 @@ export const metadata: Metadata = {
   },
 };
 
+const themeScript = `
+(function () {
+  try {
+    var savedTheme = localStorage.getItem("sensys-theme");
+
+    var theme = savedTheme;
+
+    if (theme !== "light" && theme !== "dark") {
+      theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (error) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,9 +104,38 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        {/* Prevents a light-theme flash before React hydrates */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: themeScript,
+          }}
+        />
+      </head>
+
+      <body className="min-h-full">
+        {/* ACCESSIBILITY */}
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[200] -translate-y-24 rounded-full bg-[#385E9D] px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform focus:translate-y-0"
+        >
+          Skip to main content
+        </a>
+
+        {/* GLOBAL SCROLL PROGRESS */}
+        <ScrollProgress />
+
+        {/* PAGE CONTENT */}
+        <div id="main-content" className="min-h-screen">
+          {children}
+        </div>
+
+        {/* GLOBAL BACK TO TOP */}
+        <BackToTop />
+      </body>
     </html>
   );
 }
