@@ -5,18 +5,16 @@
 ============================================================ */
 
 :root {
-  /* BASE */
   --background: #ffffff;
+
   --surface: #ffffff;
   --surface-soft: #f7f3ec;
   --surface-muted: #fbf8f4;
 
-  /* TEXT */
   --foreground: #4f2c1d;
   --foreground-soft: #706963;
   --foreground-muted: #837a72;
 
-  /* UNIVERSITY OF MANITOBA */
   --um-brown: #4f2c1d;
   --um-brown-dark: #2a1710;
 
@@ -26,67 +24,52 @@
   --um-blue-dark: #27456f;
   --um-sky: #00a3e0;
 
-  /*
-    Used for major full-width scientific /
-    institutional blue sections.
-  */
   --section-blue: #385e9d;
 
-  /* BORDERS */
   --border: #e6dfd7;
   --border-strong: #cfc5bc;
 
-  /* SHADOWS */
-  --shadow-soft: 0 12px 35px rgba(79, 44, 29, 0.08);
-  --shadow-medium: 0 18px 50px rgba(56, 94, 157, 0.12);
+  --shadow-soft:
+    0 12px 35px rgba(79, 44, 29, 0.08);
+
+  --shadow-medium:
+    0 18px 50px rgba(56, 94, 157, 0.12);
 }
 
 /* ============================================================
    DARK THEME
-
-   Brown + Navy Hybrid
-
-   Espresso Brown = main canvas
-   Warm Brown      = cards / surfaces
-   Manitoba Navy   = scientific / institutional sections
-   Manitoba Blue   = interactive accents
-   Wheat Gold      = highlights
 ============================================================ */
 
 html[data-theme="dark"] {
-  /* WARM ESPRESSO BASE */
   --background: #211510;
+
   --surface: #2a1b16;
   --surface-soft: #34231d;
   --surface-muted: #3d2b24;
 
-  /* WARM LIGHT TYPOGRAPHY */
   --foreground: #fffaf5;
   --foreground-soft: #e4d8d0;
   --foreground-muted: #b9aaa0;
 
-  /* UM BROWN */
   --um-brown: #d4ad99;
   --um-brown-dark: #f0d7ca;
 
-  /* UM GOLD */
   --um-gold: #f2a900;
 
-  /* UM BLUE */
   --um-blue: #88a9d6;
   --um-blue-dark: #6689bb;
   --um-sky: #43b9e8;
 
-  /* DEEP NAVY SCIENTIFIC SECTIONS */
   --section-blue: #203650;
 
-  /* BORDERS */
   --border: rgba(255, 242, 233, 0.1);
   --border-strong: rgba(255, 242, 233, 0.2);
 
-  /* SHADOWS */
-  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.3);
-  --shadow-medium: 0 24px 65px rgba(0, 0, 0, 0.42);
+  --shadow-soft:
+    0 18px 45px rgba(0, 0, 0, 0.3);
+
+  --shadow-medium:
+    0 24px 65px rgba(0, 0, 0, 0.42);
 }
 
 /* ============================================================
@@ -108,7 +91,10 @@ body {
   background: var(--background);
   color: var(--foreground);
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
   transition:
     background-color 0.3s ease,
@@ -119,8 +105,12 @@ body {
   box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* ============================================================
-   TEXT SELECTION
+   SELECTION
 ============================================================ */
 
 ::selection {
@@ -152,7 +142,10 @@ a {
 }
 
 /* ============================================================
-   GLOBAL COLOUR TRANSITIONS
+   GLOBAL THEME TRANSITIONS
+
+   Do not animate every DIV.
+   This improves mobile responsiveness.
 ============================================================ */
 
 section,
@@ -160,7 +153,6 @@ article,
 nav,
 footer,
 header,
-div,
 button,
 a {
   transition:
@@ -206,7 +198,7 @@ a {
 }
 
 /* ============================================================
-   UM COLOUR HELPERS
+   UM HELPERS
 ============================================================ */
 
 .um-blue-link {
@@ -221,10 +213,6 @@ a {
   color: var(--um-sky);
 }
 
-/* ============================================================
-   PRIMARY BLUE BUTTON
-============================================================ */
-
 .um-blue-button {
   background: var(--um-blue);
   color: #ffffff;
@@ -237,10 +225,6 @@ a {
   border-color: var(--um-blue-dark);
 }
 
-/* ============================================================
-   BLUE OUTLINE
-============================================================ */
-
 .um-blue-outline {
   border: 1px solid var(--um-blue);
   color: var(--um-blue);
@@ -252,10 +236,6 @@ a {
   background: var(--um-blue);
   color: #ffffff;
 }
-
-/* ============================================================
-   LARGE BLUE SECTIONS
-============================================================ */
 
 .um-blue-section {
   background: var(--section-blue);
@@ -277,12 +257,14 @@ a {
     box-shadow 0.25s ease;
 }
 
-.sensys-card:hover {
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .sensys-card:hover {
+    transform: translateY(-4px);
 
-  border-color: var(--um-blue);
+    border-color: var(--um-blue);
 
-  box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-soft);
+  }
 }
 
 /* ============================================================
@@ -292,7 +274,7 @@ a {
 @keyframes fadeSlide {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(12px);
   }
 
   to {
@@ -314,7 +296,7 @@ a {
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.98);
+    transform: scale(0.985);
   }
 
   to {
@@ -323,32 +305,41 @@ a {
   }
 }
 
+@keyframes mobileMenuEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-fade-slide {
-  animation: fadeSlide 0.65s ease-out both;
+  animation: fadeSlide 0.48s ease-out both;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out both;
+  animation: fadeIn 0.48s ease-out both;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.6s ease-out both;
+  animation: scaleIn 0.5s ease-out both;
+}
+
+.mobile-menu-enter {
+  animation: mobileMenuEnter 0.22s ease-out both;
 }
 
 /* ============================================================
-   DARK MODE
-   LEGACY HARDCODED BACKGROUND OVERRIDES
+   DARK MODE LEGACY BACKGROUNDS
 ============================================================ */
-
-/*
-  Older pages sometimes still use bg-white directly.
-*/
 
 html[data-theme="dark"] .bg-white {
   background-color: var(--surface) !important;
 }
-
-/* OLD CREAM / BEIGE SECTIONS */
 
 html[data-theme="dark"] .bg-\[\#F7F3EC\] {
   background-color: var(--surface-soft) !important;
@@ -367,7 +358,7 @@ html[data-theme="dark"] .bg-\[\#EEE8E1\] {
 }
 
 /* ============================================================
-   WHITE CTA BUTTONS MUST REMAIN WHITE
+   WHITE CTA BUTTONS
 ============================================================ */
 
 html[data-theme="dark"] a.bg-white,
@@ -375,18 +366,10 @@ html[data-theme="dark"] button.bg-white {
   background-color: #ffffff !important;
 }
 
-/*
-  Common Manitoba-blue text inside white buttons.
-*/
-
 html[data-theme="dark"] a.bg-white.text-\[\#385E9D\],
 html[data-theme="dark"] button.bg-white.text-\[\#385E9D\] {
   color: #385e9d !important;
 }
-
-/*
-  Ensure white CTA hover remains readable.
-*/
 
 html[data-theme="dark"] a.bg-white:hover,
 html[data-theme="dark"] button.bg-white:hover {
@@ -394,8 +377,7 @@ html[data-theme="dark"] button.bg-white:hover {
 }
 
 /* ============================================================
-   DARK MODE
-   LEGACY HARDCODED TEXT OVERRIDES
+   DARK LEGACY TEXT
 ============================================================ */
 
 html[data-theme="dark"] .text-\[\#4F2C1D\],
@@ -413,8 +395,7 @@ html[data-theme="dark"] .text-\[\#928980\] {
 }
 
 /* ============================================================
-   DARK MODE
-   LEGACY BORDER OVERRIDES
+   DARK LEGACY BORDERS
 ============================================================ */
 
 html[data-theme="dark"] .border-\[\#DDD5CC\],
@@ -429,13 +410,8 @@ html[data-theme="dark"] .border-\[\#DED6CE\] {
 }
 
 /* ============================================================
-   DARK MODE
-   HARDCODED BLUE ELEMENTS
+   DARK BLUE ELEMENTS
 ============================================================ */
-
-/*
-  Preserve deep navy for full-width scientific sections.
-*/
 
 html[data-theme="dark"] .bg-\[\#385E9D\] {
   background-color: var(--section-blue) !important;
@@ -446,26 +422,17 @@ html[data-theme="dark"] .bg-\[\#263f67\] {
   background-color: var(--section-blue) !important;
 }
 
-/*
-  Sky blue stays vivid.
-*/
-
 html[data-theme="dark"] .bg-\[\#00A3E0\] {
   background-color: var(--um-sky) !important;
 }
 
 /* ============================================================
-   DARK MODE
-   GOLD SECTIONS
+   GOLD
 ============================================================ */
 
 html[data-theme="dark"] .bg-\[\#F2A900\] {
   background-color: #f2a900 !important;
 }
-
-/*
-  Gold surfaces need dark typography.
-*/
 
 html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#2A1710\],
 html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#4F2C1D\] {
@@ -473,8 +440,7 @@ html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#4F2C1D\] {
 }
 
 /* ============================================================
-   DARK MODE
-   IMAGE / CARD POLISH
+   DARK CARDS
 ============================================================ */
 
 html[data-theme="dark"] .sensys-card:hover {
@@ -486,7 +452,7 @@ html[data-theme="dark"] .sensys-card:hover {
 }
 
 /* ============================================================
-   NAVBAR / FLOATING SURFACE
+   NAVBAR
 ============================================================ */
 
 .dark-nav-surface {
@@ -498,13 +464,8 @@ html[data-theme="dark"] .dark-nav-surface {
 }
 
 /* ============================================================
-   UNIVERSITY OF MANITOBA LOGO PANEL
+   UNIVERSITY LOGO
 ============================================================ */
-
-/*
-  Keep the official university logo unchanged on a white field.
-  This works in both light and dark themes.
-*/
 
 .um-logo-panel {
   background: #ffffff;
@@ -525,15 +486,33 @@ html[data-theme="dark"] .um-logo-panel {
 }
 
 /* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+
+  section {
+    scroll-margin-top: 85px;
+  }
+}
+
+/* ============================================================
    SCROLLBAR
 ============================================================ */
 
 html {
-  scrollbar-color: var(--um-blue) var(--surface-soft);
+  scrollbar-color:
+    var(--um-blue)
+    var(--surface-soft);
 }
 
 html[data-theme="dark"] {
-  scrollbar-color: var(--um-blue) #211510;
+  scrollbar-color:
+    var(--um-blue)
+    #211510;
 }
 
 /* ============================================================

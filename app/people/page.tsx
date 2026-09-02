@@ -5,10 +5,6 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Reveal from "../../components/Reveal";
 
-/* ============================================================
-   INCOMING PHD — JANUARY 2027
-============================================================ */
-
 const incomingPhD = [
   "Swarna Deb",
   "Fortune Ogbonna",
@@ -16,10 +12,6 @@ const incomingPhD = [
   "Nitish Reddy",
   "Savan Siddharth Ithagani",
 ];
-
-/* ============================================================
-   INCOMING MSC — JANUARY 2027
-============================================================ */
 
 const incomingMSc = [
   "Ayomide Adeyemi",
@@ -30,10 +22,6 @@ const incomingMSc = [
   "Ajay Singh",
   "Sivatharshan Sivashanmugamoorthy",
 ];
-
-/* ============================================================
-   HOW WE WORK
-============================================================ */
 
 const workingPrinciples = [
   {
@@ -61,10 +49,6 @@ const workingPrinciples = [
       "Developing technologies relevant to health, environment, food systems, agriculture, and prosperity.",
   },
 ];
-
-/* ============================================================
-   RESEARCH ROLES
-============================================================ */
 
 const researchRoles = [
   {
@@ -94,10 +78,6 @@ const researchRoles = [
   },
 ];
 
-/* ============================================================
-   INITIALS
-============================================================ */
-
 function getInitials(name: string) {
   const parts = name.trim().split(/\s+/);
 
@@ -108,10 +88,6 @@ function getInitials(name: string) {
   return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
 }
 
-/* ============================================================
-   PAGE
-============================================================ */
-
 export default function PeoplePage() {
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -121,34 +97,25 @@ export default function PeoplePage() {
       {/* HERO */}
       {/* ===================================================== */}
 
-      <section className="relative overflow-hidden bg-[var(--background)] px-8 py-24 md:px-16 md:py-32">
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[var(--um-blue)]/10 blur-[120px]" />
+      <section className="relative overflow-hidden border-b border-[var(--border)] px-5 py-12 md:px-16 md:py-16">
+        <div className="pointer-events-none absolute -right-32 -top-32 h-[360px] w-[360px] rounded-full bg-[var(--um-blue)]/10 blur-[110px]" />
 
-        <div className="mx-auto max-w-7xl">
+        <div className="relative mx-auto max-w-7xl">
           <Reveal>
             <div className="flex items-center gap-4">
-              <span className="h-[2px] w-10 bg-[var(--um-gold)]" />
+              <span className="h-[2px] w-9 bg-[var(--um-gold)]" />
 
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--um-blue)] md:text-xs">
                 People
               </p>
             </div>
 
-            <div className="mt-8 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-              <h1 className="max-w-5xl text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
-                Team
-                <br />
-                <span className="text-[var(--um-blue)]">
-                  SenSys.
-                </span>
-              </h1>
-
-              <p className="max-w-2xl text-xl leading-9 text-[var(--foreground-soft)]">
-                An interdisciplinary team developing intelligent sensory
-                systems across health, environment, food, agriculture,
-                microsystems, and technology translation.
-              </p>
-            </div>
+            <h1 className="mt-6 text-5xl font-semibold leading-[0.92] tracking-[-0.055em] sm:text-6xl md:text-8xl">
+              Team{" "}
+              <span className="text-[var(--um-blue)]">
+                SenSys.
+              </span>
+            </h1>
           </Reveal>
         </div>
       </section>
@@ -157,37 +124,36 @@ export default function PeoplePage() {
       {/* PRINCIPAL INVESTIGATOR */}
       {/* ===================================================== */}
 
-      <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32">
+      <section className="bg-[var(--surface-soft)] px-5 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
               Principal Investigator
             </p>
           </Reveal>
 
-          <Reveal delay={100}>
-            <div className="mt-12 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[0.86fr_1.14fr]">
+          <Reveal delay={80}>
+            <div className="mt-8 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[0.78fr_1.22fr]">
               <Link
                 href="/people/sanket-goel"
-                className="group relative min-h-[570px] overflow-hidden bg-[var(--surface-muted)]"
+                className="group relative min-h-[360px] overflow-hidden bg-[var(--surface-muted)] md:min-h-[480px]"
               >
                 <Image
                   src="/people/sanket-goel.webp"
                   alt="Prof. Sanket Goel"
                   fill
                   className="object-contain p-5 transition-transform duration-700 group-hover:scale-[1.02]"
-                  sizes="(max-width: 1024px) 100vw, 44vw"
                 />
 
-                <div className="absolute bottom-0 left-0 h-[6px] w-full bg-gradient-to-r from-[var(--um-blue)] via-[var(--um-sky)] to-[var(--um-gold)]" />
+                <div className="absolute bottom-0 left-0 h-[5px] w-full bg-gradient-to-r from-[var(--um-blue)] via-[var(--um-sky)] to-[var(--um-gold)]" />
               </Link>
 
-              <div className="flex flex-col justify-center p-8 md:p-12">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--um-blue)]">
+              <div className="flex flex-col justify-center p-6 md:p-12">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--um-blue)] md:text-xs">
                   Eddie Goldenberg Research Chair of Canada
                 </p>
 
-                <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
                   Prof. Sanket Goel
                 </h2>
 
@@ -199,17 +165,16 @@ export default function PeoplePage() {
                   University of Manitoba
                 </p>
 
-                <p className="mt-8 max-w-2xl text-base leading-8 text-[var(--foreground-soft)]">
-                  Leading an interdisciplinary research programme spanning
+                <p className="mt-6 max-w-2xl text-sm leading-7 text-[var(--foreground-soft)] md:text-base md:leading-8">
+                  Leading research across cyber-physical sensory systems,
                   microsystems, microfluidics, intelligent diagnostics,
-                  biointegrated systems, advanced materials, environmental
-                  sensing, cyber-physical sensory systems, and technology
-                  translation.
+                  biointegrated technologies, environmental sensing,
+                  advanced materials, and technology translation.
                 </p>
 
                 <Link
                   href="/people/sanket-goel"
-                  className="mt-9 w-fit text-sm font-semibold text-[var(--um-blue)]"
+                  className="mt-7 w-fit text-sm font-semibold text-[var(--um-blue)]"
                 >
                   Full profile →
                 </Link>
@@ -220,224 +185,185 @@ export default function PeoplePage() {
       </section>
 
       {/* ===================================================== */}
-      {/* CURRENT TEAM */}
+      {/* POSTDOCS */}
       {/* ===================================================== */}
 
-      <section className="bg-[var(--background)] px-8 py-24 md:px-16 md:py-32">
+      <section className="px-5 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="grid gap-12 md:grid-cols-[0.62fr_1.38fr]">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
-                Current Team
+            <div className="grid gap-5 md:grid-cols-[0.62fr_1.38fr] md:items-end">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
+                Postdoctoral Researchers
               </p>
 
-              <h2 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
-                Researchers building the foundations of SenSys Lab.
+              <h2 className="text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
+                Advancing SenSys research.
               </h2>
             </div>
           </Reveal>
 
-          {/* DEEPAK */}
-
-          <Reveal delay={100}>
-            <div className="mt-16 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[0.48fr_0.52fr]">
-              <Link
-                href="/people/ks-deepak"
-                className="group relative min-h-[460px] bg-[var(--surface-muted)]"
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            {[
+              {
+                name: "K. S. Deepak",
+                href: "/people/ks-deepak",
+                image: "/people/ks-deepak.jpg",
+                text:
+                  "Portable sensing, microfluidics, electrochemical and optical systems, environmental monitoring, and translational device development.",
+              },
+              {
+                name: "Parvathy Nair",
+                href: "/people/parvathy-nair",
+                image: "/people/parvathy-nair.jpg",
+                text:
+                  "Intelligent sensing, microsystems, diagnostic technologies, and emerging interdisciplinary SenSys research programmes.",
+              },
+            ].map((person, index) => (
+              <Reveal
+                key={person.name}
+                delay={index * 80}
               >
-                <Image
-                  src="/people/ks-deepak.jpg"
-                  alt="K. S. Deepak"
-                  fill
-                  className="object-contain p-6 transition duration-700 group-hover:scale-[1.025]"
-                />
-              </Link>
-
-              <div className="flex flex-col justify-center p-8 md:p-12">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
-                  Postdoctoral Researcher
-                </p>
-
-                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">
-                  K. S. Deepak
-                </h3>
-
-                <p className="mt-6 max-w-xl text-base leading-8 text-[var(--foreground-soft)]">
-                  Research spanning portable sensing, microfluidics,
-                  electrochemical and optical systems, environmental
-                  monitoring, and translational device development.
-                </p>
-
                 <Link
-                  href="/people/ks-deepak"
-                  className="mt-8 text-sm font-semibold text-[var(--um-blue)]"
+                  href={person.href}
+                  className="group grid h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)] sm:grid-cols-[0.9fr_1.1fr]"
                 >
-                  View profile →
+                  <div className="relative min-h-[290px] bg-[var(--surface-muted)]">
+                    <Image
+                      src={person.image}
+                      alt={person.name}
+                      fill
+                      className="object-contain p-5 transition duration-700 group-hover:scale-[1.025]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col justify-center p-6">
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--um-blue)]">
+                      Postdoctoral Researcher
+                    </p>
+
+                    <h3 className="mt-3 text-3xl font-semibold tracking-[-0.03em]">
+                      {person.name}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-7 text-[var(--foreground-soft)]">
+                      {person.text}
+                    </p>
+
+                    <p className="mt-6 text-sm font-semibold text-[var(--um-blue)]">
+                      View profile →
+                    </p>
+                  </div>
                 </Link>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* PARVATHY */}
-
-          <Reveal delay={160}>
-            <div className="mt-6 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[0.52fr_0.48fr]">
-              <div className="order-2 flex flex-col justify-center p-8 md:p-12 lg:order-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
-                  Postdoctoral Researcher
-                </p>
-
-                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">
-                  Parvathy Nair
-                </h3>
-
-                <p className="mt-6 max-w-xl text-base leading-8 text-[var(--foreground-soft)]">
-                  Contributing to interdisciplinary research across intelligent
-                  sensing, microsystems, diagnostic technologies, and emerging
-                  SenSys research programmes.
-                </p>
-
-                <Link
-                  href="/people/parvathy-nair"
-                  className="mt-8 text-sm font-semibold text-[var(--um-blue)]"
-                >
-                  View profile →
-                </Link>
-              </div>
-
-              <Link
-                href="/people/parvathy-nair"
-                className="group relative order-1 min-h-[460px] bg-[var(--surface-muted)] lg:order-2"
-              >
-                <Image
-                  src="/people/parvathy-nair.jpg"
-                  alt="Parvathy Nair"
-                  fill
-                  className="object-contain p-6 transition duration-700 group-hover:scale-[1.025]"
-                />
-              </Link>
-            </div>
-          </Reveal>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ===================================================== */}
-      {/* INCOMING GRADUATE RESEARCHERS */}
+      {/* INCOMING */}
       {/* ===================================================== */}
 
       <section
         id="incoming"
-        className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32"
+        className="bg-[var(--surface-soft)] px-5 py-16 md:px-16 md:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
+            <div className="grid gap-6 lg:grid-cols-[0.62fr_1.38fr]">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
                   Incoming Researchers
                 </p>
 
-                <p className="mt-4 text-sm text-[var(--foreground-muted)]">
+                <p className="mt-3 text-sm text-[var(--foreground-muted)]">
                   January 2027
                 </p>
               </div>
 
               <div>
-                <h2 className="max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+                <h2 className="text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
                   The next generation of
                   <br />
                   Team SenSys.
                 </h2>
 
-                <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
-                  Twelve graduate researchers are expected to join SenSys Lab
-                  in January 2027: five PhD researchers and seven MSc
-                  researchers.
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--foreground-soft)] md:text-base">
+                  Five PhD and seven MSc researchers are expected to join
+                  the laboratory in January 2027.
                 </p>
               </div>
             </div>
           </Reveal>
 
-          {/* ================================================= */}
           {/* PHD */}
-          {/* ================================================= */}
 
-          <Reveal delay={100}>
-            <div className="mt-16 border-b border-[var(--border)] pb-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-gold)]">
-                PhD · 05
-              </p>
+          <div className="mt-12 border-b border-[var(--border)] pb-4">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--um-gold)]">
+              PhD · 05
+            </p>
 
-              <h3 className="mt-3 text-3xl font-semibold">
-                Incoming PhD Researchers
-              </h3>
-            </div>
-          </Reveal>
+            <h3 className="mt-2 text-2xl font-semibold">
+              Incoming PhD Researchers
+            </h3>
+          </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {incomingPhD.map((name, index) => (
               <Reveal
                 key={name}
-                delay={index * 60}
+                delay={index * 45}
               >
-                <article className="group h-full border border-[var(--border)] bg-[var(--surface)] p-6 transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] text-lg font-semibold text-[var(--um-blue)]">
+                <article className="group relative h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-5 transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]">
+                  <div className="absolute inset-x-0 top-0 h-[3px] bg-[var(--um-blue)]" />
+
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--surface-soft)] text-sm font-semibold text-[var(--um-blue)]">
                     {getInitials(name)}
                   </div>
 
-                  <h4 className="mt-8 text-xl font-semibold leading-tight">
+                  <h4 className="mt-6 text-lg font-semibold leading-snug">
                     {name}
                   </h4>
 
-                  <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.19em] text-[var(--um-blue)]">
+                  <p className="mt-3 text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--um-blue)]">
                     Incoming PhD Researcher
-                  </p>
-
-                  <p className="mt-5 text-xs text-[var(--foreground-muted)]">
-                    January 2027
                   </p>
                 </article>
               </Reveal>
             ))}
           </div>
 
-          {/* ================================================= */}
           {/* MSC */}
-          {/* ================================================= */}
 
-          <Reveal delay={120}>
-            <div className="mt-20 border-b border-[var(--border)] pb-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-sky)]">
-                MSc · 07
-              </p>
+          <div className="mt-14 border-b border-[var(--border)] pb-4">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--um-sky)]">
+              MSc · 07
+            </p>
 
-              <h3 className="mt-3 text-3xl font-semibold">
-                Incoming MSc Researchers
-              </h3>
-            </div>
-          </Reveal>
+            <h3 className="mt-2 text-2xl font-semibold">
+              Incoming MSc Researchers
+            </h3>
+          </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {incomingMSc.map((name, index) => (
               <Reveal
                 key={name}
-                delay={index * 55}
+                delay={index * 40}
               >
-                <article className="group h-full border border-[var(--border)] bg-[var(--surface)] p-6 transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] text-lg font-semibold text-[var(--um-blue)]">
+                <article className="group relative h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-5 transition hover:-translate-y-1 hover:border-[var(--um-sky)] hover:shadow-[var(--shadow-soft)]">
+                  <div className="absolute inset-x-0 top-0 h-[3px] bg-[var(--um-sky)]" />
+
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--surface-soft)] text-sm font-semibold text-[var(--um-blue)]">
                     {getInitials(name)}
                   </div>
 
-                  <h4 className="mt-8 text-xl font-semibold leading-tight">
+                  <h4 className="mt-6 text-lg font-semibold leading-snug">
                     {name}
                   </h4>
 
-                  <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.19em] text-[var(--um-blue)]">
+                  <p className="mt-3 text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--um-blue)]">
                     Incoming MSc Researcher
-                  </p>
-
-                  <p className="mt-5 text-xs text-[var(--foreground-muted)]">
-                    January 2027
                   </p>
                 </article>
               </Reveal>
@@ -450,153 +376,118 @@ export default function PeoplePage() {
       {/* HOW WE WORK */}
       {/* ===================================================== */}
 
-      <section className="bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-32">
+      <section className="bg-[var(--section-blue)] px-5 py-16 text-white md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-gold)]">
+            <div className="grid gap-6 lg:grid-cols-[0.62fr_1.38fr]">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-gold)]">
                 How We Work
               </p>
 
-              <h2 className="max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+              <h2 className="text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
                 Research built around connection.
               </h2>
             </div>
           </Reveal>
 
-          <div className="mt-16 grid gap-px overflow-hidden bg-white/15 md:grid-cols-2 lg:grid-cols-4">
-            {workingPrinciples.map((item, index) => (
-              <Reveal
+          <div className="mt-12 grid gap-px overflow-hidden bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
+            {workingPrinciples.map((item) => (
+              <div
                 key={item.number}
-                delay={index * 70}
+                className="bg-[var(--section-blue)] p-6"
               >
-                <div className="h-full bg-[var(--section-blue)] p-7">
-                  <p className="text-xs font-semibold text-[var(--um-gold)]">
-                    {item.number}
-                  </p>
+                <p className="text-xs font-semibold text-[var(--um-gold)]">
+                  {item.number}
+                </p>
 
-                  <h3 className="mt-8 text-2xl font-semibold">
-                    {item.title}
-                  </h3>
+                <h3 className="mt-6 text-2xl font-semibold">
+                  {item.title}
+                </h3>
 
-                  <p className="mt-4 text-sm leading-7 text-white/70">
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
+                <p className="mt-4 text-sm leading-7 text-white/70">
+                  {item.text}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===================================================== */}
-      {/* RESEARCH ROLES */}
+      {/* ROLES */}
       {/* ===================================================== */}
 
-      <section className="bg-[var(--background)] px-8 py-24 md:px-16 md:py-32">
+      <section className="px-5 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
               Research Roles
             </p>
 
-            <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
               Different stages.
               <br />
-              One research ecosystem.
+              One ecosystem.
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {researchRoles.map((item, index) => (
-              <Reveal
+              <article
                 key={item.title}
-                delay={index * 60}
+                className="sensys-card p-5"
               >
-                <article className="h-full border border-[var(--border)] bg-[var(--surface)] p-6">
-                  <span className="text-xs font-semibold text-[var(--um-gold)]">
-                    0{index + 1}
-                  </span>
+                <span className="text-xs font-semibold text-[var(--um-gold)]">
+                  0{index + 1}
+                </span>
 
-                  <h3 className="mt-8 text-xl font-semibold">
-                    {item.title}
-                  </h3>
+                <h3 className="mt-6 text-xl font-semibold">
+                  {item.title}
+                </h3>
 
-                  <p className="mt-4 text-sm leading-7 text-[var(--foreground-soft)]">
-                    {item.text}
-                  </p>
-                </article>
-              </Reveal>
+                <p className="mt-3 text-sm leading-7 text-[var(--foreground-soft)]">
+                  {item.text}
+                </p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===================================================== */}
-      {/* GROWING SENSYS */}
-      {/* ===================================================== */}
-
-      <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-28">
-        <div className="mx-auto max-w-7xl">
-          <Reveal>
-            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
-                  Growing SenSys
-                </p>
-
-                <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
-                  Building a multidisciplinary research community in Manitoba.
-                </h2>
-              </div>
-
-              <p className="max-w-xl text-base leading-8 text-[var(--foreground-soft)]">
-                SenSys Lab is being built as a collaborative environment for
-                graduate researchers, postdoctoral researchers, undergraduate
-                students, technical specialists, and research partners.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ===================================================== */}
       {/* WORK WITH US */}
-      {/* ===================================================== */}
 
-      <section className="bg-[var(--um-gold)] px-8 py-24 text-[#2A1710] md:px-16 md:py-28">
+      <section className="bg-[var(--um-gold)] px-5 py-16 text-[#2A1710] md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#4F2C1D]/70">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#4F2C1D]/70">
                   Work With Us
                 </p>
 
-                <h2 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] md:text-7xl">
+                <h2 className="mt-4 text-5xl font-semibold tracking-[-0.05em] md:text-7xl">
                   Help build what comes next.
                 </h2>
               </div>
 
               <div>
-                <p className="max-w-xl text-lg leading-8 text-[#4F2C1D]/85">
-                  We welcome expressions of interest from researchers who want
-                  to work across intelligent sensory systems, microsystems,
-                  diagnostics, biointegration, environment, and technology
-                  translation.
+                <p className="text-base leading-8 text-[#4F2C1D]/85 md:text-lg">
+                  We welcome expressions of interest from researchers working
+                  across intelligent sensory systems and translational
+                  technology development.
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="mt-7 flex flex-wrap gap-3">
                   <Link
                     href="/join"
-                    className="rounded-full bg-[#2A1710] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#385E9D]"
+                    className="rounded-full bg-[#2A1710] px-6 py-3.5 text-sm font-semibold text-white"
                   >
                     View opportunities →
                   </Link>
 
                   <a
                     href="mailto:sanketgoel@gmail.com?subject=Interest%20in%20Joining%20SenSys%20Lab"
-                    className="rounded-full border border-[#2A1710] px-7 py-3.5 text-sm font-semibold transition hover:bg-[#2A1710] hover:text-white"
+                    className="rounded-full border border-[#2A1710] px-6 py-3.5 text-sm font-semibold"
                   >
                     Contact SenSys Lab →
                   </a>
