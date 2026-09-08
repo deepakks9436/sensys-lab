@@ -5,21 +5,15 @@
 ============================================================ */
 
 :root {
-  /* BASE */
-
   --background: #ffffff;
 
   --surface: #ffffff;
   --surface-soft: #f7f3ec;
   --surface-muted: #fbf8f4;
 
-  /* TEXT */
-
   --foreground: #4f2c1d;
   --foreground-soft: #706963;
   --foreground-muted: #837a72;
-
-  /* UNIVERSITY OF MANITOBA */
 
   --um-brown: #4f2c1d;
   --um-brown-dark: #2a1710;
@@ -30,16 +24,10 @@
   --um-blue-dark: #27456f;
   --um-sky: #00a3e0;
 
-  /* FULL-WIDTH SCIENTIFIC / INSTITUTIONAL SECTIONS */
-
   --section-blue: #385e9d;
-
-  /* BORDERS */
 
   --border: #e6dfd7;
   --border-strong: #cfc5bc;
-
-  /* SHADOWS */
 
   --shadow-soft:
     0 12px 35px rgba(79, 44, 29, 0.08);
@@ -53,45 +41,29 @@
 ============================================================ */
 
 html[data-theme="dark"] {
-  /* BASE */
-
   --background: #211510;
 
   --surface: #2a1b16;
   --surface-soft: #34231d;
   --surface-muted: #3d2b24;
 
-  /* TEXT */
-
   --foreground: #fffaf5;
   --foreground-soft: #e4d8d0;
   --foreground-muted: #b9aaa0;
 
-  /* BROWN */
-
   --um-brown: #d4ad99;
   --um-brown-dark: #f0d7ca;
 
-  /* GOLD */
-
   --um-gold: #f2a900;
-
-  /* BLUE */
 
   --um-blue: #88a9d6;
   --um-blue-dark: #6689bb;
   --um-sky: #43b9e8;
 
-  /* NAVY SCIENTIFIC SECTIONS */
-
   --section-blue: #203650;
-
-  /* BORDERS */
 
   --border: rgba(255, 242, 233, 0.1);
   --border-strong: rgba(255, 242, 233, 0.2);
-
-  /* SHADOWS */
 
   --shadow-soft:
     0 18px 45px rgba(0, 0, 0, 0.3);
@@ -119,18 +91,13 @@ body {
   background: var(--background);
   color: var(--foreground);
 
-  /*
-    UNIVERSITY OF MANITOBA WEB TYPOGRAPHY
-
-    Roboto is loaded using Next.js next/font.
-    Helvetica Neue and Arial are fallbacks.
-  */
-
   font-family:
     var(--font-roboto),
     "Helvetica Neue",
     Arial,
     sans-serif;
+
+  font-weight: 400;
 
   font-synthesis: none;
 
@@ -153,27 +120,8 @@ img {
 }
 
 /* ============================================================
-   MONOSPACE TYPOGRAPHY
+   TYPOGRAPHY
 ============================================================ */
-
-code,
-pre,
-kbd,
-samp {
-  font-family:
-    var(--font-roboto-mono),
-    "Courier New",
-    monospace;
-}
-
-/* ============================================================
-   TYPOGRAPHY POLISH
-============================================================ */
-
-/*
-  Roboto benefits from slightly more natural letter spacing
-  than the previous Geist setup.
-*/
 
 h1,
 h2,
@@ -187,24 +135,58 @@ h6 {
     Arial,
     sans-serif;
 
-  font-weight: 600;
-
   text-rendering: optimizeLegibility;
 }
 
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+/* BODY COPY */
+
 p,
-li,
-span,
-a,
+li {
+  font-weight: 400;
+}
+
+/* NAVIGATION */
+
+nav {
+  font-weight: 500;
+}
+
+/* BUTTONS */
+
 button,
-input,
-textarea,
-select {
+a {
   font-family:
     var(--font-roboto),
     "Helvetica Neue",
     Arial,
     sans-serif;
+}
+
+/* MONOSPACE */
+
+code,
+pre,
+kbd,
+samp {
+  font-family:
+    var(--font-roboto-mono),
+    "Courier New",
+    monospace;
 }
 
 /* ============================================================
@@ -322,7 +304,7 @@ a {
   border-color: var(--um-blue-dark);
 }
 
-/* BLUE OUTLINE BUTTON */
+/* BLUE OUTLINE */
 
 .um-blue-outline {
   border: 1px solid var(--um-blue);
@@ -435,8 +417,7 @@ a {
 }
 
 /* ============================================================
-   DARK MODE
-   LEGACY HARDCODED BACKGROUND OVERRIDES
+   DARK MODE LEGACY BACKGROUNDS
 ============================================================ */
 
 html[data-theme="dark"] .bg-white {
@@ -460,7 +441,7 @@ html[data-theme="dark"] .bg-\[\#EEE8E1\] {
 }
 
 /* ============================================================
-   WHITE CTA BUTTONS MUST REMAIN WHITE
+   WHITE CTA BUTTONS
 ============================================================ */
 
 html[data-theme="dark"] a.bg-white,
@@ -479,8 +460,7 @@ html[data-theme="dark"] button.bg-white:hover {
 }
 
 /* ============================================================
-   DARK MODE
-   LEGACY HARDCODED TEXT OVERRIDES
+   DARK LEGACY TEXT
 ============================================================ */
 
 html[data-theme="dark"] .text-\[\#4F2C1D\],
@@ -498,8 +478,7 @@ html[data-theme="dark"] .text-\[\#928980\] {
 }
 
 /* ============================================================
-   DARK MODE
-   LEGACY BORDER OVERRIDES
+   DARK LEGACY BORDERS
 ============================================================ */
 
 html[data-theme="dark"] .border-\[\#DDD5CC\],
@@ -514,8 +493,7 @@ html[data-theme="dark"] .border-\[\#DED6CE\] {
 }
 
 /* ============================================================
-   DARK MODE
-   BLUE ELEMENTS
+   DARK BLUE ELEMENTS
 ============================================================ */
 
 html[data-theme="dark"] .bg-\[\#385E9D\] {
@@ -532,7 +510,6 @@ html[data-theme="dark"] .bg-\[\#00A3E0\] {
 }
 
 /* ============================================================
-   DARK MODE
    GOLD SECTIONS
 ============================================================ */
 
@@ -546,8 +523,7 @@ html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#4F2C1D\] {
 }
 
 /* ============================================================
-   DARK MODE
-   CARD POLISH
+   DARK CARDS
 ============================================================ */
 
 html[data-theme="dark"] .sensys-card:hover {

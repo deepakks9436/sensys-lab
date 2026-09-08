@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+/* ============================================================
+   DYNAMIC RESEARCH THEMES
+============================================================ */
+
 const heroThemes = [
   {
     number: "01",
@@ -68,12 +72,18 @@ const headlineWords = [
   "Reimagining.",
 ];
 
+/* ============================================================
+   COMPONENT
+============================================================ */
+
 export default function DynamicHero() {
   const [activeThemeIndex, setActiveThemeIndex] = useState(0);
   const [highlightIndex, setHighlightIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  /* RESEARCH TOPIC */
+  /* ========================================================
+     RESEARCH TOPIC ROTATION
+  ======================================================== */
 
   useEffect(() => {
     if (paused) return;
@@ -89,7 +99,9 @@ export default function DynamicHero() {
     return () => window.clearInterval(interval);
   }, [paused]);
 
-  /* HEADLINE HIGHLIGHT */
+  /* ========================================================
+     HEADLINE ROTATION
+  ======================================================== */
 
   useEffect(() => {
     if (paused) return;
@@ -107,6 +119,10 @@ export default function DynamicHero() {
 
   const activeTheme = heroThemes[activeThemeIndex];
 
+  /* ========================================================
+     HEADLINE
+  ======================================================== */
+
   const Headline = ({
     mobile = false,
   }: {
@@ -115,8 +131,8 @@ export default function DynamicHero() {
     <h1
       className={
         mobile
-          ? "mt-7 flex flex-col gap-1 text-[48px] font-semibold leading-[0.91] tracking-[-0.06em] sm:text-[58px]"
-          : "mt-8 flex max-w-4xl flex-col gap-[0.15em] text-6xl font-semibold leading-[0.88] tracking-[-0.065em] md:text-[80px] lg:text-[86px] xl:text-[92px]"
+          ? "mt-7 flex flex-col gap-1 text-[48px] font-bold leading-[0.94] tracking-[-0.035em] sm:text-[58px]"
+          : "mt-8 flex max-w-4xl flex-col gap-[0.14em] text-6xl font-bold leading-[0.92] tracking-[-0.04em] md:text-[80px] lg:text-[86px] xl:text-[92px]"
       }
     >
       {headlineWords.map((word, index) => {
@@ -128,7 +144,7 @@ export default function DynamicHero() {
             key={word}
             className={`relative w-fit transition-all duration-500 ${
               active && !mobile
-                ? "translate-x-[6px]"
+                ? "translate-x-[5px]"
                 : ""
             }`}
             style={{
@@ -166,7 +182,9 @@ export default function DynamicHero() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* BACKGROUND */}
+      {/* ===================================================== */}
+      {/* CAMPUS BACKGROUND */}
+      {/* ===================================================== */}
 
       <Image
         src="/home/um-campus-wide.jpg"
@@ -193,6 +211,14 @@ export default function DynamicHero() {
         }}
       />
 
+      <div
+        className="pointer-events-none absolute -bottom-48 left-[20%] h-[400px] w-[400px] rounded-full blur-[125px]"
+        style={{
+          background:
+            "color-mix(in srgb, var(--um-gold) 10%, transparent)",
+        }}
+      />
+
       {/* ===================================================== */}
       {/* MOBILE HERO */}
       {/* ===================================================== */}
@@ -202,14 +228,12 @@ export default function DynamicHero() {
           <div className="flex items-center gap-3">
             <span className="h-[2px] w-8 bg-[var(--um-gold)]" />
 
-            <p className="text-[10px] font-semibold uppercase tracking-[0.27em] text-[var(--um-blue)]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
               Intelligent Sensory Systems
             </p>
           </div>
 
           <Headline mobile />
-
-          {/* DYNAMIC IDEA */}
 
           <div
             key={`mobile-${activeTheme.number}`}
@@ -222,16 +246,16 @@ export default function DynamicHero() {
 
               <span className="h-px w-6 bg-[var(--border-strong)]" />
 
-              <p className="text-[8px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground-muted)]">
+              <p className="text-[8px] font-semibold uppercase tracking-[0.15em] text-[var(--foreground-muted)]">
                 {activeTheme.kicker}
               </p>
             </div>
 
-            <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em]">
+            <h2 className="mt-2 text-3xl font-semibold tracking-[-0.025em]">
               {activeTheme.label}
             </h2>
 
-            <p className="mt-3 text-sm leading-6 text-[var(--foreground-soft)]">
+            <p className="mt-3 text-sm font-normal leading-6 text-[var(--foreground-soft)]">
               {activeTheme.description}
             </p>
           </div>
@@ -255,7 +279,7 @@ export default function DynamicHero() {
               <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#17263D]/90 to-transparent" />
 
               <div className="absolute inset-x-0 bottom-0 p-4">
-                <p className="text-[8px] font-semibold uppercase tracking-[0.2em] text-[#F2A900]">
+                <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#F2A900]">
                   {activeTheme.imageCategory}
                 </p>
 
@@ -290,6 +314,8 @@ export default function DynamicHero() {
             ))}
           </div>
 
+          {/* ACTIONS */}
+
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/research"
@@ -319,12 +345,14 @@ export default function DynamicHero() {
           <div className="flex items-center gap-4">
             <span className="h-[2px] w-10 bg-[var(--um-gold)]" />
 
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[var(--um-blue)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--um-blue)]">
               Intelligent Sensory Systems
             </p>
           </div>
 
           <Headline />
+
+          {/* ACTIVE THEME */}
 
           <div className="mt-10 min-h-[142px] max-w-3xl">
             <div
@@ -332,33 +360,37 @@ export default function DynamicHero() {
               className="animate-fade-slide"
             >
               <div className="flex flex-wrap items-center gap-3">
-                <span className="text-xs font-semibold tracking-[0.2em] text-[var(--um-gold)]">
+                <span className="text-xs font-semibold tracking-[0.18em] text-[var(--um-gold)]">
                   {activeTheme.number}
                 </span>
 
                 <span className="h-px w-8 bg-[var(--border-strong)]" />
 
-                <p className="text-[10px] font-semibold uppercase tracking-[0.23em] text-[var(--foreground-muted)]">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
                   {activeTheme.kicker}
                 </p>
               </div>
 
-              <h2 className="mt-3 text-5xl font-semibold tracking-[-0.045em]">
+              <h2 className="mt-3 text-5xl font-semibold tracking-[-0.025em]">
                 {activeTheme.label}
               </h2>
 
-              <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--foreground-soft)]">
+              <p className="mt-4 max-w-2xl text-base font-normal leading-8 text-[var(--foreground-soft)]">
                 {activeTheme.description}
               </p>
             </div>
           </div>
 
-          <p className="mt-4 max-w-2xl border-l-2 border-[var(--um-gold)] pl-5 text-base leading-8 text-[var(--foreground-soft)]">
+          {/* CORE MESSAGE */}
+
+          <p className="mt-4 max-w-2xl border-l-2 border-[var(--um-gold)] pl-5 text-base font-normal leading-8 text-[var(--foreground-soft)]">
             SenSys Lab integrates microsystems, microfluidics,
             biointegrated technologies, advanced materials,
             intelligent diagnostics, electronics, and data-driven
             sensing into connected cyber-physical sensory systems.
           </p>
+
+          {/* ACTIONS */}
 
           <div className="mt-8 flex gap-4">
             <Link
@@ -375,6 +407,8 @@ export default function DynamicHero() {
               Meet Team SenSys →
             </Link>
           </div>
+
+          {/* SELECTOR */}
 
           <div className="mt-9 flex gap-4">
             {heroThemes.map((theme, index) => (
@@ -398,7 +432,7 @@ export default function DynamicHero() {
                   }}
                 />
 
-                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.13em] text-[var(--foreground-muted)] xl:inline">
+                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--foreground-muted)] xl:inline">
                   {theme.label}
                 </span>
               </button>
@@ -406,12 +440,14 @@ export default function DynamicHero() {
           </div>
         </div>
 
-        {/* RIGHT */}
+        {/* =================================================== */}
+        {/* RIGHT VISUAL */}
+        {/* =================================================== */}
 
         <div className="relative min-h-[555px]">
           <div
             key={`number-${activeTheme.number}`}
-            className="animate-fade-in pointer-events-none absolute -right-2 top-0 text-[145px] font-semibold leading-none tracking-[-0.08em]"
+            className="animate-fade-in pointer-events-none absolute -right-2 top-0 text-[145px] font-semibold leading-none tracking-[-0.04em]"
             style={{
               color:
                 "color-mix(in srgb, var(--foreground) 12%, transparent)",
@@ -442,7 +478,7 @@ export default function DynamicHero() {
                 key={activeTheme.imageTitle}
                 className="animate-fade-slide absolute inset-x-0 bottom-0 p-7"
               >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-[#F2A900]">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#F2A900]">
                   {activeTheme.imageCategory}
                 </p>
 
@@ -459,11 +495,17 @@ export default function DynamicHero() {
             </div>
           </Link>
 
+          {/* ORBIT DETAIL */}
+
           <div className="pointer-events-none absolute left-[-20px] top-[70px] h-20 w-20 rounded-full border border-[var(--um-blue)]/35" />
+
           <div className="pointer-events-none absolute left-[-5px] top-[85px] h-12 w-12 rounded-full border border-[var(--um-blue)]/45" />
+
           <div className="pointer-events-none absolute left-[11px] top-[101px] h-4 w-4 rounded-full bg-[var(--um-gold)]" />
         </div>
       </div>
+
+      {/* BOTTOM ACCENT */}
 
       <div className="absolute bottom-0 left-0 h-[4px] w-full bg-gradient-to-r from-[var(--um-gold)] via-[var(--um-blue)] to-[var(--um-sky)]" />
     </section>

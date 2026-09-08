@@ -136,8 +136,6 @@ export default function RootLayout({
       className={`${roboto.variable} ${robotoMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Prevent light-theme flash before React hydrates */}
-
         <script
           dangerouslySetInnerHTML={{
             __html: themeScript,
@@ -146,9 +144,7 @@ export default function RootLayout({
       </head>
 
       <body className="min-h-full">
-        {/* ================================================= */}
         {/* ACCESSIBILITY */}
-        {/* ================================================= */}
 
         <a
           href="#main-content"
@@ -157,15 +153,11 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        {/* ================================================= */}
         {/* GLOBAL SCROLL PROGRESS */}
-        {/* ================================================= */}
 
         <ScrollProgress />
 
-        {/* ================================================= */}
         {/* PAGE CONTENT */}
-        {/* ================================================= */}
 
         <div
           id="main-content"
@@ -174,9 +166,7 @@ export default function RootLayout({
           {children}
         </div>
 
-        {/* ================================================= */}
-        {/* GLOBAL BACK TO TOP */}
-        {/* ================================================= */}
+        {/* BACK TO TOP */}
 
         <BackToTop />
       </body>
