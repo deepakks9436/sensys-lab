@@ -5,15 +5,21 @@
 ============================================================ */
 
 :root {
+  /* BASE */
+
   --background: #ffffff;
 
   --surface: #ffffff;
   --surface-soft: #f7f3ec;
   --surface-muted: #fbf8f4;
 
+  /* TEXT */
+
   --foreground: #4f2c1d;
   --foreground-soft: #706963;
   --foreground-muted: #837a72;
+
+  /* UNIVERSITY OF MANITOBA */
 
   --um-brown: #4f2c1d;
   --um-brown-dark: #2a1710;
@@ -24,10 +30,16 @@
   --um-blue-dark: #27456f;
   --um-sky: #00a3e0;
 
+  /* FULL-WIDTH SCIENTIFIC / INSTITUTIONAL SECTIONS */
+
   --section-blue: #385e9d;
+
+  /* BORDERS */
 
   --border: #e6dfd7;
   --border-strong: #cfc5bc;
+
+  /* SHADOWS */
 
   --shadow-soft:
     0 12px 35px rgba(79, 44, 29, 0.08);
@@ -41,29 +53,45 @@
 ============================================================ */
 
 html[data-theme="dark"] {
+  /* BASE */
+
   --background: #211510;
 
   --surface: #2a1b16;
   --surface-soft: #34231d;
   --surface-muted: #3d2b24;
 
+  /* TEXT */
+
   --foreground: #fffaf5;
   --foreground-soft: #e4d8d0;
   --foreground-muted: #b9aaa0;
 
+  /* BROWN */
+
   --um-brown: #d4ad99;
   --um-brown-dark: #f0d7ca;
 
+  /* GOLD */
+
   --um-gold: #f2a900;
+
+  /* BLUE */
 
   --um-blue: #88a9d6;
   --um-blue-dark: #6689bb;
   --um-sky: #43b9e8;
 
+  /* NAVY SCIENTIFIC SECTIONS */
+
   --section-blue: #203650;
+
+  /* BORDERS */
 
   --border: rgba(255, 242, 233, 0.1);
   --border-strong: rgba(255, 242, 233, 0.2);
+
+  /* SHADOWS */
 
   --shadow-soft:
     0 18px 45px rgba(0, 0, 0, 0.3);
@@ -91,10 +119,25 @@ body {
   background: var(--background);
   color: var(--foreground);
 
+  /*
+    UNIVERSITY OF MANITOBA WEB TYPOGRAPHY
+
+    Roboto is loaded using Next.js next/font.
+    Helvetica Neue and Arial are fallbacks.
+  */
+
   font-family:
+    var(--font-roboto),
+    "Helvetica Neue",
     Arial,
-    Helvetica,
     sans-serif;
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   transition:
     background-color 0.3s ease,
@@ -110,7 +153,62 @@ img {
 }
 
 /* ============================================================
-   SELECTION
+   MONOSPACE TYPOGRAPHY
+============================================================ */
+
+code,
+pre,
+kbd,
+samp {
+  font-family:
+    var(--font-roboto-mono),
+    "Courier New",
+    monospace;
+}
+
+/* ============================================================
+   TYPOGRAPHY POLISH
+============================================================ */
+
+/*
+  Roboto benefits from slightly more natural letter spacing
+  than the previous Geist setup.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    var(--font-roboto),
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-weight: 600;
+
+  text-rendering: optimizeLegibility;
+}
+
+p,
+li,
+span,
+a,
+button,
+input,
+textarea,
+select {
+  font-family:
+    var(--font-roboto),
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
+/* ============================================================
+   TEXT SELECTION
 ============================================================ */
 
 ::selection {
@@ -143,9 +241,6 @@ a {
 
 /* ============================================================
    GLOBAL THEME TRANSITIONS
-
-   Do not animate every DIV.
-   This improves mobile responsiveness.
 ============================================================ */
 
 section,
@@ -198,7 +293,7 @@ a {
 }
 
 /* ============================================================
-   UM HELPERS
+   UNIVERSITY OF MANITOBA HELPERS
 ============================================================ */
 
 .um-blue-link {
@@ -213,6 +308,8 @@ a {
   color: var(--um-sky);
 }
 
+/* PRIMARY BLUE BUTTON */
+
 .um-blue-button {
   background: var(--um-blue);
   color: #ffffff;
@@ -225,6 +322,8 @@ a {
   border-color: var(--um-blue-dark);
 }
 
+/* BLUE OUTLINE BUTTON */
+
 .um-blue-outline {
   border: 1px solid var(--um-blue);
   color: var(--um-blue);
@@ -236,6 +335,8 @@ a {
   background: var(--um-blue);
   color: #ffffff;
 }
+
+/* LARGE BLUE SECTIONS */
 
 .um-blue-section {
   background: var(--section-blue);
@@ -334,7 +435,8 @@ a {
 }
 
 /* ============================================================
-   DARK MODE LEGACY BACKGROUNDS
+   DARK MODE
+   LEGACY HARDCODED BACKGROUND OVERRIDES
 ============================================================ */
 
 html[data-theme="dark"] .bg-white {
@@ -358,7 +460,7 @@ html[data-theme="dark"] .bg-\[\#EEE8E1\] {
 }
 
 /* ============================================================
-   WHITE CTA BUTTONS
+   WHITE CTA BUTTONS MUST REMAIN WHITE
 ============================================================ */
 
 html[data-theme="dark"] a.bg-white,
@@ -377,7 +479,8 @@ html[data-theme="dark"] button.bg-white:hover {
 }
 
 /* ============================================================
-   DARK LEGACY TEXT
+   DARK MODE
+   LEGACY HARDCODED TEXT OVERRIDES
 ============================================================ */
 
 html[data-theme="dark"] .text-\[\#4F2C1D\],
@@ -395,7 +498,8 @@ html[data-theme="dark"] .text-\[\#928980\] {
 }
 
 /* ============================================================
-   DARK LEGACY BORDERS
+   DARK MODE
+   LEGACY BORDER OVERRIDES
 ============================================================ */
 
 html[data-theme="dark"] .border-\[\#DDD5CC\],
@@ -410,7 +514,8 @@ html[data-theme="dark"] .border-\[\#DED6CE\] {
 }
 
 /* ============================================================
-   DARK BLUE ELEMENTS
+   DARK MODE
+   BLUE ELEMENTS
 ============================================================ */
 
 html[data-theme="dark"] .bg-\[\#385E9D\] {
@@ -427,7 +532,8 @@ html[data-theme="dark"] .bg-\[\#00A3E0\] {
 }
 
 /* ============================================================
-   GOLD
+   DARK MODE
+   GOLD SECTIONS
 ============================================================ */
 
 html[data-theme="dark"] .bg-\[\#F2A900\] {
@@ -440,7 +546,8 @@ html[data-theme="dark"] .bg-\[\#F2A900\] .text-\[\#4F2C1D\] {
 }
 
 /* ============================================================
-   DARK CARDS
+   DARK MODE
+   CARD POLISH
 ============================================================ */
 
 html[data-theme="dark"] .sensys-card:hover {
@@ -464,7 +571,7 @@ html[data-theme="dark"] .dark-nav-surface {
 }
 
 /* ============================================================
-   UNIVERSITY LOGO
+   UNIVERSITY OF MANITOBA LOGO PANEL
 ============================================================ */
 
 .um-logo-panel {

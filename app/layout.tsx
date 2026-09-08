@@ -1,20 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto, Roboto_Mono } from "next/font/google";
 
 import BackToTop from "../components/BackToTop";
 import ScrollProgress from "../components/ScrollProgress";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/* ============================================================
+   UNIVERSITY OF MANITOBA WEB TYPOGRAPHY
+============================================================ */
+
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
+  weight: [
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900",
+  ],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
+
+/* ============================================================
+   METADATA
+============================================================ */
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sensys-lab.vercel.app"),
@@ -76,6 +96,10 @@ export const metadata: Metadata = {
   },
 };
 
+/* ============================================================
+   THEME INITIALIZATION
+============================================================ */
+
 const themeScript = `
 (function () {
   try {
@@ -96,6 +120,10 @@ const themeScript = `
 })();
 `;
 
+/* ============================================================
+   ROOT LAYOUT
+============================================================ */
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -105,10 +133,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${roboto.variable} ${robotoMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Prevents a light-theme flash before React hydrates */}
+        {/* Prevent light-theme flash before React hydrates */}
+
         <script
           dangerouslySetInnerHTML={{
             __html: themeScript,
@@ -117,7 +146,10 @@ export default function RootLayout({
       </head>
 
       <body className="min-h-full">
+        {/* ================================================= */}
         {/* ACCESSIBILITY */}
+        {/* ================================================= */}
+
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[200] -translate-y-24 rounded-full bg-[#385E9D] px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform focus:translate-y-0"
@@ -125,15 +157,27 @@ export default function RootLayout({
           Skip to main content
         </a>
 
+        {/* ================================================= */}
         {/* GLOBAL SCROLL PROGRESS */}
+        {/* ================================================= */}
+
         <ScrollProgress />
 
+        {/* ================================================= */}
         {/* PAGE CONTENT */}
-        <div id="main-content" className="min-h-screen">
+        {/* ================================================= */}
+
+        <div
+          id="main-content"
+          className="min-h-screen"
+        >
           {children}
         </div>
 
+        {/* ================================================= */}
         {/* GLOBAL BACK TO TOP */}
+        {/* ================================================= */}
+
         <BackToTop />
       </body>
     </html>
