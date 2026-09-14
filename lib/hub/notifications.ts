@@ -1,20 +1,21 @@
-type SupabaseLike = {
-  from: (table: string) => any;
+import type {
+  SupabaseClient,
+} from "@supabase/supabase-js";
 
-  rpc: (
-    functionName: string,
-    params?: Record<
-      string,
-      unknown
-    >
-  ) => Promise<{
-    data: unknown;
-
-    error: {
-      message: string;
-    } | null;
-  }>;
-};
+/*
+ * Use the official Supabase client method
+ * signatures instead of manually redefining
+ * .from() and .rpc().
+ *
+ * This is important because Supabase .rpc()
+ * returns a PostgREST builder / thenable,
+ * not a literal Promise type.
+ */
+type SupabaseLike =
+  Pick<
+    SupabaseClient,
+    "from" | "rpc"
+  >;
 
 type NotificationOptions = {
   type: string;
@@ -60,7 +61,9 @@ export async function notifyHubUser(
     return;
   }
 
-  const { error } =
+  const {
+    error,
+  } =
     await supabase.rpc(
       "notify_hub_user_from_staff",
       {
@@ -95,9 +98,10 @@ export async function notifyHubUser(
         /*
          * Keep this TRUE.
          *
-         * Because the database delivery trigger
-         * is temporarily disabled, emails will
-         * remain safely queued as Pending.
+         * If the external email delivery
+         * trigger is disabled, messages may
+         * remain queued while in-app
+         * notifications continue to work.
          */
         p_send_email:
           options.sendEmail ??
@@ -106,8 +110,9 @@ export async function notifyHubUser(
     );
 
   /*
-   * A notification failure must never undo
-   * the underlying research/lab operation.
+   * Notification delivery must never
+   * undo the research or laboratory
+   * operation that triggered it.
    */
   if (error) {
     console.error(
@@ -129,16 +134,19 @@ export async function notifyStudent(
   const {
     data: student,
     error,
-  } = await supabase
-    .from("students")
-    .select(
-      "user_id, full_name"
-    )
-    .eq(
-      "id",
-      studentId
-    )
-    .maybeSingle();
+  } =
+    await supabase
+      .from(
+        "students"
+      )
+      .select(
+        "user_id, full_name"
+      )
+      .eq(
+        "id",
+        studentId
+      )
+      .maybeSingle();
 
   if (error) {
     console.error(
@@ -150,10 +158,14 @@ export async function notifyStudent(
   }
 
   /*
-   * Researcher may exist in the register
-   * before their Hub account is linked.
+   * A researcher may exist in the
+   * research register before their
+   * SenSys Hub account has been
+   * created or linked.
    */
-  if (!student?.user_id) {
+  if (
+    !student?.user_id
+  ) {
     return;
   }
 
