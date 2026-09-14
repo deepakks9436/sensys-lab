@@ -18,13 +18,12 @@ export default function Footer() {
                 </p>
 
                 <p className="mt-2 text-xs uppercase tracking-[0.24em] text-white/55">
-                  Intelligent Sensory Systems
+                  Intelligent Sensory
+                  Systems
                 </p>
               </div>
 
               <div className="hidden h-11 w-px bg-white/20 sm:block" />
-
-              {/* UNIVERSITY LOGO */}
 
               <a
                 href="https://umanitoba.ca/"
@@ -36,8 +35,12 @@ export default function Footer() {
                 <Image
                   src="/brand/umanitoba.svg"
                   alt="University of Manitoba"
-                  width={170}
-                  height={44}
+                  width={
+                    170
+                  }
+                  height={
+                    44
+                  }
                   className="h-[36px] w-auto object-contain"
                   unoptimized
                 />
@@ -45,9 +48,17 @@ export default function Footer() {
             </div>
 
             <p className="mt-7 max-w-md text-sm leading-7 text-white/70">
-              Developing intelligent cyber-physical sensory systems across
-              microsystems, diagnostics, biointegrated technologies,
-              environmental intelligence, and translational engineering.
+              Developing intelligent
+              cyber-physical sensory
+              systems across
+              microsystems,
+              diagnostics,
+              biointegrated
+              technologies,
+              environmental
+              intelligence, and
+              translational
+              engineering.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
@@ -60,8 +71,38 @@ export default function Footer() {
               </span>
 
               <span className="rounded-full border border-white/20 px-4 py-2 text-xs text-white/75">
-                Technology Translation
+                Technology
+                Translation
               </span>
+            </div>
+
+            {/* HUB ACCESS */}
+
+            <div className="mt-8 max-w-md border border-white/15 bg-white/[0.06] p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--um-gold)]">
+                Lab Member Access
+              </p>
+
+              <p className="mt-2 text-xs leading-6 text-white/60">
+                SenSys Hub provides
+                authorized lab
+                members with access
+                to research progress,
+                meetings, actions,
+                instruments and
+                laboratory
+                operations.
+              </p>
+
+              <Link
+                href="/hub"
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2.5 text-xs font-semibold text-white transition hover:border-[var(--um-gold)] hover:text-[var(--um-gold)]"
+              >
+                Open SenSys Hub
+                <span>
+                  →
+                </span>
+              </Link>
             </div>
           </div>
 
@@ -221,7 +262,8 @@ export default function Footer() {
               </p>
 
               <p className="mt-3 text-sm leading-7 text-white/75">
-                University of Manitoba
+                University of
+                Manitoba
                 <br />
                 Winnipeg, Manitoba
                 <br />
@@ -237,17 +279,26 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-5 border-t border-white/15 pt-7 text-xs text-white/50 md:flex-row md:items-center md:justify-between">
           <p>
-            © 2026 SenSys Lab · University of Manitoba
+            © 2026 SenSys Lab ·
+            University of Manitoba
           </p>
 
           <div className="flex flex-wrap gap-5">
+            <Link
+              href="/hub"
+              className="font-semibold text-white/65 transition hover:text-[var(--um-gold)]"
+            >
+              SenSys Hub →
+            </Link>
+
             <a
               href="https://www.canada.ca/en/impact-plus-chairs.html"
               target="_blank"
               rel="noopener noreferrer"
               className="transition hover:text-white"
             >
-              Canada Global Impact+ Research Chairs ↗
+              Canada Global Impact+
+              Research Chairs ↗
             </a>
 
             <a
@@ -256,7 +307,8 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="transition hover:text-white"
             >
-              University of Manitoba ↗
+              University of
+              Manitoba ↗
             </a>
           </div>
         </div>

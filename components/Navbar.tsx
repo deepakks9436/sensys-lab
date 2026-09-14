@@ -2,180 +2,372 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import {
+  usePathname,
+} from "next/navigation";
 
 import ThemeToggle from "./ThemeToggle";
 import SiteSearch from "./SiteSearch";
 
 const researchThrusts = [
   {
-    title: "Intelligent Microsystems",
-    href: "/research#intelligent-microsystems",
+    title:
+      "Intelligent Microsystems",
+    href:
+      "/research#intelligent-microsystems",
   },
   {
-    title: "Biointegrated Systems",
-    href: "/research#biointegrated-systems",
+    title:
+      "Biointegrated Systems",
+    href:
+      "/research#biointegrated-systems",
   },
   {
-    title: "Intelligent Diagnostics",
-    href: "/research#intelligent-diagnostics",
+    title:
+      "Intelligent Diagnostics",
+    href:
+      "/research#intelligent-diagnostics",
   },
   {
-    title: "Agri & Environmental Intelligence",
-    href: "/research#agri-environment",
+    title:
+      "Agri & Environmental Intelligence",
+    href:
+      "/research#agri-environment",
   },
 ];
 
 const researchFoundations = [
   {
-    title: "Graphene Technologies",
-    href: "/research/graphene",
+    title:
+      "Graphene Technologies",
+    href:
+      "/research/graphene",
   },
   {
-    title: "Pesticide Detection",
-    href: "/research/pesticide-detection",
+    title:
+      "Pesticide Detection",
+    href:
+      "/research/pesticide-detection",
   },
   {
-    title: "Water Quality Technologies",
-    href: "/research/water-quality",
+    title:
+      "Water Quality Technologies",
+    href:
+      "/research/water-quality",
   },
   {
-    title: "Pathogen & AMR Diagnostics",
-    href: "/research/amr",
+    title:
+      "Pathogen & AMR Diagnostics",
+    href:
+      "/research/amr",
   },
 ];
 
 const outputs = [
   {
-    title: "Publications",
-    href: "/publications",
+    title:
+      "Publications",
+    href:
+      "/publications",
   },
   {
-    title: "Patents",
-    href: "/patents",
+    title:
+      "Patents",
+    href:
+      "/patents",
   },
   {
-    title: "Books",
-    href: "/books",
+    title:
+      "Books",
+    href:
+      "/books",
   },
 ];
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const pathname =
+    usePathname();
 
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileResearchOpen, setMobileResearchOpen] = useState(false);
-  const [mobileOutputsOpen, setMobileOutputsOpen] = useState(false);
+  const [
+    mobileOpen,
+    setMobileOpen,
+  ] =
+    useState(
+      false
+    );
 
-  const [researchOpen, setResearchOpen] = useState(false);
-  const [outputsOpen, setOutputsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [
+    mobileResearchOpen,
+    setMobileResearchOpen,
+  ] =
+    useState(
+      false
+    );
+
+  const [
+    mobileOutputsOpen,
+    setMobileOutputsOpen,
+  ] =
+    useState(
+      false
+    );
+
+  const [
+    researchOpen,
+    setResearchOpen,
+  ] =
+    useState(
+      false
+    );
+
+  const [
+    outputsOpen,
+    setOutputsOpen,
+  ] =
+    useState(
+      false
+    );
+
+  const [
+    scrolled,
+    setScrolled,
+  ] =
+    useState(
+      false
+    );
 
   /* ========================================================
      SCROLL STATE
   ======================================================== */
 
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 15);
-    };
+  useEffect(
+    () => {
+      const onScroll =
+        () => {
+          setScrolled(
+            window.scrollY >
+              15
+          );
+        };
 
-    onScroll();
+      onScroll();
 
-    window.addEventListener("scroll", onScroll, {
-      passive: true,
-    });
+      window.addEventListener(
+        "scroll",
+        onScroll,
+        {
+          passive:
+            true,
+        }
+      );
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+      return () =>
+        window.removeEventListener(
+          "scroll",
+          onScroll
+        );
+    },
+    []
+  );
 
   /* ========================================================
      CLOSE ON ROUTE CHANGE
   ======================================================== */
 
-  useEffect(() => {
-    setMobileOpen(false);
-    setMobileResearchOpen(false);
-    setMobileOutputsOpen(false);
-    setResearchOpen(false);
-    setOutputsOpen(false);
-  }, [pathname]);
+  useEffect(
+    () => {
+      setMobileOpen(
+        false
+      );
+
+      setMobileResearchOpen(
+        false
+      );
+
+      setMobileOutputsOpen(
+        false
+      );
+
+      setResearchOpen(
+        false
+      );
+
+      setOutputsOpen(
+        false
+      );
+    },
+    [
+      pathname,
+    ]
+  );
 
   /* ========================================================
      MOBILE BODY LOCK
   ======================================================== */
 
-  useEffect(() => {
-    if (!mobileOpen) return;
+  useEffect(
+    () => {
+      if (
+        !mobileOpen
+      ) {
+        return;
+      }
 
-    const oldOverflow = document.body.style.overflow;
-    const oldOverscroll = document.body.style.overscrollBehavior;
+      const oldOverflow =
+        document.body
+          .style
+          .overflow;
 
-    document.body.style.overflow = "hidden";
-    document.body.style.overscrollBehavior = "none";
+      const oldOverscroll =
+        document.body
+          .style
+          .overscrollBehavior;
 
-    return () => {
-      document.body.style.overflow = oldOverflow;
-      document.body.style.overscrollBehavior = oldOverscroll;
-    };
-  }, [mobileOpen]);
+      document.body.style.overflow =
+        "hidden";
+
+      document.body.style.overscrollBehavior =
+        "none";
+
+      return () => {
+        document.body.style.overflow =
+          oldOverflow;
+
+        document.body.style.overscrollBehavior =
+          oldOverscroll;
+      };
+    },
+    [
+      mobileOpen,
+    ]
+  );
 
   /* ========================================================
      ESCAPE TO CLOSE
   ======================================================== */
 
-  useEffect(() => {
-    if (!mobileOpen) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMobileOpen(false);
+  useEffect(
+    () => {
+      if (
+        !mobileOpen
+      ) {
+        return;
       }
-    };
 
-    window.addEventListener("keydown", handleKeyDown);
+      const handleKeyDown =
+        (
+          event: KeyboardEvent
+        ) => {
+          if (
+            event.key ===
+            "Escape"
+          ) {
+            setMobileOpen(
+              false
+            );
+          }
+        };
 
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [mobileOpen]);
+      window.addEventListener(
+        "keydown",
+        handleKeyDown
+      );
+
+      return () =>
+        window.removeEventListener(
+          "keydown",
+          handleKeyDown
+        );
+    },
+    [
+      mobileOpen,
+    ]
+  );
 
   /* ========================================================
-     CLOSE MOBILE DRAWER WHEN RESIZING TO DESKTOP
+     CLOSE MOBILE DRAWER ON DESKTOP
   ======================================================== */
 
-  useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 1024) {
-        setMobileOpen(false);
+  useEffect(
+    () => {
+      const onResize =
+        () => {
+          if (
+            window.innerWidth >=
+            1024
+          ) {
+            setMobileOpen(
+              false
+            );
+          }
+        };
+
+      window.addEventListener(
+        "resize",
+        onResize
+      );
+
+      return () =>
+        window.removeEventListener(
+          "resize",
+          onResize
+        );
+    },
+    []
+  );
+
+  const isActive =
+    (
+      href: string
+    ) => {
+      if (
+        href === "/"
+      ) {
+        return (
+          pathname ===
+          "/"
+        );
       }
+
+      return pathname.startsWith(
+        href
+      );
     };
 
-    window.addEventListener("resize", onResize);
+  const openSearch =
+    () => {
+      setResearchOpen(
+        false
+      );
 
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+      setOutputsOpen(
+        false
+      );
 
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
+      setMobileOpen(
+        false
+      );
 
-    return pathname.startsWith(href);
-  };
-
-  const openSearch = () => {
-    setResearchOpen(false);
-    setOutputsOpen(false);
-    setMobileOpen(false);
-
-    window.dispatchEvent(new CustomEvent("sensys:open-search"));
-  };
+      window.dispatchEvent(
+        new CustomEvent(
+          "sensys:open-search"
+        )
+      );
+    };
 
   return (
     <>
       <SiteSearch />
 
-      {/* ===================================================== */}
+      {/* ================================================= */}
       {/* NAVBAR */}
-      {/* ===================================================== */}
+      {/* ================================================= */}
 
       <header
         className={`dark-nav-surface sticky top-0 z-[80] border-t-[3px] border-[var(--um-gold)] transition-all duration-300 ${
@@ -198,6 +390,7 @@ export default function Navbar() {
             >
               <div className="relative hidden h-10 w-10 items-center justify-center rounded-full border border-[var(--um-blue)] transition group-hover:border-[var(--um-gold)] sm:flex">
                 <span className="absolute h-5 w-5 rounded-full border border-[var(--um-blue)]/35" />
+
                 <span className="h-2.5 w-2.5 rounded-full bg-[var(--um-gold)]" />
               </div>
 
@@ -218,8 +411,12 @@ export default function Navbar() {
               <Image
                 src="/brand/umanitoba.svg"
                 alt="University of Manitoba"
-                width={154}
-                height={38}
+                width={
+                  154
+                }
+                height={
+                  38
+                }
                 className="h-[30px] w-auto object-contain"
                 priority
                 unoptimized
@@ -231,24 +428,44 @@ export default function Navbar() {
           {/* DESKTOP */}
           {/* ================================================= */}
 
-          <div className="hidden items-center gap-5 lg:flex xl:gap-6">
+          <div className="hidden items-center gap-4 lg:flex xl:gap-5">
             {/* RESEARCH */}
 
             <div
               className="relative"
-              onMouseEnter={() => setResearchOpen(true)}
-              onMouseLeave={() => setResearchOpen(false)}
+              onMouseEnter={() =>
+                setResearchOpen(
+                  true
+                )
+              }
+              onMouseLeave={() =>
+                setResearchOpen(
+                  false
+                )
+              }
             >
               <button
                 type="button"
-                aria-expanded={researchOpen}
+                aria-expanded={
+                  researchOpen
+                }
                 aria-haspopup="true"
                 onClick={() => {
-                  setResearchOpen((current) => !current);
-                  setOutputsOpen(false);
+                  setResearchOpen(
+                    (
+                      current
+                    ) =>
+                      !current
+                  );
+
+                  setOutputsOpen(
+                    false
+                  );
                 }}
                 className={`flex items-center gap-2 border-b pb-1 text-sm font-medium transition ${
-                  pathname.startsWith("/research")
+                  pathname.startsWith(
+                    "/research"
+                  )
                     ? "border-[var(--um-blue)] text-[var(--um-blue)]"
                     : "border-transparent text-[var(--foreground)] hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
                 }`}
@@ -265,7 +482,9 @@ export default function Navbar() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className={`transition-transform ${
-                    researchOpen ? "rotate-180" : ""
+                    researchOpen
+                      ? "rotate-180"
+                      : ""
                   }`}
                 >
                   <path d="m6 9 6 6 6-6" />
@@ -277,60 +496,92 @@ export default function Navbar() {
                   <div className="grid grid-cols-2 overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-2xl">
                     <div className="p-7">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--um-blue)]">
-                        SenSys Lab Research
+                        SenSys Lab
+                        Research
                       </p>
 
                       <div className="mt-5 space-y-1">
-                        {researchThrusts.map((item, index) => (
-                          <Link
-                            key={item.title}
-                            href={item.href}
-                            className="group flex items-start gap-4 border-b border-[var(--border)] py-4 last:border-b-0"
-                          >
-                            <span className="pt-[2px] text-[10px] font-semibold text-[var(--um-gold)]">
-                              0{index + 1}
-                            </span>
+                        {researchThrusts.map(
+                          (
+                            item,
+                            index
+                          ) => (
+                            <Link
+                              key={
+                                item.title
+                              }
+                              href={
+                                item.href
+                              }
+                              className="group flex items-start gap-4 border-b border-[var(--border)] py-4 last:border-b-0"
+                            >
+                              <span className="pt-[2px] text-[10px] font-semibold text-[var(--um-gold)]">
+                                0
+                                {index +
+                                  1}
+                              </span>
 
-                            <p className="text-sm font-semibold transition group-hover:text-[var(--um-blue)]">
-                              {item.title}
-                            </p>
-                          </Link>
-                        ))}
+                              <p className="text-sm font-semibold transition group-hover:text-[var(--um-blue)]">
+                                {
+                                  item.title
+                                }
+                              </p>
+                            </Link>
+                          )
+                        )}
                       </div>
 
                       <Link
                         href="/research"
                         className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[var(--um-blue)] transition hover:gap-3"
                       >
-                        View all research →
+                        View all
+                        research →
                       </Link>
                     </div>
 
                     <div className="border-l border-[var(--border)] bg-[var(--surface-soft)] p-7">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--um-blue)]">
-                        Research Foundations
+                        Research
+                        Foundations
                       </p>
 
                       <p className="mt-3 text-xs leading-6 text-[var(--foreground-muted)]">
-                        Explore established technology programmes across
-                        sensing, microfluidics, diagnostics, and advanced
+                        Explore
+                        established
+                        technology
+                        programmes
+                        across sensing,
+                        microfluidics,
+                        diagnostics,
+                        and advanced
                         materials.
                       </p>
 
                       <div className="mt-5 space-y-2">
-                        {researchFoundations.map((item) => (
-                          <Link
-                            key={item.title}
-                            href={item.href}
-                            className="group flex items-center justify-between border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
-                          >
-                            {item.title}
+                        {researchFoundations.map(
+                          (
+                            item
+                          ) => (
+                            <Link
+                              key={
+                                item.title
+                              }
+                              href={
+                                item.href
+                              }
+                              className="group flex items-center justify-between border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
+                            >
+                              {
+                                item.title
+                              }
 
-                            <span className="transition-transform group-hover:translate-x-1">
-                              →
-                            </span>
-                          </Link>
-                        ))}
+                              <span className="transition-transform group-hover:translate-x-1">
+                                →
+                              </span>
+                            </Link>
+                          )
+                        )}
                       </div>
                     </div>
                   </div>
@@ -341,7 +592,9 @@ export default function Navbar() {
             <Link
               href="/people"
               className={`border-b pb-1 text-sm font-medium transition ${
-                isActive("/people")
+                isActive(
+                  "/people"
+                )
                   ? "border-[var(--um-blue)] text-[var(--um-blue)]"
                   : "border-transparent hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
               }`}
@@ -353,19 +606,41 @@ export default function Navbar() {
 
             <div
               className="relative"
-              onMouseEnter={() => setOutputsOpen(true)}
-              onMouseLeave={() => setOutputsOpen(false)}
+              onMouseEnter={() =>
+                setOutputsOpen(
+                  true
+                )
+              }
+              onMouseLeave={() =>
+                setOutputsOpen(
+                  false
+                )
+              }
             >
               <button
                 type="button"
                 onClick={() => {
-                  setOutputsOpen((current) => !current);
-                  setResearchOpen(false);
+                  setOutputsOpen(
+                    (
+                      current
+                    ) =>
+                      !current
+                  );
+
+                  setResearchOpen(
+                    false
+                  );
                 }}
                 className={`flex items-center gap-2 border-b pb-1 text-sm font-medium transition ${
-                  pathname.startsWith("/publications") ||
-                  pathname.startsWith("/patents") ||
-                  pathname.startsWith("/books")
+                  pathname.startsWith(
+                    "/publications"
+                  ) ||
+                  pathname.startsWith(
+                    "/patents"
+                  ) ||
+                  pathname.startsWith(
+                    "/books"
+                  )
                     ? "border-[var(--um-blue)] text-[var(--um-blue)]"
                     : "border-transparent hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
                 }`}
@@ -380,7 +655,9 @@ export default function Navbar() {
                   stroke="currentColor"
                   strokeWidth="2"
                   className={`transition-transform ${
-                    outputsOpen ? "rotate-180" : ""
+                    outputsOpen
+                      ? "rotate-180"
+                      : ""
                   }`}
                 >
                   <path d="m6 9 6 6 6-6" />
@@ -390,19 +667,29 @@ export default function Navbar() {
               {outputsOpen && (
                 <div className="absolute left-1/2 top-full w-56 -translate-x-1/2 pt-5">
                   <div className="border border-[var(--border)] bg-[var(--surface)] p-2 shadow-xl">
-                    {outputs.map((item) => (
-                      <Link
-                        key={item.title}
-                        href={item.href}
-                        className="group flex items-center justify-between px-4 py-3 text-sm transition hover:bg-[var(--surface-soft)] hover:text-[var(--um-blue)]"
-                      >
-                        {item.title}
+                    {outputs.map(
+                      (
+                        item
+                      ) => (
+                        <Link
+                          key={
+                            item.title
+                          }
+                          href={
+                            item.href
+                          }
+                          className="group flex items-center justify-between px-4 py-3 text-sm transition hover:bg-[var(--surface-soft)] hover:text-[var(--um-blue)]"
+                        >
+                          {
+                            item.title
+                          }
 
-                        <span className="transition-transform group-hover:translate-x-1">
-                          →
-                        </span>
-                      </Link>
-                    ))}
+                          <span className="transition-transform group-hover:translate-x-1">
+                            →
+                          </span>
+                        </Link>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -411,7 +698,9 @@ export default function Navbar() {
             <Link
               href="/facilities"
               className={`border-b pb-1 text-sm font-medium transition ${
-                isActive("/facilities")
+                isActive(
+                  "/facilities"
+                )
                   ? "border-[var(--um-blue)] text-[var(--um-blue)]"
                   : "border-transparent hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
               }`}
@@ -422,7 +711,9 @@ export default function Navbar() {
             <Link
               href="/news"
               className={`border-b pb-1 text-sm font-medium transition ${
-                isActive("/news")
+                isActive(
+                  "/news"
+                )
                   ? "border-[var(--um-blue)] text-[var(--um-blue)]"
                   : "border-transparent hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
               }`}
@@ -432,7 +723,9 @@ export default function Navbar() {
 
             <button
               type="button"
-              onClick={openSearch}
+              onClick={
+                openSearch
+              }
               className="group flex h-10 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 text-[var(--foreground-muted)] transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
             >
               <svg
@@ -443,18 +736,37 @@ export default function Navbar() {
                 stroke="currentColor"
                 strokeWidth="1.8"
               >
-                <circle cx="11" cy="11" r="8" />
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="8"
+                />
+
                 <path d="m21 21-4.3-4.3" />
               </svg>
 
               <span className="hidden text-xs font-medium xl:inline">
                 Search
               </span>
-
-              <span className="hidden rounded border border-[var(--border)] px-1.5 py-0.5 text-[9px] font-semibold xl:inline">
-                Ctrl K
-              </span>
             </button>
+
+            {/* ================================================= */}
+            {/* SENSYS HUB */}
+            {/* ================================================= */}
+
+            <Link
+              href="/hub"
+              className="group inline-flex items-center gap-2 rounded-full border border-[var(--um-blue)] bg-transparent px-4 py-2.5 text-xs font-semibold text-[var(--um-blue)] transition hover:bg-[var(--um-blue)] hover:text-white"
+              aria-label="Open SenSys Hub internal research workspace"
+            >
+              <span className="flex h-5 w-5 items-center justify-center rounded-full border border-current text-[8px]">
+                ●
+              </span>
+
+              <span>
+                SenSys Hub
+              </span>
+            </Link>
 
             <Link
               href="/join"
@@ -473,7 +785,9 @@ export default function Navbar() {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
-              onClick={openSearch}
+              onClick={
+                openSearch
+              }
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)]"
               aria-label="Search SenSys Lab"
             >
@@ -485,7 +799,12 @@ export default function Navbar() {
                 stroke="currentColor"
                 strokeWidth="1.8"
               >
-                <circle cx="11" cy="11" r="8" />
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="8"
+                />
+
                 <path d="m21 21-4.3-4.3" />
               </svg>
             </button>
@@ -494,10 +813,23 @@ export default function Navbar() {
 
             <button
               type="button"
-              onClick={() => setMobileOpen((current) => !current)}
+              onClick={() =>
+                setMobileOpen(
+                  (
+                    current
+                  ) =>
+                    !current
+                )
+              }
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)]"
-              aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
-              aria-expanded={mobileOpen}
+              aria-label={
+                mobileOpen
+                  ? "Close navigation"
+                  : "Open navigation"
+              }
+              aria-expanded={
+                mobileOpen
+              }
             >
               {mobileOpen ? (
                 <svg
@@ -530,22 +862,22 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* ===================================================== */}
-      {/* MOBILE OVERLAY — OUTSIDE HEADER */}
-      {/* ===================================================== */}
+      {/* ================================================= */}
+      {/* MOBILE OVERLAY */}
+      {/* ================================================= */}
 
       {mobileOpen && (
         <div className="fixed inset-0 z-[70] lg:hidden">
-          {/* BACKDROP */}
-
           <button
             type="button"
             aria-label="Close navigation"
-            onClick={() => setMobileOpen(false)}
+            onClick={() =>
+              setMobileOpen(
+                false
+              )
+            }
             className="absolute inset-0 top-[85px] bg-black/30 backdrop-blur-[2px]"
           />
-
-          {/* DRAWER */}
 
           <div className="mobile-menu-enter absolute inset-x-0 bottom-0 top-[85px] overflow-y-auto overscroll-contain bg-[var(--surface)] px-5 pb-[calc(28px+env(safe-area-inset-bottom))] pt-5 shadow-2xl">
             <div className="mx-auto max-w-2xl">
@@ -558,7 +890,8 @@ export default function Navbar() {
                   </p>
 
                   <p className="mt-1 text-[9px] uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
-                    University of Manitoba
+                    University of
+                    Manitoba
                   </p>
                 </div>
 
@@ -571,8 +904,12 @@ export default function Navbar() {
                   <Image
                     src="/brand/umanitoba.svg"
                     alt="University of Manitoba"
-                    width={126}
-                    height={32}
+                    width={
+                      126
+                    }
+                    height={
+                      32
+                    }
                     className="h-[26px] w-auto"
                     unoptimized
                   />
@@ -583,7 +920,9 @@ export default function Navbar() {
 
               <button
                 type="button"
-                onClick={openSearch}
+                onClick={
+                  openSearch
+                }
                 className="mb-3 flex w-full items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-3.5 text-left text-sm text-[var(--foreground-muted)]"
               >
                 <svg
@@ -595,7 +934,12 @@ export default function Navbar() {
                   strokeWidth="1.8"
                   className="text-[var(--um-blue)]"
                 >
-                  <circle cx="11" cy="11" r="8" />
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="8"
+                  />
+
                   <path d="m21 21-4.3-4.3" />
                 </svg>
 
@@ -607,7 +951,12 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() =>
-                  setMobileResearchOpen((current) => !current)
+                  setMobileResearchOpen(
+                    (
+                      current
+                    ) =>
+                      !current
+                  )
                 }
                 className="flex w-full items-center justify-between border-b border-[var(--border)] py-4 text-sm font-semibold"
               >
@@ -615,7 +964,9 @@ export default function Navbar() {
 
                 <span
                   className={`text-[var(--um-blue)] transition-transform ${
-                    mobileResearchOpen ? "rotate-180" : ""
+                    mobileResearchOpen
+                      ? "rotate-180"
+                      : ""
                   }`}
                 >
                   ↓
@@ -625,23 +976,37 @@ export default function Navbar() {
               {mobileResearchOpen && (
                 <div className="border-b border-[var(--border)] py-4">
                   <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-[var(--um-blue)]">
-                    Research Thrusts
+                    Research
+                    Thrusts
                   </p>
 
                   <div className="mt-2">
-                    {researchThrusts.map((item, index) => (
-                      <Link
-                        key={item.title}
-                        href={item.href}
-                        className="flex gap-3 py-2.5 text-sm"
-                      >
-                        <span className="text-[10px] font-semibold text-[var(--um-gold)]">
-                          0{index + 1}
-                        </span>
+                    {researchThrusts.map(
+                      (
+                        item,
+                        index
+                      ) => (
+                        <Link
+                          key={
+                            item.title
+                          }
+                          href={
+                            item.href
+                          }
+                          className="flex gap-3 py-2.5 text-sm"
+                        >
+                          <span className="text-[10px] font-semibold text-[var(--um-gold)]">
+                            0
+                            {index +
+                              1}
+                          </span>
 
-                        {item.title}
-                      </Link>
-                    ))}
+                          {
+                            item.title
+                          }
+                        </Link>
+                      )
+                    )}
                   </div>
 
                   <p className="mt-4 text-[9px] font-semibold uppercase tracking-[0.24em] text-[var(--um-blue)]">
@@ -649,15 +1014,25 @@ export default function Navbar() {
                   </p>
 
                   <div className="mt-3 grid gap-2">
-                    {researchFoundations.map((item) => (
-                      <Link
-                        key={item.title}
-                        href={item.href}
-                        className="rounded-lg border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-xs"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
+                    {researchFoundations.map(
+                      (
+                        item
+                      ) => (
+                        <Link
+                          key={
+                            item.title
+                          }
+                          href={
+                            item.href
+                          }
+                          className="rounded-lg border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-xs"
+                        >
+                          {
+                            item.title
+                          }
+                        </Link>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -674,7 +1049,12 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() =>
-                  setMobileOutputsOpen((current) => !current)
+                  setMobileOutputsOpen(
+                    (
+                      current
+                    ) =>
+                      !current
+                  )
                 }
                 className="flex w-full items-center justify-between border-b border-[var(--border)] py-4 text-sm font-semibold"
               >
@@ -682,7 +1062,9 @@ export default function Navbar() {
 
                 <span
                   className={`text-[var(--um-blue)] transition-transform ${
-                    mobileOutputsOpen ? "rotate-180" : ""
+                    mobileOutputsOpen
+                      ? "rotate-180"
+                      : ""
                   }`}
                 >
                   ↓
@@ -691,15 +1073,25 @@ export default function Navbar() {
 
               {mobileOutputsOpen && (
                 <div className="grid grid-cols-3 gap-2 border-b border-[var(--border)] py-4">
-                  {outputs.map((item) => (
-                    <Link
-                      key={item.title}
-                      href={item.href}
-                      className="rounded-lg border border-[var(--border)] bg-[var(--surface-soft)] px-2 py-3 text-center text-xs"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
+                  {outputs.map(
+                    (
+                      item
+                    ) => (
+                      <Link
+                        key={
+                          item.title
+                        }
+                        href={
+                          item.href
+                        }
+                        className="rounded-lg border border-[var(--border)] bg-[var(--surface-soft)] px-2 py-3 text-center text-xs"
+                      >
+                        {
+                          item.title
+                        }
+                      </Link>
+                    )
+                  )}
                 </div>
               )}
 
@@ -717,15 +1109,48 @@ export default function Navbar() {
                 News & Impact
               </Link>
 
+              {/* ================================================= */}
+              {/* HUB MOBILE ACCESS */}
+              {/* ================================================= */}
+
+              <div className="mt-5 rounded-2xl border border-[var(--um-blue)]/25 bg-[var(--surface-soft)] p-4">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--um-blue)]">
+                  Lab Member Access
+                </p>
+
+                <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+                  Authorized
+                  SenSys members
+                  can access the
+                  internal research
+                  and laboratory
+                  workspace.
+                </p>
+
+                <Link
+                  href="/hub"
+                  className="mt-4 flex items-center justify-between rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold text-white"
+                >
+                  <span>
+                    SenSys Hub
+                  </span>
+
+                  <span>
+                    →
+                  </span>
+                </Link>
+              </div>
+
               <Link
                 href="/join"
-                className="mt-5 block rounded-full bg-[var(--um-blue)] px-6 py-4 text-center text-sm font-semibold text-white"
+                className="mt-4 block rounded-full border border-[var(--um-blue)] px-6 py-4 text-center text-sm font-semibold text-[var(--um-blue)]"
               >
                 Join SenSys Lab
               </Link>
 
               <p className="mt-6 text-center text-[9px] uppercase tracking-[0.18em] text-[var(--foreground-muted)]">
-                Winnipeg · Manitoba · Canada
+                Winnipeg ·
+                Manitoba · Canada
               </p>
             </div>
           </div>
