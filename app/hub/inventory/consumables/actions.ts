@@ -1,88 +1,169 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import {
+  revalidatePath,
+} from "next/cache";
 
-import { createClient } from "../../../../lib/supabase/server";
+import {
+  redirect,
+} from "next/navigation";
 
-async function requireManager() {
-  const supabase = await createClient();
+import {
+  createClient,
+} from "../../../../lib/supabase/server";
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+import {
+  getHubUser,
+} from "../../../../lib/hub/auth";
 
-  if (!user) {
-    redirect("/login");
-  }
+/* ============================================================
+   TYPES / PERMISSIONS
+============================================================ */
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (
-    !profile ||
-    !["admin", "manager"].includes(profile.role)
-  ) {
-    throw new Error(
-      "You do not have permission to modify inventory."
-    );
-  }
-
-  return {
-    supabase,
-    user,
-  };
+function canManageMaster(
+  role: string
+) {
+  return (
+    role === "admin" ||
+    role === "lab_manager"
+  );
 }
 
-function optionalText(value: FormDataEntryValue | null) {
-  const text = String(value ?? "").trim();
-  return text || null;
+function canContributeInventory(
+  role: string
+) {
+  return [
+    "admin",
+    "lab_manager",
+    "student",
+    "member",
+  ].includes(role);
 }
 
-function optionalDate(value: FormDataEntryValue | null) {
-  const text = String(value ?? "").trim();
-  return text || null;
+/* ============================================================
+   HELPERS
+============================================================ */
+
+function optionalText(
+  value:
+    | FormDataEntryValue
+    | null
+) {
+  const text =
+    String(
+      value ?? ""
+    ).trim();
+
+  return (
+    text ||
+    null
+  );
 }
 
 function numberValue(
-  value: FormDataEntryValue | null,
+  value:
+    | FormDataEntryValue
+    | null,
   fallback = 0
 ) {
-  const parsed = Number(value);
+  const parsed =
+    Number(value);
 
-  if (Number.isNaN(parsed)) {
+  if (
+    Number.isNaN(
+      parsed
+    )
+  ) {
     return fallback;
   }
 
-  return parsed;
+  return Math.max(
+    0,
+    parsed
+  );
 }
 
 function deriveStockStatus(
   quantity: number,
   minimumStock: number
 ) {
-  if (quantity <= 0) {
+  if (
+    quantity <= 0
+  ) {
     return "Out of Stock";
   }
 
-  if (quantity <= minimumStock) {
+  if (
+    minimumStock >
+      0 &&
+    quantity <=
+      minimumStock
+  ) {
     return "Low Stock";
   }
 
   return "In Stock";
 }
 
+async function inventoryContext() {
+  const context =
+    await getHubUser();
+
+  const supabase =
+    await createClient();
+
+  return {
+    context,
+    supabase,
+  };
+}
+
+function refreshConsumables() {
+  revalidatePath(
+    "/hub"
+  );
+
+  revalidatePath(
+    "/hub/inventory"
+  );
+
+  revalidatePath(
+    "/hub/inventory/consumables"
+  );
+}
+
+/* ============================================================
+   ADD CONSUMABLE
+============================================================ */
+
 export async function addConsumable(
   formData: FormData
 ) {
-  const { supabase, user } = await requireManager();
+  const {
+    context,
+    supabase,
+  } =
+    await inventoryContext();
 
-  const name = String(
-    formData.get("name") ?? ""
-  ).trim();
+  const role =
+    context.profile.role;
+
+  if (
+    !canContributeInventory(
+      role
+    )
+  ) {
+    throw new Error(
+      "You do not have permission to add consumables."
+    );
+  }
+
+  const name =
+    String(
+      formData.get(
+        "name"
+      ) ?? ""
+    ).trim();
 
   if (!name) {
     redirect(
@@ -90,69 +171,111 @@ export async function addConsumable(
     );
   }
 
-  const quantity = numberValue(
-    formData.get("quantity")
-  );
+  const quantity =
+    numberValue(
+      formData.get(
+        "quantity"
+      )
+    );
 
-  const minimumStock = numberValue(
-    formData.get("minimum_stock")
-  );
+  const manager =
+    canManageMaster(
+      role
+    );
 
-  const reorderQuantity = numberValue(
-    formData.get("reorder_quantity")
-  );
+  /*
+   * Students/members can add a basic record.
+   * Minimum stock and master information
+   * remain under Admin/Lab Manager control.
+   */
+  const minimumStock =
+    manager
+      ? numberValue(
+          formData.get(
+            "minimum_stock"
+          )
+        )
+      : 0;
 
-  const { error } = await supabase
-    .from("consumables")
-    .insert({
-      name,
+  const {
+    error,
+  } =
+    await supabase
+      .from(
+        "consumables"
+      )
+      .insert({
+        name,
 
-      category: optionalText(
-        formData.get("category")
-      ),
+        category:
+          manager
+            ? optionalText(
+                formData.get(
+                  "category"
+                )
+              )
+            : null,
 
-      supplier: optionalText(
-        formData.get("supplier")
-      ),
+        supplier:
+          manager
+            ? optionalText(
+                formData.get(
+                  "supplier"
+                )
+              )
+            : null,
 
-      catalog_number: optionalText(
-        formData.get("catalog_number")
-      ),
+        catalog_number:
+          manager
+            ? optionalText(
+                formData.get(
+                  "catalog_number"
+                )
+              )
+            : null,
 
-      quantity,
-
-      unit:
-        optionalText(formData.get("unit")) ??
-        "unit",
-
-      minimum_stock: minimumStock,
-
-      reorder_quantity: reorderQuantity,
-
-      location: optionalText(
-        formData.get("location")
-      ),
-
-      project: optionalText(
-        formData.get("project")
-      ),
-
-      last_purchased: optionalDate(
-        formData.get("last_purchased")
-      ),
-
-      status: deriveStockStatus(
         quantity,
-        minimumStock
-      ),
 
-      notes: optionalText(
-        formData.get("notes")
-      ),
+        unit:
+          optionalText(
+            formData.get(
+              "unit"
+            )
+          ) ??
+          "unit",
 
-      created_by: user.id,
-      updated_by: user.id,
-    });
+        minimum_stock:
+          minimumStock,
+
+        reorder_quantity:
+          0,
+
+        location:
+          optionalText(
+            formData.get(
+              "location"
+            )
+          ),
+
+        notes:
+          optionalText(
+            formData.get(
+              "notes"
+            )
+          ),
+
+        status:
+          deriveStockStatus(
+            quantity,
+            minimumStock
+          ),
+
+        created_by:
+          context.userId,
+
+        updated_by:
+          context.userId,
+      });
 
   if (error) {
     redirect(
@@ -162,21 +285,44 @@ export async function addConsumable(
     );
   }
 
-  revalidatePath("/hub/inventory");
-  revalidatePath("/hub/inventory/consumables");
+  refreshConsumables();
 
-  redirect("/hub/inventory/consumables");
+  redirect(
+    "/hub/inventory/consumables"
+  );
 }
+
+/* ============================================================
+   UPDATE MASTER INFORMATION
+   ADMIN / LAB MANAGER ONLY
+============================================================ */
 
 export async function updateConsumable(
   consumableId: string,
   formData: FormData
 ) {
-  const { supabase, user } = await requireManager();
+  const {
+    context,
+    supabase,
+  } =
+    await inventoryContext();
 
-  const name = String(
-    formData.get("name") ?? ""
-  ).trim();
+  if (
+    !canManageMaster(
+      context.profile.role
+    )
+  ) {
+    throw new Error(
+      "Only an administrator or lab manager can edit consumable master information."
+    );
+  }
+
+  const name =
+    String(
+      formData.get(
+        "name"
+      ) ?? ""
+    ).trim();
 
   if (!name) {
     redirect(
@@ -184,80 +330,112 @@ export async function updateConsumable(
     );
   }
 
-  const quantity = numberValue(
-    formData.get("quantity")
-  );
+  const quantity =
+    numberValue(
+      formData.get(
+        "quantity"
+      )
+    );
 
-  const minimumStock = numberValue(
-    formData.get("minimum_stock")
-  );
+  const minimumStock =
+    numberValue(
+      formData.get(
+        "minimum_stock"
+      )
+    );
 
-  const reorderQuantity = numberValue(
-    formData.get("reorder_quantity")
-  );
-
-  const { data: current } = await supabase
-    .from("consumables")
-    .select("status")
-    .eq("id", consumableId)
-    .single();
+  const {
+    data: current,
+  } =
+    await supabase
+      .from(
+        "consumables"
+      )
+      .select(
+        "status"
+      )
+      .eq(
+        "id",
+        consumableId
+      )
+      .single();
 
   const status =
-    current?.status === "Archived"
+    current?.status ===
+    "Archived"
       ? "Archived"
       : deriveStockStatus(
           quantity,
           minimumStock
         );
 
-  const { error } = await supabase
-    .from("consumables")
-    .update({
-      name,
+  const {
+    error,
+  } =
+    await supabase
+      .from(
+        "consumables"
+      )
+      .update({
+        name,
 
-      category: optionalText(
-        formData.get("category")
-      ),
+        category:
+          optionalText(
+            formData.get(
+              "category"
+            )
+          ),
 
-      supplier: optionalText(
-        formData.get("supplier")
-      ),
+        supplier:
+          optionalText(
+            formData.get(
+              "supplier"
+            )
+          ),
 
-      catalog_number: optionalText(
-        formData.get("catalog_number")
-      ),
+        catalog_number:
+          optionalText(
+            formData.get(
+              "catalog_number"
+            )
+          ),
 
-      quantity,
+        quantity,
 
-      unit:
-        optionalText(formData.get("unit")) ??
-        "unit",
+        unit:
+          optionalText(
+            formData.get(
+              "unit"
+            )
+          ) ??
+          "unit",
 
-      minimum_stock: minimumStock,
+        minimum_stock:
+          minimumStock,
 
-      reorder_quantity: reorderQuantity,
+        location:
+          optionalText(
+            formData.get(
+              "location"
+            )
+          ),
 
-      location: optionalText(
-        formData.get("location")
-      ),
+        notes:
+          optionalText(
+            formData.get(
+              "notes"
+            )
+          ),
 
-      project: optionalText(
-        formData.get("project")
-      ),
+        status,
 
-      last_purchased: optionalDate(
-        formData.get("last_purchased")
-      ),
-
-      status,
-
-      notes: optionalText(
-        formData.get("notes")
-      ),
-
-      updated_by: user.id,
-    })
-    .eq("id", consumableId);
+        updated_by:
+          context.userId,
+      })
+      .eq(
+        "id",
+        consumableId
+      );
 
   if (error) {
     redirect(
@@ -267,74 +445,136 @@ export async function updateConsumable(
     );
   }
 
-  revalidatePath("/hub/inventory");
-  revalidatePath("/hub/inventory/consumables");
+  refreshConsumables();
 
-  redirect("/hub/inventory/consumables");
+  redirect(
+    "/hub/inventory/consumables"
+  );
 }
+
+/* ============================================================
+   SIMPLE DAY-TO-DAY UPDATE
+   ADMIN / LAB MANAGER / STUDENT / MEMBER
+
+   No transaction ledger:
+   - quantity
+   - location
+   - notes
+============================================================ */
 
 export async function adjustConsumableStock(
   consumableId: string,
   formData: FormData
 ) {
-  const { supabase, user } = await requireManager();
+  const {
+    context,
+    supabase,
+  } =
+    await inventoryContext();
 
-  const amount = numberValue(
-    formData.get("amount")
-  );
+  if (
+    !canContributeInventory(
+      context.profile.role
+    )
+  ) {
+    throw new Error(
+      "You do not have permission to update consumable stock."
+    );
+  }
 
-  const operation = String(
-    formData.get("operation") ?? ""
-  );
-
-  const { data: consumable, error: readError } =
+  const {
+    data: item,
+    error:
+      readError,
+  } =
     await supabase
-      .from("consumables")
-      .select(
-        "quantity, minimum_stock, status"
+      .from(
+        "consumables"
       )
-      .eq("id", consumableId)
+      .select(
+        `
+        id,
+        quantity,
+        minimum_stock,
+        status
+        `
+      )
+      .eq(
+        "id",
+        consumableId
+      )
       .single();
 
-  if (readError || !consumable) {
+  if (
+    readError ||
+    !item
+  ) {
     redirect(
       `/hub/inventory/consumables/${consumableId}/stock?error=Consumable%20record%20not%20found.`
     );
   }
 
-  let nextQuantity = Number(
-    consumable.quantity
-  );
-
-  if (operation === "receive") {
-    nextQuantity += amount;
-  } else if (operation === "use") {
-    nextQuantity -= amount;
-  } else if (operation === "set") {
-    nextQuantity = amount;
+  if (
+    item.status ===
+    "Archived"
+  ) {
+    redirect(
+      "/hub/inventory/consumables"
+    );
   }
 
-  nextQuantity = Math.max(
-    0,
-    nextQuantity
-  );
+  const quantity =
+    numberValue(
+      formData.get(
+        "quantity"
+      )
+    );
 
-  const nextStatus =
-    consumable.status === "Archived"
-      ? "Archived"
-      : deriveStockStatus(
-          nextQuantity,
-          Number(consumable.minimum_stock)
-        );
+  const minimumStock =
+    Number(
+      item.minimum_stock ??
+        0
+    );
 
-  const { error } = await supabase
-    .from("consumables")
-    .update({
-      quantity: nextQuantity,
-      status: nextStatus,
-      updated_by: user.id,
-    })
-    .eq("id", consumableId);
+  const status =
+    deriveStockStatus(
+      quantity,
+      minimumStock
+    );
+
+  const {
+    error,
+  } =
+    await supabase
+      .from(
+        "consumables"
+      )
+      .update({
+        quantity,
+
+        location:
+          optionalText(
+            formData.get(
+              "location"
+            )
+          ),
+
+        notes:
+          optionalText(
+            formData.get(
+              "notes"
+            )
+          ),
+
+        status,
+
+        updated_by:
+          context.userId,
+      })
+      .eq(
+        "id",
+        consumableId
+      );
 
   if (error) {
     redirect(
@@ -344,29 +584,61 @@ export async function adjustConsumableStock(
     );
   }
 
-  revalidatePath("/hub/inventory");
-  revalidatePath("/hub/inventory/consumables");
+  refreshConsumables();
 
-  redirect("/hub/inventory/consumables");
+  redirect(
+    "/hub/inventory/consumables"
+  );
 }
+
+/* ============================================================
+   ARCHIVE
+   ADMIN / LAB MANAGER ONLY
+============================================================ */
 
 export async function archiveConsumable(
   consumableId: string
 ) {
-  const { supabase, user } = await requireManager();
+  const {
+    context,
+    supabase,
+  } =
+    await inventoryContext();
 
-  const { error } = await supabase
-    .from("consumables")
-    .update({
-      status: "Archived",
-      updated_by: user.id,
-    })
-    .eq("id", consumableId);
-
-  if (error) {
-    throw new Error(error.message);
+  if (
+    !canManageMaster(
+      context.profile.role
+    )
+  ) {
+    throw new Error(
+      "Only an administrator or lab manager can archive consumables."
+    );
   }
 
-  revalidatePath("/hub/inventory");
-  revalidatePath("/hub/inventory/consumables");
+  const {
+    error,
+  } =
+    await supabase
+      .from(
+        "consumables"
+      )
+      .update({
+        status:
+          "Archived",
+
+        updated_by:
+          context.userId,
+      })
+      .eq(
+        "id",
+        consumableId
+      );
+
+  if (error) {
+    throw new Error(
+      error.message
+    );
+  }
+
+  refreshConsumables();
 }

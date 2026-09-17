@@ -20,6 +20,10 @@ import {
   createClient,
 } from "../../lib/supabase/client";
 
+/* ============================================================
+   TYPES
+============================================================ */
+
 type HubRole =
   | "admin"
   | "research_manager"
@@ -45,8 +49,11 @@ type NavItem = {
   label: string;
   href: string;
   icon: string;
-  comingSoon?: boolean;
 };
+
+/* ============================================================
+   HELPERS
+============================================================ */
 
 function roleLabel(
   role: HubRole
@@ -80,12 +87,8 @@ function initials(
 
   const words =
     source
-      .split(
-        /\s+/
-      )
-      .filter(
-        Boolean
-      );
+      .split(/\s+/)
+      .filter(Boolean);
 
   if (
     words.length >=
@@ -101,12 +104,13 @@ function initials(
   }
 
   return source
-    .slice(
-      0,
-      2
-    )
+    .slice(0, 2)
     .toUpperCase();
 }
+
+/* ============================================================
+   COMPONENT
+============================================================ */
 
 export default function HubShell({
   children,
@@ -120,25 +124,19 @@ export default function HubShell({
     mobileOpen,
     setMobileOpen,
   ] =
-    useState(
-      false
-    );
+    useState(false);
 
   const [
     accountOpen,
     setAccountOpen,
   ] =
-    useState(
-      false
-    );
+    useState(false);
 
   const [
     unreadNotifications,
     setUnreadNotifications,
   ] =
-    useState(
-      0
-    );
+    useState(0);
 
   const role =
     profile.role;
@@ -256,11 +254,9 @@ export default function HubShell({
         label:
           "Research",
         href:
-          "#",
+          "/hub/research",
         icon:
           "◇",
-        comingSoon:
-          true,
       },
       {
         label:
@@ -269,14 +265,6 @@ export default function HubShell({
           "/hub/meetings",
         icon:
           "▣",
-      },
-      {
-        label:
-          "Actions",
-        href:
-          "/hub/actions",
-        icon:
-          "✓",
       },
       {
         label:
@@ -293,16 +281,6 @@ export default function HubShell({
           "/hub/inventory",
         icon:
           "≡",
-      },
-      {
-        label:
-          "Resources",
-        href:
-          "#",
-        icon:
-          "▫",
-        comingSoon:
-          true,
       },
     ];
 
@@ -332,11 +310,9 @@ export default function HubShell({
         label:
           "Research",
         href:
-          "#",
+          "/hub/research",
         icon:
           "◇",
-        comingSoon:
-          true,
       },
       {
         label:
@@ -345,14 +321,6 @@ export default function HubShell({
           "/hub/meetings",
         icon:
           "▣",
-      },
-      {
-        label:
-          "Actions",
-        href:
-          "/hub/actions",
-        icon:
-          "✓",
       },
       {
         label:
@@ -369,16 +337,6 @@ export default function HubShell({
           "/hub/inventory",
         icon:
           "≡",
-      },
-      {
-        label:
-          "Resources",
-        href:
-          "#",
-        icon:
-          "▫",
-        comingSoon:
-          true,
       },
     ];
 
@@ -420,24 +378,6 @@ export default function HubShell({
         icon:
           "▣",
       },
-      {
-        label:
-          "Actions",
-        href:
-          "/hub/actions",
-        icon:
-          "✓",
-      },
-      {
-        label:
-          "Resources",
-        href:
-          "#",
-        icon:
-          "▫",
-        comingSoon:
-          true,
-      },
     ];
 
   /* ========================================================
@@ -465,14 +405,6 @@ export default function HubShell({
           },
           {
             label:
-              "My Actions",
-            href:
-              "/hub/actions",
-            icon:
-              "✓",
-          },
-          {
-            label:
               "Research Reviews",
             href:
               "/hub/meetings",
@@ -489,13 +421,11 @@ export default function HubShell({
           },
           {
             label:
-              "Resources",
+              "Inventory",
             href:
-              "#",
+              "/hub/inventory",
             icon:
-              "▫",
-            comingSoon:
-              true,
+              "≡",
           },
         ]
       : [
@@ -509,14 +439,6 @@ export default function HubShell({
           },
           {
             label:
-              "My Actions",
-            href:
-              "/hub/actions",
-            icon:
-              "✓",
-          },
-          {
-            label:
               "Research Reviews",
             href:
               "/hub/meetings",
@@ -533,13 +455,11 @@ export default function HubShell({
           },
           {
             label:
-              "Resources",
+              "Inventory",
             href:
-              "#",
+              "/hub/inventory",
             icon:
-              "▫",
-            comingSoon:
-              true,
+              "≡",
           },
         ];
 
@@ -572,16 +492,6 @@ export default function HubShell({
           "/hub/inventory",
         icon:
           "≡",
-      },
-      {
-        label:
-          "Resources",
-        href:
-          "#",
-        icon:
-          "▫",
-        comingSoon:
-          true,
       },
     ];
 
@@ -633,14 +543,6 @@ export default function HubShell({
   ) {
     if (
       item.href ===
-        "#" ||
-      item.comingSoon
-    ) {
-      return false;
-    }
-
-    if (
-      item.href ===
       "/hub"
     ) {
       return (
@@ -682,17 +584,6 @@ export default function HubShell({
       role ===
         "student" &&
       item.label ===
-        "My Actions"
-    ) {
-      return pathname.startsWith(
-        "/hub/actions"
-      );
-    }
-
-    if (
-      role ===
-        "student" &&
-      item.label ===
         "Research Reviews"
     ) {
       return pathname.startsWith(
@@ -708,6 +599,17 @@ export default function HubShell({
     ) {
       return pathname.startsWith(
         "/hub/lab"
+      );
+    }
+
+    if (
+      role ===
+        "student" &&
+      item.label ===
+        "Inventory"
+    ) {
+      return pathname.startsWith(
+        "/hub/inventory"
       );
     }
 
@@ -731,17 +633,17 @@ export default function HubShell({
     currentArea =
       "Notifications";
   } else if (
+    pathname.startsWith(
+      "/hub/profile"
+    )
+  ) {
+    currentArea =
+      "My Profile";
+  } else if (
     role ===
     "student"
   ) {
     if (
-      pathname.startsWith(
-        "/hub/actions"
-      )
-    ) {
-      currentArea =
-        "My Actions";
-    } else if (
       pathname.startsWith(
         "/hub/meetings"
       )
@@ -756,6 +658,13 @@ export default function HubShell({
       currentArea =
         "Lab & Instruments";
     } else if (
+      pathname.startsWith(
+        "/hub/inventory"
+      )
+    ) {
+      currentArea =
+        "Inventory";
+    } else if (
       pathname.includes(
         "/weekly/"
       )
@@ -766,6 +675,13 @@ export default function HubShell({
       currentArea =
         "My Research";
     }
+  } else if (
+    pathname.startsWith(
+      "/hub/research"
+    )
+  ) {
+    currentArea =
+      "Research";
   } else if (
     pathname.startsWith(
       "/hub/students"
@@ -794,13 +710,6 @@ export default function HubShell({
   ) {
     currentArea =
       "Research Reviews";
-  } else if (
-    pathname.startsWith(
-      "/hub/actions"
-    )
-  ) {
-    currentArea =
-      "Actions";
   } else if (
     pathname ===
     "/hub"
@@ -835,35 +744,6 @@ export default function HubShell({
                 isActive(
                   item
                 );
-
-              if (
-                item.comingSoon
-              ) {
-                return (
-                  <div
-                    key={
-                      item.label
-                    }
-                    className="flex cursor-default items-center gap-3 rounded-xl px-3 py-3 text-[#A69D95]"
-                  >
-                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#F0ECE7] text-[10px]">
-                      {
-                        item.icon
-                      }
-                    </span>
-
-                    <span className="text-sm font-semibold">
-                      {
-                        item.label
-                      }
-                    </span>
-
-                    <span className="ml-auto text-[7px] font-bold uppercase tracking-[0.2em] text-[#B2A89F]">
-                      Soon
-                    </span>
-                  </div>
-                );
-              }
 
               return (
                 <Link
@@ -908,7 +788,9 @@ export default function HubShell({
         </nav>
       </div>
 
+      {/* ================================================= */}
       {/* QUICK LINKS */}
+      {/* ================================================= */}
 
       {role !==
         "student" && (
@@ -931,17 +813,17 @@ export default function HubShell({
                 </Link>
 
                 <Link
+                  href="/hub/research"
+                  className="block text-xs text-[#332D28] hover:text-[#385E9D]"
+                >
+                  Research portfolio
+                </Link>
+
+                <Link
                   href="/hub/meetings"
                   className="block text-xs text-[#332D28] hover:text-[#385E9D]"
                 >
                   Research reviews
-                </Link>
-
-                <Link
-                  href="/hub/actions"
-                  className="block text-xs text-[#332D28] hover:text-[#385E9D]"
-                >
-                  Open actions
                 </Link>
               </>
             )}
@@ -989,7 +871,73 @@ export default function HubShell({
         </div>
       )}
 
+      {/* ================================================= */}
+      {/* STUDENT QUICK LINKS */}
+      {/* ================================================= */}
+
+      {role ===
+        "student" && (
+        <div className="mx-4 mt-8 border-t border-[#DED8D2] pt-6">
+          <p className="px-2 text-[8px] font-bold uppercase tracking-[0.24em] text-[#A0968D]">
+            Quick Access
+          </p>
+
+          <div className="mt-4 space-y-3 px-2">
+            {studentId && (
+              <Link
+                href={`/hub/students/${studentId}`}
+                className="block text-xs text-[#332D28] hover:text-[#385E9D]"
+              >
+                My research dashboard
+              </Link>
+            )}
+
+            <Link
+              href="/hub/meetings"
+              className="block text-xs text-[#332D28] hover:text-[#385E9D]"
+            >
+              Research reviews
+            </Link>
+
+            <Link
+              href="/hub/lab/schedule"
+              className="block text-xs text-[#332D28] hover:text-[#385E9D]"
+            >
+              Instrument schedule
+            </Link>
+
+            <Link
+              href="/hub/inventory"
+              className="block text-xs text-[#332D28] hover:text-[#385E9D]"
+            >
+              Inventory
+            </Link>
+
+            <Link
+              href="/hub/notifications"
+              className="flex items-center justify-between text-xs text-[#332D28] hover:text-[#385E9D]"
+            >
+              <span>
+                Notifications
+              </span>
+
+              {unreadNotifications >
+                0 && (
+                <span className="rounded-full bg-[#385E9D] px-2 py-0.5 text-[8px] font-bold text-white">
+                  {unreadNotifications >
+                  99
+                    ? "99+"
+                    : unreadNotifications}
+                </span>
+              )}
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* ================================================= */}
       {/* SECURE WORKSPACE */}
+      {/* ================================================= */}
 
       <div className="mx-4 mb-5 mt-auto rounded-2xl bg-[#203650] p-5 text-white">
         <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#F2A900]">
@@ -1003,8 +951,8 @@ export default function HubShell({
         <p className="mt-2 text-[10px] leading-5 text-white/65">
           {role ===
           "student"
-            ? "Your research projects, check-ins, research reviews, actions, instruments and notifications."
-            : "Research projects, reviews, actions, instruments, notifications, inventory and laboratory management."}
+            ? "Your research projects, check-ins, research reviews, instruments, inventory and notifications."
+            : "Research portfolio, reviews, instruments, inventory, notifications and laboratory operations."}
         </p>
       </div>
     </>
@@ -1016,7 +964,9 @@ export default function HubShell({
 
   return (
     <div className="min-h-screen bg-[#F6F4F1] text-[#201B17]">
+      {/* ================================================= */}
       {/* HEADER */}
+      {/* ================================================= */}
 
       <header className="sticky top-0 z-50 border-b border-[#DDD6CF] border-t-[3px] border-[#F2A900] bg-white">
         <div className="mx-auto flex h-[72px] max-w-[1500px] items-center px-4 md:px-6">
@@ -1079,6 +1029,8 @@ export default function HubShell({
               Public Website ↗
             </Link>
 
+            {/* NOTIFICATIONS */}
+
             <Link
               href="/hub/notifications"
               aria-label={`Notifications${
@@ -1113,7 +1065,9 @@ export default function HubShell({
               )}
             </Link>
 
+            {/* ================================================= */}
             {/* ACCOUNT */}
+            {/* ================================================= */}
 
             <div className="relative">
               <button
@@ -1151,86 +1105,93 @@ export default function HubShell({
               </button>
 
               {accountOpen && (
-                <div className="absolute right-0 mt-2 w-[260px] border border-[#DDD6CF] bg-white p-4 shadow-lg">
-                  <p className="text-xs font-semibold">
-                    {
-                      profile.fullName
-                    }
-                  </p>
+  <div className="absolute right-0 mt-2 w-[260px] border border-[#DDD6CF] bg-white p-4 shadow-lg">
+    {/* USER DETAILS */}
 
-                  <p className="mt-1 break-all text-[10px] text-[#837A72]">
-                    {
-                      profile.email
-                    }
-                  </p>
+    <p className="text-xs font-semibold">
+      {profile.fullName}
+    </p>
 
-                  <div className="mt-3 inline-flex rounded-full bg-[#EEF2F8] px-2.5 py-1 text-[8px] font-bold uppercase tracking-[0.12em] text-[#385E9D]">
-                    {roleLabel(
-                      role
-                    )}
-                  </div>
+    <p className="mt-1 break-all text-[10px] text-[#837A72]">
+      {profile.email}
+    </p>
 
-                  <div className="mt-4 border-t border-[#EEE9E4] pt-2">
-                    <Link
-                      href="/hub/notifications"
-                      onClick={() =>
-                        setAccountOpen(
-                          false
-                        )
-                      }
-                      className="flex items-center justify-between rounded-lg px-2 py-2.5 text-xs font-semibold text-[#385E9D] transition hover:bg-[#F4F6F9]"
-                    >
-                      <span>
-                        Notifications
-                      </span>
+    <div className="mt-3 inline-flex rounded-full bg-[#EEF2F8] px-2.5 py-1 text-[8px] font-bold uppercase tracking-[0.12em] text-[#385E9D]">
+      {roleLabel(role)}
+    </div>
 
-                      {unreadNotifications >
-                        0 && (
-                        <span className="rounded-full bg-[#385E9D] px-2 py-0.5 text-[8px] font-bold text-white">
-                          {
-                            unreadNotifications
-                          }
-                        </span>
-                      )}
-                    </Link>
-                  </div>
+    {/* MY PROFILE */}
 
-                  <div className="mt-1 border-t border-[#EEE9E4] pt-2">
-                    <Link
-                      href="/reset-password?mode=change"
-                      onClick={() =>
-                        setAccountOpen(
-                          false
-                        )
-                      }
-                      className="block w-full rounded-lg px-2 py-2.5 text-left text-xs font-semibold text-[#385E9D] transition hover:bg-[#F4F6F9]"
-                    >
-                      Change password
-                    </Link>
-                  </div>
+    <div className="mt-4 border-t border-[#EEE9E4] pt-2">
+      <Link
+        href="/hub/profile"
+        onClick={() =>
+          setAccountOpen(false)
+        }
+        className="block w-full rounded-lg px-2 py-2.5 text-left text-xs font-semibold text-[#385E9D] transition hover:bg-[#F4F6F9]"
+      >
+        My Profile
+      </Link>
+    </div>
 
-                  <div className="mt-1 border-t border-[#EEE9E4] pt-2">
-                    <form
-                      action={
-                        logout
-                      }
-                    >
-                      <button
-                        type="submit"
-                        className="w-full rounded-lg px-2 py-2.5 text-left text-xs font-semibold text-[#A23B35] transition hover:bg-[#FBF1F0]"
-                      >
-                        Sign out
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              )}
+    {/* NOTIFICATIONS */}
+
+    <div className="mt-1 border-t border-[#EEE9E4] pt-2">
+      <Link
+        href="/hub/notifications"
+        onClick={() =>
+          setAccountOpen(false)
+        }
+        className="flex items-center justify-between rounded-lg px-2 py-2.5 text-xs font-semibold text-[#385E9D] transition hover:bg-[#F4F6F9]"
+      >
+        <span>
+          Notifications
+        </span>
+
+        {unreadNotifications > 0 && (
+          <span className="rounded-full bg-[#385E9D] px-2 py-0.5 text-[8px] font-bold text-white">
+            {unreadNotifications}
+          </span>
+        )}
+      </Link>
+    </div>
+
+    {/* CHANGE PASSWORD */}
+
+    <div className="mt-1 border-t border-[#EEE9E4] pt-2">
+      <Link
+        href="/reset-password?mode=change"
+        onClick={() =>
+          setAccountOpen(false)
+        }
+        className="block w-full rounded-lg px-2 py-2.5 text-left text-xs font-semibold text-[#385E9D] transition hover:bg-[#F4F6F9]"
+      >
+        Change Password
+      </Link>
+    </div>
+
+    {/* SIGN OUT */}
+
+    <div className="mt-1 border-t border-[#EEE9E4] pt-2">
+      <form action={logout}>
+        <button
+          type="submit"
+          className="w-full rounded-lg px-2 py-2.5 text-left text-xs font-semibold text-[#A23B35] transition hover:bg-[#FBF1F0]"
+        >
+          Sign Out
+        </button>
+      </form>
+    </div>
+  </div>
+)}
             </div>
           </div>
         </div>
       </header>
 
+      {/* ================================================= */}
       {/* MOBILE DRAWER */}
+      {/* ================================================= */}
 
       {mobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
@@ -1253,7 +1214,9 @@ export default function HubShell({
         </div>
       )}
 
+      {/* ================================================= */}
       {/* MAIN BODY */}
+      {/* ================================================= */}
 
       <div className="mx-auto flex max-w-[1500px]">
         <aside className="sticky top-[72px] hidden h-[calc(100vh-72px)] w-[245px] shrink-0 flex-col overflow-y-auto border-r border-[#DDD6CF] bg-[#FAF9F7] lg:flex">

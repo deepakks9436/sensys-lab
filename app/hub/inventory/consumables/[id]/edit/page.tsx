@@ -1,11 +1,21 @@
 import Link from "next/link";
+
 import {
   notFound,
   redirect,
 } from "next/navigation";
 
-import { createClient } from "../../../../../../lib/supabase/server";
-import { updateConsumable } from "../../actions";
+import {
+  createClient,
+} from "../../../../../../lib/supabase/server";
+
+import {
+  getHubUser,
+} from "../../../../../../lib/hub/auth";
+
+import {
+  updateConsumable,
+} from "../../actions";
 
 export default async function EditConsumablePage({
   params,
@@ -19,50 +29,57 @@ export default async function EditConsumablePage({
     error?: string;
   }>;
 }) {
-  const { id } = await params;
-  const query = await searchParams;
-
-  const supabase = await createClient();
-
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    id,
+  } =
+    await params;
 
-  if (!user) {
-    redirect("/login");
-  }
+  const query =
+    await searchParams;
 
-  const { data: profile } =
-    await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .single();
+  const context =
+    await getHubUser();
+
+  const canManage =
+    context.profile.role ===
+      "admin" ||
+    context.profile.role ===
+      "lab_manager";
 
   if (
-    !profile ||
-    !["admin", "manager"].includes(
-      profile.role
-    )
+    !canManage
   ) {
     redirect(
       "/hub/inventory/consumables"
     );
   }
 
-  const { data: item } =
+  const supabase =
+    await createClient();
+
+  const {
+    data: item,
+  } =
     await supabase
-      .from("consumables")
+      .from(
+        "consumables"
+      )
       .select("*")
-      .eq("id", id)
-      .single();
+      .eq(
+        "id",
+        id
+      )
+      .maybeSingle();
 
   if (!item) {
     notFound();
   }
 
   const action =
-    updateConsumable.bind(null, id);
+    updateConsumable.bind(
+      null,
+      id
+    );
 
   const inputClass =
     "mt-2 w-full border border-[#D8D0C7] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#385E9D]";
@@ -72,7 +89,7 @@ export default async function EditConsumablePage({
 
   return (
     <main className="px-5 py-8 md:px-8 md:py-10 xl:px-10">
-      <div className="mx-auto max-w-[1000px]">
+      <div className="mx-auto max-w-[900px]">
         <Link
           href="/hub/inventory/consumables"
           className="text-xs font-semibold text-[#385E9D]"
@@ -81,24 +98,40 @@ export default async function EditConsumablePage({
         </Link>
 
         <p className="mt-7 text-[9px] font-bold uppercase tracking-[0.22em] text-[#385E9D]">
-          Inventory Management
+          Inventory Master Data
         </p>
 
         <h1 className="mt-3 text-4xl font-bold tracking-[-0.035em]">
           Edit {item.name}.
         </h1>
 
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-[#706963]">
+          Manage the item name,
+          category, supplier and
+          low-stock threshold.
+          Day-to-day quantity,
+          location and notes can also
+          be maintained by lab
+          members.
+        </p>
+
         <form
-          action={action}
-          className="mt-10 border border-[#DDD6CF] bg-white"
+          action={
+            action
+          }
+          className="mt-8 border border-[#DDD6CF] bg-white"
         >
           {query.error && (
             <div className="border-b border-[#E7E1DB] bg-[#FBE7E5] px-6 py-4 text-xs text-[#A23B35]">
-              {query.error}
+              {
+                query.error
+              }
             </div>
           )}
 
           <div className="grid gap-6 p-6 md:grid-cols-2">
+            {/* NAME */}
+
             <div>
               <label className={labelClass}>
                 Item Name *
@@ -107,10 +140,15 @@ export default async function EditConsumablePage({
               <input
                 name="name"
                 required
-                defaultValue={item.name ?? ""}
+                defaultValue={
+                  item.name ??
+                  ""
+                }
                 className={inputClass}
               />
             </div>
+
+            {/* CATEGORY */}
 
             <div>
               <label className={labelClass}>
@@ -120,39 +158,15 @@ export default async function EditConsumablePage({
               <input
                 name="category"
                 defaultValue={
-                  item.category ?? ""
+                  item.category ??
+                  ""
                 }
+                placeholder="PPE, Liquid Handling..."
                 className={inputClass}
               />
             </div>
 
-            <div>
-              <label className={labelClass}>
-                Supplier
-              </label>
-
-              <input
-                name="supplier"
-                defaultValue={
-                  item.supplier ?? ""
-                }
-                className={inputClass}
-              />
-            </div>
-
-            <div>
-              <label className={labelClass}>
-                Catalog Number
-              </label>
-
-              <input
-                name="catalog_number"
-                defaultValue={
-                  item.catalog_number ?? ""
-                }
-                className={inputClass}
-              />
-            </div>
+            {/* QUANTITY */}
 
             <div>
               <label className={labelClass}>
@@ -162,13 +176,17 @@ export default async function EditConsumablePage({
               <input
                 name="quantity"
                 type="number"
+                min="0"
                 step="any"
                 defaultValue={
-                  item.quantity ?? 0
+                  item.quantity ??
+                  0
                 }
                 className={inputClass}
               />
             </div>
+
+            {/* UNIT */}
 
             <div>
               <label className={labelClass}>
@@ -178,43 +196,42 @@ export default async function EditConsumablePage({
               <input
                 name="unit"
                 defaultValue={
-                  item.unit ?? "unit"
+                  item.unit ??
+                  "unit"
                 }
+                placeholder="boxes, packs, sheets..."
                 className={inputClass}
               />
             </div>
 
+            {/* MINIMUM */}
+
             <div>
               <label className={labelClass}>
-                Minimum Stock
+                Low-Stock Threshold
               </label>
 
               <input
                 name="minimum_stock"
                 type="number"
+                min="0"
                 step="any"
                 defaultValue={
-                  item.minimum_stock ?? 0
+                  item.minimum_stock ??
+                  0
                 }
                 className={inputClass}
               />
+
+              <p className="mt-2 text-[9px] leading-4 text-[#928980]">
+                The item is flagged
+                automatically when
+                quantity reaches this
+                value.
+              </p>
             </div>
 
-            <div>
-              <label className={labelClass}>
-                Reorder Quantity
-              </label>
-
-              <input
-                name="reorder_quantity"
-                type="number"
-                step="any"
-                defaultValue={
-                  item.reorder_quantity ?? 0
-                }
-                className={inputClass}
-              />
-            </div>
+            {/* LOCATION */}
 
             <div>
               <label className={labelClass}>
@@ -224,40 +241,48 @@ export default async function EditConsumablePage({
               <input
                 name="location"
                 defaultValue={
-                  item.location ?? ""
+                  item.location ??
+                  ""
                 }
                 className={inputClass}
               />
             </div>
+
+            {/* SUPPLIER */}
 
             <div>
               <label className={labelClass}>
-                Project
+                Supplier
               </label>
 
               <input
-                name="project"
+                name="supplier"
                 defaultValue={
-                  item.project ?? ""
+                  item.supplier ??
+                  ""
                 }
                 className={inputClass}
               />
             </div>
+
+            {/* CATALOG */}
 
             <div>
               <label className={labelClass}>
-                Last Purchased
+                Catalog Number
               </label>
 
               <input
-                name="last_purchased"
-                type="date"
+                name="catalog_number"
                 defaultValue={
-                  item.last_purchased ?? ""
+                  item.catalog_number ??
+                  ""
                 }
                 className={inputClass}
               />
             </div>
+
+            {/* NOTES */}
 
             <div className="md:col-span-2">
               <label className={labelClass}>
@@ -268,7 +293,8 @@ export default async function EditConsumablePage({
                 name="notes"
                 rows={4}
                 defaultValue={
-                  item.notes ?? ""
+                  item.notes ??
+                  ""
                 }
                 className={inputClass}
               />

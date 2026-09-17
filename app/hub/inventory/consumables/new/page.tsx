@@ -1,8 +1,15 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import {
+  redirect,
+} from "next/navigation";
 
-import { createClient } from "../../../../../lib/supabase/server";
-import { addConsumable } from "../actions";
+import {
+  getHubUser,
+} from "../../../../../lib/hub/auth";
+
+import {
+  addConsumable,
+} from "../actions";
 
 export default async function NewConsumablePage({
   searchParams,
@@ -11,35 +18,35 @@ export default async function NewConsumablePage({
     error?: string;
   }>;
 }) {
-  const supabase = await createClient();
+  const context =
+    await getHubUser();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const role =
+    context.profile.role;
 
-  if (!user) {
-    redirect("/login");
-  }
+  const canContribute =
+    [
+      "admin",
+      "lab_manager",
+      "student",
+      "member",
+    ].includes(role);
 
-  const { data: profile } =
-    await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .single();
+  const canManageMaster =
+    role === "admin" ||
+    role ===
+      "lab_manager";
 
   if (
-    !profile ||
-    !["admin", "manager"].includes(
-      profile.role
-    )
+    !canContribute
   ) {
     redirect(
       "/hub/inventory/consumables"
     );
   }
 
-  const params = await searchParams;
+  const params =
+    await searchParams;
 
   const inputClass =
     "mt-2 w-full border border-[#D8D0C7] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#385E9D]";
@@ -49,7 +56,7 @@ export default async function NewConsumablePage({
 
   return (
     <main className="px-5 py-8 md:px-8 md:py-10 xl:px-10">
-      <div className="mx-auto max-w-[1000px]">
+      <div className="mx-auto max-w-[900px]">
         <Link
           href="/hub/inventory/consumables"
           className="text-xs font-semibold text-[#385E9D]"
@@ -58,24 +65,38 @@ export default async function NewConsumablePage({
         </Link>
 
         <p className="mt-7 text-[9px] font-bold uppercase tracking-[0.22em] text-[#385E9D]">
-          Inventory Management
+          Shared Inventory
         </p>
 
         <h1 className="mt-3 text-4xl font-bold tracking-[-0.035em]">
           Add Consumable.
         </h1>
 
+        <p className="mt-3 max-w-xl text-sm leading-7 text-[#706963]">
+          Add a laboratory
+          consumable so its current
+          quantity and storage
+          location can be maintained
+          by the lab.
+        </p>
+
         <form
-          action={addConsumable}
-          className="mt-10 border border-[#DDD6CF] bg-white"
+          action={
+            addConsumable
+          }
+          className="mt-8 border border-[#DDD6CF] bg-white"
         >
           {params.error && (
             <div className="border-b border-[#E7E1DB] bg-[#FBE7E5] px-6 py-4 text-xs text-[#A23B35]">
-              {params.error}
+              {
+                params.error
+              }
             </div>
           )}
 
           <div className="grid gap-6 p-6 md:grid-cols-2">
+            {/* NAME */}
+
             <div>
               <label className={labelClass}>
                 Item Name *
@@ -84,43 +105,12 @@ export default async function NewConsumablePage({
               <input
                 name="name"
                 required
+                placeholder="e.g. Pipette Tips 200 µL"
                 className={inputClass}
               />
             </div>
 
-            <div>
-              <label className={labelClass}>
-                Category
-              </label>
-
-              <input
-                name="category"
-                placeholder="PPE, Liquid Handling..."
-                className={inputClass}
-              />
-            </div>
-
-            <div>
-              <label className={labelClass}>
-                Supplier
-              </label>
-
-              <input
-                name="supplier"
-                className={inputClass}
-              />
-            </div>
-
-            <div>
-              <label className={labelClass}>
-                Catalog Number
-              </label>
-
-              <input
-                name="catalog_number"
-                className={inputClass}
-              />
-            </div>
+            {/* QUANTITY */}
 
             <div>
               <label className={labelClass}>
@@ -130,11 +120,14 @@ export default async function NewConsumablePage({
               <input
                 name="quantity"
                 type="number"
+                min="0"
                 step="any"
                 defaultValue="0"
                 className={inputClass}
               />
             </div>
+
+            {/* UNIT */}
 
             <div>
               <label className={labelClass}>
@@ -144,38 +137,12 @@ export default async function NewConsumablePage({
               <input
                 name="unit"
                 defaultValue="unit"
-                placeholder="boxes, packs, sheets..."
+                placeholder="boxes, packs, sheets, vials..."
                 className={inputClass}
               />
             </div>
 
-            <div>
-              <label className={labelClass}>
-                Minimum Stock
-              </label>
-
-              <input
-                name="minimum_stock"
-                type="number"
-                step="any"
-                defaultValue="0"
-                className={inputClass}
-              />
-            </div>
-
-            <div>
-              <label className={labelClass}>
-                Reorder Quantity
-              </label>
-
-              <input
-                name="reorder_quantity"
-                type="number"
-                step="any"
-                defaultValue="0"
-                className={inputClass}
-              />
-            </div>
+            {/* LOCATION */}
 
             <div>
               <label className={labelClass}>
@@ -184,33 +151,74 @@ export default async function NewConsumablePage({
 
               <input
                 name="location"
-                placeholder="Wet Lab · Shelf C"
+                placeholder="J204 · Cabinet A · Shelf 2"
                 className={inputClass}
               />
             </div>
 
-            <div>
-              <label className={labelClass}>
-                Project
-              </label>
+            {/* MANAGER MASTER FIELDS */}
 
-              <input
-                name="project"
-                className={inputClass}
-              />
-            </div>
+            {canManageMaster && (
+              <>
+                <div>
+                  <label className={labelClass}>
+                    Category
+                  </label>
 
-            <div>
-              <label className={labelClass}>
-                Last Purchased
-              </label>
+                  <input
+                    name="category"
+                    placeholder="PPE, Liquid Handling, Substrates..."
+                    className={inputClass}
+                  />
+                </div>
 
-              <input
-                name="last_purchased"
-                type="date"
-                className={inputClass}
-              />
-            </div>
+                <div>
+                  <label className={labelClass}>
+                    Minimum Stock
+                  </label>
+
+                  <input
+                    name="minimum_stock"
+                    type="number"
+                    min="0"
+                    step="any"
+                    defaultValue="0"
+                    className={inputClass}
+                  />
+
+                  <p className="mt-2 text-[9px] leading-4 text-[#928980]">
+                    The item is
+                    automatically flagged
+                    when stock reaches this
+                    quantity.
+                  </p>
+                </div>
+
+                <div>
+                  <label className={labelClass}>
+                    Supplier
+                  </label>
+
+                  <input
+                    name="supplier"
+                    className={inputClass}
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClass}>
+                    Catalog Number
+                  </label>
+
+                  <input
+                    name="catalog_number"
+                    className={inputClass}
+                  />
+                </div>
+              </>
+            )}
+
+            {/* NOTES */}
 
             <div className="md:col-span-2">
               <label className={labelClass}>
@@ -220,10 +228,23 @@ export default async function NewConsumablePage({
               <textarea
                 name="notes"
                 rows={4}
+                placeholder="Any useful information about this item..."
                 className={inputClass}
               />
             </div>
           </div>
+
+          {!canManageMaster && (
+            <div className="border-t border-[#E7E1DB] bg-[#EEF2F8] px-6 py-4">
+              <p className="text-[10px] leading-5 text-[#5F6770]">
+                The Lab Manager can
+                later add a category,
+                supplier, catalogue
+                information and low-stock
+                threshold if required.
+              </p>
+            </div>
+          )}
 
           <div className="flex justify-end gap-3 border-t border-[#E7E1DB] bg-[#FAF9F7] px-6 py-5">
             <Link
@@ -237,7 +258,7 @@ export default async function NewConsumablePage({
               type="submit"
               className="rounded-full bg-[#385E9D] px-6 py-3 text-xs font-semibold text-white"
             >
-              Save Consumable →
+              Add Consumable →
             </button>
           </div>
         </form>
