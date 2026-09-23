@@ -37,7 +37,7 @@ const robotoMono = Roboto_Mono({
 ============================================================ */
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sensys-lab.vercel.app"),
+  metadataBase: new URL("https://sensys.ca"),
 
   title: {
     default: "SenSys Lab | University of Manitoba",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: "SenSys Lab | University of Manitoba",
     description:
       "Intelligent sensing systems for healthcare, agriculture, food safety, environmental monitoring, and emerging cyber-physical applications.",
-    url: "https://sensys-lab.vercel.app",
+    url: "https://sensys.ca",
     siteName: "SenSys Lab",
     locale: "en_CA",
     type: "website",
