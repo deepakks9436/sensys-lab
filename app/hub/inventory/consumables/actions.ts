@@ -17,7 +17,7 @@ import {
 } from "../../../../lib/hub/auth";
 
 /* ============================================================
-   TYPES / PERMISSIONS
+   PERMISSIONS
 ============================================================ */
 
 function canManageMaster(
@@ -94,10 +94,8 @@ function deriveStockStatus(
   }
 
   if (
-    minimumStock >
-      0 &&
-    quantity <=
-      minimumStock
+    minimumStock > 0 &&
+    quantity <= minimumStock
   ) {
     return "Low Stock";
   }
@@ -118,7 +116,9 @@ async function inventoryContext() {
   };
 }
 
-function refreshConsumables() {
+function refreshConsumables(
+  consumableId?: string
+) {
   revalidatePath(
     "/hub"
   );
@@ -130,10 +130,25 @@ function refreshConsumables() {
   revalidatePath(
     "/hub/inventory/consumables"
   );
+
+  if (consumableId) {
+    revalidatePath(
+      `/hub/inventory/consumables/${consumableId}`
+    );
+
+    revalidatePath(
+      `/hub/inventory/consumables/${consumableId}/edit`
+    );
+
+    revalidatePath(
+      `/hub/inventory/consumables/${consumableId}/stock`
+    );
+  }
 }
 
 /* ============================================================
    ADD CONSUMABLE
+   ADMIN / LAB MANAGER ONLY
 ============================================================ */
 
 export async function addConsumable(
@@ -145,16 +160,13 @@ export async function addConsumable(
   } =
     await inventoryContext();
 
-  const role =
-    context.profile.role;
-
   if (
-    !canContributeInventory(
-      role
+    !canManageMaster(
+      context.profile.role
     )
   ) {
     throw new Error(
-      "You do not have permission to add consumables."
+      "Only an administrator or lab manager can add consumables."
     );
   }
 
@@ -178,24 +190,18 @@ export async function addConsumable(
       )
     );
 
-  const manager =
-    canManageMaster(
-      role
+  const minimumStock =
+    numberValue(
+      formData.get(
+        "minimum_stock"
+      )
     );
 
-  /*
-   * Students/members can add a basic record.
-   * Minimum stock and master information
-   * remain under Admin/Lab Manager control.
-   */
-  const minimumStock =
-    manager
-      ? numberValue(
-          formData.get(
-            "minimum_stock"
-          )
-        )
-      : 0;
+  const status =
+    deriveStockStatus(
+      quantity,
+      minimumStock
+    );
 
   const {
     error,
@@ -208,31 +214,25 @@ export async function addConsumable(
         name,
 
         category:
-          manager
-            ? optionalText(
-                formData.get(
-                  "category"
-                )
-              )
-            : null,
+          optionalText(
+            formData.get(
+              "category"
+            )
+          ),
 
         supplier:
-          manager
-            ? optionalText(
-                formData.get(
-                  "supplier"
-                )
-              )
-            : null,
+          optionalText(
+            formData.get(
+              "supplier"
+            )
+          ),
 
         catalog_number:
-          manager
-            ? optionalText(
-                formData.get(
-                  "catalog_number"
-                )
-              )
-            : null,
+          optionalText(
+            formData.get(
+              "catalog_number"
+            )
+          ),
 
         quantity,
 
@@ -248,7 +248,11 @@ export async function addConsumable(
           minimumStock,
 
         reorder_quantity:
-          0,
+          numberValue(
+            formData.get(
+              "reorder_quantity"
+            )
+          ),
 
         location:
           optionalText(
@@ -264,11 +268,7 @@ export async function addConsumable(
             )
           ),
 
-        status:
-          deriveStockStatus(
-            quantity,
-            minimumStock
-          ),
+        status,
 
         created_by:
           context.userId,
@@ -293,7 +293,7 @@ export async function addConsumable(
 }
 
 /* ============================================================
-   UPDATE MASTER INFORMATION
+   UPDATE CONSUMABLE MASTER INFORMATION
    ADMIN / LAB MANAGER ONLY
 ============================================================ */
 
@@ -346,6 +346,7 @@ export async function updateConsumable(
 
   const {
     data: current,
+    error: currentError,
   } =
     await supabase
       .from(
@@ -360,8 +361,17 @@ export async function updateConsumable(
       )
       .single();
 
+  if (
+    currentError ||
+    !current
+  ) {
+    redirect(
+      `/hub/inventory/consumables/${consumableId}/edit?error=Consumable%20record%20not%20found.`
+    );
+  }
+
   const status =
-    current?.status ===
+    current.status ===
     "Archived"
       ? "Archived"
       : deriveStockStatus(
@@ -413,6 +423,13 @@ export async function updateConsumable(
         minimum_stock:
           minimumStock,
 
+        reorder_quantity:
+          numberValue(
+            formData.get(
+              "reorder_quantity"
+            )
+          ),
+
         location:
           optionalText(
             formData.get(
@@ -445,7 +462,9 @@ export async function updateConsumable(
     );
   }
 
-  refreshConsumables();
+  refreshConsumables(
+    consumableId
+  );
 
   redirect(
     "/hub/inventory/consumables"
@@ -453,13 +472,45 @@ export async function updateConsumable(
 }
 
 /* ============================================================
-   SIMPLE DAY-TO-DAY UPDATE
-   ADMIN / LAB MANAGER / STUDENT / MEMBER
+   DAY-TO-DAY STOCK UPDATE
 
-   No transaction ledger:
-   - quantity
+   ALLOWED:
+   - ADMIN
+   - LAB MANAGER
+   - STUDENT
+   - MEMBER
+
+   IMPORTANT:
+
+   Ordinary lab members may change STOCK QUANTITY only.
+
+   They cannot use this action to change:
+   - name
+   - category
+   - supplier
+   - catalog number
+   - unit
+   - minimum stock
+   - reorder quantity
    - location
    - notes
+
+   Stock changes are handled by:
+
+   public.adjust_consumable_stock(
+     uuid,
+     text,
+     numeric
+   )
+
+   Supported forms:
+
+   1. quantity = physical quantity remaining
+
+   OR
+
+   2. operation = receive / use / set
+      amount = numeric
 ============================================================ */
 
 export async function adjustConsumableStock(
@@ -482,10 +533,13 @@ export async function adjustConsumableStock(
     );
   }
 
+  /* ----------------------------------------------------------
+     Confirm record exists
+  ---------------------------------------------------------- */
+
   const {
     data: item,
-    error:
-      readError,
+    error: readError,
   } =
     await supabase
       .from(
@@ -494,8 +548,8 @@ export async function adjustConsumableStock(
       .select(
         `
         id,
+        name,
         quantity,
-        minimum_stock,
         status
         `
       )
@@ -519,62 +573,104 @@ export async function adjustConsumableStock(
     "Archived"
   ) {
     redirect(
-      "/hub/inventory/consumables"
+      `/hub/inventory/consumables/${consumableId}/stock?error=Archived%20consumables%20cannot%20be%20updated.`
     );
   }
 
-  const quantity =
+  /* ----------------------------------------------------------
+     Determine operation
+  ---------------------------------------------------------- */
+
+  const directQuantity =
+    formData.get(
+      "quantity"
+    );
+
+  let operation =
+    String(
+      formData.get(
+        "operation"
+      ) ?? ""
+    )
+      .trim()
+      .toLowerCase();
+
+  let amount =
     numberValue(
       formData.get(
-        "quantity"
+        "amount"
       )
     );
 
-  const minimumStock =
-    Number(
-      item.minimum_stock ??
-        0
-    );
+  /*
+   * Current stock page may simply submit:
+   *
+   * quantity = 3
+   *
+   * Interpret that as:
+   *
+   * set stock to 3
+   */
+  if (
+    directQuantity !==
+      null &&
+    String(
+      directQuantity
+    ).trim() !==
+      ""
+  ) {
+    operation =
+      "set";
 
-  const status =
-    deriveStockStatus(
-      quantity,
-      minimumStock
+    amount =
+      numberValue(
+        directQuantity
+      );
+  }
+
+  if (
+    ![
+      "receive",
+      "use",
+      "set",
+    ].includes(
+      operation
+    )
+  ) {
+    redirect(
+      `/hub/inventory/consumables/${consumableId}/stock?error=Please%20select%20a%20valid%20stock%20operation.`
     );
+  }
+
+  if (
+    operation !== "set" &&
+    amount <= 0
+  ) {
+    redirect(
+      `/hub/inventory/consumables/${consumableId}/stock?error=Stock%20amount%20must%20be%20greater%20than%20zero.`
+    );
+  }
+
+  /* ----------------------------------------------------------
+     Protected RPC
+  ---------------------------------------------------------- */
 
   const {
     error,
   } =
-    await supabase
-      .from(
-        "consumables"
-      )
-      .update({
-        quantity,
+    await supabase.rpc(
+      "adjust_consumable_stock",
+      {
+        p_consumable_id:
+          consumableId,
 
-        location:
-          optionalText(
-            formData.get(
-              "location"
-            )
-          ),
+        p_operation:
+          operation,
 
-        notes:
-          optionalText(
-            formData.get(
-              "notes"
-            )
-          ),
-
-        status,
-
-        updated_by:
-          context.userId,
-      })
-      .eq(
-        "id",
-        consumableId
-      );
+        p_amount:
+          amount,
+      }
+    );
 
   if (error) {
     redirect(
@@ -584,7 +680,9 @@ export async function adjustConsumableStock(
     );
   }
 
-  refreshConsumables();
+  refreshConsumables(
+    consumableId
+  );
 
   redirect(
     "/hub/inventory/consumables"
@@ -592,7 +690,7 @@ export async function adjustConsumableStock(
 }
 
 /* ============================================================
-   ARCHIVE
+   ARCHIVE CONSUMABLE
    ADMIN / LAB MANAGER ONLY
 ============================================================ */
 
@@ -640,5 +738,11 @@ export async function archiveConsumable(
     );
   }
 
-  refreshConsumables();
+  refreshConsumables(
+    consumableId
+  );
+
+  redirect(
+    "/hub/inventory/consumables"
+  );
 }

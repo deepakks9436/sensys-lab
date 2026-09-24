@@ -7,7 +7,7 @@ import ScrollProgress from "../components/ScrollProgress";
 import "./globals.css";
 
 /* ============================================================
-   UNIVERSITY OF MANITOBA WEB TYPOGRAPHY
+   TYPOGRAPHY
 ============================================================ */
 
 const roboto = Roboto({
@@ -33,7 +33,7 @@ const robotoMono = Roboto_Mono({
 });
 
 /* ============================================================
-   METADATA
+   SITE METADATA
 ============================================================ */
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "SenSys Lab at the University of Manitoba develops intelligent sensing systems integrating microsystems, microfluidics, advanced materials, electronics, wearable technologies, environmental sensing, and artificial intelligence.",
+    "SenSys Lab at the University of Manitoba develops intelligent sensing systems for healthcare, agriculture, food safety, environmental monitoring, and emerging cyber-physical applications.",
 
   keywords: [
     "SenSys Lab",
@@ -62,6 +62,7 @@ export const metadata: Metadata = {
     "Water Quality",
     "Pesticide Detection",
     "Artificial Intelligence",
+    "One Health",
   ],
 
   authors: [
@@ -73,21 +74,43 @@ export const metadata: Metadata = {
   creator: "SenSys Lab",
   publisher: "SenSys Lab",
 
+  alternates: {
+    canonical: "https://sensys.ca",
+  },
+
   openGraph: {
     title: "SenSys Lab | University of Manitoba",
+
     description:
       "Intelligent sensing systems for healthcare, agriculture, food safety, environmental monitoring, and emerging cyber-physical applications.",
+
     url: "https://sensys.ca",
+
     siteName: "SenSys Lab",
+
     locale: "en_CA",
+
     type: "website",
+
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SenSys Lab at the University of Manitoba",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
+
     title: "SenSys Lab | University of Manitoba",
+
     description:
-      "Intelligent sensing systems integrating microsystems, microfluidics, advanced materials, electronics, and AI.",
+      "Intelligent sensing systems for healthcare, agriculture, food safety, environmental monitoring, and emerging cyber-physical applications.",
+
+    images: ["/opengraph-image.jpg"],
   },
 
   robots: {
@@ -166,7 +189,7 @@ export default function RootLayout({
           {children}
         </div>
 
-        {/* BACK TO TOP */}
+        {/* GLOBAL BACK TO TOP */}
 
         <BackToTop />
       </body>
