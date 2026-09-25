@@ -112,6 +112,23 @@ function optionalTime(
   );
 }
 
+function optionalDate(
+  value:
+    | FormDataEntryValue
+    | null
+) {
+  const text =
+    String(
+      value ??
+        ""
+    ).trim();
+
+  return (
+    text ||
+    null
+  );
+}
+
 const allowedStatuses =
   [
     "Draft",
@@ -160,6 +177,10 @@ async function notifyMeetingStudents(
     location:
       | string
       | null;
+
+    next_review_date:
+      | string
+      | null;
   },
 
   notificationType:
@@ -192,6 +213,11 @@ async function notifyMeetingStudents(
         ? ` · ${meeting.location}`
         : "";
 
+    const nextReviewText =
+      meeting.next_review_date
+        ? ` · Next review ${meeting.next_review_date}`
+        : "";
+
     await notifyStudent(
       supabase,
       studentId,
@@ -206,7 +232,7 @@ async function notifyMeetingStudents(
             : "Research meeting updated",
 
         message:
-          `${meeting.title} — ${meeting.meeting_date}${timeText}${locationText}.`,
+          `${meeting.title} — ${meeting.meeting_date}${timeText}${locationText}${nextReviewText}.`,
 
         entityType:
           "meeting",
@@ -308,6 +334,13 @@ export async function addMeeting(
       )
     );
 
+  const nextReviewDate =
+    optionalDate(
+      formData.get(
+        "next_review_date"
+      )
+    );
+
   const status =
     safeStatus(
       formData.get(
@@ -361,6 +394,9 @@ export async function addMeeting(
             )
           ),
 
+        next_review_date:
+          nextReviewDate,
+
         status,
 
         created_by:
@@ -376,6 +412,7 @@ export async function addMeeting(
         meeting_date,
         start_time,
         location,
+        next_review_date,
         status
         `
       )
@@ -524,6 +561,7 @@ export async function updateMeeting(
         agenda,
         minutes,
         decisions,
+        next_review_date,
         status
         `
       )
@@ -618,6 +656,13 @@ export async function updateMeeting(
       )
     );
 
+  const nextReviewDate =
+    optionalDate(
+      formData.get(
+        "next_review_date"
+      )
+    );
+
   const status =
     safeStatus(
       formData.get(
@@ -666,6 +711,9 @@ export async function updateMeeting(
         minutes,
 
         decisions,
+
+        next_review_date:
+          nextReviewDate,
 
         status,
 
@@ -783,7 +831,9 @@ export async function updateMeeting(
     existingMeeting?.minutes !==
       minutes ||
     existingMeeting?.decisions !==
-      decisions;
+      decisions ||
+    existingMeeting?.next_review_date !==
+      nextReviewDate;
 
   const linkedStudentsChanged =
     [
@@ -835,6 +885,9 @@ export async function updateMeeting(
           startTime,
 
         location,
+
+        next_review_date:
+          nextReviewDate,
       },
 
       justPublished

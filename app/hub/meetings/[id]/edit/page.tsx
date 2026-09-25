@@ -120,8 +120,8 @@ export default async function EditMeetingPage({
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[#706963]">
             Update the meeting details,
             linked researchers, agenda,
-            minutes, decisions and
-            publication status.
+            minutes, decisions, next review
+            date and publication status.
           </p>
         </div>
 
@@ -209,6 +209,34 @@ export default async function EditMeetingPage({
                 }
                 className={inputClass}
               />
+            </div>
+
+            {/* NEXT REVIEW DATE */}
+
+            <div>
+              <label className={labelClass}>
+                Next Review Date
+              </label>
+
+              <input
+                name="next_review_date"
+                type="date"
+                min={
+                  meeting.meeting_date
+                }
+                defaultValue={
+                  meeting.next_review_date ??
+                  ""
+                }
+                className={inputClass}
+              />
+
+              <p className="mt-2 text-[10px] leading-5 text-[#928980]">
+                Optional. Use this to plan
+                the next formal research
+                review for the linked
+                researchers.
+              </p>
             </div>
 
             {/* START */}
