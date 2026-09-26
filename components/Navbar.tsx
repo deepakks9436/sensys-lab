@@ -769,11 +769,11 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/join"
-              className="rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
-            >
-              Join
-            </Link>
+  href="/join"
+  className="rounded-full bg-[#F2A900] px-5 py-3 text-sm font-bold text-[#2A1710] shadow-sm transition hover:bg-[#E49D00] hover:shadow-md"
+>
+  Join
+</Link>
 
             <ThemeToggle />
           </div>
