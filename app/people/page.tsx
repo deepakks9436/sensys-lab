@@ -1,9 +1,44 @@
+import type { Metadata } from "next";
+
 import Image from "next/image";
 import Link from "next/link";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Reveal from "../../components/Reveal";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "People | SenSys Lab | University of Manitoba",
+  },
+  description:
+    "Meet the SenSys Lab research team at the University of Manitoba, led by Prof. Sanket Goel, with researchers working across intelligent sensory systems, microsystems, diagnostics, microfluidics, biointegrated technologies, and translational engineering.",
+  alternates: {
+    canonical: "https://sensys.ca/people",
+  },
+  openGraph: {
+    title: "People | SenSys Lab | University of Manitoba",
+    description:
+      "Meet the researchers building SenSys Lab at the University of Manitoba.",
+    url: "https://sensys.ca/people",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SenSys Lab Research Team",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "People | SenSys Lab | University of Manitoba",
+    description:
+      "Meet the researchers building intelligent sensory systems at SenSys Lab.",
+    images: ["/opengraph-image.png"],
+  },
+};
 
 const incomingPhD = [
   "Swarna Deb",
