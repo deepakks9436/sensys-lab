@@ -231,10 +231,10 @@ export default function Footer() {
 
             <div className="mt-5 space-y-3 text-sm text-white/75">
               <a
-                href="mailto:sanketgoel@gmail.com"
+                href="mailto:sensysinnovation@gmail.com"
                 className="block break-all transition hover:text-white"
               >
-                sanketgoel@gmail.com
+                sensysinnovation@gmail.com
               </a>
 
               <a

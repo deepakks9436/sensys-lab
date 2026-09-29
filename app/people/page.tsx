@@ -486,7 +486,7 @@ export default function PeoplePage() {
                   </Link>
 
                   <a
-                    href="mailto:sanketgoel@gmail.com?subject=Interest%20in%20Joining%20SenSys%20Lab"
+                    href="mailto:sensysinnovation@gmail.com?subject=Interest%20in%20Joining%20SenSys%20Lab"
                     className="rounded-full border border-[#2A1710] px-6 py-3.5 text-sm font-semibold"
                   >
                     Contact SenSys Lab →

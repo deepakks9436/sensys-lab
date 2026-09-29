@@ -282,7 +282,7 @@ export default function SanketGoelPage() {
                 </a>
 
                 <a
-                  href="mailto:sanketgoel@gmail.com"
+                  href="mailto:sensysinnovation@gmail.com"
                   className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
                 >
                   Email
