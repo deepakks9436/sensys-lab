@@ -1311,12 +1311,11 @@ export default function JoinPage() {
 
           <a
   href="mailto:sensysinnovation@gmail.com?subject=SenSys%20Application%20Enquiry"
-  className="inline-flex min-w-[190px] items-center justify-center rounded-full bg-[#2A1710] px-7 py-3.5 text-sm font-bold !text-white shadow-sm transition hover:bg-[#385E9D] hover:!text-white"
-  style={{
-    color: "#FFFFFF",
-  }}
+  className="inline-flex min-w-[210px] items-center justify-center rounded-full bg-[#2A1710] px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#385E9D]"
 >
-  Application enquiry →
+  <span className="text-white">
+    Application enquiry →
+  </span>
 </a>
         </div>
       </section>
