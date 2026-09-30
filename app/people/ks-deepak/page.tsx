@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Reveal from "../../../components/Reveal";
+
+
+export const metadata: Metadata = {
+  title: { absolute: "K. S. Deepak | Postdoctoral Researcher | SenSys Lab" },
+  description: "Profile of K. S. Deepak, Postdoctoral Researcher at SenSys Lab, University of Manitoba, working on portable sensing systems, microfluidics, pesticide detection, multimodal optical and electrochemical sensing, wearable sensors, and field-deployable diagnostics.",
+  alternates: { canonical: "https://sensys.ca/people/ks-deepak" },
+  openGraph: { title: "K. S. Deepak | Postdoctoral Researcher | SenSys Lab", description: "Portable sensing, microfluidics, pesticide detection, wearable sensors, optical and electrochemical systems, and translational device development.", url: "https://sensys.ca/people/ks-deepak", type: "profile", images: [{ url: "/people/ks-deepak.jpg", alt: "K. S. Deepak" }] },
+  twitter: { card: "summary_large_image", title: "K. S. Deepak | SenSys Lab", description: "Postdoctoral Researcher developing portable and intelligent sensing technologies at SenSys Lab.", images: ["/people/ks-deepak.jpg"] },
+};
 
 const researchAreas = [
   {

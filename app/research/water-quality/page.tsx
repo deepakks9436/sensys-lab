@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Reveal from "../../../components/Reveal";
+
+
+export const metadata: Metadata = {
+  title: { absolute: "Water Quality Technologies | SenSys Lab | University of Manitoba" },
+  description: "Explore SenSys Lab water-quality technologies for heavy metals, ion-selective sensing, fluoride, ammonia, pH, multi-parameter monitoring, IoT connectivity, machine learning, and intelligent environmental assessment.",
+  alternates: { canonical: "https://sensys.ca/research/water-quality" },
+  openGraph: { title: "Water Quality Technologies | SenSys Lab | University of Manitoba", description: "Portable, flexible, multiplexed, and connected sensing systems for ions, toxic metals, and intelligent water-quality assessment.", url: "https://sensys.ca/research/water-quality", type: "website", images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Water Quality Technologies at SenSys Lab" }] },
+  twitter: { card: "summary_large_image", title: "Water Quality Technologies | SenSys Lab", description: "Connected electrochemical, ion-selective, IoT, and machine-learning-assisted water-quality sensing.", images: ["/opengraph-image.png"] },
+};
 
 /* ============================================================
    TECHNOLOGY PORTFOLIO

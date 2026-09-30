@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+
+
+export const metadata: Metadata = {
+  title: { absolute: "Books & Edited Volumes | SenSys Lab | University of Manitoba" },
+  description: "Explore selected books and edited volumes associated with Prof. Sanket Goel across microelectronics, signal processing, electrochemical devices, microfluidics, 3D-printed smart sensors, energy harvesting, MEMS, and microsystems.",
+  alternates: { canonical: "https://sensys.ca/books" },
+  openGraph: { title: "Books & Edited Volumes | SenSys Lab | University of Manitoba", description: "Selected scholarly books spanning microelectronics, microfluidics, electrochemical devices, smart sensors, energy harvesting, and MEMS.", url: "https://sensys.ca/books", type: "website", images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Books and Edited Volumes associated with SenSys Lab" }] },
+  twitter: { card: "summary_large_image", title: "Books & Edited Volumes | SenSys Lab", description: "Scholarly books across sensing, microfluidics, electrochemical devices, smart sensors, and MEMS.", images: ["/opengraph-image.png"] },
+};
 
 const books = [
   {

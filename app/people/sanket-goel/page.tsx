@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,6 +6,15 @@ import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Reveal from "../../../components/Reveal";
 import AnimatedCounter from "../../../components/AnimatedCounter";
+
+
+export const metadata: Metadata = {
+  title: { absolute: "Prof. Sanket Goel | Founder & Principal Investigator | SenSys Lab" },
+  description: "Profile of Prof. Sanket Goel, Founder and Principal Investigator of SenSys Lab and Eddie Goldenberg Research Chair of Canada at the University of Manitoba, working across microsystems, microfluidics, intelligent diagnostics, advanced materials, biointegrated systems, environmental sensing, and technology translation.",
+  alternates: { canonical: "https://sensys.ca/people/sanket-goel" },
+  openGraph: { title: "Prof. Sanket Goel | SenSys Lab | University of Manitoba", description: "Founder and Principal Investigator of SenSys Lab and Eddie Goldenberg Research Chair of Canada at the University of Manitoba.", url: "https://sensys.ca/people/sanket-goel", type: "profile", images: [{ url: "/people/sanket-goel.webp", alt: "Prof. Sanket Goel" }] },
+  twitter: { card: "summary_large_image", title: "Prof. Sanket Goel | SenSys Lab", description: "Founder and Principal Investigator, SenSys Lab, University of Manitoba.", images: ["/people/sanket-goel.webp"] },
+};
 
 const researchAreas = [
   {

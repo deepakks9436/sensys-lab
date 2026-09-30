@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Reveal from "../../../components/Reveal";
+
+
+export const metadata: Metadata = {
+  title: { absolute: "Parvathy Nair | Postdoctoral Researcher | SenSys Lab" },
+  description: "Profile of Parvathy Nair, Postdoctoral Researcher at SenSys Lab, University of Manitoba, working on electrochemical biosensors, microfluidics, printed and flexible electrodes, multiplexed diagnostics, portable potentiostats, and point-of-care systems.",
+  alternates: { canonical: "https://sensys.ca/people/parvathy-nair" },
+  openGraph: { title: "Parvathy Nair | Postdoctoral Researcher | SenSys Lab", description: "Electrochemical biosensing, printed electrodes, microfluidics, multiplexed biomarker analysis, portable instrumentation, and point-of-care systems.", url: "https://sensys.ca/people/parvathy-nair", type: "profile", images: [{ url: "/people/parvathy-nair.jpg", alt: "Parvathy Nair" }] },
+  twitter: { card: "summary_large_image", title: "Parvathy Nair | SenSys Lab", description: "Postdoctoral Researcher in electrochemical biosensing and portable diagnostic systems at SenSys Lab.", images: ["/people/parvathy-nair.jpg"] },
+};
 
 const researchAreas = [
   {
