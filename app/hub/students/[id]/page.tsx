@@ -1120,11 +1120,13 @@ export default async function StudentResearchPage({
             {(isOwnProfile ||
               canManage) && (
               <Link
-                href={`/hub/students/${id}/weekly/new`}
-                className="rounded-full bg-[#203650] px-4 py-2.5 text-xs font-semibold text-white"
-              >
-                Research Check-in
-              </Link>
+  href={`/hub/students/${student.id}/weekly/new`}
+  className="rounded-full bg-[#203650] px-5 py-3 text-xs font-semibold !text-white transition hover:bg-[#15283D]"
+>
+  <span className="text-white">
+    Research Check-in
+  </span>
+</Link>
             )}
           </div>
         </div>
