@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 
 
 
+
+
+
+
 import Image from "next/image";
+
+
+
+
 
 
 
@@ -14,7 +22,19 @@ import Link from "next/link";
 
 
 
+
+
+
+
+
+
+
+
 import Navbar from "../components/Navbar";
+
+
+
+
 
 
 
@@ -22,7 +42,15 @@ import DynamicHero from "../components/DynamicHero";
 
 
 
+
+
+
+
 import FeaturedResearch from "../components/FeaturedResearch";
+
+
+
+
 
 
 
@@ -30,7 +58,15 @@ import Footer from "../components/Footer";
 
 
 
+
+
+
+
 import Reveal from "../components/Reveal";
+
+
+
+
 
 
 
@@ -42,7 +78,19 @@ import AnimatedCounter from "../components/AnimatedCounter";
 
 
 
+
+
+
+
+
+
+
+
 import { publications } from "../data/publications";
+
+
+
+
 
 
 
@@ -54,11 +102,27 @@ import { featuredNews } from "../data/news";
 
 
 
+
+
+
+
+
+
+
+
 /* ============================================================
 
 
 
+
+
+
+
    RESEARCH THRUSTS
+
+
+
+
 
 
 
@@ -70,49 +134,103 @@ import { featuredNews } from "../data/news";
 
 
 
+
+
+
+
+
+
+
+
 export const metadata: Metadata = {
+
+
 
   title: {
 
+
+
     absolute:
+
+
 
       "SenSys Lab | Intelligent Sensory Systems | University of Manitoba",
 
+
+
   },
+
+
 
   description:
 
+
+
     "SenSys Lab at the University of Manitoba develops intelligent sensory systems spanning microsystems, microfluidics, biointegrated technologies, intelligent diagnostics, environmental sensing, food and agriculture, and translational engineering.",
+
+
 
   alternates: { canonical: "https://sensys.ca/" },
 
+
+
   openGraph: {
 
+
+
     title: "SenSys Lab | Intelligent Sensory Systems | University of Manitoba",
+
+
 
     description: "Research in intelligent microsystems, biointegrated systems, diagnostics, agriculture, environmental sensing, and cyber-physical sensory technologies.",
 
+
+
     url: "https://sensys.ca/",
+
+
 
     type: "website",
 
+
+
     images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "SenSys Lab at the University of Manitoba" }],
 
+
+
   },
+
+
 
   twitter: {
 
+
+
     card: "summary_large_image",
+
+
 
     title: "SenSys Lab | Intelligent Sensory Systems | University of Manitoba",
 
+
+
     description: "Intelligent sensory systems research at the University of Manitoba.",
+
+
 
     images: ["/opengraph-image.png"],
 
+
+
   },
 
+
+
 };
+
+
+
+
 
 
 
@@ -120,7 +238,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -128,7 +254,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     title: "Intelligent Microsystems",
+
+
+
+
 
 
 
@@ -136,7 +270,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     description:
+
+
+
+
 
 
 
@@ -144,7 +286,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     image: "/research/thrusts/intelligent-microsystems.png",
+
+
+
+
 
 
 
@@ -152,7 +302,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     tags: [
+
+
+
+
 
 
 
@@ -160,7 +318,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Lab-on-Chip",
+
+
+
+
 
 
 
@@ -168,7 +334,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Embedded Systems",
+
+
+
+
 
 
 
@@ -176,11 +350,23 @@ const researchThrusts = [
 
 
 
+
+
+
+
   },
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -188,7 +374,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     title: "Biointegrated Systems",
+
+
+
+
 
 
 
@@ -196,7 +390,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     description:
+
+
+
+
 
 
 
@@ -204,7 +406,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     image: "/research/thrusts/biointegrated-systems.png",
+
+
+
+
 
 
 
@@ -212,7 +422,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     tags: [
+
+
+
+
 
 
 
@@ -220,7 +438,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Implantables",
+
+
+
+
 
 
 
@@ -228,7 +454,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Bioenergy",
+
+
+
+
 
 
 
@@ -236,11 +470,23 @@ const researchThrusts = [
 
 
 
+
+
+
+
   },
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -248,7 +494,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     title: "Intelligent Diagnostics",
+
+
+
+
 
 
 
@@ -256,7 +510,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     description:
+
+
+
+
 
 
 
@@ -264,7 +526,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     image: "/research/thrusts/intelligent-diagnostics.jpg",
+
+
+
+
 
 
 
@@ -272,7 +542,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     tags: [
+
+
+
+
 
 
 
@@ -280,7 +558,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Biosensors",
+
+
+
+
 
 
 
@@ -288,7 +574,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "AI-Enabled Analysis",
+
+
+
+
 
 
 
@@ -296,7 +590,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -304,7 +606,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     number: "04",
+
+
+
+
 
 
 
@@ -312,7 +622,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     subtitle: "Food · Water · Soil · Field sensing",
+
+
+
+
 
 
 
@@ -320,7 +638,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Field-ready sensing technologies for food safety, pesticide residues, water quality, soil analysis, precision agriculture, and environmental decision-making.",
+
+
+
+
 
 
 
@@ -328,7 +654,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
     href: "/research#agri-environment",
+
+
+
+
 
 
 
@@ -336,7 +670,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Pesticides",
+
+
+
+
 
 
 
@@ -344,7 +686,15 @@ const researchThrusts = [
 
 
 
+
+
+
+
       "Soil-on-Chip",
+
+
+
+
 
 
 
@@ -352,11 +702,23 @@ const researchThrusts = [
 
 
 
+
+
+
+
     ],
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -368,7 +730,19 @@ const researchThrusts = [
 
 
 
+
+
+
+
+
+
+
+
 /* ============================================================
+
+
+
+
 
 
 
@@ -376,7 +750,19 @@ const researchThrusts = [
 
 
 
+
+
+
+
 \============================================================ */
+
+
+
+
+
+
+
+
 
 
 
@@ -388,7 +774,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -396,7 +790,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     category: "Intelligent Diagnostics",
+
+
+
+
 
 
 
@@ -404,7 +806,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     href: "/research/amr",
+
+
+
+
 
 
 
@@ -412,7 +822,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
       "Portable pathogen detection and multiplexed antimicrobial susceptibility testing.",
+
+
+
+
 
 
 
@@ -420,7 +838,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -428,7 +854,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     category: "Food Safety",
+
+
+
+
 
 
 
@@ -436,7 +870,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     href: "/research/pesticide-detection",
+
+
+
+
 
 
 
@@ -444,7 +886,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -452,7 +902,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     category: "Advanced Materials",
+
+
+
+
 
 
 
@@ -460,7 +918,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     href: "/research/graphene",
+
+
+
+
 
 
 
@@ -468,7 +934,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -476,7 +950,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     category: "Environmental Intelligence",
+
+
+
+
 
 
 
@@ -484,11 +966,23 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     href: "/research/water-quality",
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -496,7 +990,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     title: "Lab-on-Glove",
+
+
+
+
 
 
 
@@ -504,7 +1006,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
     image: "/research/pesticide-detection/pestisafe-3.png",
+
+
+
+
 
 
 
@@ -512,7 +1022,15 @@ const deviceMosaic = [
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -524,7 +1042,19 @@ const deviceMosaic = [
 
 
 
+
+
+
+
+
+
+
+
 /* ============================================================
+
+
+
+
 
 
 
@@ -532,7 +1062,19 @@ const deviceMosaic = [
 
 
 
+
+
+
+
 \============================================================ */
+
+
+
+
+
+
+
+
 
 
 
@@ -544,7 +1086,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -552,11 +1102,23 @@ const selectedPublications = [
 
 
 
+
+
+
+
     journal: "Microchemical Journal · 2026",
 
 
 
+
+
+
+
     title:
+
+
+
+
 
 
 
@@ -564,7 +1126,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
     href: "https://doi.org/10.1016/j.microc.2026.118355",
+
+
+
+
 
 
 
@@ -572,11 +1142,23 @@ const selectedPublications = [
 
 
 
+
+
+
+
   },
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -584,7 +1166,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
     journal:
+
+
+
+
 
 
 
@@ -592,7 +1182,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
     title:
+
+
+
+
 
 
 
@@ -600,7 +1198,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
     href: "https://doi.org/10.1109/TIM.2026.3677997",
+
+
+
+
 
 
 
@@ -608,7 +1214,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -616,7 +1230,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
     category: "Wearable Bioenergy",
+
+
+
+
 
 
 
@@ -624,7 +1246,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
     title:
+
+
+
+
 
 
 
@@ -632,7 +1262,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
     href: "https://doi.org/10.1109/JFLEX.2026.3656478",
+
+
+
+
 
 
 
@@ -640,7 +1278,15 @@ const selectedPublications = [
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -652,7 +1298,19 @@ const selectedPublications = [
 
 
 
+
+
+
+
+
+
+
+
 /* ============================================================
+
+
+
+
 
 
 
@@ -660,7 +1318,19 @@ const selectedPublications = [
 
 
 
+
+
+
+
 \============================================================ */
+
+
+
+
+
+
+
+
 
 
 
@@ -672,7 +1342,15 @@ const people = [
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -680,7 +1358,15 @@ const people = [
 
 
 
+
+
+
+
     role: "Founder & Principal Investigator",
+
+
+
+
 
 
 
@@ -688,7 +1374,15 @@ const people = [
 
 
 
+
+
+
+
     image: "/people/sanket-goel.webp",
+
+
+
+
 
 
 
@@ -696,11 +1390,23 @@ const people = [
 
 
 
+
+
+
+
   },
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -708,11 +1414,23 @@ const people = [
 
 
 
+
+
+
+
     role: "Postdoctoral Researcher",
 
 
 
+
+
+
+
     eyebrow: "SenSys Lab",
+
+
+
+
 
 
 
@@ -720,11 +1438,23 @@ const people = [
 
 
 
+
+
+
+
     href: "/people/ks-deepak",
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -732,7 +1462,15 @@ const people = [
 
 
 
+
+
+
+
     name: "Parvathy Nair",
+
+
+
+
 
 
 
@@ -740,7 +1478,15 @@ const people = [
 
 
 
+
+
+
+
     eyebrow: "SenSys Lab",
+
+
+
+
 
 
 
@@ -748,11 +1494,23 @@ const people = [
 
 
 
+
+
+
+
     href: "/people/parvathy-nair",
 
 
 
+
+
+
+
   },
+
+
+
+
 
 
 
@@ -764,11 +1522,27 @@ const people = [
 
 
 
+
+
+
+
+
+
+
+
 /* ============================================================
 
 
 
+
+
+
+
    PAGE
+
+
+
+
 
 
 
@@ -780,7 +1554,19 @@ const people = [
 
 
 
+
+
+
+
+
+
+
+
 export default function Home() {
+
+
+
+
 
 
 
@@ -792,7 +1578,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
   return (
+
+
+
+
 
 
 
@@ -800,7 +1598,19 @@ export default function Home() {
 
 
 
+
+
+
+
       <Navbar />
+
+
+
+
+
+
+
+
 
 
 
@@ -816,6 +1626,14 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       <DynamicHero />
 
 
@@ -824,7 +1642,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
 
 
 
@@ -832,7 +1662,19 @@ export default function Home() {
 
 
 
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
+
+
+
+
 
 
 
@@ -844,7 +1686,15 @@ export default function Home() {
 
 
 
+
+
+
+
         <div className="mx-auto max-w-7xl">
+
+
+
+
 
 
 
@@ -852,7 +1702,15 @@ export default function Home() {
 
 
 
+
+
+
+
             <div className="grid gap-12 md:grid-cols-[0.62fr_1.38fr]">
+
+
+
+
 
 
 
@@ -860,7 +1718,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+
+
+
+
 
 
 
@@ -868,7 +1734,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 </p>
+
+
+
+
 
 
 
@@ -880,7 +1754,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
               <div>
+
+
+
+
 
 
 
@@ -888,7 +1774,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   Four research thrusts.
+
+
+
+
 
 
 
@@ -896,7 +1790,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   One connected ecosystem.
+
+
+
+
 
 
 
@@ -908,7 +1810,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                 <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+
+
+
+
 
 
 
@@ -916,7 +1830,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   electronics, embedded intelligence, and application-driven
+
+
+
+
 
 
 
@@ -924,7 +1846,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   directions.
+
+
+
+
 
 
 
@@ -936,7 +1866,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                 <Link
+
+
+
+
 
 
 
@@ -944,7 +1886,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   className="mt-7 inline-flex text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
+
+
+
+
 
 
 
@@ -952,7 +1902,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   Explore our research vision →
+
+
+
+
 
 
 
@@ -960,11 +1918,23 @@ export default function Home() {
 
 
 
+
+
+
+
               </div>
 
 
 
+
+
+
+
             </div>
+
+
+
+
 
 
 
@@ -976,7 +1946,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
           <div className="mt-16 grid gap-6 lg:grid-cols-2">
+
+
+
+
 
 
 
@@ -984,7 +1966,15 @@ export default function Home() {
 
 
 
+
+
+
+
               <Reveal
+
+
+
+
 
 
 
@@ -992,7 +1982,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 delay={index * 90}
+
+
+
+
 
 
 
@@ -1000,7 +1998,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <Link
+
+
+
+
 
 
 
@@ -1008,7 +2014,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   className="group flex h-full flex-col overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-medium)]"
+
+
+
+
 
 
 
@@ -1016,7 +2030,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   <div className="relative aspect-[16/10] overflow-hidden bg-white">
+
+
+
+
 
 
 
@@ -1024,7 +2046,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       src={area.image}
+
+
+
+
 
 
 
@@ -1032,7 +2062,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       fill
+
+
+
+
 
 
 
@@ -1040,11 +2078,27 @@ export default function Home() {
 
 
 
+
+
+
+
                       sizes="(max-width: 1024px) 100vw, 50vw"
 
 
 
+
+
+
+
                     />
+
+
+
+
+
+
+
+
 
 
 
@@ -1060,7 +2114,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                     <span className="absolute bottom-5 left-5 rounded-full border border-white/20 bg-[#17263D]/85 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+
+
+
+
 
 
 
@@ -1068,11 +2134,27 @@ export default function Home() {
 
 
 
+
+
+
+
                     </span>
 
 
 
+
+
+
+
                   </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -1084,7 +2166,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--um-blue)]">
+
+
+
+
 
 
 
@@ -1092,7 +2182,19 @@ export default function Home() {
 
 
 
+
+
+
+
                     </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -1104,7 +2206,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       {area.title}
+
+
+
+
 
 
 
@@ -1116,11 +2226,27 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                     <p className="mt-5 flex-1 text-sm leading-7 text-[var(--foreground-soft)]">
 
 
 
+
+
+
+
                       {area.description}
+
+
+
+
 
 
 
@@ -1132,7 +2258,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                     <div className="mt-7 flex flex-wrap gap-2">
+
+
+
+
 
 
 
@@ -1140,7 +2278,15 @@ export default function Home() {
 
 
 
+
+
+
+
                         <span
+
+
+
+
 
 
 
@@ -1148,7 +2294,15 @@ export default function Home() {
 
 
 
+
+
+
+
                           className="rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-3 py-1.5 text-[10px] text-[var(--foreground-muted)]"
+
+
+
+
 
 
 
@@ -1156,7 +2310,15 @@ export default function Home() {
 
 
 
+
+
+
+
                           {tag}
+
+
+
+
 
 
 
@@ -1164,11 +2326,27 @@ export default function Home() {
 
 
 
+
+
+
+
                       ))}
 
 
 
+
+
+
+
                     </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -1180,7 +2358,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       <span className="text-xs font-semibold text-[var(--um-blue)]">
+
+
+
+
 
 
 
@@ -1188,7 +2374,19 @@ export default function Home() {
 
 
 
+
+
+
+
                       </span>
+
+
+
+
+
+
+
+
 
 
 
@@ -1200,7 +2398,15 @@ export default function Home() {
 
 
 
+
+
+
+
                         →
+
+
+
+
 
 
 
@@ -1208,7 +2414,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     </div>
+
+
+
+
 
 
 
@@ -1216,7 +2430,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 </Link>
+
+
+
+
 
 
 
@@ -1224,7 +2446,15 @@ export default function Home() {
 
 
 
+
+
+
+
             ))}
+
+
+
+
 
 
 
@@ -1232,7 +2462,15 @@ export default function Home() {
 
 
 
+
+
+
+
         </div>
+
+
+
+
 
 
 
@@ -1244,56 +2482,99 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
 
 
 
       {/* PLATFORMS IN ACTION */}
 
+
+
       {/* ===================================================== */}
 
+
+
       <section className="bg-[var(--background)] px-5 py-20 md:px-16 md:py-28">
+
         <div className="mx-auto max-w-7xl">
+
           <Reveal>
+
             <div className="grid gap-8 md:grid-cols-[0.62fr_1.38fr]">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
-                  Platforms in Action
-                </p>
-              </div>
 
               <div>
+
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
+
+                  Platforms in Action
+
+                </p>
+
+              </div>
+
+
+
+              <div>
+
                 <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+
                   Devices engineered
+
                   <br />
+
                   beyond the benchtop.
+
                 </h2>
 
+
+
                 <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--foreground-soft)]">
+
                   From microfluidic chips and wearable systems to portable
+
                   analytical instrumentation, SenSys connects sensing science
+
                   with practical deployment.
+
                 </p>
+
               </div>
+
             </div>
+
           </Reveal>
 
-          <div className="mt-14 grid gap-3 lg:grid-cols-12 lg:grid-rows-[300px_300px]">
-            {/* LARGE FEATURE — exactly spans the full height of the right mosaic */}
+
+
+          <div className="mt-14 grid gap-4 lg:grid-cols-2">
+            {/* LARGE FEATURE */}
+
             <Reveal
-              className="lg:col-span-7 lg:row-span-2 lg:h-full"
+              className="h-full"
               delay={80}
             >
               <Link
                 href={deviceMosaic[0].href}
-                className="group relative block min-h-[500px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] lg:h-full lg:min-h-0"
+                className="group relative block min-h-[500px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] lg:min-h-[624px]"
               >
                 <Image
                   src={deviceMosaic[0].image}
                   alt={deviceMosaic[0].title}
                   fill
                   className="object-contain p-7 transition-transform duration-700 group-hover:scale-[1.035] md:p-10"
-                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#17263D]/90 via-[#17263D]/10 to-transparent" />
@@ -1314,70 +2595,36 @@ export default function Home() {
               </Link>
             </Reveal>
 
-            {/* UPPER-RIGHT FEATURE */}
-            <Reveal
-              className="lg:col-span-5 lg:h-full"
-              delay={160}
-              direction="right"
-            >
-              <Link
-                href={deviceMosaic[1].href}
-                className="group relative block min-h-[300px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] lg:h-full lg:min-h-0"
-              >
-                <Image
-                  src={deviceMosaic[1].image}
-                  alt={deviceMosaic[1].title}
-                  fill
-                  className="object-contain p-5 transition-transform duration-700 group-hover:scale-[1.04] md:p-7"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                />
+            {/* FOUR BALANCED PLATFORM TILES */}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#385E9D]/92 via-[#385E9D]/5 to-transparent" />
-
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#F2A900]">
-                    {deviceMosaic[1].category}
-                  </p>
-
-                  <h3 className="mt-2 text-2xl font-semibold text-white">
-                    {deviceMosaic[1].title}
-                  </h3>
-
-                  <p className="mt-2 max-w-md text-xs leading-6 text-white/75">
-                    {deviceMosaic[1].description}
-                  </p>
-                </div>
-              </Link>
-            </Reveal>
-
-            {/* LOWER-RIGHT THREE-PANEL ROW — same row height as PestiSafe */}
-            <div className="grid gap-3 sm:grid-cols-3 lg:col-span-5 lg:h-full">
-              {deviceMosaic.slice(2).map((item, index) => (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {deviceMosaic.slice(1).map((item, index) => (
                 <Reveal
                   key={item.title}
                   className="h-full"
-                  delay={220 + index * 70}
+                  delay={150 + index * 70}
+                  direction={index % 2 === 0 ? "right" : "up"}
                 >
                   <Link
                     href={item.href}
-                    className="group relative block min-h-[260px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] sm:h-full sm:min-h-[300px] lg:min-h-0"
+                    className="group relative block min-h-[290px] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] lg:min-h-[304px]"
                   >
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-contain p-4 transition-transform duration-700 group-hover:scale-[1.05]"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 16vw"
+                      className="object-contain p-5 transition-transform duration-700 group-hover:scale-[1.045] md:p-6"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#17263D]/92 via-[#17263D]/10 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#17263D]/92 via-[#17263D]/8 to-transparent" />
 
-                    <div className="absolute inset-x-0 bottom-0 p-4">
-                      <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-[#F2A900]">
+                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#F2A900]">
                         {item.category}
                       </p>
 
-                      <h3 className="mt-2 text-base font-semibold leading-5 text-white">
+                      <h3 className="mt-2 text-xl font-semibold leading-tight text-white md:text-2xl">
                         {item.title}
                       </h3>
                     </div>
@@ -1386,10 +2633,22 @@ export default function Home() {
               ))}
             </div>
           </div>
+
         </div>
+
       </section>
 
+
+
       {/* RESEARCH FOUNDATIONS */}
+
+
+
+
+
+
+
+
 
 
 
@@ -1405,7 +2664,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
 
 
 
@@ -1413,7 +2684,19 @@ export default function Home() {
 
 
 
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
+
+
+
+
 
 
 
@@ -1425,7 +2708,15 @@ export default function Home() {
 
 
 
+
+
+
+
         <div className="mx-auto max-w-7xl">
+
+
+
+
 
 
 
@@ -1433,11 +2724,23 @@ export default function Home() {
 
 
 
+
+
+
+
             <div className="grid gap-12 md:grid-cols-[0.68fr_1.32fr]">
 
 
 
+
+
+
+
               <div>
+
+
+
+
 
 
 
@@ -1445,7 +2748,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   Research Track Record
+
+
+
+
 
 
 
@@ -1453,7 +2764,19 @@ export default function Home() {
 
 
 
+
+
+
+
               </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -1465,7 +2788,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <h2 className="max-w-5xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+
+
+
+
 
 
 
@@ -1473,7 +2804,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 </h2>
+
+
+
+
 
 
 
@@ -1481,11 +2820,27 @@ export default function Home() {
 
 
 
+
+
+
+
             </div>
 
 
 
+
+
+
+
           </Reveal>
+
+
+
+
+
+
+
+
 
 
 
@@ -1497,11 +2852,23 @@ export default function Home() {
 
 
 
+
+
+
+
             <div className="p-8">
 
 
 
+
+
+
+
               <AnimatedCounter
+
+
+
+
 
 
 
@@ -1509,7 +2876,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 className="text-5xl font-semibold text-[#F2A900]"
+
+
+
+
 
 
 
@@ -1521,7 +2896,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
               <p className="mt-3 text-sm text-white/75">
+
+
+
+
 
 
 
@@ -1529,7 +2916,15 @@ export default function Home() {
 
 
 
+
+
+
+
               </p>
+
+
+
+
 
 
 
@@ -1541,11 +2936,27 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
             <div className="border-white/15 p-8 lg:border-l">
 
 
 
+
+
+
+
               <AnimatedCounter
+
+
+
+
 
 
 
@@ -1553,7 +2964,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 className="text-5xl font-semibold text-[#F2A900]"
+
+
+
+
 
 
 
@@ -1565,7 +2984,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
               <p className="mt-3 text-sm text-white/75">
+
+
+
+
 
 
 
@@ -1573,7 +3004,15 @@ export default function Home() {
 
 
 
+
+
+
+
               </p>
+
+
+
+
 
 
 
@@ -1585,11 +3024,27 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
             <div className="border-white/15 p-8 lg:border-l">
 
 
 
+
+
+
+
               <AnimatedCounter
+
+
+
+
 
 
 
@@ -1597,7 +3052,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 className="text-5xl font-semibold text-[#F2A900]"
+
+
+
+
 
 
 
@@ -1609,7 +3072,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
               <p className="mt-3 text-sm text-white/75">
+
+
+
+
 
 
 
@@ -1617,11 +3092,27 @@ export default function Home() {
 
 
 
+
+
+
+
               </p>
 
 
 
+
+
+
+
             </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -1633,7 +3124,15 @@ export default function Home() {
 
 
 
+
+
+
+
               <AnimatedCounter
+
+
+
+
 
 
 
@@ -1641,11 +3140,23 @@ export default function Home() {
 
 
 
+
+
+
+
                 minimumDigits={2}
 
 
 
+
+
+
+
                 className="text-5xl font-semibold text-[#F2A900]"
+
+
+
+
 
 
 
@@ -1657,7 +3168,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
               <p className="mt-3 text-sm text-white/75">
+
+
+
+
 
 
 
@@ -1665,7 +3188,15 @@ export default function Home() {
 
 
 
+
+
+
+
               </p>
+
+
+
+
 
 
 
@@ -1673,11 +3204,23 @@ export default function Home() {
 
 
 
+
+
+
+
           </div>
 
 
 
+
+
+
+
         </div>
+
+
+
+
 
 
 
@@ -1689,7 +3232,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
 
 
 
@@ -1697,7 +3252,19 @@ export default function Home() {
 
 
 
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
+
+
+
+
 
 
 
@@ -1709,7 +3276,15 @@ export default function Home() {
 
 
 
+
+
+
+
         <section className="bg-[var(--surface-soft)] px-8 py-24 md:px-16 md:py-32">
+
+
+
+
 
 
 
@@ -1717,7 +3292,15 @@ export default function Home() {
 
 
 
+
+
+
+
             <Reveal>
+
+
+
+
 
 
 
@@ -1725,7 +3308,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 Latest from SenSys Lab
+
+
+
+
 
 
 
@@ -1737,7 +3328,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
               <h2 className="mt-5 max-w-5xl text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
+
+
+
+
 
 
 
@@ -1745,7 +3348,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <br />
+
+
+
+
 
 
 
@@ -1753,11 +3364,27 @@ export default function Home() {
 
 
 
+
+
+
+
               </h2>
 
 
 
+
+
+
+
             </Reveal>
+
+
+
+
+
+
+
+
 
 
 
@@ -1769,7 +3396,15 @@ export default function Home() {
 
 
 
+
+
+
+
               <div className="mt-14 grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[1.05fr_0.95fr]">
+
+
+
+
 
 
 
@@ -1777,7 +3412,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   <div className="relative min-h-[430px]">
+
+
+
+
 
 
 
@@ -1785,7 +3428,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       src={featuredNews.image}
+
+
+
+
 
 
 
@@ -1793,7 +3444,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       fill
+
+
+
+
 
 
 
@@ -1801,11 +3460,23 @@ export default function Home() {
 
 
 
+
+
+
+
                     />
 
 
 
+
+
+
+
                   </div>
+
+
+
+
 
 
 
@@ -1817,7 +3488,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                 <div className="flex flex-col justify-center p-8 md:p-12">
+
+
+
+
 
 
 
@@ -1825,11 +3508,27 @@ export default function Home() {
 
 
 
+
+
+
+
                     {featuredNews.category} · {featuredNews.date}
 
 
 
+
+
+
+
                   </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -1841,7 +3540,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     {featuredNews.title}
+
+
+
+
 
 
 
@@ -1853,11 +3560,27 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                   <p className="mt-6 text-base leading-8 text-[var(--foreground-soft)]">
 
 
 
+
+
+
+
                     {featuredNews.summary}
+
+
+
+
 
 
 
@@ -1869,7 +3592,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                   <Link
+
+
+
+
 
 
 
@@ -1877,7 +3612,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     className="mt-8 text-sm font-semibold text-[var(--um-blue)]"
+
+
+
+
 
 
 
@@ -1885,7 +3628,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     All News & Impact →
+
+
+
+
 
 
 
@@ -1893,7 +3644,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 </div>
+
+
+
+
 
 
 
@@ -1901,7 +3660,15 @@ export default function Home() {
 
 
 
+
+
+
+
             </Reveal>
+
+
+
+
 
 
 
@@ -1909,7 +3676,15 @@ export default function Home() {
 
 
 
+
+
+
+
         </section>
+
+
+
+
 
 
 
@@ -1921,7 +3696,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
 
 
 
@@ -1929,7 +3716,19 @@ export default function Home() {
 
 
 
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
+
+
+
+
 
 
 
@@ -1941,7 +3740,15 @@ export default function Home() {
 
 
 
+
+
+
+
         <div className="mx-auto max-w-7xl">
+
+
+
+
 
 
 
@@ -1949,11 +3756,23 @@ export default function Home() {
 
 
 
+
+
+
+
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
 
 
 
+
+
+
+
               Selected Publications
+
+
+
+
 
 
 
@@ -1965,7 +3784,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
             <h2 className="mt-5 max-w-4xl text-4xl font-semibold md:text-6xl">
+
+
+
+
 
 
 
@@ -1973,11 +3804,27 @@ export default function Home() {
 
 
 
+
+
+
+
             </h2>
 
 
 
+
+
+
+
           </Reveal>
+
+
+
+
+
+
+
+
 
 
 
@@ -1989,7 +3836,15 @@ export default function Home() {
 
 
 
+
+
+
+
             {selectedPublications.map((paper, index) => (
+
+
+
+
 
 
 
@@ -1997,7 +3852,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 key={paper.title}
+
+
+
+
 
 
 
@@ -2005,7 +3868,15 @@ export default function Home() {
 
 
 
+
+
+
+
               >
+
+
+
+
 
 
 
@@ -2013,7 +3884,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   <div className="relative aspect-[4/3] bg-[var(--surface-soft)]">
+
+
+
+
 
 
 
@@ -2021,7 +3900,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       src={paper.image}
+
+
+
+
 
 
 
@@ -2029,7 +3916,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       fill
+
+
+
+
 
 
 
@@ -2037,7 +3932,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     />
+
+
+
+
 
 
 
@@ -2049,7 +3952,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                   <div className="p-6">
+
+
+
+
 
 
 
@@ -2057,11 +3972,27 @@ export default function Home() {
 
 
 
+
+
+
+
                       {paper.journal}
 
 
 
+
+
+
+
                     </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2073,11 +4004,27 @@ export default function Home() {
 
 
 
+
+
+
+
                       {paper.title}
 
 
 
+
+
+
+
                     </h3>
+
+
+
+
+
+
+
+
 
 
 
@@ -2089,7 +4036,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       href={paper.href}
+
+
+
+
 
 
 
@@ -2097,7 +4052,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       rel="noopener noreferrer"
+
+
+
+
 
 
 
@@ -2105,7 +4068,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     >
+
+
+
+
 
 
 
@@ -2113,7 +4084,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     </a>
+
+
+
+
 
 
 
@@ -2121,7 +4100,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 </article>
+
+
+
+
 
 
 
@@ -2129,7 +4116,15 @@ export default function Home() {
 
 
 
+
+
+
+
             ))}
+
+
+
+
 
 
 
@@ -2137,7 +4132,15 @@ export default function Home() {
 
 
 
+
+
+
+
         </div>
+
+
+
+
 
 
 
@@ -2149,7 +4152,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
 
 
 
@@ -2157,7 +4172,19 @@ export default function Home() {
 
 
 
+
+
+
+
       {/* ===================================================== */}
+
+
+
+
+
+
+
+
 
 
 
@@ -2169,7 +4196,15 @@ export default function Home() {
 
 
 
+
+
+
+
         <div className="mx-auto max-w-7xl">
+
+
+
+
 
 
 
@@ -2177,7 +4212,15 @@ export default function Home() {
 
 
 
+
+
+
+
             <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+
+
+
+
 
 
 
@@ -2185,11 +4228,23 @@ export default function Home() {
 
 
 
+
+
+
+
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--um-blue)]">
 
 
 
+
+
+
+
                   People
+
+
+
+
 
 
 
@@ -2201,7 +4256,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                 <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-6xl">
+
+
+
+
 
 
 
@@ -2209,7 +4276,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   <br />
+
+
+
+
 
 
 
@@ -2217,7 +4292,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 </h2>
+
+
+
+
 
 
 
@@ -2229,7 +4312,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
               <Link
+
+
+
+
 
 
 
@@ -2237,7 +4332,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 className="text-sm font-semibold text-[var(--um-blue)]"
+
+
+
+
 
 
 
@@ -2245,7 +4348,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 Meet Team SenSys →
+
+
+
+
 
 
 
@@ -2253,7 +4364,15 @@ export default function Home() {
 
 
 
+
+
+
+
             </div>
+
+
+
+
 
 
 
@@ -2265,7 +4384,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
           <div className="mt-14 grid gap-5 md:grid-cols-3">
+
+
+
+
 
 
 
@@ -2273,7 +4404,15 @@ export default function Home() {
 
 
 
+
+
+
+
               <Reveal
+
+
+
+
 
 
 
@@ -2281,7 +4420,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 delay={index * 100}
+
+
+
+
 
 
 
@@ -2289,7 +4436,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <Link
+
+
+
+
 
 
 
@@ -2297,7 +4452,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   className="group block h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-1 hover:border-[var(--um-blue)] hover:shadow-[var(--shadow-soft)]"
+
+
+
+
 
 
 
@@ -2305,7 +4468,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   <div className="relative aspect-[4/3] bg-[var(--surface-muted)]">
+
+
+
+
 
 
 
@@ -2313,7 +4484,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       src={person.image}
+
+
+
+
 
 
 
@@ -2321,7 +4500,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       fill
+
+
+
+
 
 
 
@@ -2329,11 +4516,27 @@ export default function Home() {
 
 
 
+
+
+
+
                     />
 
 
 
+
+
+
+
                   </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -2345,7 +4548,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--um-blue)]">
+
+
+
+
 
 
 
@@ -2353,7 +4564,19 @@ export default function Home() {
 
 
 
+
+
+
+
                     </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2365,7 +4588,15 @@ export default function Home() {
 
 
 
+
+
+
+
                       {person.name}
+
+
+
+
 
 
 
@@ -2377,7 +4608,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                     <p className="mt-2 text-sm text-[var(--foreground-soft)]">
+
+
+
+
 
 
 
@@ -2385,7 +4628,15 @@ export default function Home() {
 
 
 
+
+
+
+
                     </p>
+
+
+
+
 
 
 
@@ -2393,7 +4644,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 </Link>
+
+
+
+
 
 
 
@@ -2401,11 +4660,27 @@ export default function Home() {
 
 
 
+
+
+
+
             ))}
 
 
 
+
+
+
+
           </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -2421,7 +4696,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
           <Reveal delay={160}>
+
+
+
+
 
 
 
@@ -2429,7 +4716,15 @@ export default function Home() {
 
 
 
+
+
+
+
               href="/people#incoming"
+
+
+
+
 
 
 
@@ -2437,7 +4732,15 @@ export default function Home() {
 
 
 
+
+
+
+
             >
+
+
+
+
 
 
 
@@ -2445,7 +4748,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <p className="text-[10px] font-semibold uppercase tracking-[0.24em]">
+
+
+
+
 
 
 
@@ -2453,7 +4764,19 @@ export default function Home() {
 
 
 
+
+
+
+
                 </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2465,11 +4788,27 @@ export default function Home() {
 
 
 
+
+
+
+
                   12
 
 
 
+
+
+
+
                 </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2481,11 +4820,27 @@ export default function Home() {
 
 
 
+
+
+
+
                   Incoming Graduate Researchers
 
 
 
+
+
+
+
                 </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2497,7 +4852,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   5 PhD · 7 MSc
+
+
+
+
 
 
 
@@ -2505,7 +4868,19 @@ export default function Home() {
 
 
 
+
+
+
+
               </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -2517,7 +4892,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--um-blue)]">
+
+
+
+
 
 
 
@@ -2525,7 +4908,19 @@ export default function Home() {
 
 
 
+
+
+
+
                 </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2537,7 +4932,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   A new graduate cohort joins in January 2027.
+
+
+
+
 
 
 
@@ -2549,7 +4952,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                 <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--foreground-soft)]">
+
+
+
+
 
 
 
@@ -2557,7 +4972,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   microsystems, diagnostics, biointegrated technologies,
+
+
+
+
 
 
 
@@ -2565,7 +4988,19 @@ export default function Home() {
 
 
 
+
+
+
+
                 </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2577,7 +5012,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   Meet the incoming cohort →
+
+
+
+
 
 
 
@@ -2585,7 +5028,15 @@ export default function Home() {
 
 
 
+
+
+
+
               </div>
+
+
+
+
 
 
 
@@ -2593,7 +5044,15 @@ export default function Home() {
 
 
 
+
+
+
+
           </Reveal>
+
+
+
+
 
 
 
@@ -2601,7 +5060,19 @@ export default function Home() {
 
 
 
+
+
+
+
       </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -2617,7 +5088,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       <section className="bg-[var(--section-blue)] px-8 py-24 text-white md:px-16 md:py-28">
+
+
+
+
 
 
 
@@ -2625,7 +5108,15 @@ export default function Home() {
 
 
 
+
+
+
+
           <Reveal>
+
+
+
+
 
 
 
@@ -2633,7 +5124,15 @@ export default function Home() {
 
 
 
+
+
+
+
               <div>
+
+
+
+
 
 
 
@@ -2641,11 +5140,27 @@ export default function Home() {
 
 
 
+
+
+
+
                   Join SenSys Lab
 
 
 
+
+
+
+
                 </p>
+
+
+
+
+
+
+
+
 
 
 
@@ -2657,7 +5172,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   Build what comes next.
+
+
+
+
 
 
 
@@ -2665,7 +5188,19 @@ export default function Home() {
 
 
 
+
+
+
+
               </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -2677,7 +5212,15 @@ export default function Home() {
 
 
 
+
+
+
+
                 <p className="text-lg leading-8 text-white/80">
+
+
+
+
 
 
 
@@ -2685,7 +5228,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   graduate, postdoctoral, and technical researchers interested
+
+
+
+
 
 
 
@@ -2693,7 +5244,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   impact.
+
+
+
+
 
 
 
@@ -2705,7 +5264,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
                 <Link
+
+
+
+
 
 
 
@@ -2713,7 +5284,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   className="mt-8 inline-flex rounded-full bg-[var(--um-gold)] px-7 py-3.5 text-sm font-semibold text-[#2A1710]"
+
+
+
+
 
 
 
@@ -2721,7 +5300,15 @@ export default function Home() {
 
 
 
+
+
+
+
                   View opportunities →
+
+
+
+
 
 
 
@@ -2729,7 +5316,15 @@ export default function Home() {
 
 
 
+
+
+
+
               </div>
+
+
+
+
 
 
 
@@ -2737,11 +5332,23 @@ export default function Home() {
 
 
 
+
+
+
+
           </Reveal>
 
 
 
+
+
+
+
         </div>
+
+
+
+
 
 
 
@@ -2753,7 +5360,19 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
       <Footer />
+
+
+
+
 
 
 
@@ -2761,7 +5380,15 @@ export default function Home() {
 
 
 
+
+
+
+
   );
+
+
+
+
 
 
 
