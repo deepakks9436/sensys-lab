@@ -12,6 +12,19 @@ import {
   createClient,
 } from "../../../lib/supabase/server";
 
+function optionalText(
+  value:
+    | FormDataEntryValue
+    | null
+) {
+  const text =
+    String(
+      value ?? ""
+    ).trim();
+
+  return text || null;
+}
+
 export async function updateProfile(
   formData: FormData
 ) {
@@ -42,17 +55,51 @@ export async function updateProfile(
 
   const {
     error,
-  } =
-    await supabase
-      .from("profiles")
-      .update({
-        full_name:
-          fullName,
-      })
-      .eq(
-        "id",
-        user.id
-      );
+  } = await supabase
+    .from("profiles")
+    .update({
+      full_name:
+        fullName,
+
+      phone:
+        optionalText(
+          formData.get(
+            "phone"
+          )
+        ),
+
+      short_bio:
+        optionalText(
+          formData.get(
+            "short_bio"
+          )
+        ),
+
+      orcid:
+        optionalText(
+          formData.get(
+            "orcid"
+          )
+        ),
+
+      google_scholar_url:
+        optionalText(
+          formData.get(
+            "google_scholar_url"
+          )
+        ),
+
+      linkedin_url:
+        optionalText(
+          formData.get(
+            "linkedin_url"
+          )
+        ),
+    })
+    .eq(
+      "id",
+      user.id
+    );
 
   if (error) {
     redirect(

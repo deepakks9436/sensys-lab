@@ -20,7 +20,11 @@ export default function AnimatedCounter({
   className = "",
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const [displayValue, setDisplayValue] = useState(0);
+
+  // Important: render the real value first.
+  // This keeps the server-rendered HTML meaningful for crawlers,
+  // screenshots, no-JS users, and accessibility.
+  const [displayValue, setDisplayValue] = useState(value);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
@@ -34,18 +38,20 @@ export default function AnimatedCounter({
 
     if (prefersReducedMotion) {
       setDisplayValue(value);
+      setStarted(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started) {
+          setDisplayValue(0);
           setStarted(true);
           observer.unobserve(entry.target);
         }
       },
       {
-        threshold: 0.4,
+        threshold: 0.35,
       }
     );
 
@@ -57,13 +63,21 @@ export default function AnimatedCounter({
   useEffect(() => {
     if (!started) return;
 
-    let animationFrame: number;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setDisplayValue(value);
+      return;
+    }
+
+    let animationFrame = 0;
     const startTime = performance.now();
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-
       const easedProgress = 1 - Math.pow(1 - progress, 3);
 
       setDisplayValue(Math.round(value * easedProgress));

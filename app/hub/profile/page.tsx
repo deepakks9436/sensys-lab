@@ -23,9 +23,15 @@ export default async function ProfilePage({
   const query =
     await searchParams;
 
+  const inputClass =
+    "mt-2 w-full border border-[#D8D0C7] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#385E9D]";
+
+  const labelClass =
+    "text-[9px] font-bold uppercase tracking-[0.16em] text-[#706963]";
+
   return (
     <main className="px-5 py-8 md:px-8 md:py-10 xl:px-10">
-      <div className="mx-auto max-w-[760px]">
+      <div className="mx-auto max-w-[820px]">
         <Link
           href="/hub"
           className="text-xs font-semibold text-[#385E9D]"
@@ -43,28 +49,21 @@ export default async function ProfilePage({
           </h1>
 
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[#706963]">
-            Manage how your name appears
-            across SenSys Hub. Your name is
-            used in greetings, account
-            details, research activity and
-            laboratory updates.
+            Manage your personal profile information. Hub role and account
+            access remain controlled by SenSys administrators.
           </p>
         </div>
 
         <section className="mt-8 overflow-hidden border border-[#DDD6CF] bg-white">
           {query.error && (
             <div className="border-b border-[#E7E1DB] bg-[#FBE7E5] px-6 py-4 text-xs text-[#A23B35]">
-              {
-                query.error
-              }
+              {query.error}
             </div>
           )}
 
           {query.message && (
             <div className="border-b border-[#E7E1DB] bg-[#E8F4EC] px-6 py-4 text-xs text-[#2D6A45]">
-              {
-                query.message
-              }
+              {query.message}
             </div>
           )}
 
@@ -83,11 +82,13 @@ export default async function ProfilePage({
               updateProfile
             }
           >
-            <div className="p-6">
-              <div>
+            <div className="grid gap-6 p-6 sm:grid-cols-2">
+              <div className="sm:col-span-2">
                 <label
                   htmlFor="full_name"
-                  className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#706963]"
+                  className={
+                    labelClass
+                  }
                 >
                   Full Name
                 </label>
@@ -100,62 +101,130 @@ export default async function ProfilePage({
                     context.profile
                       .fullName
                   }
-                  placeholder="Enter your full name"
-                  className="mt-2 w-full border border-[#D8D0C7] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#385E9D]"
+                  className={
+                    inputClass
+                  }
                 />
-
-                <p className="mt-2 text-[10px] leading-5 text-[#928980]">
-                  Example: Swarna Deb.
-                  The first name will be used
-                  for dashboard greetings.
-                </p>
               </div>
 
-              <div className="mt-7 grid gap-5 sm:grid-cols-2">
-                <div className="border border-[#E7E1DB] bg-[#FAF9F7] p-4">
-                  <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#928980]">
-                    Email
-                  </p>
+              <div>
+                <p className={labelClass}>
+                  Email
+                </p>
 
-                  <p className="mt-2 break-all text-sm font-semibold">
-                    {
-                      context.profile
-                        .email
-                    }
-                  </p>
-
-                  <p className="mt-2 text-[9px] leading-4 text-[#928980]">
-                    Login email is managed
-                    through your SenSys Hub
-                    account.
-                  </p>
+                <div className="mt-2 border border-[#E7E1DB] bg-[#FAF9F7] p-4 text-sm font-semibold">
+                  {
+                    context.profile
+                      .email
+                  }
                 </div>
+              </div>
 
-                <div className="border border-[#E7E1DB] bg-[#FAF9F7] p-4">
-                  <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#928980]">
-                    Role
-                  </p>
+              <div>
+                <p className={labelClass}>
+                  Role
+                </p>
 
-                  <p className="mt-2 text-sm font-semibold">
-                    {roleLabel(
-                      context.profile
-                        .role
-                    )}
-                  </p>
-
-                  <p className="mt-2 text-[9px] leading-4 text-[#928980]">
-                    Role permissions are
-                    managed by SenSys Hub
-                    administrators.
-                  </p>
+                <div className="mt-2 border border-[#E7E1DB] bg-[#FAF9F7] p-4 text-sm font-semibold">
+                  {roleLabel(
+                    context.profile
+                      .role
+                  )}
                 </div>
+              </div>
+
+              <div>
+                <label className={labelClass}>
+                  Phone
+                </label>
+
+                <input
+                  name="phone"
+                  defaultValue={
+                    context.profile
+                      .phone
+                  }
+                  className={
+                    inputClass
+                  }
+                />
+              </div>
+
+              <div>
+                <label className={labelClass}>
+                  ORCID
+                </label>
+
+                <input
+                  name="orcid"
+                  defaultValue={
+                    context.profile
+                      .orcid
+                  }
+                  className={
+                    inputClass
+                  }
+                />
+              </div>
+
+              <div className="sm:col-span-2">
+                <label className={labelClass}>
+                  Short Bio
+                </label>
+
+                <textarea
+                  name="short_bio"
+                  rows={4}
+                  defaultValue={
+                    context.profile
+                      .shortBio
+                  }
+                  className={
+                    inputClass
+                  }
+                />
+              </div>
+
+              <div>
+                <label className={labelClass}>
+                  Google Scholar
+                </label>
+
+                <input
+                  name="google_scholar_url"
+                  type="url"
+                  defaultValue={
+                    context.profile
+                      .googleScholarUrl
+                  }
+                  className={
+                    inputClass
+                  }
+                />
+              </div>
+
+              <div>
+                <label className={labelClass}>
+                  LinkedIn
+                </label>
+
+                <input
+                  name="linkedin_url"
+                  type="url"
+                  defaultValue={
+                    context.profile
+                      .linkedinUrl
+                  }
+                  className={
+                    inputClass
+                  }
+                />
               </div>
             </div>
 
             <div className="flex flex-col gap-3 border-t border-[#E7E1DB] bg-[#FAF9F7] px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-[10px] leading-5 text-[#928980]">
-                Changes will appear across
-                SenSys Hub after saving.
+                Email and role are managed through Team Access.
               </p>
 
               <button

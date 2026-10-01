@@ -15,6 +15,12 @@ export type HubProfile = {
   email: string;
   role: HubRole;
   isActive: boolean;
+  onboardingComplete: boolean;
+  phone: string;
+  shortBio: string;
+  orcid: string;
+  googleScholarUrl: string;
+  linkedinUrl: string;
 };
 
 export type HubUserContext = {
@@ -109,14 +115,28 @@ export async function getHubUser(): Promise<HubUserContext> {
     redirect("/login");
   }
 
-  const { data: profile, error } =
-    await supabase
-      .from("profiles")
-      .select(
-        "id, full_name, email, role, is_active"
-      )
-      .eq("id", user.id)
-      .single();
+  const {
+    data: profile,
+    error,
+  } = await supabase
+    .from("profiles")
+    .select(
+      `
+      id,
+      full_name,
+      email,
+      role,
+      is_active,
+      onboarding_complete,
+      phone,
+      short_bio,
+      orcid,
+      google_scholar_url,
+      linkedin_url
+      `
+    )
+    .eq("id", user.id)
+    .single();
 
   if (
     error ||
@@ -128,7 +148,13 @@ export async function getHubUser(): Promise<HubUserContext> {
 
   if (!profile.is_active) {
     await supabase.auth.signOut();
-    redirect("/login");
+    redirect(
+      "/login?error=Your%20SenSys%20Hub%20account%20is%20not%20active."
+    );
+  }
+
+  if (!profile.onboarding_complete) {
+    redirect("/onboarding");
   }
 
   const role =
@@ -137,10 +163,6 @@ export async function getHubUser(): Promise<HubUserContext> {
   let studentId: string | null =
     null;
 
-  /*
-   * A student account is linked to exactly
-   * one row in public.students through user_id.
-   */
   if (role === "student") {
     const { data: student } =
       await supabase
@@ -176,10 +198,48 @@ export async function getHubUser(): Promise<HubUserContext> {
         Boolean(
           profile.is_active
         ),
+
+      onboardingComplete:
+        Boolean(
+          profile.onboarding_complete
+        ),
+
+      phone:
+        profile.phone ?? "",
+
+      shortBio:
+        profile.short_bio ?? "",
+
+      orcid:
+        profile.orcid ?? "",
+
+      googleScholarUrl:
+        profile.google_scholar_url ?? "",
+
+      linkedinUrl:
+        profile.linkedin_url ?? "",
     },
 
     studentId,
   };
+}
+
+/* ============================================================
+   REQUIRE ADMIN
+============================================================ */
+
+export async function requireAdmin() {
+  const context =
+    await getHubUser();
+
+  if (
+    context.profile.role !==
+    "admin"
+  ) {
+    redirect("/hub");
+  }
+
+  return context;
 }
 
 /* ============================================================

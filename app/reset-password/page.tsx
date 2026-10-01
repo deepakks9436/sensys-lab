@@ -1,8 +1,15 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import {
+  redirect,
+} from "next/navigation";
 
-import { createClient } from "../../lib/supabase/server";
-import { updatePassword } from "./actions";
+import {
+  createClient,
+} from "../../lib/supabase/server";
+
+import {
+  updatePassword,
+} from "./actions";
 
 export default async function ResetPasswordPage({
   searchParams,
@@ -20,22 +27,22 @@ export default async function ResetPasswordPage({
 
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } =
+    await supabase.auth.getUser();
 
-  /*
-   * A successful recovery callback creates
-   * an authenticated recovery session.
-   * A normal logged-in user is also allowed
-   * to use this page to change the password.
-   */
   if (!user) {
     redirect(
-      "/login?error=Your%20password-reset%20session%20is%20not%20active.%20Please%20request%20a%20new%20reset%20link."
+      "/login?error=Your%20password%20setup%20session%20is%20not%20active.%20Please%20request%20a%20new%20link."
     );
   }
 
   const isChangeMode =
-    query.mode === "change";
+    query.mode ===
+    "change";
+
+  const isInviteMode =
+    query.mode ===
+    "invite";
 
   return (
     <main className="min-h-screen bg-[#F6F4F1] px-5 py-12 text-[#201B17]">
@@ -52,7 +59,9 @@ export default async function ResetPasswordPage({
               </p>
 
               <p className="mt-0.5 text-[8px] font-bold uppercase tracking-[0.24em] text-[#928980]">
-                Account Security
+                {isInviteMode
+                  ? "Account Activation"
+                  : "Account Security"}
               </p>
             </div>
           </div>
@@ -64,9 +73,11 @@ export default async function ResetPasswordPage({
               </p>
 
               <h1 className="mt-3 text-3xl font-bold tracking-[-0.035em]">
-                {isChangeMode
-                  ? "Change password."
-                  : "Set a new password."}
+                {isInviteMode
+                  ? "Create your password."
+                  : isChangeMode
+                    ? "Change password."
+                    : "Set a new password."}
               </h1>
 
               <p className="mt-3 text-sm leading-6 text-[#706963]">
@@ -76,6 +87,13 @@ export default async function ResetPasswordPage({
                 </span>
                 .
               </p>
+
+              {isInviteMode && (
+                <p className="mt-3 text-xs leading-6 text-[#706963]">
+                  Welcome to SenSys Hub. Create a password, then complete your
+                  profile before entering the workspace.
+                </p>
+              )}
             </div>
 
             <form
@@ -84,6 +102,15 @@ export default async function ResetPasswordPage({
               }
               className="p-7"
             >
+              <input
+                type="hidden"
+                name="mode"
+                value={
+                  query.mode ??
+                  ""
+                }
+              />
+
               {query.error && (
                 <div className="mb-5 border-l-[3px] border-[#A23B35] bg-[#FBE7E5] px-4 py-3 text-xs leading-5 text-[#A23B35]">
                   {query.error}
@@ -103,13 +130,6 @@ export default async function ResetPasswordPage({
                   autoComplete="new-password"
                   className="mt-2 w-full border border-[#D8D0C7] bg-white px-4 py-3 text-sm outline-none focus:border-[#385E9D]"
                 />
-
-                <p className="mt-2 text-[10px] leading-5 text-[#928980]">
-                  Use at least 8
-                  characters. A longer,
-                  unique password is
-                  recommended.
-                </p>
               </div>
 
               <div className="mt-5">
@@ -131,15 +151,19 @@ export default async function ResetPasswordPage({
                 type="submit"
                 className="mt-7 w-full rounded-full bg-[#385E9D] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#27456F]"
               >
-                Update password →
+                {isInviteMode
+                  ? "Create password →"
+                  : "Update password →"}
               </button>
 
-              <Link
-                href="/hub"
-                className="mt-5 block text-center text-xs font-semibold text-[#385E9D]"
-              >
-                Cancel
-              </Link>
+              {!isInviteMode && (
+                <Link
+                  href="/hub"
+                  className="mt-5 block text-center text-xs font-semibold text-[#385E9D]"
+                >
+                  Cancel
+                </Link>
+              )}
             </form>
           </section>
         </div>

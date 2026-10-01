@@ -1,10 +1,13 @@
 import Link from "next/link";
 
-import { createClient } from "../../../lib/supabase/server";
+import {
+  createClient,
+} from "../../../lib/supabase/server";
 
 import {
   markAllNotificationsRead,
   markNotificationRead,
+  updateEmailPreferences,
 } from "./actions";
 
 function typeLabel(
@@ -61,15 +64,44 @@ function displayTime(
   return new Intl.DateTimeFormat(
     "en-CA",
     {
-      dateStyle: "medium",
-      timeStyle: "short",
+      dateStyle:
+        "medium",
+      timeStyle:
+        "short",
     }
   ).format(
     new Date(value)
   );
 }
 
-export default async function NotificationsPage() {
+const defaultPreferences = {
+  email_research_reviews:
+    true,
+  email_actions:
+    true,
+  email_research_updates:
+    true,
+  email_instruments:
+    true,
+  email_inventory:
+    true,
+  email_chemical_expiry:
+    true,
+  email_purchases:
+    true,
+};
+
+export default async function NotificationsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    error?: string;
+    message?: string;
+  }>;
+}) {
+  const query =
+    await searchParams;
+
   const supabase =
     await createClient();
 
@@ -82,10 +114,11 @@ export default async function NotificationsPage() {
     return null;
   }
 
-  const {
-    data: notifications,
-  } =
-    await supabase
+  const [
+    notificationsResult,
+    preferencesResult,
+  ] = await Promise.all([
+    supabase
       .from("notifications")
       .select(
         `
@@ -106,13 +139,45 @@ export default async function NotificationsPage() {
       .order(
         "created_at",
         {
-          ascending: false,
+          ascending:
+            false,
         }
       )
-      .limit(100);
+      .limit(100),
+
+    supabase
+      .from(
+        "notification_preferences"
+      )
+      .select(
+        `
+        email_research_reviews,
+        email_actions,
+        email_research_updates,
+        email_instruments,
+        email_inventory,
+        email_chemical_expiry,
+        email_purchases
+        `
+      )
+      .eq(
+        "user_id",
+        user.id
+      )
+      .maybeSingle(),
+  ]);
 
   const items =
-    notifications ?? [];
+    notificationsResult.data ??
+    [];
+
+  const preferences = {
+    ...defaultPreferences,
+    ...(
+      preferencesResult.data ??
+      {}
+    ),
+  };
 
   const unreadCount =
     items.filter(
@@ -134,8 +199,7 @@ export default async function NotificationsPage() {
             </h1>
 
             <p className="mt-3 text-sm text-[#706963]">
-              {unreadCount} unread
-              notification
+              {unreadCount} unread notification
               {unreadCount === 1
                 ? ""
                 : "s"}
@@ -157,6 +221,160 @@ export default async function NotificationsPage() {
             </form>
           )}
         </div>
+
+        {query.error && (
+          <div className="mt-7 border-l-[3px] border-[#A23B35] bg-[#FBE7E5] px-5 py-4 text-xs text-[#A23B35]">
+            {query.error}
+          </div>
+        )}
+
+        {query.message && (
+          <div className="mt-7 border-l-[3px] border-[#2D6A45] bg-[#E8F4EC] px-5 py-4 text-xs text-[#2D6A45]">
+            {query.message}
+          </div>
+        )}
+
+        <section className="mt-8 overflow-hidden border border-[#DDD6CF] bg-white">
+          <div className="border-b border-[#E7E1DB] bg-[#FAF9F7] px-6 py-5">
+            <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#385E9D]">
+              Email Preferences
+            </p>
+
+            <h2 className="mt-1 text-xl font-bold">
+              Choose which Hub updates reach your inbox.
+            </h2>
+
+            <p className="mt-2 max-w-3xl text-xs leading-6 text-[#706963]">
+              These settings control operational email only. In-Hub
+              notifications remain available. Account invitations, password
+              recovery, and security messages are not disabled here.
+            </p>
+          </div>
+
+          <form
+            action={
+              updateEmailPreferences
+            }
+          >
+            <div className="grid gap-px bg-[#EEE9E4] md:grid-cols-2">
+              {[
+                {
+                  name:
+                    "email_research_reviews",
+                  title:
+                    "Research reviews",
+                  text:
+                    "Published or changed research reviews and meeting-related updates.",
+                  checked:
+                    preferences.email_research_reviews,
+                },
+                {
+                  name:
+                    "email_actions",
+                  title:
+                    "Actions",
+                  text:
+                    "Assigned research actions and related follow-up.",
+                  checked:
+                    preferences.email_actions,
+                },
+                {
+                  name:
+                    "email_research_updates",
+                  title:
+                    "Research updates",
+                  text:
+                    "Research plans, milestones, check-ins, and pathway changes.",
+                  checked:
+                    preferences.email_research_updates,
+                },
+                {
+                  name:
+                    "email_instruments",
+                  title:
+                    "Lab & instruments",
+                  text:
+                    "Bookings, access, training, maintenance, and calibration-related updates.",
+                  checked:
+                    preferences.email_instruments,
+                },
+                {
+                  name:
+                    "email_inventory",
+                  title:
+                    "Inventory",
+                  text:
+                    "Low-stock, reorder, consumable, and general inventory updates.",
+                  checked:
+                    preferences.email_inventory,
+                },
+                {
+                  name:
+                    "email_chemical_expiry",
+                  title:
+                    "Chemical expiry",
+                  text:
+                    "Email warnings for chemicals approaching or reaching expiry.",
+                  checked:
+                    preferences.email_chemical_expiry,
+                },
+                {
+                  name:
+                    "email_purchases",
+                  title:
+                    "Purchases",
+                  text:
+                    "Purchase-request and purchasing workflow updates.",
+                  checked:
+                    preferences.email_purchases,
+                },
+              ].map(
+                (item) => (
+                  <label
+                    key={
+                      item.name
+                    }
+                    className="flex cursor-pointer gap-4 bg-white p-5"
+                  >
+                    <input
+                      type="checkbox"
+                      name={
+                        item.name
+                      }
+                      defaultChecked={
+                        item.checked
+                      }
+                      className="mt-1 h-4 w-4 shrink-0 accent-[#385E9D]"
+                    />
+
+                    <span>
+                      <span className="block text-sm font-semibold">
+                        {
+                          item.title
+                        }
+                      </span>
+
+                      <span className="mt-1 block text-xs leading-5 text-[#706963]">
+                        {
+                          item.text
+                        }
+                      </span>
+                    </span>
+                  </label>
+                )
+              )}
+            </div>
+
+            <div className="flex justify-end border-t border-[#E7E1DB] bg-[#FAF9F7] px-6 py-5">
+              <button
+                type="submit"
+                className="rounded-full bg-[#385E9D] px-6 py-3 text-xs font-semibold text-white"
+              >
+                Save Email Preferences
+              </button>
+            </div>
+          </form>
+        </section>
 
         <section className="mt-8 border border-[#DDD6CF] bg-white">
           {items.length ===

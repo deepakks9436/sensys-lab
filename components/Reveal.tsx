@@ -16,7 +16,11 @@ export default function Reveal({
   direction = "up",
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
+
+  // Visible by default so content never disappears from SSR,
+  // no-JS browsing, screenshots, or an observer failure.
+  const [visible, setVisible] = useState(true);
+  const [enhanced, setEnhanced] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -32,6 +36,20 @@ export default function Reveal({
       return;
     }
 
+    const rect = element.getBoundingClientRect();
+    const alreadyVisible =
+      rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+    // Keep above-the-fold content visible immediately.
+    if (alreadyVisible) {
+      setVisible(true);
+      return;
+    }
+
+    // Only below-the-fold content gets progressive reveal animation.
+    setEnhanced(true);
+    setVisible(false);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -40,8 +58,8 @@ export default function Reveal({
         }
       },
       {
-        threshold: 0.12,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.08,
+        rootMargin: "0px 0px -35px 0px",
       }
     );
 
@@ -52,23 +70,27 @@ export default function Reveal({
 
   const hiddenTransform =
     direction === "up"
-      ? "translate-y-8"
+      ? "translate-y-6"
       : direction === "left"
-      ? "-translate-x-8"
-      : direction === "right"
-      ? "translate-x-8"
-      : "";
+        ? "-translate-x-6"
+        : direction === "right"
+          ? "translate-x-6"
+          : "";
+
+  const motionClass = enhanced
+    ? `transition-all duration-700 ease-out ${
+        visible
+          ? "translate-x-0 translate-y-0 opacity-100"
+          : `${hiddenTransform} opacity-0`
+      }`
+    : "opacity-100";
 
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ease-out ${
-        visible
-          ? "translate-x-0 translate-y-0 opacity-100"
-          : `${hiddenTransform} opacity-0`
-      }`}
+      className={`${className} ${motionClass}`}
       style={{
-        transitionDelay: `${delay}ms`,
+        transitionDelay: enhanced ? `${delay}ms` : "0ms",
       }}
     >
       {children}

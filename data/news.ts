@@ -26,7 +26,6 @@ export const newsItems: NewsItem[] = [
     source: "UM Today",
     featured: true,
   },
-
   {
     id: "ai-assisted-lab-on-chip-2026",
     date: "May 20, 2026",
@@ -40,7 +39,6 @@ export const newsItems: NewsItem[] = [
       "https://www.deccanchronicle.com/southern-states/telangana/bits-uses-ai-to-improve-medical-testing-chip-production-1957882",
     source: "Deccan Chronicle",
   },
-
   {
     id: "ieee-technologist-year-2025",
     date: "2025",
@@ -53,7 +51,6 @@ export const newsItems: NewsItem[] = [
       "https://ieeeindiacouncil.org/wp-content/uploads/sites/149/2025/12/IC_Awardees_2025.pdf",
     source: "IEEE India Council",
   },
-
   {
     id: "national-award-teachers-2025",
     date: "September 2025",
@@ -65,7 +62,6 @@ export const newsItems: NewsItem[] = [
     href: "https://www.education.gov.in/",
     source: "Ministry of Education, Government of India",
   },
-
   {
     id: "portable-multiplexed-platform-2025",
     date: "2025",
@@ -79,7 +75,6 @@ export const newsItems: NewsItem[] = [
       "https://www.deccanchronicle.com/southern-states/telangana/bits-team-builds-affordable-testing-device-1910420",
     source: "Deccan Chronicle",
   },
-
   {
     id: "wearable-diabetes-monitoring-2025",
     date: "2025",
@@ -93,7 +88,6 @@ export const newsItems: NewsItem[] = [
       "https://www.deccanchronicle.com/southern-states/telangana/bits-smartwatch-based-wearable-offers-painless-diabetes-complication-tracking-1894088",
     source: "Deccan Chronicle",
   },
-
   {
     id: "smartphone-diabetes-platform-2025",
     date: "January 12, 2025",
@@ -109,22 +103,12 @@ export const newsItems: NewsItem[] = [
   },
 ];
 
-/*
-  Automatically sort stories from newest to oldest.
-*/
 export const sortedNewsItems = [...newsItems].sort(
   (a, b) =>
     new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime()
 );
 
-/*
-  Featured homepage / News page story.
-  If no item has featured: true, the newest story is used.
-*/
 export const featuredNews =
   sortedNewsItems.find((item) => item.featured) ?? sortedNewsItems[0];
 
-/*
-  Useful anywhere we want only the latest three stories.
-*/
 export const latestNews = sortedNewsItems.slice(0, 3);

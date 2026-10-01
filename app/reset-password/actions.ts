@@ -1,16 +1,21 @@
 "use server";
 
-import { redirect } from "next/navigation";
+import {
+  redirect,
+} from "next/navigation";
 
-import { createClient } from "../../lib/supabase/server";
+import {
+  createClient,
+} from "../../lib/supabase/server";
 
 export async function updatePassword(
   formData: FormData
 ) {
   const password =
     String(
-      formData.get("password") ??
-        ""
+      formData.get(
+        "password"
+      ) ?? ""
     );
 
   const confirmPassword =
@@ -20,11 +25,27 @@ export async function updatePassword(
       ) ?? ""
     );
 
+  const mode =
+    String(
+      formData.get(
+        "mode"
+      ) ?? ""
+    );
+
+  const errorBase =
+    mode === "invite"
+      ? "/reset-password?mode=invite"
+      : mode === "change"
+        ? "/reset-password?mode=change"
+        : "/reset-password";
+
   if (
     password.length < 8
   ) {
     redirect(
-      "/reset-password?error=Password%20must%20contain%20at%20least%208%20characters."
+      `${errorBase}&error=${encodeURIComponent(
+        "Password must contain at least 8 characters."
+      )}`
     );
   }
 
@@ -33,7 +54,9 @@ export async function updatePassword(
     confirmPassword
   ) {
     redirect(
-      "/reset-password?error=The%20passwords%20do%20not%20match."
+      `${errorBase}&error=${encodeURIComponent(
+        "The passwords do not match."
+      )}`
     );
   }
 
@@ -42,11 +65,12 @@ export async function updatePassword(
 
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } =
+    await supabase.auth.getUser();
 
   if (!user) {
     redirect(
-      "/login?error=Your%20password-reset%20session%20has%20expired.%20Please%20request%20another%20reset%20link."
+      "/login?error=Your%20password-reset%20session%20has%20expired.%20Please%20request%20another%20link."
     );
   }
 
@@ -57,9 +81,17 @@ export async function updatePassword(
 
   if (error) {
     redirect(
-      `/reset-password?error=${encodeURIComponent(
+      `${errorBase}&error=${encodeURIComponent(
         error.message
       )}`
+    );
+  }
+
+  if (
+    mode === "invite"
+  ) {
+    redirect(
+      "/onboarding"
     );
   }
 
