@@ -1,157 +1,48 @@
-import type {
-  MetadataRoute,
-} from "next";
+import type { MetadataRoute } from "next";
 
-const BASE_URL =
-  "https://sensys.ca";
+const siteUrl = "https://sensys.ca";
 
-export default function sitemap():
-  MetadataRoute.Sitemap {
-  const now =
-    new Date();
+type SitemapEntry = {
+  path: string;
+  lastModified: string;
+  changeFrequency:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never";
+  priority: number;
+};
 
-  return [
-    {
-      url: BASE_URL,
-      lastModified: now,
-      changeFrequency:
-        "weekly",
-      priority: 1,
-    },
+const pages: SitemapEntry[] = [
+  { path: "/", lastModified: "2026-10-02", changeFrequency: "weekly", priority: 1.0 },
 
-    {
-      url:
-        `${BASE_URL}/research`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.9,
-    },
+  { path: "/research", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/research/amr", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/research/graphene", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/research/pesticide-detection", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/research/water-quality", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.8 },
 
-    {
-      url:
-        `${BASE_URL}/people`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.9,
-    },
+  { path: "/people", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/people/sanket-goel", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/people/ks-deepak", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/people/parvathy-nair", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.7 },
 
-    {
-      url:
-        `${BASE_URL}/facilities`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.8,
-    },
+  { path: "/publications", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/patents", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/books", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/news", lastModified: "2026-10-01", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/facilities", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/join", lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.8 },
+];
 
-    {
-      url:
-        `${BASE_URL}/publications`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.9,
-    },
-
-    {
-      url:
-        `${BASE_URL}/patents`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.7,
-    },
-
-    {
-      url:
-        `${BASE_URL}/books`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.6,
-    },
-
-    {
-      url:
-        `${BASE_URL}/news`,
-      lastModified: now,
-      changeFrequency:
-        "weekly",
-      priority: 0.8,
-    },
-
-    {
-      url:
-        `${BASE_URL}/join`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.8,
-    },
-
-    {
-      url:
-        `${BASE_URL}/research/amr`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.8,
-    },
-
-    {
-      url:
-        `${BASE_URL}/research/graphene`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.7,
-    },
-
-    {
-      url:
-        `${BASE_URL}/research/pesticide-detection`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.8,
-    },
-
-    {
-      url:
-        `${BASE_URL}/research/water-quality`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.8,
-    },
-
-    {
-      url:
-        `${BASE_URL}/people/sanket-goel`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.8,
-    },
-
-    {
-      url:
-        `${BASE_URL}/people/ks-deepak`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.7,
-    },
-
-    {
-      url:
-        `${BASE_URL}/people/parvathy-nair`,
-      lastModified: now,
-      changeFrequency:
-        "monthly",
-      priority: 0.7,
-    },
-  ];
+export default function sitemap(): MetadataRoute.Sitemap {
+  return pages.map((page) => ({
+    url: `${siteUrl}${page.path}`,
+    lastModified: new Date(`${page.lastModified}T00:00:00.000Z`),
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }));
 }
