@@ -26,25 +26,55 @@ export default function Footer() {
 
             <div className="flex flex-wrap items-center gap-5">
 
-              <div>
+              <Link
 
-                <p className="text-2xl font-semibold tracking-tight">
+                href="/"
 
-                  SenSys Lab
+                className="group flex items-center gap-4"
 
-                </p>
+                aria-label="SenSys Lab home"
+
+              >
+
+                <div className="relative h-[72px] w-[72px] shrink-0 transition-transform duration-300 group-hover:scale-[1.03]">
+
+                  <Image
+
+                    src="/brand/sensys-mark.svg"
+
+                    alt=""
+
+                    fill
+
+                    className="object-contain"
+
+                    sizes="72px"
+
+                  />
+
+                </div>
 
 
 
-                <p className="mt-2 text-xs uppercase tracking-[0.24em] text-white/55">
+                <div>
 
-                  Intelligent Sensory
+                  <p className="text-2xl font-semibold tracking-tight">
 
-                  Systems
+                    SenSys Lab
 
-                </p>
+                  </p>
 
-              </div>
+
+
+                  <p className="mt-2 text-xs uppercase tracking-[0.24em] text-white/55">
+
+                    Intelligent Sensory Systems
+
+                  </p>
+
+                </div>
+
+              </Link>
 
 
 
@@ -464,13 +494,13 @@ export default function Footer() {
 
               <a
 
-                href="mailto:sensysinnovation@gmail.com"
+                href="mailto:sensysinnovation\@gmail.com"
 
                 className="block break-all transition hover:text-white"
 
               >
 
-                sensysinnovation@gmail.com
+                sensysinnovation\@gmail.com
 
               </a>
 

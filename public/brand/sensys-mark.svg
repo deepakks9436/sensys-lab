@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+<title id="title">SenSys Lab symbol</title>
+<desc id="desc">Three-part circular SenSys Lab symbol representing intelligent systems, electronics and One Health.</desc>
+
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- outer segmented ring -->
+  <path d="M500 145 A355 355 0 0 0 178 650" stroke="#5A210D" stroke-width="88"/>
+  <path d="M500 145 A355 355 0 0 1 822 650" stroke="#F2A900" stroke-width="88"/>
+  <path d="M220 715 A355 355 0 0 0 780 715" stroke="#1976D2" stroke-width="88"/>
+
+  <!-- central triad connectors with white keyline -->
+  <path d="M500 500 L500 285" stroke="#FFFFFF" stroke-width="76"/>
+  <path d="M500 500 L300 655" stroke="#FFFFFF" stroke-width="76"/>
+  <path d="M500 500 L700 655" stroke="#FFFFFF" stroke-width="76"/>
+
+  <path d="M500 500 L500 285" stroke="#F2A900" stroke-width="54"/>
+  <path d="M500 500 L300 655" stroke="#5A210D" stroke-width="54"/>
+  <path d="M500 500 L700 655" stroke="#1976D2" stroke-width="54"/>
+</g>
+
+<!-- central node -->
+<circle cx="500" cy="500" r="78" fill="#FFFFFF"/>
+<circle cx="500" cy="500" r="58" fill="#5A210D"/>
+
+<!-- top node -->
+<circle cx="500" cy="215" r="150" fill="#F2A900"/>
+<circle cx="500" cy="215" r="128" fill="none" stroke="#FFFFFF" stroke-width="16"/>
+
+<!-- bottom left node -->
+<circle cx="260" cy="705" r="150" fill="#5A210D"/>
+<circle cx="260" cy="705" r="128" fill="none" stroke="#FFFFFF" stroke-width="16"/>
+
+<!-- bottom right node -->
+<circle cx="740" cy="705" r="150" fill="#1976D2"/>
+<circle cx="740" cy="705" r="128" fill="none" stroke="#FFFFFF" stroke-width="16"/>
+
+<!-- top network icon -->
+<g stroke="#FFFFFF" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M500 170 L450 215 L500 260 L550 215 Z"/>
+  <path d="M500 170 L500 260"/>
+  <path d="M450 215 L550 215"/>
+</g>
+<g fill="#FFFFFF">
+  <circle cx="500" cy="160" r="18"/>
+  <circle cx="442" cy="215" r="18"/>
+  <circle cx="558" cy="215" r="18"/>
+  <circle cx="500" cy="270" r="18"/>
+</g>
+
+<!-- chip icon -->
+<g stroke="#FFFFFF" fill="none" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="208" y="653" width="104" height="104" rx="16"/>
+  <path d="M220 628v25 M250 628v25 M280 628v25 M310 628v25"/>
+  <path d="M220 757v25 M250 757v25 M280 757v25 M310 757v25"/>
+  <path d="M183 665h25 M183 695h25 M183 725h25 M183 755h25"/>
+  <path d="M312 665h25 M312 695h25 M312 725h25 M312 755h25"/>
+</g>
+
+<!-- sprout / field icon -->
+<g stroke="#FFFFFF" fill="none" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M740 690v50"/>
+  <path d="M740 690c-28-3-48-18-55-46 30-2 50 12 55 46Z"/>
+  <path d="M740 690c28-3 48-18 55-46-30-2-50 12-55 46Z"/>
+  <path d="M685 752c36-12 74-12 110 0"/>
+  <path d="M695 782c30-10 60-10 90 0"/>
+</g>
+</svg>

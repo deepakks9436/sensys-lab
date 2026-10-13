@@ -778,19 +778,29 @@ export default function Navbar() {
 
             >
 
-              <div className="relative hidden h-10 w-10 items-center justify-center rounded-full border border-[var(--um-blue)] transition group-hover:border-[var(--um-gold)] sm:flex">
+              <div className="relative h-12 w-12 shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-[1.04]">
 
-                <span className="absolute h-5 w-5 rounded-full border border-[var(--um-blue)]/35" />
+                <Image
 
+                  src="/brand/sensys-mark.svg"
 
+                  alt=""
 
-                <span className="h-2.5 w-2.5 rounded-full bg-[var(--um-gold)]" />
+                  fill
+
+                  className="object-contain"
+
+                  sizes="48px"
+
+                  priority
+
+                />
 
               </div>
 
 
 
-              <p className="whitespace-nowrap text-[17px] font-semibold tracking-tight text-[var(--foreground)]">
+              <p className="hidden whitespace-nowrap text-[17px] font-semibold tracking-tight text-[var(--foreground)] sm:block">
 
                 SenSys Lab
 
