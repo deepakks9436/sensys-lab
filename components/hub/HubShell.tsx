@@ -8,7 +8,7 @@
 
 import Link from "next/link";
 
-
+import Image from "next/image";
 
 
 
@@ -2695,15 +2695,16 @@ export default function HubShell({
 
 
 
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#385E9D]">
-
-
-
-              <div className="h-3 w-3 rounded-full bg-[#F2A900]" />
-
-
-
-            </div>
+            <div className="relative h-11 w-11 shrink-0">
+  <Image
+    src="/brand/sensys-mark.svg"
+    alt=""
+    fill
+    className="object-contain"
+    sizes="44px"
+    priority
+  />
+</div>
 
 
 

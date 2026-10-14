@@ -800,11 +800,9 @@ export default function Navbar() {
 
 
 
-              <p className="hidden whitespace-nowrap text-[17px] font-semibold tracking-tight text-[var(--foreground)] sm:block">
-
-                SenSys Lab
-
-              </p>
+              <p className="whitespace-nowrap text-[15px] font-semibold tracking-tight text-[var(--foreground)] sm:text-[17px]">
+  SenSys Lab
+</p>
 
             </Link>
 
