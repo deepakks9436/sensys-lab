@@ -756,7 +756,7 @@ export default function Navbar() {
 
         <nav
 
-          className="mx-auto flex h-[82px] max-w-7xl items-center justify-between px-5 md:px-8"
+          className="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-5 md:px-8"
 
           aria-label="Main navigation"
 
@@ -772,13 +772,15 @@ export default function Navbar() {
 
               href="/"
 
-              className="group flex shrink-0 items-center gap-3"
+              className="group flex shrink-0 items-center gap-2.5 rounded-xl outline-none transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-[var(--um-blue)]/35 sm:gap-3"
 
               aria-label="SenSys Lab home"
 
             >
 
-              <div className="relative h-12 w-12 shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-[1.04]">
+              <div className="relative h-[52px] w-[52px] shrink-0 sm:h-[58px] sm:w-[58px]">
+
+                <span className="pointer-events-none absolute inset-[3px] rounded-full border border-[var(--um-gold)]/0 transition-all duration-300 group-hover:border-[var(--um-gold)]/35 group-hover:shadow-[0_0_0_5px_color-mix(in_srgb,var(--um-gold)_10%,transparent)]" />
 
                 <Image
 
@@ -790,7 +792,7 @@ export default function Navbar() {
 
                   className="object-contain"
 
-                  sizes="48px"
+                  sizes="58px"
 
                   priority
 
@@ -800,9 +802,23 @@ export default function Navbar() {
 
 
 
-              <p className="whitespace-nowrap text-[15px] font-semibold tracking-tight text-[var(--foreground)] sm:text-[17px]">
-  SenSys Lab
-</p>
+              <div className="min-w-0">
+
+                <p className="whitespace-nowrap text-[16px] font-semibold leading-none tracking-[-0.025em] text-[var(--foreground)] transition-colors duration-300 group-hover:text-[var(--um-blue)] sm:text-[18px]">
+
+                  SenSys Lab
+
+                </p>
+
+
+
+                <p className="mt-1.5 whitespace-nowrap text-[6.5px] font-semibold uppercase tracking-[0.17em] text-[var(--foreground-muted)] sm:text-[7px]">
+
+                  University of Manitoba
+
+                </p>
+
+              </div>
 
             </Link>
 

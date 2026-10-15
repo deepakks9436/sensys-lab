@@ -6,9 +6,11 @@
 
 
 
+import Image from "next/image";
+
 import Link from "next/link";
 
-import Image from "next/image";
+
 
 
 
@@ -1714,14 +1716,6 @@ export default function HubShell({
 
 
 
-  }
- else if (
-    pathname.startsWith(
-      "/hub/team"
-    )
-  ) {
-    currentArea =
-      "Team Access";
   } else if (
 
 
@@ -1946,7 +1940,7 @@ export default function HubShell({
 
 
 
-      "Lab & Instruments";
+      "Lab";
 
 
 
@@ -2342,15 +2336,6 @@ export default function HubShell({
 
           <div className="mt-4 space-y-3 px-2">
 
-            {role === "admin" && (
-              <Link
-                href="/hub/team/invite"
-                className="block text-xs font-semibold text-[#385E9D] transition hover:text-[#27456F]"
-              >
-                + Invite team member
-              </Link>
-            )}
-
             {(role === "admin" || role === "research_manager") && (
 
               <>
@@ -2695,16 +2680,25 @@ export default function HubShell({
 
 
 
-            <div className="relative h-11 w-11 shrink-0">
-  <Image
-    src="/brand/sensys-mark.svg"
-    alt=""
-    fill
-    className="object-contain"
-    sizes="44px"
-    priority
-  />
-</div>
+            <div className="relative h-[58px] w-[58px] shrink-0">
+
+              <Image
+
+                src="/brand/sensys-mark.svg"
+
+                alt=""
+
+                fill
+
+                className="scale-[1.05] object-contain"
+
+                sizes="58px"
+
+                priority
+
+              />
+
+            </div>
 
 
 
@@ -2716,7 +2710,7 @@ export default function HubShell({
 
 
 
-              <p className="text-[17px] font-medium tracking-[-0.02em]">
+              <p className="text-[18px] font-semibold leading-none tracking-[-0.025em]">
 
 
 
@@ -2732,7 +2726,7 @@ export default function HubShell({
 
 
 
-              <p className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.24em] text-[#91877E]">
+              <p className="mt-1.5 text-[7px] font-bold uppercase tracking-[0.22em] text-[#91877E]">
 
 
 
@@ -3565,16 +3559,21 @@ export default function HubShell({
 
 
           <aside className="relative flex h-full w-[285px] flex-col overflow-y-auto bg-[#FAF9F7] pt-[75px] shadow-xl">
-            <button
-              type="button"
-              onClick={() => setMobileOpen(false)}
-              aria-label="Close navigation"
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-[#DDD6CF] bg-white text-lg text-[#332D28] transition hover:border-[#385E9D] hover:text-[#385E9D]"
-            >
-              ×
-            </button>
 
-            {sidebarContent}
+
+
+            {
+
+
+
+              sidebarContent
+
+
+
+            }
+
+
+
           </aside>
 
 

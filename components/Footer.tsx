@@ -30,13 +30,15 @@ export default function Footer() {
 
                 href="/"
 
-                className="group flex items-center gap-4"
+                className="group flex items-center gap-4 rounded-xl outline-none transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-white/35"
 
                 aria-label="SenSys Lab home"
 
               >
 
-                <div className="relative h-[72px] w-[72px] shrink-0 transition-transform duration-300 group-hover:scale-[1.03]">
+                <div className="relative h-[80px] w-[80px] shrink-0">
+
+                  <span className="pointer-events-none absolute inset-[4px] rounded-full border border-[var(--um-gold)]/0 transition-all duration-300 group-hover:border-[var(--um-gold)]/45 group-hover:shadow-[0_0_0_6px_rgba(242,169,0,0.10)]" />
 
                   <Image
 
@@ -48,7 +50,7 @@ export default function Footer() {
 
                     className="object-contain"
 
-                    sizes="72px"
+                    sizes="80px"
 
                   />
 
@@ -58,7 +60,7 @@ export default function Footer() {
 
                 <div>
 
-                  <p className="text-2xl font-semibold tracking-tight">
+                  <p className="text-[26px] font-semibold leading-none tracking-[-0.025em] text-white transition-colors duration-300 group-hover:text-[var(--um-gold)]">
 
                     SenSys Lab
 
@@ -66,7 +68,15 @@ export default function Footer() {
 
 
 
-                  <p className="mt-2 text-xs uppercase tracking-[0.24em] text-white/55">
+                  <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60">
+
+                    University of Manitoba
+
+                  </p>
+
+
+
+                  <p className="mt-1 text-[9px] uppercase tracking-[0.18em] text-white/45">
 
                     Intelligent Sensory Systems
 
