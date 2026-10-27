@@ -8,6 +8,7 @@ import {
 const positions = [
   "Ph.D. Researcher",
   "M.Sc. Researcher",
+  "M.Eng. (Master of Engineering)",
   "Postdoctoral Fellow",
   "Undergraduate Researcher",
   "Internship",

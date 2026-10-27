@@ -2561,7 +2561,7 @@ export default function JoinPage() {
 
                 <p className="mt-7 max-w-lg text-base leading-8 text-[var(--foreground-soft)]">
 
-                  Submit one concise application for Ph.D., M.Sc.,
+                  Submit one concise application for Ph.D., M.Sc., M.Eng.,
 
                   postdoctoral, internship, undergraduate research, research
 
