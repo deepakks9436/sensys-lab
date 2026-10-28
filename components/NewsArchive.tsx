@@ -179,7 +179,7 @@ export default function NewsArchive({
                     aria-label={`Read ${item.title}`}
                     className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-strong)] text-[var(--um-blue)] transition group-hover:border-[var(--um-blue)] group-hover:bg-[var(--um-blue)] group-hover:!text-white"
                   >
-                    ↗
+                    &#8599;
                   </a>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function NewsArchive({
             }
             className="rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-7 py-3.5 text-sm font-semibold transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
           >
-            Show more stories ↓
+            Show more stories &#8595;
           </button>
         </div>
       )}

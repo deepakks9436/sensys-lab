@@ -1,15 +1,10 @@
-﻿import type { Metadata } from "next";
-
+import type { Metadata } from "next";
 import Image from "next/image";
-
 import Link from "next/link";
 
 import Navbar from "../../components/Navbar";
-
 import Footer from "../../components/Footer";
-
 import Reveal from "../../components/Reveal";
-
 import NewsArchive from "../../components/NewsArchive";
 
 import {
@@ -135,7 +130,9 @@ export default function NewsPage() {
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
 
+      {/* ===================================================== */}
       {/* HERO */}
+      {/* ===================================================== */}
 
       <section className="relative overflow-hidden border-b border-[var(--border)] bg-[var(--background)] px-5 py-16 md:px-16 md:py-24">
         <div className="pointer-events-none absolute -right-32 -top-36 h-[440px] w-[440px] rounded-full bg-[var(--um-blue)]/10 blur-[120px]" />
@@ -189,7 +186,9 @@ export default function NewsPage() {
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* LEAD STORY */}
+      {/* ===================================================== */}
 
       {featuredNews && (
         <section className="bg-[var(--surface-soft)] px-5 py-16 md:px-16 md:py-24">
@@ -208,7 +207,7 @@ export default function NewsPage() {
 
                 {featuredNews.source && (
                   <p className="text-xs text-[var(--foreground-muted)]">
-                    Source Â· {featuredNews.source}
+                    Source &bull; {featuredNews.source}
                   </p>
                 )}
               </div>
@@ -240,7 +239,9 @@ export default function NewsPage() {
                         {featuredNews.category}
                       </span>
 
-                      <span className="text-[var(--foreground-muted)]">Â·</span>
+                      <span className="text-[var(--foreground-muted)]">
+                        &bull;
+                      </span>
 
                       <span className="text-xs text-[var(--foreground-muted)]">
                         {featuredNews.date}
@@ -261,9 +262,9 @@ export default function NewsPage() {
                       rel="noopener noreferrer"
                       className="mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-[var(--um-blue)] px-7 py-3.5 text-sm font-semibold !text-white transition hover:bg-[var(--um-blue-dark)]"
                     >
-                      <span style={{ color: "#FFFFFF" }}>Read full story</span>
+                      <span className="text-white">Read full story</span>
 
-                      <span style={{ color: "#FFFFFF" }}>â†’</span>
+                      <span className="text-white">&rarr;</span>
                     </a>
                   </div>
                 </div>
@@ -273,7 +274,9 @@ export default function NewsPage() {
         </section>
       )}
 
+      {/* ===================================================== */}
       {/* LATEST STORIES */}
+      {/* ===================================================== */}
 
       <section className="bg-[var(--background)] px-5 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
@@ -305,7 +308,9 @@ export default function NewsPage() {
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* RESEARCH BEHIND THE HEADLINES */}
+      {/* ===================================================== */}
 
       <section className="bg-[var(--surface-soft)] px-5 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
@@ -325,7 +330,7 @@ export default function NewsPage() {
                 href="/research"
                 className="w-fit text-sm font-semibold text-[var(--um-blue)] transition hover:text-[var(--um-sky)]"
               >
-                All research â†’
+                All research &rarr;
               </Link>
             </div>
           </Reveal>
@@ -361,7 +366,7 @@ export default function NewsPage() {
                     </p>
 
                     <p className="mt-6 text-xs font-semibold text-[var(--um-blue)]">
-                      Explore research â†’
+                      Explore research &rarr;
                     </p>
                   </div>
                 </Link>
@@ -371,7 +376,9 @@ export default function NewsPage() {
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* IMPACT */}
+      {/* ===================================================== */}
 
       <section className="bg-[var(--section-blue)] px-5 py-16 text-white md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
@@ -407,12 +414,12 @@ export default function NewsPage() {
                     </span>
 
                     <span
-  className={
-    index % 2 === 0
-      ? "h-2.5 w-2.5 rounded-full bg-[var(--um-sky)]"
-      : "h-2.5 w-2.5 rounded-full bg-[var(--um-gold)]"
-  }
-/>
+                      className={
+                        index % 2 === 0
+                          ? "h-2.5 w-2.5 rounded-full bg-[var(--um-sky)]"
+                          : "h-2.5 w-2.5 rounded-full bg-[var(--um-gold)]"
+                      }
+                    />
                   </div>
 
                   <h3 className="mt-8 text-xl font-semibold text-white">
@@ -429,7 +436,9 @@ export default function NewsPage() {
         </div>
       </section>
 
+      {/* ===================================================== */}
       {/* EXPLORE FURTHER */}
+      {/* ===================================================== */}
 
       <section className="bg-[var(--um-gold)] px-5 py-16 text-[#2A1710] md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
@@ -482,10 +491,12 @@ export default function NewsPage() {
                         {item.title}
                       </h3>
 
-                      <p className="mt-5 text-sm opacity-75">{item.text}</p>
+                      <p className="mt-5 text-sm opacity-75">
+                        {item.text}
+                      </p>
 
                       <span className="mt-7 inline-block transition-transform group-hover:translate-x-1">
-                        â†’
+                        &rarr;
                       </span>
                     </Link>
                   ))}
