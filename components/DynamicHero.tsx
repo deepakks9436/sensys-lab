@@ -317,11 +317,11 @@ export default function DynamicHero() {
 
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/research"
-              className="rounded-full bg-[var(--um-blue)] px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:bg-[var(--um-blue-dark)]"
-            >
-              Explore research →
-            </Link>
+  href="/research"
+  className="rounded-full bg-[var(--um-blue)] px-7 py-3.5 text-sm font-semibold !text-white shadow-sm transition duration-300 hover:bg-[var(--um-blue-dark)] hover:!text-white"
+>
+  Explore research &rarr;
+</Link>
 
             <Link
               href="/people"

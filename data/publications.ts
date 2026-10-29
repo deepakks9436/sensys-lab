@@ -1,5 +1,5 @@
 export type Publication = {
-  id: number;
+  id: number | string;
   year: number;
   citation: string;
   areas: string[];

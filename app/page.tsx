@@ -87,7 +87,9 @@ import AnimatedCounter from "../components/AnimatedCounter";
 
 
 
-import { publications } from "../data/publications";
+import {
+  getMergedPublications,
+} from "../lib/openalex";
 
 
 
@@ -1251,15 +1253,12 @@ const people = [
 
 
 
-export default function Home() {
+export default async function Home() {
+  const publicationData =
+    await getMergedPublications();
 
-
-
-
-
-
-
-  const publicationCount = publications.length;
+  const publicationCount =
+    publicationData.totalCount;
 
 
 
