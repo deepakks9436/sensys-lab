@@ -1,9 +1,6 @@
-import {
-  NextResponse,
-} from "next/server";
+import { NextResponse } from "next/server";
 
-export const runtime =
-  "nodejs";
+export const runtime = "nodejs";
 
 function cleanText(
   value: unknown,
@@ -96,7 +93,13 @@ export async function POST(
     const position =
       cleanText(
         body.position,
-        120
+        160
+      );
+
+    const otherPosition =
+      cleanText(
+        body.otherPosition,
+        160
       );
 
     const fullName =
@@ -123,6 +126,78 @@ export async function POST(
         160
       );
 
+    const citizenship =
+      cleanText(
+        body.citizenship,
+        100
+      );
+
+    const residenceCountry =
+      cleanText(
+        body.residenceCountry,
+        100
+      );
+
+    const canadaStatus =
+      cleanText(
+        body.canadaStatus,
+        160
+      );
+
+    const needsCanadianAuthorization =
+      cleanText(
+        body.needsCanadianAuthorization,
+        120
+      );
+
+    const ugDegree =
+      cleanText(
+        body.ugDegree,
+        120
+      );
+
+    const ugField =
+      cleanText(
+        body.ugField,
+        160
+      );
+
+    const ugUniversity =
+      cleanText(
+        body.ugUniversity,
+        200
+      );
+
+    const ugYear =
+      cleanText(
+        body.ugYear,
+        30
+      );
+
+    const ugGrade =
+      cleanText(
+        body.ugGrade,
+        60
+      );
+
+    const ugScale =
+      cleanText(
+        body.ugScale,
+        60
+      );
+
+    const mastersStatus =
+      cleanText(
+        body.mastersStatus,
+        80
+      );
+
+    const phdStatus =
+      cleanText(
+        body.phdStatus,
+        80
+      );
+
     const researchInterests =
       cleanText(
         body.researchInterests,
@@ -146,6 +221,18 @@ export async function POST(
       !email ||
       !institution ||
       !currentRole ||
+      !citizenship ||
+      !residenceCountry ||
+      !canadaStatus ||
+      !needsCanadianAuthorization ||
+      !ugDegree ||
+      !ugField ||
+      !ugUniversity ||
+      !ugYear ||
+      !ugGrade ||
+      !ugScale ||
+      !mastersStatus ||
+      !phdStatus ||
       !researchInterests ||
       !whySensys ||
       !cvUrl
@@ -154,6 +241,21 @@ export async function POST(
         {
           error:
             "Please complete all required fields.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    if (
+      position === "Other" &&
+      !otherPosition
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "Please specify the position or opportunity you are interested in.",
         },
         {
           status: 400,
@@ -218,12 +320,137 @@ export async function POST(
       );
     }
 
+    const otherResearchArea =
+      cleanText(
+        body.otherResearchArea,
+        160
+      );
+
+    if (
+      researchAreas.includes(
+        "Other"
+      ) &&
+      !otherResearchArea
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "Please specify your other research area.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const hasMasters =
+      mastersStatus ===
+        "Currently pursuing" ||
+      mastersStatus ===
+        "Completed";
+
+    if (
+      hasMasters &&
+      (
+        !cleanText(
+          body.pgDegree,
+          120
+        ) ||
+        !cleanText(
+          body.pgField,
+          160
+        ) ||
+        !cleanText(
+          body.pgUniversity,
+          200
+        ) ||
+        !cleanText(
+          body.pgYear,
+          30
+        )
+      )
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "Please complete your Master's degree details.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const hasPhd =
+      phdStatus ===
+        "Currently pursuing" ||
+      phdStatus ===
+        "Completed";
+
+    if (
+      hasPhd &&
+      (
+        !cleanText(
+          body.phdField,
+          160
+        ) ||
+        !cleanText(
+          body.phdUniversity,
+          200
+        ) ||
+        !cleanText(
+          body.phdYear,
+          30
+        )
+      )
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "Please complete your Ph.D. details.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const priorContact =
+      cleanText(
+        body.priorContact,
+        40
+      );
+
+    const contactPerson =
+      cleanText(
+        body.contactPerson,
+        160
+      );
+
+    if (
+      priorContact ===
+        "Yes" &&
+      !contactPerson
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "Please specify whom you previously contacted.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
     const payload = {
       submittedAt:
         new Date()
           .toISOString(),
 
       position,
+      otherPosition,
+
       fullName,
       email,
 
@@ -233,16 +460,125 @@ export async function POST(
           60
         ),
 
-      institution,
-      currentRole,
-
-      country:
+      dateOfBirth:
         cleanText(
-          body.country,
+          body.dateOfBirth,
+          40
+        ),
+
+      gender:
+        cleanText(
+          body.gender,
           100
         ),
 
+      citizenship,
+      residenceCountry,
+
+      canadaStatus,
+      needsCanadianAuthorization,
+
+      institution,
+      currentRole,
+
+      ugDegree,
+      ugField,
+      ugUniversity,
+
+      ugCountry:
+        cleanText(
+          body.ugCountry,
+          100
+        ),
+
+      ugYear,
+      ugGrade,
+      ugScale,
+
+      mastersStatus,
+
+      pgDegree:
+        cleanText(
+          body.pgDegree,
+          120
+        ),
+
+      pgField:
+        cleanText(
+          body.pgField,
+          160
+        ),
+
+      pgUniversity:
+        cleanText(
+          body.pgUniversity,
+          200
+        ),
+
+      pgCountry:
+        cleanText(
+          body.pgCountry,
+          100
+        ),
+
+      pgYear:
+        cleanText(
+          body.pgYear,
+          30
+        ),
+
+      pgGrade:
+        cleanText(
+          body.pgGrade,
+          60
+        ),
+
+      pgScale:
+        cleanText(
+          body.pgScale,
+          60
+        ),
+
+      phdStatus,
+
+      phdField:
+        cleanText(
+          body.phdField,
+          160
+        ),
+
+      phdUniversity:
+        cleanText(
+          body.phdUniversity,
+          200
+        ),
+
+      phdCountry:
+        cleanText(
+          body.phdCountry,
+          100
+        ),
+
+      phdYear:
+        cleanText(
+          body.phdYear,
+          30
+        ),
+
+      phdThesisTitle:
+        cleanText(
+          body.phdThesisTitle,
+          500
+        ),
+
+      phdSupervisor:
+        cleanText(
+          body.phdSupervisor,
+          200
+        ),
+
       researchAreas,
+      otherResearchArea,
 
       researchInterests,
       whySensys,
@@ -253,10 +589,15 @@ export async function POST(
           1800
         ),
 
-      startDate:
+      publicationCount:
         cleanText(
-          body.startDate,
-          40
+          body.publicationCount,
+          20
+        ),
+
+      selectedWorkUrl:
+        cleanUrl(
+          body.selectedWorkUrl
         ),
 
       cvUrl,
@@ -281,10 +622,43 @@ export async function POST(
           body.website
         ),
 
+      startDate:
+        cleanText(
+          body.startDate,
+          40
+        ),
+
+      preferredIntake:
+        cleanText(
+          body.preferredIntake,
+          80
+        ),
+
+      umApplicationStatus:
+        cleanText(
+          body.umApplicationStatus,
+          100
+        ),
+
+      umApplicantId:
+        cleanText(
+          body.umApplicantId,
+          100
+        ),
+
+      priorContact,
+      contactPerson,
+
       howHeard:
         cleanText(
           body.howHeard,
           120
+        ),
+
+      otherHowHeard:
+        cleanText(
+          body.otherHowHeard,
+          160
         ),
 
       source:
@@ -295,7 +669,8 @@ export async function POST(
       await fetch(
         webhookUrl,
         {
-          method: "POST",
+          method:
+            "POST",
 
           headers: {
             "Content-Type":
