@@ -8,11 +8,29 @@ import Reveal from "../../../components/Reveal";
 
 
 export const metadata: Metadata = {
-  title: { absolute: "K. S. Deepak | Postdoctoral Researcher | SenSys Lab" },
-  description: "Profile of K. S. Deepak, Postdoctoral Researcher at SenSys Lab, University of Manitoba, working on portable sensing systems, microfluidics, pesticide detection, multimodal optical and electrochemical sensing, wearable sensors, and field-deployable diagnostics.",
+  title: { absolute: "K S Deepak | Postdoctoral Researcher | SenSys Lab" },
+ description: "Profile of K S Deepak, Postdoctoral Researcher at SenSys Lab, University of Manitoba, working on portable sensing systems, microfluidics, pesticide detection, multimodal optical and electrochemical sensing, wearable sensors, and field-deployable diagnostics.",
   alternates: { canonical: "https://sensys.ca/people/ks-deepak" },
-  openGraph: { title: "K. S. Deepak | Postdoctoral Researcher | SenSys Lab", description: "Portable sensing, microfluidics, pesticide detection, wearable sensors, optical and electrochemical systems, and translational device development.", url: "https://sensys.ca/people/ks-deepak", type: "profile", images: [{ url: "/people/ks-deepak.jpg", alt: "K. S. Deepak" }] },
-  twitter: { card: "summary_large_image", title: "K. S. Deepak | SenSys Lab", description: "Postdoctoral Researcher developing portable and intelligent sensing technologies at SenSys Lab.", images: ["/people/ks-deepak.jpg"] },
+  openGraph: {
+  title: "K S Deepak | Postdoctoral Researcher | SenSys Lab",
+  description:
+    "Portable sensing, microfluidics, pesticide detection, wearable sensors, optical and electrochemical systems, and translational device development.",
+  url: "https://sensys.ca/people/ks-deepak",
+  type: "profile",
+  images: [
+    {
+      url: "/people/ks-deepak-profile.png",
+      alt: "K S Deepak",
+    },
+  ],
+},
+twitter: {
+  card: "summary_large_image",
+  title: "K S Deepak | SenSys Lab",
+  description:
+    "Postdoctoral Researcher developing portable and intelligent sensing technologies at SenSys Lab.",
+  images: ["/people/ks-deepak-profile.png"],
+},
 };
 
 const researchAreas = [
@@ -174,17 +192,17 @@ export default function KSDeepakPage() {
             ← People
           </Link>
 
-          <div className="mt-10 grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <div className="mt-10 grid gap-12 lg:grid-cols-[0.68fr_1.32fr] lg:items-center">
             <Reveal direction="left">
               <div className="relative aspect-[4/5] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)]">
                 <Image
-                  src="/people/ks-deepak.jpg"
-                  alt="K. S. Deepak"
-                  fill
-                  priority
-                  className="object-contain object-center p-5"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
+  src="/people/ks-deepak-profile.png"
+  alt="K S Deepak"
+  fill
+  priority
+  className="object-cover object-center"
+  sizes="(max-width: 1024px) 100vw, 40vw"
+/>
 
                 <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#263F67]/15 to-transparent" />
               </div>
@@ -195,11 +213,9 @@ export default function KSDeepakPage() {
                 Postdoctoral Researcher
               </p>
 
-              <h1 className="mt-5 text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
-                K. S.
-                <br />
-                Deepak
-              </h1>
+              <h1 className="mt-5 whitespace-nowrap text-5xl font-semibold leading-[0.92] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-8xl">
+  K S Deepak
+</h1>
 
               <p className="mt-7 text-lg font-semibold text-[var(--um-blue)]">
                 SenSys Lab · University of Manitoba
@@ -560,7 +576,7 @@ export default function KSDeepakPage() {
                   href="https://scholar.google.com/citations?hl=en&user=LzxK0qkAAAAJ&view_op=list_works&sortby=pubdate"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[var(--um-blue)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
+                  className="rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold !text-white transition hover:bg-[var(--um-blue-dark)] hover:!text-white"
                 >
                   Google Scholar ↗
                 </a>

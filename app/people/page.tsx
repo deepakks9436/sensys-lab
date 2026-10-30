@@ -481,18 +481,12 @@ export default function PeoplePage() {
             {[
 
               {
-
-                name: "K. S. Deepak",
-
-                href: "/people/ks-deepak",
-
-                image: "/people/ks-deepak.jpg",
-
-                text:
-
-                  "Portable sensing, microfluidics, electrochemical and optical systems, environmental monitoring, and translational device development.",
-
-              },
+  name: "K S Deepak",
+  href: "/people/ks-deepak",
+  image: "/people/ks-deepak-profile.png",
+  text:
+    "Portable sensing, microfluidics, electrochemical and optical systems, environmental monitoring, and translational device development.",
+},
 
               {
 
@@ -536,7 +530,7 @@ export default function PeoplePage() {
 
                       fill
 
-                      className="object-contain p-5 transition duration-700 group-hover:scale-[1.025]"
+                      className="object-cover object-[48%_42%] transition duration-700 group-hover:scale-[1.025]"
 
                     />
 
