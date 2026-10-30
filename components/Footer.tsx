@@ -78,7 +78,7 @@ export default function Footer() {
 
                   <p className="mt-1 text-[9px] uppercase tracking-[0.18em] text-white/45">
 
-                    Intelligent Sensory Systems
+                    Intelligent Sensing for One Health
 
                   </p>
 
@@ -137,30 +137,18 @@ export default function Footer() {
 
 
             <p className="mt-7 max-w-md text-sm leading-7 text-white/70">
-
-              Developing intelligent
-
-              cyber-physical sensory
-
-              systems across
-
-              microsystems,
-
-              diagnostics,
-
-              biointegrated
-
-              technologies,
-
-              environmental
-
-              intelligence, and
-
-              translational
-
-              engineering.
-
-            </p>
+  Advancing intelligent
+  sensing for One Health
+  across microsystems,
+  diagnostics,
+  biointegrated
+  technologies,
+  environmental
+  intelligence, food and
+  agriculture, and
+  translational
+  engineering.
+</p>
 
 
 

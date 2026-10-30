@@ -9,11 +9,11 @@ import AnimatedCounter from "../../../components/AnimatedCounter";
 
 
 export const metadata: Metadata = {
-  title: { absolute: "Prof. Sanket Goel | Founder & Principal Investigator | SenSys Lab" },
-  description: "Profile of Prof. Sanket Goel, Founder and Principal Investigator of SenSys Lab and Eddie Goldenberg Research Chair of Canada at the University of Manitoba, working across microsystems, microfluidics, intelligent diagnostics, advanced materials, biointegrated systems, environmental sensing, and technology translation.",
+  title: { absolute: "Dr. Sanket Goel | Founder & Principal Investigator | SenSys Lab" },
+  description: "Profile of Dr. Sanket Goel, Founder and Principal Investigator of SenSys Lab and Eddie Goldenberg Research Chair of Canada at the University of Manitoba, working across microsystems, microfluidics, intelligent diagnostics, advanced materials, biointegrated systems, environmental sensing, and technology translation.",
   alternates: { canonical: "https://sensys.ca/people/sanket-goel" },
-  openGraph: { title: "Prof. Sanket Goel | SenSys Lab | University of Manitoba", description: "Founder and Principal Investigator of SenSys Lab and Eddie Goldenberg Research Chair of Canada at the University of Manitoba.", url: "https://sensys.ca/people/sanket-goel", type: "profile", images: [{ url: "/people/sanket-goel.webp", alt: "Prof. Sanket Goel" }] },
-  twitter: { card: "summary_large_image", title: "Prof. Sanket Goel | SenSys Lab", description: "Founder and Principal Investigator, SenSys Lab, University of Manitoba.", images: ["/people/sanket-goel.webp"] },
+  openGraph: { title: "Dr. Sanket Goel | SenSys Lab | University of Manitoba", description: "Founder and Principal Investigator of SenSys Lab and Eddie Goldenberg Research Chair of Canada at the University of Manitoba.", url: "https://sensys.ca/people/sanket-goel", type: "profile", images: [{ url: "/people/sanket-goel.webp", alt: "Dr. Sanket Goel" }] },
+  twitter: { card: "summary_large_image", title: "Dr. Sanket Goel | SenSys Lab", description: "Founder and Principal Investigator, SenSys Lab, University of Manitoba.", images: ["/people/sanket-goel.webp"] },
 };
 
 const researchAreas = [
@@ -234,7 +234,7 @@ export default function SanketGoelPage() {
               <div className="relative aspect-[4/5] overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)]">
                 <Image
                   src="/people/sanket-goel.webp"
-                  alt="Prof. Sanket Goel"
+                  alt="Dr. Sanket Goel"
                   fill
                   priority
                   className="object-contain object-center"
@@ -250,11 +250,9 @@ export default function SanketGoelPage() {
                 Founder & Principal Investigator
               </p>
 
-              <h1 className="mt-5 text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
-                Sanket
-                <br />
-                Goel
-              </h1>
+              <h1 className="mt-5 whitespace-nowrap text-5xl font-semibold leading-[0.92] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-8xl">
+  Sanket Goel
+</h1>
 
               <p className="mt-7 text-lg font-semibold text-[var(--um-blue)] md:text-xl">
                 Eddie Goldenberg Research Chair of Canada
@@ -265,7 +263,7 @@ export default function SanketGoelPage() {
               </p>
 
               <p className="mt-8 max-w-2xl text-lg leading-9 text-[var(--foreground-soft)]">
-                Prof. Sanket Goel is an interdisciplinary researcher working at
+                Dr. Sanket Goel is an interdisciplinary researcher working at
                 the interface of microsystems, microfluidics, sensing,
                 bioelectronics, advanced materials, intelligent
                 instrumentation, environmental technologies, and translational
@@ -290,6 +288,15 @@ export default function SanketGoelPage() {
                 >
                   LinkedIn ↗
                 </a>
+
+<a
+  href="https://home.cc.umanitoba.ca/~goels2/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
+>
+  Official Website ↗
+</a>
 
                 <a
                   href="mailto:sensysinnovation@gmail.com"

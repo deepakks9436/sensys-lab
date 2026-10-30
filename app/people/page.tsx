@@ -24,9 +24,8 @@ export const metadata: Metadata = {
 
   },
 
-  description:
-
-    "Meet the SenSys Lab research team at the University of Manitoba, led by Prof. Sanket Goel, with researchers working across intelligent sensory systems, microsystems, diagnostics, microfluidics, biointegrated technologies, and translational engineering.",
+description:
+  "Meet the SenSys Lab research team at the University of Manitoba, led by Dr. Sanket Goel, advancing intelligent sensing for One Health across microsystems, diagnostics, microfluidics, biointegrated technologies, and translational engineering.",
 
   alternates: {
 
@@ -71,8 +70,7 @@ export const metadata: Metadata = {
     title: "People | SenSys Lab | University of Manitoba",
 
     description:
-
-      "Meet the researchers building intelligent sensory systems at SenSys Lab.",
+  "Meet the researchers advancing intelligent sensing for One Health at SenSys Lab.",
 
     images: ["/opengraph-image.png"],
 
@@ -352,7 +350,7 @@ export default function PeoplePage() {
 
                   src="/people/sanket-goel.webp"
 
-                  alt="Prof. Sanket Goel"
+                  alt="Dr. Sanket Goel"
 
                   fill
 
@@ -380,7 +378,7 @@ export default function PeoplePage() {
 
                 <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] md:text-6xl">
 
-                  Prof. Sanket Goel
+                  Dr. Sanket Goel
 
                 </h2>
 
@@ -1012,7 +1010,7 @@ export default function PeoplePage() {
 
                   We welcome expressions of interest from researchers working
 
-                  across intelligent sensory systems and translational
+                  across intelligent sensing for one health and translational
 
                   technology development.
 

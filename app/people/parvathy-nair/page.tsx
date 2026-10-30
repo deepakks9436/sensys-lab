@@ -208,11 +208,9 @@ export default function ParvathyNairPage() {
                 Postdoctoral Researcher
               </p>
 
-              <h1 className="mt-5 text-6xl font-semibold leading-[0.92] tracking-[-0.055em] md:text-8xl">
-                Parvathy
-                <br />
-                Nair
-              </h1>
+              <h1 className="mt-5 whitespace-nowrap text-5xl font-semibold leading-[0.92] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-8xl">
+  Parvathy Nair
+</h1>
 
               <p className="mt-7 text-lg font-semibold text-[var(--um-blue)]">
                 SenSys Lab · University of Manitoba

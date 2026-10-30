@@ -157,7 +157,7 @@ export const metadata: Metadata = {
 
 
 
-      "SenSys Lab | Intelligent Sensory Systems | University of Manitoba",
+      "SenSys Lab | Intelligent Sensing for One Health | University of Manitoba",
 
 
 
@@ -166,10 +166,7 @@ export const metadata: Metadata = {
 
 
   description:
-
-
-
-    "SenSys Lab at the University of Manitoba develops intelligent sensory systems spanning microsystems, microfluidics, biointegrated technologies, intelligent diagnostics, environmental sensing, food and agriculture, and translational engineering.",
+  "SenSys Lab at the University of Manitoba develops intelligent sensing for one health spanning microsystems, microfluidics, biointegrated technologies, intelligent diagnostics, environmental sensing, food and agriculture, and translational engineering.",
 
 
 
@@ -181,7 +178,7 @@ export const metadata: Metadata = {
 
 
 
-    title: "SenSys Lab | Intelligent Sensory Systems | University of Manitoba",
+    title: "SenSys Lab | Intelligent Sensing for One Health | University of Manitoba",
 
 
 
@@ -213,11 +210,11 @@ export const metadata: Metadata = {
 
 
 
-    title: "SenSys Lab | Intelligent Sensory Systems | University of Manitoba",
+    title: "SenSys Lab | Intelligent Sensing for One Health | University of Manitoba",
 
 
 
-    description: "Intelligent sensory systems research at the University of Manitoba.",
+    description: "Intelligent sensing for One Health at the University of Manitoba.",
 
 
 
@@ -1045,7 +1042,7 @@ const people = [
 
 
 
-    name: "Prof. Sanket Goel",
+    name: "Dr. Sanket Goel",
 
 
 
@@ -1101,7 +1098,7 @@ const people = [
 
 
 
-    name: "K. S. Deepak",
+    name: "K S Deepak",
 
 
 
@@ -1125,7 +1122,7 @@ const people = [
 
 
 
-    image: "/people/ks-deepak.jpg",
+    image: "/people/ks-deepak-profile.png",
 
 
 
