@@ -200,7 +200,7 @@ export default function KSDeepakPage() {
   alt="K S Deepak"
   fill
   priority
-  className="object-cover object-center"
+  className="object-cover object-center transition duration-700 group-hover:scale-[1.02]"
   sizes="(max-width: 1024px) 100vw, 40vw"
 />
 
@@ -236,7 +236,7 @@ export default function KSDeepakPage() {
                   href="https://scholar.google.com/citations?hl=en&user=LzxK0qkAAAAJ&view_op=list_works&sortby=pubdate"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
+                  className="rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold !text-white transition hover:bg-[var(--um-blue-dark)] hover:!text-white"
                 >
                   Google Scholar ↗
                 </a>
@@ -250,6 +250,14 @@ export default function KSDeepakPage() {
                   LinkedIn ↗
                 </a>
 
+<a
+  href="https://ksdeepak-academic-portfolio.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"
+>
+  Academic Portfolio ↗
+</a>
                 <Link
                   href="/publications"
                   className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold transition hover:border-[var(--um-blue)] hover:text-[var(--um-blue)]"

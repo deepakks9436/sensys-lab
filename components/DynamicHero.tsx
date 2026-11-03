@@ -192,7 +192,7 @@ export default function DynamicHero() {
               className="text-xs font-semibold uppercase tracking-[0.34em]"
               style={{ color: "var(--um-blue)" }}
             >
-              Intelligent Sensory Systems
+              Intelligent Sensing for One Health
             </p>
           </div>
 

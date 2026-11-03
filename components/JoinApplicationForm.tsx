@@ -1616,7 +1616,7 @@ export default function JoinApplicationForm() {
 
             <div>
               <FieldLabel>
-                Have you previously contacted Prof. Sanket Goel or another SenSys member?
+                Have you previously contacted Dr. Sanket Goel or another SenSys member?
               </FieldLabel>
 
               <select
