@@ -230,7 +230,7 @@ export default function ParvathyNairPage() {
                   href="https://scholar.google.com/citations?hl=en&user=LtYm2xoAAAAJ&view_op=list_works&sortby=pubdate"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--um-blue-dark)]"
+                  className="rounded-full bg-[var(--um-blue)] px-5 py-3 text-sm font-semibold !text-white transition hover:bg-[var(--um-blue-dark)] hover:!text-white"
                 >
                   Google Scholar ↗
                 </a>
